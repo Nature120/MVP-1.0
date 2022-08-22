@@ -1,10 +1,10 @@
-import { View, Text } from "react-native";
-import React from "react";
+import React from 'react';
+import { Text, View } from 'react-native';
 
 export const ScreenTest = () => {
   return (
     <View>
-      <Text>screen-test</Text>
+      <Text>screen-test 2</Text>
     </View>
   );
 };
