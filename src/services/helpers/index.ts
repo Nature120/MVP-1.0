@@ -1,3 +1,3 @@
-export * from "./scaling";
-export * from "./store.helper";
-export * from "./useKeyboard";
+export * from './scaling';
+export * from './store.helper';
+export * from './useKeyboard';

@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { ScreenTest } from "@screens/screen-test";
+import { ScreenTest } from '@screens/screen-test';
 
-import { APP_ROUTES } from "@constants/routes";
-import { createStackNavigator } from "@react-navigation/stack";
+import { APP_ROUTES } from '@constants/routes';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const StartStack = createStackNavigator();
 

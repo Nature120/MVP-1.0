@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-import { css } from "styled-components/native";
+import React, { FC } from 'react';
+import { css } from 'styled-components/native';
 
-import { ICONS } from "./icon.constants";
+import { ICONS } from './icon.constants';
 
 // import { COLORS, TColors } from "@styles/colors";
-import { IconStyles } from "./icon.styles";
+import { IconStyles } from './icon.styles';
 
 export type TIconNames = keyof typeof ICONS;
 
@@ -38,8 +38,7 @@ export const Icon: FC<IIconProps> = ({
         width: ${imageWidth}px;
         height: ${imageHeight}px;
         ${styles};
-      `}
-    >
+      `}>
       <Image
         height={imageHeight}
         width={imageWidth}
