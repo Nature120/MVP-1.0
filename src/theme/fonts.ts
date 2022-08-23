@@ -22,7 +22,7 @@ export const FONTS = {
     semiBoldNotoSans: 'NotoSans-SemiBold',
     boldNotoSans: 'NotoSans-Bold',
     lightRoboto: 'Roboto-Light',
-    lightItelicRoboto: 'Roboto-LightItalic',
+    lightItalicRoboto: 'Roboto-LightItalic',
     regularRoboto: 'Roboto-Regular',
     mediumRoboto: 'Roboto-Medium',
     regularLexend: 'Lexend-Regular',
