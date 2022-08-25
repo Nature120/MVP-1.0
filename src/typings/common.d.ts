@@ -1,3 +1,5 @@
+import { RouteProp, ParamListBase } from '@react-navigation/native';
+import { StackNavigationOptions } from '@react-navigation/stack';
 import { StyleProp } from 'react-native';
 import { FlattenInterpolation, ThemeProps } from 'styled-components';
 
@@ -15,3 +17,15 @@ export interface IResponseError {
     data: IError;
   };
 }
+
+export interface IId {
+  id: string;
+}
+
+export type TScreenOptions =
+  | StackNavigationOptions
+  | ((props: {
+      route: RouteProp<ParamListBase, string>;
+      navigation: any;
+    }) => StackNavigationOptions)
+  | undefined;

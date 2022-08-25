@@ -2,6 +2,14 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json", /* Recommended React Native TSConfig base */
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "lint": {
+          "validProperties": ["margin-horizontal", "margin-vertical"]
+        }
+      }
+    ],
     "target": "esnext",
     "module": "commonjs",
     "lib": [

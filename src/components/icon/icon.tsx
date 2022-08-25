@@ -28,10 +28,10 @@ export const Icon: FC<IIconProps> = ({
         ${styles};
       `}>
       <Image
+        fill={colorIcon && COLOR.icon[colorIcon]}
         height={imageHeight}
         width={imageWidth}
         style={{
-          color: colorIcon && COLOR.icon[colorIcon],
           elevation,
         }}
       />

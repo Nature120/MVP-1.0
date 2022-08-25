@@ -2,6 +2,7 @@ const green = '#00622D';
 const darkBlue = '#163045';
 const lightGreen = '#0CA152';
 const cloudyBlue = '#5A7082';
+const white = '#fff';
 
 export const COLOR = {
   primary: {
@@ -19,7 +20,7 @@ export const COLOR = {
     violet: '#B3A0EB',
   },
   font: {
-    white: '#fff',
+    white,
     black: '#000',
     cloudyBlue,
     darkBlue,
@@ -31,6 +32,7 @@ export const COLOR = {
     cloudyGreen: '#5C7869',
   },
   background: {
+    white,
     beigeDark: '#E9E0D8',
     beigeLight: '#EFECE9',
     mintLight: '#ECF5F5',

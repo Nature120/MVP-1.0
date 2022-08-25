@@ -28,7 +28,7 @@ export const FONTS = {
     regularNewOrder: 'Lexend-Regular',
     mediumNewOrder: 'Lexend-Medium',
   },
-};
+} as const;
 
 export type TFontSizes = keyof typeof FONTS.size;
 export type TFontWeights = keyof typeof FONTS.weight;

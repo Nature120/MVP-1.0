@@ -46,6 +46,7 @@
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^12.4.4",
     "react-native-svg-transformer": "^1.0.0",
+    "react-native-swiper": "^1.6.0",
     "react-redux": "^8.0.2",
     "redux-persist": "^6.0.0",
     "styled-components": "^5.1.5"
