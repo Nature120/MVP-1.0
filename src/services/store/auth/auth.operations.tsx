@@ -1,5 +1,7 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { IResponseError } from '@typings/common.d';
 
 // axios.defaults.baseURL = CONFIG.apiURL;
 
@@ -19,8 +21,9 @@ export const login = createAsyncThunk(
       const response = await axios.post('/api/login');
       TOKEN.set(response.data.accessToken);
       return response.data;
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      const error = err as IResponseError;
+      console.error(error);
       return rejectWithValue(error.response.data);
     }
   },

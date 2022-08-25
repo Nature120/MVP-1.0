@@ -3,3 +3,4 @@
 // export const getAuthentication = (state) => state.auth.isAuthenticated;
 // export const getToken = (state) => state.auth.user.accessToken;
 // export const getFirstLaunch = (state) => state.auth.isFirstLaunchApp;
+export {};

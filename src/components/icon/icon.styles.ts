@@ -1,8 +1,9 @@
+import { TStyles } from '@typings/common';
 import styled from 'styled-components/native';
 
 export const IconStyles = {
   Wrapper: styled.View<{
-    styles?: any;
+    styles?: TStyles;
   }>`
     display: flex;
     justify-content: center;

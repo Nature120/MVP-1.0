@@ -1,7 +1,5 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
-
-import * as operation from './auth-operations';
-import * as action from './auth-actions';
+import * as operation from './auth.operations';
 
 const user = createReducer([], {
   [operation.login.fulfilled.type]: (_, { payload }) => payload,

@@ -1,8 +1,8 @@
+import { persistReducer, persistStore } from 'redux-persist';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
-
-import authReducer from './auth/auth-reducer';
+import authReducer from './auth/auth.reducer';
 
 const authPersistConfig = {
   key: 'auth',

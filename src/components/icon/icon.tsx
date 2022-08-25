@@ -1,22 +1,10 @@
 import React, { FC } from 'react';
+
+import { COLOR } from '@theme/colors';
 import { css } from 'styled-components/native';
-
 import { ICONS } from './icon.constants';
-
-// import { COLORS, TColors } from "@styles/colors";
 import { IconStyles } from './icon.styles';
-
-export type TIconNames = keyof typeof ICONS;
-
-export interface IIconProps {
-  type: TIconNames;
-  colorIcon?: any;
-  size?: number;
-  width?: number;
-  height?: number;
-  styles?: any;
-  elevation?: number;
-}
+import { IIconProps } from './icon.typings';
 
 export const Icon: FC<IIconProps> = ({
   type,
@@ -43,7 +31,7 @@ export const Icon: FC<IIconProps> = ({
         height={imageHeight}
         width={imageWidth}
         style={{
-          //   color: colorIcon && COLORS[colorIcon],
+          color: colorIcon && COLOR.icon[colorIcon],
           elevation,
         }}
       />

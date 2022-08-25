@@ -9,5 +9,5 @@ import { store } from '@services/store';
 type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = typeof store.dispatch;
 
-export const useDispatch = () => useLibDispatch<AppDispatch>();
-export const useSelector: TypedUseSelectorHook<RootState> = useLibSelector;
+export const useAppDispatch = () => useLibDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useLibSelector;

@@ -6382,6 +6382,11 @@ react-native-codegen@^0.69.1:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
+react-native-config@^1.4.6:
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.4.6.tgz#2aefebf4d9cf02831e64bbc1307596bd212f6d42"
+  integrity sha512-cSLdOfva2IPCxh6HjHN1IDVW9ratAvNnnAUx6ar2Byvr8KQU7++ysdFYPaoNVuJURuYoAKgvjab8ZcnwGZIO6Q==
+
 react-native-gesture-handler@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.5.0.tgz#61385583570ed0a45a9ed142425e35f8fe8274fb"
@@ -6407,6 +6412,11 @@ react-native-size-matters@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.4.0.tgz#01bfd0d59454318f4e0b13fe9c1eb0523d70f2e0"
   integrity sha512-8/C0htHrFWeUm9N8JegmadovUfgTWkGBkDPZ1N3YkXtDWb+98Ya2gThiKcu445r8c7YhcrBfnHz/mYsXIusaOQ==
+
+react-native-splash-screen@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.3.0.tgz#3af71ed17afe50fee69590a45aec399d071ead02"
+  integrity sha512-rGjt6HkoSXxMqH4SQUJ1gnPQlPJV8+J47+4yhgTIan4bVvAwJhEeJH7wWt9hXSdH4+VfwTS0GTaflj1Tw83IhA==
 
 react-native-svg-transformer@^1.0.0:
   version "1.0.0"

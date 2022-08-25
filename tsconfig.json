@@ -7,6 +7,9 @@
     "lib": [
       "es2017"
     ],
+    "types": [
+      "@types/styled-components-react-native"
+    ],
     "allowJs": true,
     "jsx": "react-native",
     "noEmit": true,
