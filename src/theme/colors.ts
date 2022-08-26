@@ -45,4 +45,5 @@ export const COLOR = {
 } as const;
 
 export type TColorIcon = keyof typeof COLOR.icon;
+export type TColorFont = keyof typeof COLOR.font;
 export type TColorBackground = keyof typeof COLOR.background;
