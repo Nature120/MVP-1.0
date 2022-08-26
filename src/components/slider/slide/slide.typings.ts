@@ -5,5 +5,4 @@ export interface ISlideProps {
 }
 export interface ISlideTextProps {
   isBold?: boolean;
-  isFullWidth?: boolean;
 }

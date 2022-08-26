@@ -1,32 +1,26 @@
 import { ISlide } from '@components/slider/slider.typings';
+import { IMAGES } from './images';
 
 export const sliderContent: ISlide[] = [
   {
-    title: 'Turn time spent in nature into moments of wonder & healing',
+    isWithClouds: false,
+    image: 'lotus',
+    title: '[Personalized] nature therapy practices, backed by [science]',
     description:
-      'Enjoy personalized [nature therapy practices] and a [free 120-minute weekly nature tracker] on your journey to better wellbeing.',
+      'Choose from a library of mindfulness activities designed by ecopsychology experts and curated by leaders in the field',
   },
   {
-    title: 'The problem',
+    isWithClouds: true,
+    image: 'flowers',
+    title: 'Turn time spent in nature into moments of [wonder] & [healing]',
     description:
-      'Many of the lifestyle related diseases and [mental health challenges] humanity is experiencing stem from our growing [disconnection with the natural world].',
+      'Spending at least 120 minutes per week in nature has been scientifally proven to improve mental and pysical health over time',
   },
   {
-    title: 'How can we help?',
+    isWithClouds: false,
+    image: 'tip',
+    title: 'Your journey to [better wellbeing]',
     description:
-      'A [minimum of 120 minutes] per week spent in contact with natural environments has been scientifically shown to [correlate with physiological & psychological benefits.]',
-  },
-  {
-    title: 'How it works',
-    description: 'World’s first [self-guided nature therapy] app ',
-    list: [
-      'Get outside',
-      'Track your [120-minutes spent in nature]',
-      'Engage in [nature-based practices] curated by leaders in the field',
-    ],
-  },
-  {
-    title: 'Designed by Ecopsychology Experts',
-    description: 'Backed by science.',
+      'Set a weekly goal that fits your schedule, record your mood before and after spending time outside, and track your progress over time',
   },
 ];

@@ -1,3 +1,5 @@
+import { TImageNames } from '@constants/images';
+
 export interface ISliderProps {
   content: ISlide[];
 }
@@ -5,5 +7,6 @@ export interface ISliderProps {
 export interface ISlide {
   title: string;
   description: string;
-  list?: string[];
+  image: TImageNames;
+  isWithClouds: boolean;
 }

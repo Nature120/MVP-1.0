@@ -8,17 +8,11 @@ const StartStack = createStackNavigator();
 
 export const RootNavigator = () => {
   return (
-    <StartStack.Navigator screenOptions={screenOptions}>
+    <StartStack.Navigator
+      screenOptions={screenOptions}
+      initialRouteName={APP_ROUTES.start.splash}>
       <StartStack.Screen
         name={APP_ROUTES.start.splash}
-        component={() => <></>}
-      />
-      <StartStack.Screen
-        name={APP_ROUTES.start.signUp}
-        component={() => <></>}
-      />
-      <StartStack.Screen
-        name={APP_ROUTES.start.signIn}
         component={() => <></>}
       />
     </StartStack.Navigator>
