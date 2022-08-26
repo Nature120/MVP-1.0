@@ -1,5 +1,6 @@
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
+import { verticalScale } from 'react-native-size-matters';
 import styled from 'styled-components/native';
 import { ISlideTextProps } from './slide.typings';
 
