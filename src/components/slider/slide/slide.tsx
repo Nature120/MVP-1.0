@@ -1,34 +1,31 @@
 import React from 'react';
 import { ISlideProps } from './slide.typings';
-import { StyledSlide as Styled } from './slide.styles';
+import { CloudsStyle, StyledSlide as Styled } from './slide.styles';
 import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
+import { IMAGES } from '@constants/images';
+import { Image, ImageBackground, View } from 'react-native';
 
 export const Slide: React.FC<ISlideProps> = ({ slide }) => {
   const getPartialBoldText = (str: string) =>
     getPartialStyledText(str, (line, isMatch, index) => (
-      <Styled.Text key={line + index} isBold={isMatch}>
+      <Styled.Title key={line + index} isBold={isMatch}>
         {line}
-      </Styled.Text>
+      </Styled.Title>
     ));
 
   return (
     <Styled.Slide>
-      <Styled.Title>{slide.title}</Styled.Title>
-
-      <Styled.Text isFullWidth={!!slide.list}>
-        {getPartialBoldText(slide.description)}
-      </Styled.Text>
-
-      {slide.list && (
-        <Styled.List>
-          {slide.list.map((line, index) => (
-            <Styled.Text key={line + index}>
-              {index + 1}. {getPartialBoldText(line)}
-              {'\n'}
-            </Styled.Text>
-          ))}
-        </Styled.List>
+      {slide.isWithClouds && (
+        <ImageBackground source={IMAGES.clouds} imageStyle={CloudsStyle} />
       )}
+      <Styled.SlideContent>
+        <Styled.ImageWrapper>
+          <Image source={IMAGES[slide.image]} />
+        </Styled.ImageWrapper>
+        <Styled.Title>{getPartialBoldText(slide.title)}</Styled.Title>
+
+        <Styled.Description>{slide.description}</Styled.Description>
+      </Styled.SlideContent>
     </Styled.Slide>
   );
 };
