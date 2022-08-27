@@ -1,9 +1,9 @@
-import { RouteProp, ParamListBase } from '@react-navigation/native';
-import { StackNavigationOptions } from '@react-navigation/stack';
-import { StyleProp } from 'react-native';
-import { FlattenInterpolation, ThemeProps } from 'styled-components';
+import { SimpleInterpolation } from 'styled-components';
 
-export type TStyles = FlattenInterpolation<ThemeProps<any>> | StyleProp<any>;
+import { ParamListBase, RouteProp } from '@react-navigation/native';
+import { StackNavigationOptions } from '@react-navigation/stack';
+
+export type TStyles = SimpleInterpolation;
 
 export interface IError {
   message?: string;
@@ -24,8 +24,5 @@ export interface IId {
 
 export type TScreenOptions =
   | StackNavigationOptions
-  | ((props: {
-      route: RouteProp<ParamListBase, string>;
-      navigation: any;
-    }) => StackNavigationOptions)
+  | ((props: { route: RouteProp<ParamListBase, string>; navigation: any }) => StackNavigationOptions)
   | undefined;

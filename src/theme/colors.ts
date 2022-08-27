@@ -3,11 +3,12 @@ const darkBlue = '#163045';
 const lightGreen = '#0CA152';
 const cloudyBlue = '#5A7082';
 const white = '#fff';
+const blue = '#376CF1';
 
 export const COLOR = {
   primary: {
     green,
-    blue: '#376CF1',
+    blue,
     violet: '#6742D7',
     red: '#C24331',
     darkBlue,
@@ -26,6 +27,8 @@ export const COLOR = {
     darkBlue,
   },
   icon: {
+    blue,
+    white,
     green,
     darkBlue,
     lightGreen,

@@ -13,3 +13,8 @@ export interface IIconProps {
   styles?: TStyles;
   elevation?: number;
 }
+
+export interface IIconSize {
+  width: number;
+  height: number;
+}
