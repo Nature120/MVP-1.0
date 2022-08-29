@@ -22,7 +22,7 @@ export const StyledButtonWithLink = {
     margin-left: 8px;
     font-family: ${FONTS.family.boldAcumin};
     font-weight: ${FONTS.weight.bold};
-    font-size: ${FONTS.size.xSmall};
+    font-size: ${FONTS.size.xSmall}px;
     line-height: 17px;
     color: ${COLOR.subheading};
   `,
@@ -30,7 +30,7 @@ export const StyledButtonWithLink = {
   SubButtonText: styled.Text`
     font-family: ${FONTS.family.lightBoreal};
     font-weight: ${FONTS.weight.regular};
-    font-size: ${FONTS.size.xSmall};
+    font-size: ${FONTS.size.xSmall}px;
     line-height: 18px;
     color: ${COLOR.subheading};
   `,

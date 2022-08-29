@@ -3,10 +3,14 @@ import React, { useState } from 'react';
 import { Layout } from '@components/layout';
 import { LayoutOnboarding } from '@components/layout-onboarding';
 import { TextCheckboxGroup } from '@components/text-checkbox-group';
+
 import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
-import { OnboardingText, OnboardingTitle } from '@theme/components';
+
 import { whatBringsVariants } from '../onboarding.constants';
+
 import { StyledWhatBrings as Styled } from './what-brings.styles';
+
+import { OnboardingText, OnboardingTitle } from '@theme/components';
 
 export const WhatBrings: React.FC = () => {
   const [selectedVariants, setSelectedVariants] = useState<string[]>([]);

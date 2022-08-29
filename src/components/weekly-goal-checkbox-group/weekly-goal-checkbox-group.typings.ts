@@ -1,4 +1,5 @@
 import { IWeeklyGoal } from '@components/weekly-goal-checkbox/weekly-goal-checkbox.typings';
+
 import { TStyles } from '@typings/common';
 
 export interface IWeeklyGoalCheckboxGroupProps extends IWeeklyGroupStateProps {

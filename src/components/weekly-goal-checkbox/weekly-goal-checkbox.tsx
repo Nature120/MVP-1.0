@@ -2,8 +2,10 @@ import React from 'react';
 import { Text } from 'react-native';
 
 import { TextCheckbox } from '@components/text-checkbox';
-import { StyledWeeklyGoalCheckbox as Styled } from './weekly-goal-checkbox.styles';
+
 import { IWeeklyGoalCheckboxProps } from './weekly-goal-checkbox.typings';
+
+import { StyledWeeklyGoalCheckbox as Styled } from './weekly-goal-checkbox.styles';
 
 export const WeeklyGoalCheckbox: React.FC<IWeeklyGoalCheckboxProps> = props => {
   const { minPerDay, text, onChange, isChecked, name } = props;

@@ -3,10 +3,14 @@ import { ImageBackground } from 'react-native';
 
 import { Layout } from '@components/layout';
 import { LayoutOnboarding } from '@components/layout-onboarding';
-import { IMAGES } from '@constants/images';
+
 import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
-import { OnboardingCard, OnboardingTitle } from '@theme/components';
+
+import { IMAGES } from '@constants/images';
+
 import { StyledStart as Styled } from './start.styles';
+
+import { OnboardingCard, OnboardingTitle } from '@theme/components';
 
 const imageStyle = { flex: 1 };
 

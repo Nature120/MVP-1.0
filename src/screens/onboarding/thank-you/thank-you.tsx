@@ -2,8 +2,10 @@ import React from 'react';
 
 import { Layout } from '@components/layout';
 import { LayoutOnboarding } from '@components/layout-onboarding';
-import { OnboardingCard, OnboardingText, OnboardingTitle } from '@theme/components';
+
 import { StyledThankYou as Styled } from './thank-you.styles';
+
+import { OnboardingCard, OnboardingText, OnboardingTitle } from '@theme/components';
 
 export const ThankYou: React.FC = () => {
   return (

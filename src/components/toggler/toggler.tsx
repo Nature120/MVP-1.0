@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { COLOR } from '@theme/colors';
-import { StyledToggler as Styled } from './toggler.styles';
 import { ITogglerProps } from './toggler.typings';
+
+import { StyledToggler as Styled } from './toggler.styles';
+
+import { COLOR } from '@theme/colors';
 
 export const Toggler: React.FC<ITogglerProps> = props => {
   const { onChange, value, switchLabel } = props;

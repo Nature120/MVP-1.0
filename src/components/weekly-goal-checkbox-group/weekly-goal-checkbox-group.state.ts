@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { getCheckboxGroupState } from '@services/helpers/get-checkbox-group-state';
+
 import { IWeeklyGroupState, IWeeklyGroupStateProps } from './weekly-goal-checkbox-group.typings';
 
 export const useWeeklyGoalCheckboxGroup = (props: IWeeklyGroupStateProps) => {

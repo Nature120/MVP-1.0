@@ -1,7 +1,8 @@
-import { COLOR } from '@theme/colors';
 import styled from 'styled-components/native';
 
 import { IStyledLayoutProps } from './layout.typings';
+
+import { COLOR } from '@theme/colors';
 
 export const StyledLayout = {
   Layout: styled.SafeAreaView<IStyledLayoutProps>`

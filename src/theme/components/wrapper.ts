@@ -1,5 +1,6 @@
-import { TStyles } from '@typings/common';
 import styled from 'styled-components/native';
+
+import { TStyles } from '@typings/common';
 
 interface IStyles {
   styles?: TStyles;

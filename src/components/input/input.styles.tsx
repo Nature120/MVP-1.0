@@ -16,7 +16,6 @@ export const InputStyles = {
     border-radius: 4px;
 
     font-family: ${FONTS.family.lightBoreal};
-    /* font-size: ${moderateScale(17, 0.1)}px; */
     font-size: ${moderateScale(FONTS.size.xMedium, 0.1)}px;
     line-height: ${moderateScale(21, 0.1)}px;
     font-weight: 400;

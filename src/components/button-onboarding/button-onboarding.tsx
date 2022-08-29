@@ -1,10 +1,13 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@components/button';
-import { useNavigation } from '@react-navigation/native';
+
 import { handleNavigate } from '@services/helpers/handle-navigate';
-import { StyledButtonOnboarding as Styled } from './button-onboarding.styles';
+
 import { IButtonOnboardingProps } from './button-onboarding.typings';
+
+import { StyledButtonOnboarding as Styled } from './button-onboarding.styles';
 
 export const ButtonOnboarding: React.FC<IButtonOnboardingProps> = props => {
   const { onButtonPressNavigateTo, ...buttonProps } = props;

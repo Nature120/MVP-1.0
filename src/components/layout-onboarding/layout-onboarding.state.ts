@@ -1,9 +1,12 @@
 import { useMemo, useState } from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { IProgressBarProps } from '@components/progress-bar/progress-bar.typings';
-import { ON_BOARD_ROUTES } from '@constants/routes';
-import { useNavigation, useRoute } from '@react-navigation/native';
+
 import { useOnboardingNextRoute } from '@services/hooks/onboarding-next-route';
+
+import { ON_BOARD_ROUTES } from '@constants/routes';
+
 import { TOnPress } from './layout-onboarding.typings';
 
 export const useLayoutOnboarding = (onPress?: TOnPress, isWithoutRedirect?: boolean) => {

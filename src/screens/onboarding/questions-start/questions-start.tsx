@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Layout } from '@components/layout';
 import { LayoutOnboarding } from '@components/layout-onboarding';
+
 import { OnboardingText } from '@theme/components/onboarding-text';
 import { OnboardingTitle } from '@theme/components/onboarding-title';
 

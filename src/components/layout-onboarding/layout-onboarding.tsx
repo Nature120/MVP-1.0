@@ -5,8 +5,10 @@ import { ButtonOnboarding } from '@components/button-onboarding';
 import { ButtonWithLink } from '@components/button-with-link';
 import { ProgressBar } from '@components/progress-bar';
 import { useLayoutOnboarding } from './layout-onboarding.state';
-import { StyledLayoutOnboarding as Styled } from './layout-onboarding.styles';
+
 import { TLayoutOnboardingProps } from './layout-onboarding.typings';
+
+import { StyledLayoutOnboarding as Styled } from './layout-onboarding.styles';
 
 export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
   const {
@@ -26,7 +28,7 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
         <Styled.ProgressBarWrapper>
           <ProgressBar current={progress.current} total={progress.total} />
         </Styled.ProgressBarWrapper>
-        <BackButton />
+        <BackButton width={32} height={32} />
       </Styled.Header>
 
       <Styled.ChildrenWrapper>{children}</Styled.ChildrenWrapper>

@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { StyledButton as Styled } from './button.styles';
 import { IButtonProps } from './button.typings';
+
+import { StyledButton as Styled } from './button.styles';
 
 export const Button: React.FC<IButtonProps> = props => {
   const {
@@ -24,10 +25,7 @@ export const Button: React.FC<IButtonProps> = props => {
       buttonColor={buttonColor}
       height={height}
       styles={styles}>
-      <Styled.Text
-        isNotUpper={isNotUpper}
-        textColor={textColor}
-        textStyles={textStyles}>
+      <Styled.Text isNotUpper={isNotUpper} textColor={textColor} textStyles={textStyles}>
         {buttonText}
       </Styled.Text>
     </Styled.Button>

@@ -29,7 +29,7 @@ export const StyledSlide = {
   Title: styled.Text<ISlideTextProps>`
     font-family: ${FONTS.family.boldAcumin};
     font-weight: ${props => (props.isBold ? FONTS.weight.bold : FONTS.weight.light)};
-    font-size: ${FONTS.size.xLarge};
+    font-size: ${FONTS.size.xLarge}px;
     line-height: 40px;
     color: ${props => (props.isBold ? COLOR.primary.green : COLOR.title)};
     margin-vertical: 24px;
@@ -38,7 +38,7 @@ export const StyledSlide = {
   Description: styled.Text`
     font-family: ${FONTS.family.mediumAcumin};
     font-weight: ${FONTS.weight.regular};
-    font-size: ${FONTS.size.xMedium};
+    font-size: ${FONTS.size.xMedium}px;
     color: ${COLOR.text};
     line-height: 20px;
   `,

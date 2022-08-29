@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { getCheckboxGroupState } from '@services/helpers/get-checkbox-group-state';
+
 import { IGroupState, TTextCheckboxGroupProps } from './text-checkbox-group.typings';
 
 export const useTextCheckboxGroup = (props: TTextCheckboxGroupProps) => {
