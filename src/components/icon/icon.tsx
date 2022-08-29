@@ -9,15 +9,7 @@ import { IconStyles } from './icon.styles';
 
 import { COLOR } from '@theme/colors';
 
-export const Icon: FC<IIconProps> = ({
-  type,
-  height,
-  width,
-  size,
-  styles,
-  colorIcon,
-  elevation = 0,
-}) => {
+export const Icon: FC<IIconProps> = ({ type, height, width, size, styles, colorIcon, elevation = 0 }) => {
   const Image = ICONS[type];
 
   const imageHeight = height ?? size;

@@ -20,12 +20,7 @@ export const BackButton = () => {
   return (
     <Styled.Container>
       <Styled.BtnWrapper onPress={onPressGoBack}>
-        <Icon
-          type="arrowLeft"
-          width={scale(32)}
-          height={verticalScale(32)}
-          colorIcon={'darkBlue'}
-        />
+        <Icon type="arrowLeft" width={scale(32)} height={verticalScale(32)} colorIcon={'darkBlue'} />
       </Styled.BtnWrapper>
     </Styled.Container>
   );

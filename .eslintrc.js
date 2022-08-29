@@ -20,6 +20,7 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         '@typescript-eslint/no-empty-interface': 'warn',
         '@typescript-eslint/no-unused-vars': 'off',
+        'react-hooks/exhaustive-deps': 'off',
         'eol-last': 'off',
         'simple-import-sort/exports': 'error',
         'simple-import-sort/imports': [

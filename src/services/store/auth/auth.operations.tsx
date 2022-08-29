@@ -14,17 +14,14 @@ const TOKEN = {
   },
 };
 
-export const login = createAsyncThunk(
-  'auth/login',
-  async (credentials: any, { rejectWithValue }) => {
-    try {
-      const response = await axios.post('/api/login');
-      TOKEN.set(response.data.accessToken);
-      return response.data;
-    } catch (err) {
-      const error = err as IResponseError;
-      console.error(error);
-      return rejectWithValue(error.response.data);
-    }
-  },
-);
+export const login = createAsyncThunk('auth/login', async (credentials: any, { rejectWithValue }) => {
+  try {
+    const response = await axios.post('/api/login');
+    TOKEN.set(response.data.accessToken);
+    return response.data;
+  } catch (err) {
+    const error = err as IResponseError;
+    console.error(error);
+    return rejectWithValue(error.response.data);
+  }
+});

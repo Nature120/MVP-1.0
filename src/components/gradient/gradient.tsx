@@ -10,9 +10,7 @@ export const GRADIENT_LOCATIONS = [0.3, 0.7];
 export const Gradient: React.FC<IGradientProps> = props => {
   const { children, colors, locations } = props;
   return (
-    <Styled.Gradient
-      colors={colors || GRADIENT_COLORS}
-      locations={locations || GRADIENT_LOCATIONS}>
+    <Styled.Gradient colors={colors || GRADIENT_COLORS} locations={locations || GRADIENT_LOCATIONS}>
       {children}
     </Styled.Gradient>
   );
