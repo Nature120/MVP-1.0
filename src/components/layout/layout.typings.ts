@@ -1,4 +1,5 @@
 import { IGradientProps } from '@components/gradient/gradient.typings';
+
 import { TColorBackground } from '@theme/colors';
 
 export interface ILayoutProps extends IGradientProps, IStyledLayoutProps {

@@ -1,8 +1,9 @@
+import styled from 'styled-components/native';
+
+import { ISlideTextProps } from './slide.typings';
+
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
-import { verticalScale } from 'react-native-size-matters';
-import styled from 'styled-components/native';
-import { ISlideTextProps } from './slide.typings';
 
 export const CloudsStyle = {
   height: 290,

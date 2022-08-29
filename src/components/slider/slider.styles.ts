@@ -1,6 +1,6 @@
-import { COLOR } from '@theme/colors';
-
 import styled from 'styled-components/native';
+
+import { COLOR } from '@theme/colors';
 
 const borderRadius = 5;
 const dotSize = 10;

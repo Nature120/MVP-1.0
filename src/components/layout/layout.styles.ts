@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+
 import { IStyledLayoutProps } from './layout.typings';
 
 export const StyledLayout = {

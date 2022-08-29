@@ -1,9 +1,13 @@
 import React from 'react';
-import { ISlideProps } from './slide.typings';
-import { CloudsStyle, StyledSlide as Styled } from './slide.styles';
-import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
-import { IMAGES } from '@constants/images';
 import { Image, ImageBackground, View } from 'react-native';
+
+import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
+
+import { IMAGES } from '@constants/images';
+
+import { ISlideProps } from './slide.typings';
+
+import { CloudsStyle, StyledSlide as Styled } from './slide.styles';
 
 export const Slide: React.FC<ISlideProps> = ({ slide }) => {
   const getPartialBoldText = (str: string) =>

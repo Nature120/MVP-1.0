@@ -1,12 +1,16 @@
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import { Layout } from '@components/layout';
 import { Slider } from '@components/slider';
+
+import { handleNavigate } from '@services/helpers/handle-navigate';
+
 import { IMAGES } from '@constants/images';
 import { APP_ROUTES } from '@constants/routes';
 import { sliderContent } from '@constants/slider-content';
-import { useNavigation } from '@react-navigation/native';
-import { handleNavigate } from '@services/helpers/handle-navigate';
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
+
 import { StyledSplash as Styled } from './splash.styles';
 
 export const Splash: React.FC = () => {

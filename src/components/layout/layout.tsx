@@ -1,10 +1,15 @@
 import React from 'react';
-import { ILayoutProps } from './layout.typings';
-import { StyledLayout as Styled } from './layout.styles';
-import { Gradient } from '@components/gradient';
-import { IMAGES, TImageNames } from '@constants/images';
-import { COLOR } from '@theme/colors';
 import { ScrollView } from 'react-native';
+
+import { Gradient } from '@components/gradient';
+
+import { IMAGES, TImageNames } from '@constants/images';
+
+import { ILayoutProps } from './layout.typings';
+
+import { StyledLayout as Styled } from './layout.styles';
+
+import { COLOR } from '@theme/colors';
 
 export const Layout: React.FC<ILayoutProps> = props => {
   const {

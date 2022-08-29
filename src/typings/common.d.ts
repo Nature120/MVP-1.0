@@ -1,6 +1,6 @@
-import { RouteProp, ParamListBase } from '@react-navigation/native';
-import { StackNavigationOptions } from '@react-navigation/stack';
 import { StyleProp } from 'react-native';
+import { ParamListBase, RouteProp } from '@react-navigation/native';
+import { StackNavigationOptions } from '@react-navigation/stack';
 import { FlattenInterpolation, ThemeProps } from 'styled-components';
 
 export type TStyles = FlattenInterpolation<ThemeProps<any>> | StyleProp<any>;

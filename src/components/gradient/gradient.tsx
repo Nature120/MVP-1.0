@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { IGradientProps } from './gradient.typings';
+
 import { StyledGradient as Styled } from './gradient.styles';
 
 export const GRADIENT_COLORS = ['#EDE5DF', '#F0F7F7'];

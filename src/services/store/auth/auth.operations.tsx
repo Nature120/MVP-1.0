@@ -1,6 +1,6 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IResponseError } from '@typings/common.d';
 
 // axios.defaults.baseURL = CONFIG.apiURL;
