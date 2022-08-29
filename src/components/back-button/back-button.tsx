@@ -7,7 +7,7 @@ import { IProp } from './back-button.types';
 
 import { BackButtonStyles as Styled } from './back-button.styles';
 
-export const BackButton: React.FC<IProp> = ({ type, width, height, color, cssContainer, cssButton }) => {
+export const BackButton: React.FC<IProp> = ({ width, height, color, cssButton }) => {
   const { goBack, canGoBack } = useNavigation();
   const isGoback = canGoBack();
 
@@ -19,10 +19,8 @@ export const BackButton: React.FC<IProp> = ({ type, width, height, color, cssCon
   };
 
   return (
-    <Styled.Container cssContainer={cssContainer}>
-      <Styled.BtnWrapper cssButton={cssButton} onPress={onPressGoBack}>
-        <Icon type={type} width={scale(width)} height={verticalScale(height)} colorIcon={color} />
-      </Styled.BtnWrapper>
-    </Styled.Container>
+    <Styled.BtnWrapper cssButton={cssButton} onPress={onPressGoBack}>
+      <Icon type="arrowLeft" width={scale(width)} height={verticalScale(height)} colorIcon={color} />
+    </Styled.BtnWrapper>
   );
 };

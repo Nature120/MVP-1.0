@@ -1,5 +1,6 @@
-import { CenterContainer, OnboardingText } from '@theme/components';
 import styled from 'styled-components/native';
+
+import { CenterContainer, OnboardingText } from '@theme/components';
 
 export const StyledStart = {
   Card: styled(CenterContainer)`
@@ -7,7 +8,7 @@ export const StyledStart = {
   `,
   CardText: styled(OnboardingText)`
     font-size: 20px;
-    line-height: 25;
+    line-height: 25px;
     text-align: center;
   `,
 };

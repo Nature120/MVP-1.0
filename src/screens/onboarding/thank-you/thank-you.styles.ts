@@ -1,5 +1,6 @@
-import { CenterContainer } from '@theme/components';
 import styled from 'styled-components/native';
+
+import { CenterContainer } from '@theme/components';
 
 export const StyledThankYou = {
   Card: styled(CenterContainer)`

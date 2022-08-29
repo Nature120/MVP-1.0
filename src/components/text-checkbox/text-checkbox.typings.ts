@@ -1,4 +1,5 @@
 import { IIconSize, TIconNames } from '@components/icon/icon.typings';
+
 import { TStyles } from '@typings/common';
 
 interface ICommonProps {

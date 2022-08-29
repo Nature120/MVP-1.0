@@ -2,20 +2,13 @@ import React from 'react';
 
 import { StyledSlider as Styled } from './slider.styles';
 
-export const renderPagination = (
-  activeDotIndex: number,
-  totalSlides: number,
-) => {
+export const renderPagination = (activeDotIndex: number, totalSlides: number) => {
   if (totalSlides <= 1) {
     return null;
   }
 
   const Dot = (dotIndex: number) => (
-    <Styled.Dot
-      dotIndex={dotIndex}
-      totalSlides={totalSlides}
-      isActive={dotIndex === activeDotIndex}
-    />
+    <Styled.Dot dotIndex={dotIndex} totalSlides={totalSlides} isActive={dotIndex === activeDotIndex} />
   );
 
   const dots = [];

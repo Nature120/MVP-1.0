@@ -1,4 +1,5 @@
 import { ITextCheckBox } from '@components/text-checkbox/text-checkbox.typings';
+
 import { TStyles } from '@typings/common';
 
 interface ICommonProps {

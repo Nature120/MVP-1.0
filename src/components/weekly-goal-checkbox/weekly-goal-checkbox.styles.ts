@@ -1,6 +1,7 @@
+import styled from 'styled-components/native';
+
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
-import styled from 'styled-components/native';
 
 const getCheckedColor = (isChecked: boolean) => (isChecked ? COLOR.background.beigeLight : COLOR.primary.blue);
 
@@ -29,7 +30,7 @@ export const StyledWeeklyGoalCheckbox = {
     margin-top: -11px;
     font-family: ${FONTS.family.mediumAcumin};
     font-weight: ${FONTS.weight.medium};
-    font-size: ${FONTS.size.xMedium};
+    font-size: ${FONTS.size.xMedium}px;
     line-height: 20px;
     color: ${props => getCheckedColor(props.isChecked)};
   `,
@@ -44,7 +45,7 @@ export const StyledWeeklyGoalCheckbox = {
   Text: styled.Text<{ isChecked: boolean }>`
     font-family: ${FONTS.family.mediumAcumin};
     font-weight: ${FONTS.weight.regular};
-    font-size: ${FONTS.size.xMedium};
+    font-size: ${FONTS.size.xMedium}px;
     line-height: 20px;
     letter-spacing: 3px;
     max-width: 181px;

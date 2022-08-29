@@ -1,5 +1,6 @@
-import { OnboardingText } from '@theme/components';
 import styled from 'styled-components/native';
+
+import { OnboardingText } from '@theme/components';
 
 export const StyledTimeForImmersion = {
   CheckboxGroup: styled.View`

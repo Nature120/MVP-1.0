@@ -1,5 +1,4 @@
 import { Switch } from 'react-native-switch';
-
 import styled from 'styled-components/native';
 
 export const StyledToggler = {

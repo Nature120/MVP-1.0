@@ -1,8 +1,4 @@
-import {
-  TypedUseSelectorHook,
-  useDispatch as useLibDispatch,
-  useSelector as useLibSelector,
-} from 'react-redux';
+import { TypedUseSelectorHook, useDispatch as useLibDispatch, useSelector as useLibSelector } from 'react-redux';
 
 import { store } from '@services/store';
 

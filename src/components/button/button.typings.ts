@@ -1,7 +1,8 @@
 import { GestureResponderEvent } from 'react-native';
 
-import { TColorFont } from '@theme/colors';
 import { TStyles } from '@typings/common';
+
+import { TColorFont } from '@theme/colors';
 
 export interface IButtonProps extends IStyledButtonTextProps {
   onPress?: (event: GestureResponderEvent) => void;

@@ -1,6 +1,4 @@
-import {
-    QuestionsStart, Start, ThankYou, TimeForImmersion, WeeklyGoal, WhatBrings
-} from '@screens/onboarding';
+import { QuestionsStart, Start, ThankYou, TimeForImmersion, WeeklyGoal, WhatBrings } from '@screens/onboarding';
 
 export const ON_BOARD_ROUTES = [
   { name: 'start', component: Start },

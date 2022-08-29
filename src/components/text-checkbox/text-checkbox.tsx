@@ -2,8 +2,10 @@ import React from 'react';
 import { moderateScale } from 'react-native-size-matters';
 
 import { Icon } from '@components/icon';
-import { StyledTextCheckbox as Styled } from './text-checkbox.styles';
+
 import { TTextCheckboxProps } from './text-checkbox.typings';
+
+import { StyledTextCheckbox as Styled } from './text-checkbox.styles';
 
 export const TextCheckbox: React.FC<TTextCheckboxProps> = props => {
   const { onChange, isChecked, text, name, icon, renderComponent, borderRadius, styles, iconSize, activeOpacity } =

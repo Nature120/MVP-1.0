@@ -1,7 +1,9 @@
+import styled, { css } from 'styled-components/native';
+
+import { IButtonProps, IStyledButtonTextProps } from './button.typings';
+
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
-import styled, { css } from 'styled-components/native';
-import { IButtonProps, IStyledButtonTextProps } from './button.typings';
 
 export const StyledButton = {
   Button: styled.TouchableOpacity<IButtonProps>`
@@ -11,14 +13,12 @@ export const StyledButton = {
     height: ${props => props.height}px;
     width: 100%;
     border-radius: 50px;
-    background-color: ${props =>
-      props.buttonColor && COLOR.primary[props.buttonColor]};
+    background-color: ${props => props.buttonColor && COLOR.primary[props.buttonColor]};
 
     ${props =>
       props.disabled &&
       css`
-        background-color: ${props.buttonColor &&
-        COLOR.secondary[props.buttonColor]};
+        background-color: ${props.buttonColor && COLOR.secondary[props.buttonColor]};
       `}
 
     ${props => props.styles}
@@ -29,7 +29,7 @@ export const StyledButton = {
     text-transform: ${props => (props.isNotUpper ? 'none' : 'uppercase')};
     font-family: ${FONTS.family.semiBoldAcumin};
     font-weight: ${FONTS.weight.semiBold};
-    font-size: ${FONTS.size.xMedium};
+    font-size: ${FONTS.size.xMedium}px;
     line-height: 20px;
     letter-spacing: 4.25px;
     ${props => props.textStyles}

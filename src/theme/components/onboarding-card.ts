@@ -1,5 +1,6 @@
-import { COLOR } from '@theme/colors';
 import styled from 'styled-components/native';
+
+import { COLOR } from '@theme/colors';
 
 export const OnboardingCard = styled.View`
   background-color: ${COLOR.background.white};

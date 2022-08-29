@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 import { Layout } from '@components/layout';
 import { LayoutOnboarding } from '@components/layout-onboarding';
 import { TextCheckbox } from '@components/text-checkbox';
-import { TextCheckboxGroup } from '@components/text-checkbox-group';
 import { ITextCheckBox } from '@components/text-checkbox/text-checkbox.typings';
-import { OnboardingTitle } from '@theme/components';
+import { TextCheckboxGroup } from '@components/text-checkbox-group';
+
 import { timeForImmersionVariants } from '../onboarding.constants';
+
 import { StyledTimeForImmersion as Styled } from './time-for-immersion.styles';
+
+import { OnboardingTitle } from '@theme/components';
 
 export const TimeForImmersion: React.FC = () => {
   const [selectedTime, setSelectedTime] = useState<string>('');
