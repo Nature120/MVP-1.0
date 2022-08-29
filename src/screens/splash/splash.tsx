@@ -18,7 +18,7 @@ export const Splash: React.FC = () => {
       </Styled.SliderContainer>
 
       <ButtonWithLink
-        onButtonPressNavigateTo={APP_ROUTES.start.signUp}
+        onButtonPressNavigateTo={APP_ROUTES.start.onBoard} //FIXME
         onTextPressNavigateTo={APP_ROUTES.start.signIn}
         buttonText="get started"
         height={50}

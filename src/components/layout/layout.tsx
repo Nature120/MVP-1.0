@@ -1,48 +1,27 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 
 import { Gradient } from '@components/gradient';
-
 import { IMAGES, TImageNames } from '@constants/images';
-
+import { StyledLayout as Styled } from './layout.styles';
 import { ILayoutProps } from './layout.typings';
 
-import { StyledLayout as Styled } from './layout.styles';
-
-import { COLOR } from '@theme/colors';
-
 export const Layout: React.FC<ILayoutProps> = props => {
-  const {
-    children,
-    ellipseColor,
-    bgColor,
-    isWithGradient,
-    isWithoutMargin,
-    isWithScroll,
-    ...gradientProps
-  } = props;
+  const { children, ellipseColor, bgColor, isWithGradient, isWithoutMargin, isWithScroll, ...gradientProps } = props;
+
+  const Container = <Styled.Container isWithoutMargin={isWithoutMargin}>{children}</Styled.Container>;
 
   const ScreenLayout = (
     <>
-      <Styled.Layout
-        isWithoutMargin={isWithoutMargin}
-        bgColor={bgColor}
-        style={{
-          backgroundColor: bgColor && COLOR.background[bgColor],
-        }}>
-        {isWithScroll ? <ScrollView>{children}</ScrollView> : children}
+      <Styled.Layout bgColor={bgColor}>
+        {isWithScroll ? (
+          <Styled.ScrollContainer>{Container}</Styled.ScrollContainer>
+        ) : (
+          <Styled.StaticContainer>{Container}</Styled.StaticContainer>
+        )}
       </Styled.Layout>
-      {ellipseColor && (
-        <Styled.Ellipse
-          source={IMAGES[`ellipse-${ellipseColor}` as TImageNames]}
-        />
-      )}
+      {ellipseColor && <Styled.Ellipse source={IMAGES[`ellipse-${ellipseColor}` as TImageNames]} />}
     </>
   );
 
-  return isWithGradient ? (
-    <Gradient {...gradientProps}>{ScreenLayout}</Gradient>
-  ) : (
-    ScreenLayout
-  );
+  return isWithGradient ? <Gradient {...gradientProps}>{ScreenLayout}</Gradient> : ScreenLayout;
 };
