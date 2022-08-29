@@ -1,9 +1,12 @@
 import React from 'react';
 
 import { Gradient } from '@components/gradient';
+
 import { IMAGES, TImageNames } from '@constants/images';
-import { StyledLayout as Styled } from './layout.styles';
+
 import { ILayoutProps } from './layout.typings';
+
+import { StyledLayout as Styled } from './layout.styles';
 
 export const Layout: React.FC<ILayoutProps> = props => {
   const { children, ellipseColor, bgColor, isWithGradient, isWithoutMargin, isWithScroll, ...gradientProps } = props;

@@ -1,7 +1,9 @@
+import styled from 'styled-components/native';
+
+import { IStyledButtonWithLinkProps } from './button-with-link.typings';
+
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
-import styled from 'styled-components/native';
-import { IStyledButtonWithLinkProps } from './button-with-link.typings';
 
 export const StyledButtonWithLink = {
   ButtonWithLink: styled.View<IStyledButtonWithLinkProps>`

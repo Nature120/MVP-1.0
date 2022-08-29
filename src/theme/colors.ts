@@ -25,6 +25,7 @@ export const COLOR = {
     black: '#000',
     cloudyBlue,
     darkBlue,
+    lightGrey: '#8498A8',
   },
   icon: {
     blue,
