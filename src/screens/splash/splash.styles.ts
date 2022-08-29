@@ -11,8 +11,8 @@ export const StyledSplash = {
   Ellipses: styled.Image`
     position: absolute;
     width: 100%;
-    height: 423;
-    bottom: 0;
+    height: 423px;
+    bottom: -40px;
     z-index: -1;
   `,
 };

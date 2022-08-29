@@ -7,12 +7,13 @@ export const StyledButtonWithLink = {
   ButtonWithLink: styled.View<IStyledButtonWithLinkProps>`
     margin-horizontal: ${props => (props.isWithMagrin ? '24px' : 0)};
     align-items: center;
-    margin-bottom: ${props => (props.marginBottom ? props.marginBottom : 0)}px;
+    margin-bottom: ${props => (props.marginBottom ? props.marginBottom : 24)}px;
   `,
 
   SubButton: styled.View`
     margin-top: 24px;
     flex-direction: row;
+    align-items: center;
   `,
 
   TouchableText: styled.Text`

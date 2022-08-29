@@ -1,4 +1,4 @@
-import { moderateScale, verticalScale } from 'react-native-size-matters';
+import { moderateScale } from 'react-native-size-matters';
 
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
@@ -12,10 +12,10 @@ export const StyledTextCheckbox = {
     box-shadow: ${props => (props.isChecked ? '0px 4px 6px rgba(0, 0, 0, 0.25)' : 'none')};
     background: ${props => (props.isChecked ? COLOR.primary.blue : COLOR.background.beigeLight)};
     align-items: center;
-    padding-left: 16px;
+    padding-left: ${props => (props.isCustomComponent ? '0' : '16')}px;
     border: 2px solid ${COLOR.primary.blue};
     border-radius: ${props => (props.borderRadius ? props.borderRadius : 50)}px;
-    height: ${props => (props.isCustomComponent ? 'auto' : `${verticalScale(42)}px`)};
+    height: ${props => (props.isCustomComponent ? 'auto' : `${42}px`)};
     ${props => props.styles}
   `,
 

@@ -6,7 +6,8 @@ import { StyledTextCheckbox as Styled } from './text-checkbox.styles';
 import { TTextCheckboxProps } from './text-checkbox.typings';
 
 export const TextCheckbox: React.FC<TTextCheckboxProps> = props => {
-  const { onChange, isChecked, text, name, icon, renderComponent, borderRadius, styles, iconSize } = props;
+  const { onChange, isChecked, text, name, icon, renderComponent, borderRadius, styles, iconSize, activeOpacity } =
+    props;
 
   const onPress = () => onChange && onChange(!isChecked, name || '');
 
@@ -17,7 +18,7 @@ export const TextCheckbox: React.FC<TTextCheckboxProps> = props => {
       borderRadius={borderRadius}
       onPress={onPress}
       isWithIcon={!!icon}
-      activeOpacity={0.5}
+      activeOpacity={activeOpacity || 0.5}
       styles={styles}>
       {renderComponent ? (
         renderComponent

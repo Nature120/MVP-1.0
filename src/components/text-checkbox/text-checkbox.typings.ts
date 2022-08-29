@@ -4,6 +4,7 @@ import { TStyles } from '@typings/common';
 interface ICommonProps {
   borderRadius?: number;
   styles?: TStyles;
+  activeOpacity?: number;
 }
 
 export interface ITextCheckboxPropsCustomRender extends ICommonProps {
