@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { Formik } from 'formik';
 
 import { Input } from '@components/input/input';
@@ -54,6 +53,7 @@ export const SignUp = () => {
                 value={values.email}
                 handleChange={handleChange('email')}
                 handleBlur={handleBlur('email')}
+                keyboardType="email-address"
               />
               <Styled.ErrorText>{errors.email ? errors.email : ''}</Styled.ErrorText>
               <Input
