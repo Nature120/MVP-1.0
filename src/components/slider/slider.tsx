@@ -1,11 +1,12 @@
 import React from 'react';
+import Swiper from 'react-native-swiper';
 
 import { renderPagination } from './render-pagination';
-import { ISliderProps } from './slider.typings';
-import { StyledSlider as Styled } from './slider.styles';
 import { Slide } from './slide';
 
-import Swiper from 'react-native-swiper';
+import { ISliderProps } from './slider.typings';
+
+import { StyledSlider as Styled } from './slider.styles';
 
 export const Slider: React.FC<ISliderProps> = ({ content }) => {
   return (

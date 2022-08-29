@@ -1,9 +1,10 @@
 import React from 'react';
-
-import { APP_ROUTES } from '@constants/routes';
 import { createStackNavigator } from '@react-navigation/stack';
+
 import { Splash } from '@screens/splash';
 import { screenOptions } from './navigation.options';
+
+import { APP_ROUTES } from '@constants/routes';
 
 const StartStack = createStackNavigator();
 

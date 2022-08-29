@@ -1,7 +1,6 @@
-import { SimpleInterpolation } from 'styled-components';
-
 import { ParamListBase, RouteProp } from '@react-navigation/native';
 import { StackNavigationOptions } from '@react-navigation/stack';
+import { SimpleInterpolation } from 'styled-components';
 
 export type TStyles = SimpleInterpolation;
 

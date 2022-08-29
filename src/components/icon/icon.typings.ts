@@ -1,6 +1,8 @@
-import { TColorIcon } from '@theme/colors';
-import { TStyles } from '@typings/common';
 import { ICONS } from './icon.constants';
+
+import { TStyles } from '@typings/common';
+
+import { TColorIcon } from '@theme/colors';
 
 export type TIconNames = keyof typeof ICONS;
 
