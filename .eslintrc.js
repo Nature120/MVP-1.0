@@ -35,7 +35,7 @@ module.exports = {
               // Packages. `react` related packages come first.
               ['^react', '^@?\\w'],
               // components or classes
-              ['^@screens', '^@components', '^\\.'],
+              ['^@screens|screens$', '^@components', '^\\.'],
               // navigation
               ['^@navigation'],
               // helper or services
