@@ -35,6 +35,7 @@ export const ModalWindow: React.FC<IModalWindowProps> = props => {
       swipeDirection={swipeDirection}
       backdropOpacity={backdropOpacity}
       backdropTransitionInTiming={500}
+      // customBackdrop
       animationIn={animationIn || 'slideInUp'}
       animationOut={animationOut || 'slideOutDown'}
       animationInTiming={animationInTiming}

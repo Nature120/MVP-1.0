@@ -20,6 +20,7 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
     onPress,
     isButtonDisabled,
     isWithoutRedirect,
+    onRoutePressNavigateTo,
   } = props;
   const { progress, pressHandler, nextRoute } = useLayoutOnboarding(onPress, isWithoutRedirect);
   return (
@@ -36,7 +37,7 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
         <ButtonWithLink
           isDisabled={isButtonDisabled}
           onPress={pressHandler}
-          onTextPressNavigateTo={nextRoute}
+          onTextPressNavigateTo={onRoutePressNavigateTo || nextRoute}
           buttonText={buttonText}
           bottomText={bottomText}
           routeText={routeText}
