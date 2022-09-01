@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components/native';
 
+import { COLOR } from '@theme/colors';
+
 export const StyledProgressBar = {
   ProgressBar: styled.View`
     position: relative;
     width: 100%;
-    background: #fcfcfc;
+    background: ${COLOR.primary.milk};
     border-radius: 5px;
     height: 10px;
   `,
@@ -14,7 +16,7 @@ export const StyledProgressBar = {
     left: 0;
     top: 0;
     width: ${props => props.percent}%;
-    background: #163045;
+    background: ${COLOR.primary.darkBlue};
     border-radius: 5px;
     ${props =>
       props.percent !== 100 &&

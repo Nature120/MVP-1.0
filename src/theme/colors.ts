@@ -14,6 +14,7 @@ export const COLOR = {
     darkBlue,
     lightGray: '#97A0A7',
     lightGreen,
+    milk: '#fcfcfc',
   },
   secondary: {
     green: '#6BA184',
