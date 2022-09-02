@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Text } from 'react-native';
 
 import { Layout } from '@components/layout';
 import { LayoutOnboarding } from '@components/layout-onboarding';
 import { TextCheckbox } from '@components/text-checkbox';
-import { ITextCheckBox } from '@components/text-checkbox/text-checkbox.typings';
 import { TextCheckboxGroup } from '@components/text-checkbox-group';
 import { TimePicker } from '@components/time-picker';
 import { TPeriod } from '@components/time-picker/time-picker.typings';
-
-import { getMinMaxDate } from '@services/helpers/utils';
+import { useTimeForImmersion } from './time-for-immersion.state';
 
 import { timeForImmersionVariants } from '../onboarding.constants';
 
@@ -18,34 +16,11 @@ import { StyledTimeForImmersion as Styled } from './time-for-immersion.styles';
 import { OnboardingTitle } from '@theme/components';
 
 export const TimeForImmersion: React.FC = () => {
-  const [selectedPeriod, setSelectedPeriod] = useState<string>('');
-  const [selectedCheckbox, setSelectedCheckbox] = useState<ITextCheckBox>();
-
-  const [notificationTime, setNotificationTime] = useState<Date>();
-
-  useEffect(() => {
-    if (selectedPeriod) {
-      const { minimumDate } = getMinMaxDate(selectedPeriod as TPeriod);
-      setNotificationTime(minimumDate);
-    }
-  }, [selectedPeriod]);
-
-  const onPress = () => {
-    const checkboxText = selectedPeriod.replace(/_/g, ' ').toUpperCase();
-    const checkboxInfo = timeForImmersionVariants.find(variant => variant.text === checkboxText);
-    setSelectedCheckbox(checkboxInfo);
-
-    if (selectedCheckbox?.text) {
-      //get notifications permission
-    }
-  };
-
-  const onChangeTime = (newTime: string) => {
-    setSelectedPeriod(newTime);
-  };
+  const { selectedCheckbox, onPress, selectedPeriod, notificationTime, setNotificationTime, onChangeTime } =
+    useTimeForImmersion();
 
   return (
-    <Layout ellipseColor="green" isWithGradient>
+    <Layout ellipseColor="green" isWithGradient isWithScroll>
       <LayoutOnboarding
         buttonText={'set reminder'}
         isButtonWithLink={!!selectedCheckbox?.text || !selectedPeriod}

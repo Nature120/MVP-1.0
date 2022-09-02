@@ -7,7 +7,7 @@ import { OnboardingText } from '@theme/components';
 
 export const StyledTimeForImmersion = {
   CheckboxGroup: styled.View`
-    margin-top: 24px;
+    margin: 24px 0;
   `,
 
   Text: styled(OnboardingText)`
@@ -19,7 +19,7 @@ export const StyledTimeForImmersion = {
   `,
 
   ReminderContainer: styled.View`
-    margin-top: 24px;
+    margin: 24px 0;
   `,
 
   SingleCheckBoxWrapper: styled.View`

@@ -1,5 +1,4 @@
 import { ISlide } from '@components/slider/slider.typings';
-import { IMAGES } from './images';
 
 export const sliderContent: ISlide[] = [
   {

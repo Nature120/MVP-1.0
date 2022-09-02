@@ -4,6 +4,8 @@ import { IStyledLayoutProps } from './layout.typings';
 
 import { COLOR } from '@theme/colors';
 
+export const contentContainerStyle = { flexGrow: 1 };
+
 export const StyledLayout = {
   Layout: styled.SafeAreaView<IStyledLayoutProps>`
     z-index: 1;
@@ -13,6 +15,7 @@ export const StyledLayout = {
 
   ScrollContainer: styled.ScrollView`
     flex: 1;
+    flex-grow: 1;
   `,
   StaticContainer: styled.View`
     flex: 1;

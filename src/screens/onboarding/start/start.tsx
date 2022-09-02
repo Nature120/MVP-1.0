@@ -8,11 +8,9 @@ import { getPartialStyledText } from '@services/helpers/get-partial-styled-text'
 
 import { IMAGES } from '@constants/images';
 
-import { StyledStart as Styled } from './start.styles';
+import { imageStyle, StyledStart as Styled } from './start.styles';
 
 import { OnboardingCard, OnboardingTitle } from '@theme/components';
-
-const imageStyle = { flex: 1 };
 
 export const Start: React.FC = () => {
   const getPartialBoldText = (str: string) =>
