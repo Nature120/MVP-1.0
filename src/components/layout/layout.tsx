@@ -6,7 +6,7 @@ import { IMAGES, TImageNames } from '@constants/images';
 
 import { ILayoutProps } from './layout.typings';
 
-import { StyledLayout as Styled } from './layout.styles';
+import { contentContainerStyle, StyledLayout as Styled } from './layout.styles';
 
 export const Layout: React.FC<ILayoutProps> = props => {
   const { children, ellipseColor, bgColor, isWithGradient, isWithoutMargin, isWithScroll, ...gradientProps } = props;
@@ -17,7 +17,7 @@ export const Layout: React.FC<ILayoutProps> = props => {
     <>
       <Styled.Layout bgColor={bgColor}>
         {isWithScroll ? (
-          <Styled.ScrollContainer>{Container}</Styled.ScrollContainer>
+          <Styled.ScrollContainer contentContainerStyle={contentContainerStyle}>{Container}</Styled.ScrollContainer>
         ) : (
           <Styled.StaticContainer>{Container}</Styled.StaticContainer>
         )}
