@@ -2,6 +2,7 @@ import React from 'react';
 
 import { PracticeLibraries } from '@components/practice-libraries';
 import { IPracticeLibraryProps } from '@components/practice-libraries/practice-library/practice-library.typings';
+import { TipOfTheDay } from '@components/tip-of-the-day';
 
 import { StyledDashboard as Styled } from './dashboard.styles';
 
@@ -41,6 +42,7 @@ export const Dashboard: React.FC = () => {
     <Styled.Dashboard>
       <PracticeLibraries title="Picked For You" libraries={libraries} />
       <PracticeLibraries title="Based on Your Mood" libraries={libraries} isWithForwardArrow />
+      <TipOfTheDay />
     </Styled.Dashboard>
   );
 };
