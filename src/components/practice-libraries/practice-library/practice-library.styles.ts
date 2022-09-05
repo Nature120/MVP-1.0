@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
+import { TextComponent } from '@theme/components/text';
 import { FONTS } from '@theme/fonts';
 
 export const StyledPracticeLibrary = {
@@ -45,9 +46,7 @@ export const StyledPracticeLibrary = {
     color: ${COLOR.font.darkBlue};
   `,
 
-  Description: styled.Text`
-    font-family: ${FONTS.family.regularBoreal};
-    font-weight: ${FONTS.weight.regular};
+  Description: styled(TextComponent)`
     font-size: 13px;
     line-height: 16px;
     color: ${COLOR.subheading};
