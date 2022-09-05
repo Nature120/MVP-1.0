@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { AuthScreen } from '@screens/auth-screen/auth-screen';
+import { Dashboard } from '@screens/dashboard';
 import { Splash } from '@screens/splash';
 import { screenOptions } from './navigation.options';
 
@@ -19,6 +20,8 @@ export const RootNavigator = () => {
       {ON_BOARD_ROUTES.map(({ component, name }) => (
         <StartStack.Screen key={name} name={name} component={component} />
       ))}
+
+      <StartStack.Screen name={APP_ROUTES.dashboard} component={Dashboard} />
     </StartStack.Navigator>
   );
 };
