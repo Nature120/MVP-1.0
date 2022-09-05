@@ -4,7 +4,7 @@ import { PracticeLibraries } from '@components/practice-libraries';
 import { IPracticeLibraryProps } from '@components/practice-libraries/practice-library/practice-library.typings';
 import { TipOfTheDay } from '@components/tip-of-the-day';
 
-import { StyledDashboard as Styled } from './dashboard.styles';
+import { StyledHome as Styled } from './home.styles';
 
 const libraries: IPracticeLibraryProps[] = [
   {
@@ -37,12 +37,12 @@ const libraries: IPracticeLibraryProps[] = [
   },
 ];
 
-export const Dashboard: React.FC = () => {
+export const Home: React.FC = () => {
   return (
-    <Styled.Dashboard>
+    <Styled.Home>
       <PracticeLibraries title="Picked For You" libraries={libraries} />
       <PracticeLibraries title="Based on Your Mood" libraries={libraries} isWithForwardArrow />
       <TipOfTheDay />
-    </Styled.Dashboard>
+    </Styled.Home>
   );
 };
