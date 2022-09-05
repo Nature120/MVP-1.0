@@ -9,10 +9,9 @@ type TPositionVertical = 'flex-end' | 'flex-start' | 'center' | 'space-between' 
 export interface IModalWindowProps {
   isVisible: boolean;
   avoidKeyboard?: boolean;
-  isBackdropPress?: boolean;
+  isBackdropBlocked?: boolean;
   children: React.ReactNode;
   swipeDirection?: Direction[];
-  backdropOpacity?: number;
   positionVertical?: TPositionVertical;
   animationInTiming?: number;
   animationOutTiming?: number;

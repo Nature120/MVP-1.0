@@ -15,7 +15,7 @@ export const QuestionsStart: React.FC = () => {
         buttonText="continue"
         isButtonWithLink
         routeText="Skip Onboarding"
-        onRoutePressNavigateTo={APP_ROUTES.start.splash}>
+        onRoutePressNavigateTo={APP_ROUTES.dashboard}>
         <OnboardingTitle>Get Out and Come Home</OnboardingTitle>
         <OnboardingText>Just a few quick questions so that we can best customize your experience</OnboardingText>
       </LayoutOnboarding>
