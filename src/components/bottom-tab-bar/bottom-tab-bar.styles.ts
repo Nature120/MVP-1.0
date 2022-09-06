@@ -12,10 +12,6 @@ export const StyledBottomTabBar = {
     background-color: ${COLOR.background.white};
   `,
 
-  SafeAreaView: styled.SafeAreaView`
-    background-color: transparent;
-  `,
-
   BottomTabBar: styled.View`
     flex-direction: row;
     justify-content: space-between;

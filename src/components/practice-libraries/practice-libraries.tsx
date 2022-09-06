@@ -21,7 +21,14 @@ export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false} decelerationRate="fast" scrollEventThrottle={16}>
         {libraries.map((libraryItem, index, items) => (
-          <Sapcer key={libraryItem.title} gap={16} isHorizontal isLastItem={index === items.length - 1}>
+          <Sapcer
+            key={libraryItem.title}
+            gap={16}
+            isHorizontal
+            isEqual
+            startEndGap={24}
+            index={index}
+            isLastItem={index === items.length - 1}>
             <PracticeLibrary {...libraryItem} />
           </Sapcer>
         ))}

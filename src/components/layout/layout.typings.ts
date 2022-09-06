@@ -6,9 +6,15 @@ export interface ILayoutProps extends IGradientProps, IStyledLayoutProps {
   ellipseColor?: 'light-green' | 'green';
   isWithGradient?: boolean;
   isWithScroll?: boolean;
+  isScrollVisible?: boolean;
 }
 
-export interface IStyledLayoutProps {
+export interface IStyledLayoutProps extends IElasticScrollViewProps {
   bgColor?: TColorBackground;
   isWithoutMargin?: boolean;
+}
+
+export interface IElasticScrollViewProps {
+  elasticScrollColor?: string;
+  elasticScrollPosition?: 'top' | 'bottom';
 }
