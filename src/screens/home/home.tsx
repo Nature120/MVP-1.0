@@ -1,13 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
 
 import { Button } from '@components/button';
+import { GoalProgressBar } from '@components/goal-progress-bar';
 import { Layout } from '@components/layout';
 import { PracticeLibraries } from '@components/practice-libraries';
 import { IPracticeLibraryProps } from '@components/practice-libraries/practice-library/practice-library.typings';
 import { TipOfTheDay } from '@components/tip-of-the-day';
-
-import { isIOS } from '@services/helpers/device-utils';
 
 import { StyledHome as Styled } from './home.styles';
 
@@ -59,9 +57,7 @@ export const Home: React.FC = () => {
         <Styled.Greeting>Hi, {name}</Styled.Greeting>
         <Styled.MotivationText>Here’s a look at your progress this week. Keep it up!</Styled.MotivationText>
 
-        <Styled.TimerWrapper>
-          <Styled.MockTimer />
-        </Styled.TimerWrapper>
+        <GoalProgressBar minutes={39} maxMinutes={120} />
 
         <Styled.ButtonWrapper>
           <Button height={50} buttonText="LET’S GO OUTSIDE" onPress={onButtonPress} />
