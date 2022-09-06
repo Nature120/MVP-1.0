@@ -21,10 +21,7 @@ export const StyledHome = {
     line-height: 19px;
     color: ${COLOR.subheading};
     margin-bottom: 16px;
-  `,
-
-  TimerWrapper: styled.View`
-    align-items: center;
+    max-width: 70%;
   `,
 
   MockTimer: styled.View`
