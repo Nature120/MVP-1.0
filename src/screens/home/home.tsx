@@ -1,8 +1,13 @@
 import React from 'react';
+import { View } from 'react-native';
 
+import { Button } from '@components/button';
+import { Layout } from '@components/layout';
 import { PracticeLibraries } from '@components/practice-libraries';
 import { IPracticeLibraryProps } from '@components/practice-libraries/practice-library/practice-library.typings';
 import { TipOfTheDay } from '@components/tip-of-the-day';
+
+import { isIOS } from '@services/helpers/device-utils';
 
 import { StyledHome as Styled } from './home.styles';
 
@@ -38,11 +43,38 @@ const libraries: IPracticeLibraryProps[] = [
 ];
 
 export const Home: React.FC = () => {
+  const name = 'Chelsea';
+
+  const onButtonPress = () => {
+    console.log('onButtonPress');
+  };
   return (
-    <Styled.Home>
-      <PracticeLibraries title="Picked For You" libraries={libraries} />
-      <PracticeLibraries title="Based on Your Mood" libraries={libraries} isWithForwardArrow />
-      <TipOfTheDay />
-    </Styled.Home>
+    <Layout
+      isWithScroll
+      isWithoutMargin
+      bgColor="extraLightMint"
+      elasticScrollColor="#fff"
+      elasticScrollPosition="bottom">
+      <Styled.MainSection>
+        <Styled.Greeting>Hi, {name}</Styled.Greeting>
+        <Styled.MotivationText>Here’s a look at your progress this week. Keep it up!</Styled.MotivationText>
+
+        <Styled.TimerWrapper>
+          <Styled.MockTimer />
+        </Styled.TimerWrapper>
+
+        <Styled.ButtonWrapper>
+          <Button height={50} buttonText="LET’S GO OUTSIDE" onPress={onButtonPress} />
+        </Styled.ButtonWrapper>
+      </Styled.MainSection>
+
+      <Styled.InfoSectionWrapper>
+        <PracticeLibraries title="Picked For You" libraries={libraries} />
+
+        <Styled.InfoSection>
+          <TipOfTheDay />
+        </Styled.InfoSection>
+      </Styled.InfoSectionWrapper>
+    </Layout>
   );
 };

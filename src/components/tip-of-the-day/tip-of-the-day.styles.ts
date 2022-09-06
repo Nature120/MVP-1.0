@@ -10,7 +10,7 @@ export const StyledTipOfTheDay = {
     border-radius: 15px;
     padding: 16px;
     width: 100%;
-    margin: 12px 0 24px;
+    margin: 12px 0 0;
   `,
 
   Line: styled.View`

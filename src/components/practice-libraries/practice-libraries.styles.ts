@@ -17,6 +17,6 @@ export const StyledPracticeLibraries = {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin: 0 24px 24px;
   `,
 };

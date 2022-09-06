@@ -38,8 +38,10 @@ export const COLOR = {
   },
   background: {
     white,
+    blue,
     beigeDark: '#E9E0D8',
     beigeLight: '#EFECE9',
+    extraLightMint: '#F0F7F7',
     mintLight: '#ECF5F5',
     mintDark: '#D4E5DF',
     textInput: '#E7EEEE',

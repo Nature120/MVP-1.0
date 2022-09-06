@@ -9,6 +9,6 @@ export const noHeaderOptions: TScreenOptions & BottomTabNavigationOptions = {
 export const screenOptions: TScreenOptions = {
   ...noHeaderOptions,
   cardStyle: {
-    backgroundColor: 'transparent',
+    backgroundColor: '#fff',
   },
 };

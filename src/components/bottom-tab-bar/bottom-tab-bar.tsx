@@ -1,4 +1,5 @@
 import React from 'react';
+import { SafeAreaView } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import { Icon } from '@components/icon';
@@ -19,7 +20,7 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = props => {
 
   return (
     <Styled.Wrapper>
-      <Styled.SafeAreaView>
+      <SafeAreaView>
         <Styled.BottomTabBar>
           {routes.map(({ name }, routeIndex) => (
             <Styled.BarButton key={name} onPress={onPress(index === routeIndex, name)} hitSlop={bottomTabBarHitSlop}>
@@ -28,7 +29,7 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = props => {
             </Styled.BarButton>
           ))}
         </Styled.BottomTabBar>
-      </Styled.SafeAreaView>
+      </SafeAreaView>
     </Styled.Wrapper>
   );
 };
