@@ -15,7 +15,6 @@ const StartStack = createStackNavigator();
 export const RootNavigator = () => {
   return (
     <StartStack.Navigator screenOptions={screenOptions}>
-      <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
       <StartStack.Screen name={APP_ROUTES.start.splash} component={Splash} />
       <StartStack.Screen name={APP_ROUTES.start.signUp} component={AuthScreen} />
       <StartStack.Screen name={APP_ROUTES.start.signIn} component={() => <></>} />
@@ -25,7 +24,7 @@ export const RootNavigator = () => {
       ))}
 
       <StartStack.Screen name={APP_ROUTES.dashboard} component={BottomTabNavigator} />
-
+      <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
       <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />
     </StartStack.Navigator>
   );

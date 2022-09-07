@@ -54,7 +54,7 @@ export const Home: React.FC = () => {
         isWithScroll
         isWithoutMargin
         bgColor="extraLightMint"
-        elasticScrollColor={COLOR.backgraund.white}
+        elasticScrollColor={COLOR.background.white}
         elasticScrollPosition="bottom">
         <Styled.MainSection>
           <Styled.Greeting>Hi, {name}</Styled.Greeting>
