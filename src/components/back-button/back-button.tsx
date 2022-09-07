@@ -3,11 +3,12 @@ import { scale, verticalScale } from 'react-native-size-matters';
 import { useNavigation } from '@react-navigation/native';
 
 import { Icon } from '@components/icon';
-import { IProp } from './back-button.types';
+import { IBackButtonProps } from './back-button.types';
 
 import { BackButtonStyles as Styled } from './back-button.styles';
 
-export const BackButton: React.FC<IProp> = ({ width, height, color, cssButton }) => {
+export const BackButton: React.FC<IBackButtonProps> = props => {
+  const { width, height, color, cssButton, iconType } = props;
   const { goBack, canGoBack } = useNavigation();
   const isGoback = canGoBack();
 
@@ -20,7 +21,7 @@ export const BackButton: React.FC<IProp> = ({ width, height, color, cssButton })
 
   return (
     <Styled.BtnWrapper cssButton={cssButton} onPress={onPressGoBack}>
-      <Icon type="arrowLeft" width={scale(width)} height={verticalScale(height)} colorIcon={color} />
+      <Icon type={iconType || 'arrowLeft'} width={scale(width)} height={verticalScale(height)} colorIcon={color} />
     </Styled.BtnWrapper>
   );
 };

@@ -5,7 +5,7 @@ import { useTextCheckboxGroup } from './text-checkbox-group.state';
 
 import { TTextCheckboxGroupProps } from './text-checkbox-group.typings';
 
-import { Sapcer, Wrapper } from '@theme/components';
+import { Spacer, Wrapper } from '@theme/components';
 
 export const TextCheckboxGroup: React.FC<TTextCheckboxGroupProps> = props => {
   const { styles, checkboxStyles, gap } = props;
@@ -14,9 +14,9 @@ export const TextCheckboxGroup: React.FC<TTextCheckboxGroupProps> = props => {
   return (
     <Wrapper styles={styles}>
       {states.map((variant, index) => (
-        <Sapcer key={variant.name} isLastItem={index === states.length - 1} gap={gap}>
+        <Spacer key={variant.name} isLastItem={index === states.length - 1} gap={gap}>
           <TextCheckbox {...variant} onChange={onChangeVariants} styles={checkboxStyles} />
-        </Sapcer>
+        </Spacer>
       ))}
     </Wrapper>
   );

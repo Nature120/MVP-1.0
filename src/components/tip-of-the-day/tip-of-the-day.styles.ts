@@ -13,13 +13,6 @@ export const StyledTipOfTheDay = {
     margin: 12px 0 0;
   `,
 
-  Line: styled.View`
-    margin-top: 12px;
-    width: 100%;
-    height: 1px;
-    background-color: ${COLOR.background.textInput};
-  `,
-
   Header: styled.View`
     width: 100%;
     flex-direction: row;

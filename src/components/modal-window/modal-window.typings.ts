@@ -20,5 +20,6 @@ export interface IModalWindowProps {
   animationIn?: Animation | CustomAnimation;
   animationOut?: Animation | CustomAnimation;
   onClose?: () => void;
+  onModalHide?: () => void;
   onModalWillShow?: () => void;
 }

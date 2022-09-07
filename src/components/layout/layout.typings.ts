@@ -7,6 +7,7 @@ export interface ILayoutProps extends IGradientProps, IStyledLayoutProps {
   isWithGradient?: boolean;
   isWithScroll?: boolean;
   isScrollVisible?: boolean;
+  topBottomColors?: string[];
 }
 
 export interface IStyledLayoutProps extends IElasticScrollViewProps {

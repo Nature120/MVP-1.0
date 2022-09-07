@@ -8,7 +8,7 @@ import { TextComponent } from '@theme/components/text';
 import { FONTS } from '@theme/fonts';
 
 export const StyledPracticeLibrary = {
-  PracticeLibrary: styled.View`
+  PracticeLibrary: styled.TouchableOpacity`
     width: ${(DEVICE_WIDTH * 42) / 100}px; //42% of device width
   `,
 

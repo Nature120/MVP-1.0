@@ -1,5 +1,6 @@
 import ellipseGreen from '@assets/images/ellipse-green.png';
 import ellipseLightGreen from '@assets/images/ellipse-light-green.png';
+import logo from '@assets/images/logo.png';
 import onBoardStart from '@assets/images/on-board/on-board-start.jpg';
 import clouds from '@assets/images/splash/clouds.png';
 import ellipses from '@assets/images/splash/ellipses.png';
@@ -14,6 +15,7 @@ export const IMAGES = {
   clouds,
   ellipses,
   onBoardStart,
+  logo,
   ['ellipse-green']: ellipseGreen,
   ['ellipse-light-green']: ellipseLightGreen,
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch } from 'react-native-switch';
 
 import { ITogglerProps } from './toggler.typings';
 
@@ -12,12 +13,12 @@ export const Toggler: React.FC<ITogglerProps> = props => {
     <Styled.Toggler>
       {switchLabel}
 
-      <Styled.Switch
+      <Switch
         value={value}
         onValueChange={onChange}
         disabled={false}
-        circleSize={20}
-        barHeight={36.25}
+        circleSize={16}
+        barHeight={28.4}
         backgroundActive={COLOR.primary.lightGreen}
         backgroundInactive={COLOR.primary.lightGray}
         changeValueImmediately={true}
