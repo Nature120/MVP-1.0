@@ -8,11 +8,27 @@ export const contentContainerStyle = { flexGrow: 1 };
 
 const spacerHeight = 1000;
 
+type TLayoutProps = {
+  bottomColor: string;
+} & IStyledLayoutProps;
+
 export const StyledLayout = {
-  Layout: styled.SafeAreaView<IStyledLayoutProps>`
+  SafeAreaViewHeader: styled.SafeAreaView<{ topColor?: string }>`
+    flex: 0;
+    background-color: ${props => (props.topColor ? props.topColor : 'transparent')};
+  `,
+
+  Layout: styled.SafeAreaView<TLayoutProps>`
     z-index: 1;
     flex: 1;
-    background-color: ${props => (props.bgColor ? COLOR.background[props.bgColor] : 'transparent')};
+    ${props =>
+      props.bottomColor
+        ? css`
+            background-color: ${props.bottomColor};
+          `
+        : css`
+            background-color: ${props.bgColor ? COLOR.background[props.bgColor] : 'transparent'};
+          `}
   `,
 
   ScrollContainer: styled.ScrollView`

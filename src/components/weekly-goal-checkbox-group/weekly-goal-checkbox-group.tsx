@@ -5,7 +5,7 @@ import { useWeeklyGoalCheckboxGroup } from './weekly-goal-checkbox-group.state';
 
 import { IWeeklyGoalCheckboxGroupProps } from './weekly-goal-checkbox-group.typings';
 
-import { Sapcer, Wrapper } from '@theme/components';
+import { Spacer, Wrapper } from '@theme/components';
 
 export const WeeklyGoalCheckboxGroup: React.FC<IWeeklyGoalCheckboxGroupProps> = props => {
   const { gap, styles } = props;
@@ -14,9 +14,9 @@ export const WeeklyGoalCheckboxGroup: React.FC<IWeeklyGoalCheckboxGroupProps> = 
   return (
     <Wrapper styles={styles}>
       {states.map((variant, index) => (
-        <Sapcer key={variant.name} isLastItem={index === states.length - 1} gap={gap}>
+        <Spacer key={variant.name} isLastItem={index === states.length - 1} gap={gap}>
           <WeeklyGoalCheckbox {...variant} onChange={onChangeVariants} />
-        </Sapcer>
+        </Spacer>
       ))}
     </Wrapper>
   );

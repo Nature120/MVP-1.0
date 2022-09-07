@@ -37,4 +37,6 @@ export const APP_ROUTES = {
     onBoard: ON_BOARD_ROUTES[0].name,
   },
   dashboard: 'Dashboard',
+  immersions: 'Immersions',
+  immersionTimer: 'Immersion Timer',
 };

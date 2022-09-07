@@ -40,7 +40,7 @@ const vertical = (props: Props) => css`
   margin-bottom: ${getMiddleGap(props)}px;
 `;
 
-export const Sapcer = styled.View<Props>`
+export const Spacer = styled.View<Props>`
   ${props =>
     props.isHorizontal
       ? props.isEqual

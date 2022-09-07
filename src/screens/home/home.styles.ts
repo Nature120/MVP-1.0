@@ -24,13 +24,6 @@ export const StyledHome = {
     max-width: 70%;
   `,
 
-  MockTimer: styled.View`
-    border-radius: 215px;
-    width: 215px;
-    height: 215px;
-    background: #0ca152;
-  `,
-
   ButtonWrapper: styled.View`
     margin: 36px 0;
   `,

@@ -20,6 +20,7 @@ export const ModalWindow: React.FC<IModalWindowProps> = props => {
     animationOutTiming = 400,
     isBackdropBlocked,
     modalStyle,
+    onModalHide,
     children,
     onClose,
     onModalWillShow,
@@ -29,6 +30,7 @@ export const ModalWindow: React.FC<IModalWindowProps> = props => {
 
   return (
     <Modal
+      onModalHide={onModalHide}
       swipeThreshold={200}
       isVisible={isVisible}
       avoidKeyboard={avoidKeyboard}

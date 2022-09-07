@@ -21,14 +21,15 @@ export const Layout: React.FC<ILayoutProps> = props => {
     elasticScrollColor,
     elasticScrollPosition = 'top',
     isScrollVisible = false,
+    topBottomColors,
     ...gradientProps
   } = props;
 
   const Container = <Styled.Container isWithoutMargin={isWithoutMargin}>{children}</Styled.Container>;
-
   const ScreenLayout = (
     <>
-      <Styled.Layout bgColor={bgColor}>
+      {topBottomColors && <Styled.SafeAreaViewHeader topColor={topBottomColors[0]} />}
+      <Styled.Layout bottomColor={topBottomColors ? topBottomColors[1] : ''} bgColor={bgColor}>
         {isWithScroll ? (
           <Styled.ScrollContainer
             contentContainerStyle={contentContainerStyle}

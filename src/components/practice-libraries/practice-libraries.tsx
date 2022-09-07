@@ -8,7 +8,7 @@ import { IPracticeLibrariesProps } from './practice-libraries.typings';
 
 import { StyledPracticeLibraries as Styled } from './practice-libraries.styles';
 
-import { Sapcer } from '@theme/components';
+import { Spacer } from '@theme/components';
 
 export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
   const { title, libraries, isWithForwardArrow } = props;
@@ -21,7 +21,7 @@ export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false} decelerationRate="fast" scrollEventThrottle={16}>
         {libraries.map((libraryItem, index, items) => (
-          <Sapcer
+          <Spacer
             key={libraryItem.title}
             gap={16}
             isHorizontal
@@ -30,7 +30,7 @@ export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
             index={index}
             isLastItem={index === items.length - 1}>
             <PracticeLibrary {...libraryItem} />
-          </Sapcer>
+          </Spacer>
         ))}
       </ScrollView>
     </>
