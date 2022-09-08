@@ -20,6 +20,7 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
     onPress,
     isButtonDisabled,
     isWithoutRedirect,
+    onRoutePressNavigateTo,
   } = props;
   const { progress, pressHandler, nextRoute } = useLayoutOnboarding(onPress, isWithoutRedirect);
   return (
@@ -28,7 +29,7 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
         <Styled.ProgressBarWrapper>
           <ProgressBar current={progress.current} total={progress.total} />
         </Styled.ProgressBarWrapper>
-        <BackButton width={32} height={32} />
+        <BackButton width={32} height={32} color="darkBlue" />
       </Styled.Header>
 
       <Styled.ChildrenWrapper>{children}</Styled.ChildrenWrapper>
@@ -36,7 +37,7 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
         <ButtonWithLink
           isDisabled={isButtonDisabled}
           onPress={pressHandler}
-          onTextPressNavigateTo={nextRoute}
+          onTextPressNavigateTo={onRoutePressNavigateTo || nextRoute}
           buttonText={buttonText}
           bottomText={bottomText}
           routeText={routeText}

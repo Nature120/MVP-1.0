@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import Modal from 'react-native-modal';
+import { BlurView } from '@react-native-community/blur';
 
 import { isIOS } from '@services/helpers/device-utils';
 
@@ -15,26 +16,38 @@ export const ModalWindow: React.FC<IModalWindowProps> = props => {
     positionVertical,
     avoidKeyboard = true,
     positionHorizontal,
-    backdropOpacity = 0.2,
     animationInTiming = 400,
     animationOutTiming = 400,
-    isBackdropPress = true,
+    isBackdropBlocked,
     modalStyle,
+    onModalHide,
     children,
     onClose,
     onModalWillShow,
   } = props;
 
-  const onBackdropPress = () => isBackdropPress && onClose?.();
+  const onBackdropPress = () => !isBackdropBlocked && onClose?.();
 
   return (
     <Modal
+      onModalHide={onModalHide}
       swipeThreshold={200}
       isVisible={isVisible}
       avoidKeyboard={avoidKeyboard}
       swipeDirection={swipeDirection}
-      backdropOpacity={backdropOpacity}
+      backdropOpacity={1}
       backdropTransitionInTiming={500}
+      customBackdrop={
+        <TouchableWithoutFeedback onPress={onBackdropPress}>
+          {isIOS ? (
+            <View style={[styles.flex, styles.bg]}>
+              <BlurView style={styles.flex} blurType={'light'} blurAmount={2} />
+            </View>
+          ) : (
+            <BlurView style={styles.flex} blurType={'dark'} blurAmount={1} overlayColor={'rgba(0, 0, 0, 0.2)'} />
+          )}
+        </TouchableWithoutFeedback>
+      }
       animationIn={animationIn || 'slideInUp'}
       animationOut={animationOut || 'slideOutDown'}
       animationInTiming={animationInTiming}
@@ -57,6 +70,12 @@ export const ModalWindow: React.FC<IModalWindowProps> = props => {
   );
 };
 const styles = StyleSheet.create({
+  bg: {
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  },
+  flex: {
+    flex: 1,
+  },
   modal: {
     flex: 1,
     margin: 0,

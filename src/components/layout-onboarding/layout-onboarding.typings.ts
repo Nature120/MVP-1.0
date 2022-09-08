@@ -6,6 +6,7 @@ interface ICommonProps {
   isButtonDisabled?: boolean;
   isWithoutRedirect?: boolean;
   onPress?: TOnPress;
+  onRoutePressNavigateTo?: string;
 }
 
 interface ILayoutOnboardingWithLink extends ICommonProps {

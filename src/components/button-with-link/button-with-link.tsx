@@ -35,7 +35,7 @@ export const ButtonWithLink: React.FC<IButtonWithLinkProps> = props => {
 
         <TouchableOpacity
           onPress={onTextPressNavigateTo ? handleNavigate(navigate, onTextPressNavigateTo) : onTextPress}>
-          <Styled.TouchableText>{routeText}</Styled.TouchableText>
+          <Styled.TouchableText isBottomText={!!bottomText}>{routeText}</Styled.TouchableText>
         </TouchableOpacity>
       </Styled.SubButton>
     </Styled.ButtonWithLink>

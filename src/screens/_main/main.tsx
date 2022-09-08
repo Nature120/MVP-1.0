@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { LogBox } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import SplashScreen from 'react-native-splash-screen';
 import { Provider } from 'react-redux';
@@ -15,6 +16,7 @@ export const Main = () => {
 
   useEffect(() => {
     SplashScreen.hide();
+    LogBox.ignoreLogs(['Looks', 'Require']);
   }, []);
 
   return (

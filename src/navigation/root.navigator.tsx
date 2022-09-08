@@ -5,7 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { Home } from '@screens/home/home';
 import { SignUpScreen } from '@screens/sign-up-screen/sign-up-screen';
+import { ImmersionTimer } from '@screens/immersion-timer';
+import { Immersions } from '@screens/immersions';
 import { Splash } from '@screens/splash';
+import { BottomTabNavigator } from './bottom-tab.navigator';
 import { screenOptions } from './navigation.options';
 
 import { getUser } from '@services/api.service';
@@ -67,6 +70,10 @@ export const RootNavigator = () => {
       {ON_BOARD_ROUTES.map(({ component, name }) => (
         <StartStack.Screen key={name} name={name} component={component} />
       ))}
+
+      <StartStack.Screen name={APP_ROUTES.dashboard} component={BottomTabNavigator} />
+      <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />
+      <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
     </StartStack.Navigator>
   );
 };

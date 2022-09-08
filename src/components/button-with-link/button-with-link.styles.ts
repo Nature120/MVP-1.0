@@ -18,8 +18,8 @@ export const StyledButtonWithLink = {
     align-items: center;
   `,
 
-  TouchableText: styled.Text`
-    margin-left: 8px;
+  TouchableText: styled.Text<{ isBottomText: boolean }>`
+    margin-left: ${props => (props.isBottomText ? 8 : 0)}px;
     font-family: ${FONTS.family.boldAcumin};
     font-weight: ${FONTS.weight.bold};
     font-size: ${FONTS.size.xSmall}px;

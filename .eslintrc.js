@@ -12,6 +12,8 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
+        'no-unused-vars': 'warn',
+        '@typescript-eslint/no-non-null-assertion': 'off',
         'max-len': 'off',
         '@typescript-eslint/no-shadow': 'error',
         'no-shadow': 'off',

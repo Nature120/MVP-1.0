@@ -1,8 +1,5 @@
 import styled from 'styled-components/native';
 
-import { COLOR } from '@theme/colors';
-import { FONTS } from '@theme/fonts';
-
 export const StyledSplash = {
   SliderContainer: styled.View`
     flex: 1;

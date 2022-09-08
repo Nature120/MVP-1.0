@@ -1,14 +1,20 @@
 import React from 'react';
 
 import { ModalWindow } from '@components/modal-window';
-import { IModalWindowProps } from '@components/modal-window/modal-window.typings';
+
+import { IMAGES } from '@constants/images';
+
+import { IModalBottomProps } from './modal-bottom.typings';
 
 import { StyledModalBottom as Styled } from './modal-bottom.styles';
 
-export const ModalBottom: React.FC<IModalWindowProps> = ({ children, ...modalProps }) => {
+export const ModalBottom: React.FC<IModalBottomProps> = ({ children, isWithLogo, ...modalProps }) => {
   return (
     <ModalWindow {...modalProps} positionVertical="flex-end">
-      <Styled.ModalBottom>{children}</Styled.ModalBottom>
+      <Styled.ModalBottom>
+        {isWithLogo && <Styled.Logo source={IMAGES.logo} />}
+        {children}
+      </Styled.ModalBottom>
     </ModalWindow>
   );
 };
