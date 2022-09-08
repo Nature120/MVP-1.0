@@ -2,6 +2,8 @@ package com.nature120;
 
 import android.app.Application;
 import android.content.Context;
+
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -10,10 +12,21 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 import com.nature120.newarchitecture.MainApplicationReactNativeHost;
+
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.List;
 
+import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
+import io.invertase.firebase.firestore.ReactNativeFirebaseFirestorePackage;
+import com.facebook.react.shell.MainReactPackage;
+
 public class MainApplication extends Application implements ReactApplication {
+
+  protected List<ReactPackage> getPackages() {
+    return Arrays.asList(new MainReactPackage(),new ReactNativeFirebaseAuthPackage(),new ReactNativeFirebaseFirestorePackage(),new FBSDKPackage()
+      );
+  }
 
   private final ReactNativeHost mReactNativeHost =
       new ReactNativeHost(this) {

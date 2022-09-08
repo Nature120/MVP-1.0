@@ -39,7 +39,7 @@ module.exports = {
               // navigation
               ['^@navigation'],
               // helper or services
-              ['^@services|services$|api$'],
+              ['^@services|services$|api$|utils$'],
               // Side effect imports.
               ['^\\u0000'],
               // constants
