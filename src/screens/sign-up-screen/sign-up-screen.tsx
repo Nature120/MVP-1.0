@@ -48,6 +48,9 @@ export const SignUpScreen = () => {
           <Styled.FaceBookButtonWrapper>
             <SocialAuthButton icon="facebook" labelText="Facebook" handleAuth={onFacebookButtonPress} />
           </Styled.FaceBookButtonWrapper>
+          <Styled.AppleButtonWrapper>
+            <SocialAuthButton icon="apple" labelText="Apple" handleAuth={onFacebookButtonPress} fill={'darkBlue'} />
+          </Styled.AppleButtonWrapper>
         </Layout>
       </Styled.KeyboardAwareScrollView>
     </Styled.Container>
