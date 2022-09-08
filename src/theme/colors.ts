@@ -28,6 +28,7 @@ export const COLOR = {
     cloudyBlue,
     darkBlue,
     lightGrey: '#8498A8',
+    red: '#FF0000',
   },
   icon: {
     blue,
@@ -37,6 +38,7 @@ export const COLOR = {
     lightGreen,
     cloudyBlue,
     cloudyGreen: '#5C7869',
+    grey: '#BFBFBF',
   },
   background: {
     white,

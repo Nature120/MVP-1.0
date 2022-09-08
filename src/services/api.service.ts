@@ -1,40 +1,47 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import firestore from '@react-native-firebase/firestore';
+// import axios, { AxiosRequestConfig } from 'axios';
 
-import { APP_CONFIG } from '@constants/config';
-
-const getInstance = () => {
-  const instance = axios.create({
-    baseURL: APP_CONFIG.BASE_API_URL,
-    timeout: 15000,
-  });
-
-  instance.interceptors.request.use(async (config: AxiosRequestConfig) => {
-    return config;
-  });
-
-  return instance;
-};
-
-export const getRequest = async (requestUrl: string) => {
-  const { data } = await getInstance().get(requestUrl);
-
+export const getUser = async (uid: string) => {
+  const response = await firestore().collection('Users').doc(uid).get();
+  const data = response.data();
   return data;
 };
 
-export const postRequest = async (requestUrl: string, payload: object) => {
-  const { data } = await getInstance().post(requestUrl, payload);
+// import { APP_CONFIG } from '@constants/config';
 
-  return data;
-};
+// const getInstance = () => {
+//   const instance = axios.create({
+//     baseURL: APP_CONFIG.BASE_API_URL,
+//     timeout: 15000,
+//   });
 
-export const deleteRequest = async (requestUrl: string) => {
-  const { data } = await getInstance().delete(requestUrl);
+//   instance.interceptors.request.use(async (config: AxiosRequestConfig) => {
+//     return config;
+//   });
 
-  return data;
-};
+//   return instance;
+// };
 
-export const putRequest = async (requestUrl: string, payload: object) => {
-  const { data } = await getInstance().put(requestUrl, payload);
+// export const getRequest = async (requestUrl: string) => {
+//   const { data } = await getInstance().get(requestUrl);
 
-  return data;
-};
+//   return data;
+// };
+
+// export const postRequest = async (requestUrl: string, payload: object) => {
+//   const { data } = await getInstance().post(requestUrl, payload);
+
+//   return data;
+// };
+
+// export const deleteRequest = async (requestUrl: string) => {
+//   const { data } = await getInstance().delete(requestUrl);
+
+//   return data;
+// };
+
+// export const putRequest = async (requestUrl: string, payload: object) => {
+//   const { data } = await getInstance().put(requestUrl, payload);
+
+//   return data;
+// };

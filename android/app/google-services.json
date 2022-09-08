@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "460645181759",
+    "project_id": "nature-120-mvp",
+    "storage_bucket": "nature-120-mvp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460645181759:android:23a4efefbebc7d0a2e4b8a",
+        "android_client_info": {
+          "package_name": "com.nature120"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460645181759-td69e1qc0ninrn4g361pois9hpadvpi4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nature120",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "460645181759-50pp1sgcrplpr72hu2arfig25t9mjrp3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUAXjgBnvrpPWsINLtzxOq8PxcIkwgfZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460645181759-50pp1sgcrplpr72hu2arfig25t9mjrp3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

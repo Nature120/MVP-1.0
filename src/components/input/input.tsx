@@ -4,18 +4,22 @@ import { IProp } from './input.typings';
 
 import { InputStyles as Styled } from './input.styles';
 
+import { COLOR } from '@theme/colors';
+
 export const Input: React.FC<IProp> = ({
-  placeHolderTextColor,
+  placeHolderTextColor = 'lightGrey',
   placeHolder,
   value,
   keyboardType = 'default',
   handleBlur,
   handleChange,
+  onFocus,
   cssInput,
 }) => {
   return (
     <>
       <Styled.Input
+        onFocus={onFocus}
         placeholder={placeHolder}
         value={value}
         keyboardType={keyboardType}
@@ -23,7 +27,7 @@ export const Input: React.FC<IProp> = ({
         onBlur={handleBlur}
         caretHidden={false}
         autoCorrect={false}
-        placeholderTextColor={placeHolderTextColor}
+        placeholderTextColor={COLOR.font[placeHolderTextColor]}
         cssInput={cssInput}
       />
     </>

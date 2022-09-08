@@ -39,4 +39,5 @@ export const APP_ROUTES = {
   dashboard: 'Dashboard',
   immersions: 'Immersions',
   immersionTimer: 'Immersion Timer',
+  main: { home: 'Home' },
 };

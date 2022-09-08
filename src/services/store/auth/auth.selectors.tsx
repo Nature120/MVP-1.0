@@ -1,6 +1,7 @@
-// export const getErrorEmail = (state) => state.auth.error?.errors?.email;
-// export const getError = (state) => state.auth.error?.message;
-// export const getAuthentication = (state) => state.auth.isAuthenticated;
-// export const getToken = (state) => state.auth.user.accessToken;
-// export const getFirstLaunch = (state) => state.auth.isFirstLaunchApp;
-export {};
+import { IState } from './auth.interface';
+
+export const getAuthentication = (state: IState) => state.auth.isAuthenticated;
+export const getEmail = (state: IState) => state.auth.user.email;
+export const getFirstName = (state: IState) => state.auth.user.first_name;
+export const getUid = (state: IState) => state.auth.user.uid;
+export const getFirstLaunch = (state: IState) => state.auth.isFirstLaunchApp;

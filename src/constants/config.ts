@@ -10,4 +10,5 @@ const ENV = Config.APP_ENV || 'dev';
 
 export const CONFIG = {
   apiUrl: API_HASH_MAP[ENV],
+  webClientId: Config.WEB_CLIENT_ID,
 };
