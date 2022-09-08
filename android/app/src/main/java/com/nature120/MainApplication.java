@@ -12,6 +12,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 import com.nature120.newarchitecture.MainApplicationReactNativeHost;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
@@ -24,7 +25,7 @@ import com.facebook.react.shell.MainReactPackage;
 public class MainApplication extends Application implements ReactApplication {
 
   protected List<ReactPackage> getPackages() {
-    return Arrays.asList(new MainReactPackage(),new ReactNativeFirebaseAuthPackage(),new ReactNativeFirebaseFirestorePackage(),new FBSDKPackage()
+    return Arrays.asList(new MainReactPackage(),new ReactNativeFirebaseAuthPackage(),new ReactNativeFirebaseFirestorePackage(),new FBSDKPackage(),new ReactNativeConfigPackage()
       );
   }
 

@@ -5,7 +5,6 @@ import * as action from './auth.actions';
 import { initialState } from './auth.constants';
 
 const user = createReducer(initialState, {
-  [action.signUp.type]: (_, { payload }) => payload,
   [action.signIn.type]: (_, { payload }) => payload,
   [action.signOut.type]: () => initialState,
   //   [action.notAuthenticated.type]: () => [],
@@ -22,7 +21,6 @@ const error = createReducer(null, {
 });
 
 const isAuthenticated = createReducer(false, {
-  [action.signUp.type]: () => true,
   [action.signIn.type]: () => true,
   [action.isAuthenticated.type]: (_, { payload }) => payload,
   [action.signOut.type]: () => false,

@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Home } from '@screens/home/home';
-import { SignUpScreen } from '@screens/sign-up-screen/sign-up-screen';
 import { ImmersionTimer } from '@screens/immersion-timer';
 import { Immersions } from '@screens/immersions';
+import { SignUpScreen } from '@screens/sign-up-screen/sign-up-screen';
 import { Splash } from '@screens/splash';
 import { BottomTabNavigator } from './bottom-tab.navigator';
 import { screenOptions } from './navigation.options';
@@ -54,7 +55,11 @@ export const RootNavigator = () => {
 
   if (authenitcated) {
     return (
-      <MainStack.Navigator initialRouteName={APP_ROUTES.main.home}>
+      <MainStack.Navigator initialRouteName={isFirstLaunch ? APP_ROUTES.start.onBoard : APP_ROUTES.main.home}>
+        {ON_BOARD_ROUTES.map(({ component, name }) => (
+          <StartStack.Screen key={name} name={name} component={component} />
+        ))}
+
         <MainStack.Screen name="Home" component={Home} />
       </MainStack.Navigator>
     );
@@ -63,13 +68,9 @@ export const RootNavigator = () => {
     <StartStack.Navigator
       screenOptions={screenOptions}
       initialRouteName={isFirstLaunch ? APP_ROUTES.start.splash : APP_ROUTES.start.signUp}>
-      {/* <StartStack.Screen name={APP_ROUTES.start.splash} component={Splash} /> */}
+      <StartStack.Screen name={APP_ROUTES.start.splash} component={Splash} />
       <StartStack.Screen name={APP_ROUTES.start.signUp} component={SignUpScreen} />
       <StartStack.Screen name={APP_ROUTES.start.signIn} component={() => <></>} />
-
-      {ON_BOARD_ROUTES.map(({ component, name }) => (
-        <StartStack.Screen key={name} name={name} component={component} />
-      ))}
 
       <StartStack.Screen name={APP_ROUTES.dashboard} component={BottomTabNavigator} />
       <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />

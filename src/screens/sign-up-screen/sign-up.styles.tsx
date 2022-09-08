@@ -12,6 +12,9 @@ export const AuthScreenStyles = {
   KeyboardAwareScrollView: styled(KeyboardAwareScrollView)`
     flex-grow: 1;
   `,
+  SafeAreaView: styled.SafeAreaView`
+    flex: 1;
+  `,
   BackButtonWrapper: styled.View`
     width: ${scale(32)}px;
     margin-top: ${moderateScale(50)}px;

@@ -4,6 +4,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { name as appName } from './app.json';
 import PushNotification from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import { CONFIG } from '@constants/config';
 
 PushNotification.configure({
   onNotification: function (notification) {
@@ -15,7 +16,7 @@ PushNotification.configure({
 });
 
 GoogleSignin.configure({
-  webClientId: '460645181759-50pp1sgcrplpr72hu2arfig25t9mjrp3.apps.googleusercontent.com',
+  webClientId: CONFIG.webClientId,
 });
 
 AppRegistry.registerComponent(appName, () => Main);

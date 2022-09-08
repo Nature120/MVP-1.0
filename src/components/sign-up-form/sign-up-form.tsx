@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { TextInput } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
 import auth from '@react-native-firebase/auth';
 import { Formik } from 'formik';
 
@@ -10,7 +9,6 @@ import { Input } from '@components/input/input';
 
 import LoginFunctions from '@services/helpers/auth-social';
 import { saveInDB } from '@services/helpers/firebase-store';
-import { signUp } from '@services/store/auth/auth.actions';
 
 import { REGISTER_VALIDATION_SCHEMA, THEME } from './sign-up-form.constants';
 
@@ -23,8 +21,6 @@ import { COLOR } from '@theme/colors';
 export const SignUpForm = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
-
-  const dispatch = useDispatch();
 
   const onSubmit = (values: IValue, { resetForm }: IResetForm): void => {
     const { email, password, first_name } = values;
@@ -46,13 +42,11 @@ export const SignUpForm = () => {
 
       LoginFunctions.saveCredential({ provider, credential });
 
-      ////Store in DB and redux////
+      ////Store in DB////
       const uid = response.user.uid;
       const data = { email, first_name };
 
       saveInDB({ data, uid });
-
-      dispatch(signUp({ ...data, uid }));
     } catch (error) {
       handleError(error);
     }

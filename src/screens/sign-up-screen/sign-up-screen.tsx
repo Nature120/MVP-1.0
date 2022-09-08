@@ -28,29 +28,34 @@ export const SignUpScreen = () => {
 
   return (
     <Styled.Container behavior="height">
-      <Styled.KeyboardAwareScrollView keyboardShouldPersistTaps="handled" enableOnAndroid={false}>
+      <Styled.KeyboardAwareScrollView
+        keyboardShouldPersistTaps="handled"
+        enableOnAndroid={true}
+        contentContainerStyle={{ flexGrow: 1 }}>
         <Layout bgColor="beigeLight" isWithScroll={false}>
-          <Styled.BackButtonWrapper>
-            <BackButton width={32} height={32} />
-          </Styled.BackButtonWrapper>
-          <Styled.Title>Create an account</Styled.Title>
-          <Styled.Text>Sign up for free to start your journey to wholeness</Styled.Text>
-          <Styled.FormWrapper>
-            <SignUpForm />
-          </Styled.FormWrapper>
-          <Styled.LogInBtn>
-            <Styled.LoginText>Already have an account?</Styled.LoginText>
-            <Styled.LoginLabelText>Login</Styled.LoginLabelText>
-          </Styled.LogInBtn>
-          <Styled.GoogleButtonWrapper>
-            <SocialAuthButton icon="google" labelText="Google" handleAuth={onGoogleButtonPress} />
-          </Styled.GoogleButtonWrapper>
-          <Styled.FaceBookButtonWrapper>
-            <SocialAuthButton icon="facebook" labelText="Facebook" handleAuth={onFacebookButtonPress} />
-          </Styled.FaceBookButtonWrapper>
-          <Styled.AppleButtonWrapper>
-            <SocialAuthButton icon="apple" labelText="Apple" handleAuth={onFacebookButtonPress} fill={'darkBlue'} />
-          </Styled.AppleButtonWrapper>
+          <Styled.SafeAreaView>
+            <Styled.BackButtonWrapper>
+              <BackButton width={32} height={32} color={'darkBlue'} />
+            </Styled.BackButtonWrapper>
+            <Styled.Title>Create an account</Styled.Title>
+            <Styled.Text>Sign up for free to start your journey to wholeness</Styled.Text>
+            <Styled.FormWrapper>
+              <SignUpForm />
+            </Styled.FormWrapper>
+            <Styled.LogInBtn>
+              <Styled.LoginText>Already have an account?</Styled.LoginText>
+              <Styled.LoginLabelText>Login</Styled.LoginLabelText>
+            </Styled.LogInBtn>
+            <Styled.GoogleButtonWrapper>
+              <SocialAuthButton icon="google" labelText="Google" handleAuth={onGoogleButtonPress} />
+            </Styled.GoogleButtonWrapper>
+            <Styled.FaceBookButtonWrapper>
+              <SocialAuthButton icon="facebook" labelText="Facebook" handleAuth={onFacebookButtonPress} />
+            </Styled.FaceBookButtonWrapper>
+            <Styled.AppleButtonWrapper>
+              <SocialAuthButton icon="apple" labelText="Apple" handleAuth={onFacebookButtonPress} fill={'darkBlue'} />
+            </Styled.AppleButtonWrapper>
+          </Styled.SafeAreaView>
         </Layout>
       </Styled.KeyboardAwareScrollView>
     </Styled.Container>
