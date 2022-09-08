@@ -10,15 +10,15 @@ export const InputStyles = {
   Input: styled.TextInput<{ cssInput?: TStyles }>`
     height: ${verticalScale(56)}px;
     width: 100%;
-    padding-left: ${moderateScale(11, 0.1)}px;
-    padding-right: ${moderateScale(11, 0.1)}px;
+    padding-left: ${moderateScale(11)}px;
+    padding-right: ${moderateScale(11)}px;
     background-color: ${COLOR.background.white};
     border-radius: 4px;
 
     font-family: ${FONTS.family.lightBoreal};
-    font-size: ${moderateScale(FONTS.size.xMedium, 0.1)}px;
-    line-height: ${moderateScale(21, 0.1)}px;
-    font-weight: 400;
+    font-size: ${moderateScale(FONTS.size.xMedium)}px;
+    line-height: ${moderateScale(21)}px;
+    font-weight: ${FONTS.weight.light};
     color: ${COLOR.font.lightGrey};
     ${({ cssInput }) => cssInput};
   `,
