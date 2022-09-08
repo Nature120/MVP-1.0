@@ -16,4 +16,5 @@ export const APP_ROUTES = {
     signIn: 'Sign In',
     onBoard: ON_BOARD_ROUTES[0].name,
   },
+  main: { home: 'Home' },
 };
