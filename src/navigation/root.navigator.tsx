@@ -24,8 +24,8 @@ export const RootNavigator = () => {
       ))}
 
       <StartStack.Screen name={APP_ROUTES.dashboard} component={BottomTabNavigator} />
-      <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
       <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />
+      <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
     </StartStack.Navigator>
   );
 };

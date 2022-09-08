@@ -13,6 +13,7 @@ import onBoardingMoon from '@assets/icons/on-boarding-moon.svg';
 import onBoardingSun from '@assets/icons/on-boarding-sun.svg';
 import practices from '@assets/icons/practices.svg';
 import stats from '@assets/icons/stats.svg';
+import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
 import tip from '@assets/icons/tip.svg';
 
 export const ICONS = {
@@ -32,4 +33,5 @@ export const ICONS = {
   stats,
   mute,
   cross,
+  swipeToEndArrow,
 };
