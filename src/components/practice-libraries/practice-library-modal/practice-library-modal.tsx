@@ -19,6 +19,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
   const { navigate } = useNavigation();
 
   const {
+    isWithoutActions,
     isOpen,
     closeModal,
     library: { title, image, description, type, minuteInterval, tags },
@@ -82,12 +83,16 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                 ))}
               </Styled.Tags>
 
-              <TogglerDoNotDisturb isDoNotDisturb={isDoNotDisturb} setIsDoNotDisturb={setIsDoNotDisturb} />
+              {!isWithoutActions && (
+                <TogglerDoNotDisturb isDoNotDisturb={isDoNotDisturb} setIsDoNotDisturb={setIsDoNotDisturb} />
+              )}
             </View>
 
-            <Styled.ButtonWrapper>
-              <Button buttonText="START TIMER" height={50} onPress={navigateToTimer} />
-            </Styled.ButtonWrapper>
+            {!isWithoutActions && (
+              <Styled.ButtonWrapper>
+                <Button buttonText="START TIMER" height={50} onPress={navigateToTimer} />
+              </Styled.ButtonWrapper>
+            )}
           </Styled.Content>
         </Styled.ContentWrapper>
       </Styled.PracticeLibraryModal>
