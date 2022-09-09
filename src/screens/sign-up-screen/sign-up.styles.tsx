@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
-export const AuthScreenStyles = {
+export const SignUpScreenStyles = {
   Container: styled.KeyboardAvoidingView`
     flex: 1;
   `,
@@ -50,12 +50,13 @@ export const AuthScreenStyles = {
     line-height: ${moderateScale(19)}px;
     color: ${COLOR.font.darkBlue};
   `,
-  LogInBtn: styled.TouchableOpacity`
-    flex: 1;
+  LogInWrapper: styled.View`
     flex-direction: row;
-    width: ${scale(222)}px;
+    justify-content: center;
     margin-bottom: ${moderateScale(110, 0.1)}px;
-    align-self: center;
+  `,
+  LogInBtn: styled.TouchableOpacity`
+    width: ${scale(50)}px;
   `,
   LoginText: styled.Text`
     margin-right: ${moderateScale(5)}px;

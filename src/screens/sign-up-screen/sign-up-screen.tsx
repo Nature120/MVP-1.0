@@ -1,37 +1,37 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { BackButton } from '@components/back-button/back-button';
 import { Layout } from '@components/layout';
 import { SignUpForm } from '@components/sign-up-form/sign-up-form';
 import { SocialAuthButton } from '@components/social-auth-button/social-auth-button';
 
-import { authFaceBook, authGoogle } from './sign-up-screen.utils';
+import { authFaceBook } from '@services/helpers/facebook-auth';
+import { authGoogle } from '@services/helpers/google-auth';
 
-import { AuthScreenStyles as Styled } from './sign-up.styles';
+import { APP_ROUTES } from '@constants/routes';
+
+import { TNavigation } from '@typings/common';
+
+import { SignUpScreenStyles as Styled } from './sign-up.styles';
 
 export const SignUpScreen = () => {
-  const onGoogleButtonPress = async () => {
-    try {
-      authGoogle();
-    } catch (error) {
-      console.log('error', error);
-    }
+  const { navigate } = useNavigation<TNavigation>();
+  const onGoogleButtonPress = () => {
+    authGoogle();
   };
 
-  const onFacebookButtonPress = async () => {
-    try {
-      authFaceBook();
-    } catch (error) {
-      console.log('error', error);
-    }
+  const onFacebookButtonPress = () => {
+    authFaceBook();
+  };
+
+  const onPressLogIn = () => {
+    navigate(APP_ROUTES.start.signIn, {});
   };
 
   return (
     <Styled.Container behavior="height">
-      <Styled.KeyboardAwareScrollView
-        keyboardShouldPersistTaps="handled"
-        enableOnAndroid={true}
-        contentContainerStyle={{ flexGrow: 1 }}>
+      <Styled.KeyboardAwareScrollView keyboardShouldPersistTaps="handled" enableOnAndroid={true}>
         <Layout bgColor="beigeLight" isWithScroll={false}>
           <Styled.SafeAreaView>
             <Styled.BackButtonWrapper>
@@ -42,10 +42,12 @@ export const SignUpScreen = () => {
             <Styled.FormWrapper>
               <SignUpForm />
             </Styled.FormWrapper>
-            <Styled.LogInBtn>
+            <Styled.LogInWrapper>
               <Styled.LoginText>Already have an account?</Styled.LoginText>
-              <Styled.LoginLabelText>Login</Styled.LoginLabelText>
-            </Styled.LogInBtn>
+              <Styled.LogInBtn onPress={onPressLogIn}>
+                <Styled.LoginLabelText>Login</Styled.LoginLabelText>
+              </Styled.LogInBtn>
+            </Styled.LogInWrapper>
             <Styled.GoogleButtonWrapper>
               <SocialAuthButton icon="google" labelText="Google" handleAuth={onGoogleButtonPress} />
             </Styled.GoogleButtonWrapper>

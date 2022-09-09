@@ -1,6 +1,6 @@
 import { TextInput } from 'react-native-paper';
 import { moderateScale, verticalScale } from 'react-native-size-matters';
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';

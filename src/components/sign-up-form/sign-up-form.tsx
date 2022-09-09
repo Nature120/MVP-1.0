@@ -10,9 +10,11 @@ import { Input } from '@components/input/input';
 import LoginFunctions from '@services/helpers/auth-social';
 import { saveInDB } from '@services/helpers/firebase-store';
 
-import { REGISTER_VALIDATION_SCHEMA, THEME } from './sign-up-form.constants';
+import { REGISTER_VALIDATION_SCHEMA } from './sign-up-form.constants';
+import { REACT_NATIVE_PAPER_INPUT_THEME } from '@constants/styles';
 
-import { IRegister, IResetForm, IValue } from './sign-up-form.typings';
+import { IRegister, IValue } from './sign-up-form.typings';
+import { IResetForm } from '@typings/formik-typings';
 
 import { SignUpFormStyles as Styled } from './sign-up-form.styles';
 
@@ -29,11 +31,11 @@ export const SignUpForm = () => {
     if (isEmpty) {
       return;
     }
-    register({ email, password, first_name });
+    handleRegister({ email, password, first_name });
     resetForm();
   };
 
-  const register = async ({ email, password, first_name }: IRegister): Promise<void> => {
+  const handleRegister = async ({ email, password, first_name }: IRegister): Promise<void> => {
     try {
       const credential = auth.EmailAuthProvider.credential(email, password);
       const provider = auth.EmailAuthProvider.PROVIDER_ID;
@@ -109,7 +111,7 @@ export const SignUpForm = () => {
                 <Styled.ErrorText>{errors.email ? errors.email : ''}</Styled.ErrorText>
                 <Styled.InputPassword
                   placeholderTextColor={COLOR.font.lightGrey}
-                  theme={THEME}
+                  theme={REACT_NATIVE_PAPER_INPUT_THEME}
                   underlineColor="transparent"
                   selectionColor={COLOR.font.lightGrey}
                   activeUnderlineColor="transparent"
