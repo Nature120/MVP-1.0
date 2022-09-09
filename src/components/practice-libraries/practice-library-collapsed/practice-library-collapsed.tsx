@@ -14,7 +14,7 @@ export const PracticeLibraryCollapsed: React.FC<IPracticeLibraryCollapsedProps> 
   return (
     <>
       <PracticeLibraryModal isOpen={isOpenModal} closeModal={toggleOpen} library={library} isWithoutActions />
-      <Styled.CollapsedLibrary onPress={toggleOpen}>
+      <Styled.CollapsedLibrary onPress={toggleOpen} activeOpacity={0.5}>
         <Styled.Left>
           <Styled.Title numberOfLines={1}>{library.title}</Styled.Title>
           <Styled.Description numberOfLines={2}>{library.description}</Styled.Description>

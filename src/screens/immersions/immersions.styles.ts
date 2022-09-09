@@ -10,6 +10,7 @@ export const StyledImmersions = {
   `,
 
   LayoutContent: styled.View`
+    flex: 1;
     background-color: ${COLOR.background.white};
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
