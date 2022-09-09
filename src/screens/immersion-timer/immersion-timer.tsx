@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 
-import { libraries } from '@screens/immersions/mock-data';
 import { AskModal } from '@components/ask-modal';
 import { Layout } from '@components/layout';
+import { IPracticeLibraryProps } from '@components/practice-libraries/practice-library/practice-library.typings';
 import { PracticeLibraryCollapsed } from '@components/practice-libraries/practice-library-collapsed';
 import { SwipeToEnd } from '@components/swipe-to-end';
 import { TogglerDoNotDisturb } from '@components/toggler-do-not-disturb';
 
+import { useParam } from '@services/hooks/useParam';
+
 import { StyledImmersionTimer as Styled } from './immersion-timer.styles';
 
-const library = libraries[1];
-
 export const ImmersionTimer: React.FC = () => {
+  const { params: library } = useParam<IPracticeLibraryProps>();
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
   const [isOpenAskModal, setIsOpenAskModal] = useState(false);
 

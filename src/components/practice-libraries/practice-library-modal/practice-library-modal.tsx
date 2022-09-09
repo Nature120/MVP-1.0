@@ -18,12 +18,8 @@ import { Spacer } from '@theme/components';
 export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props => {
   const { navigate } = useNavigation();
 
-  const {
-    isWithoutActions,
-    isOpen,
-    closeModal,
-    library: { title, image, description, type, minuteInterval, tags },
-  } = props;
+  const { isWithoutActions, isOpen, closeModal, library } = props;
+  const { title, image, description, type, minuteInterval, tags } = library;
 
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
 
@@ -37,7 +33,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
   const navigateToTimer = () => {
     closeModal();
-    navigate(APP_ROUTES.immersionTimer as never);
+    navigate(APP_ROUTES.immersionTimer as never, library as never);
   };
 
   return (

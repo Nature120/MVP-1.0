@@ -22,32 +22,30 @@ export const Home: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onToggleOpen = () => setIsOpen(prev => !prev);
+  const closeModal = () => setIsOpen(false);
 
   const onButtonPress = async (value: string) => {
     if (value.trim()) {
       //TODO Record to DB
       console.log('🛑 ~ value', value);
     }
-    setIsOpen(false);
+    navigateToImmersions();
   };
 
-  const onModalHide = () => {
-    navigate(APP_ROUTES.immersions as never);
-  };
-
-  const onTextPress = () => {
-    setIsOpen(false);
-    onModalHide();
+  const navigateToImmersions = () => {
+    closeModal();
+    setTimeout(() => {
+      navigate(APP_ROUTES.immersions as never);
+    }, 500);
   };
 
   return (
     <>
       <AskModal
-        onModalHide={onModalHide}
         isVisible={isOpen}
-        onClose={onToggleOpen}
+        onClose={closeModal}
         onButtonPress={onButtonPress}
-        onTextPress={onTextPress}
+        onTextPress={navigateToImmersions}
       />
 
       <Layout

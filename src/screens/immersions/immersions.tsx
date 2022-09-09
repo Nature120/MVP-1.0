@@ -6,9 +6,7 @@ import { Button } from '@components/button';
 import { Layout } from '@components/layout';
 import { PracticeLibraries } from '@components/practice-libraries';
 import { TogglerDoNotDisturb } from '@components/toggler-do-not-disturb';
-import { libraries, recentLibraries } from './mock-data';
-
-import { handleNavigate } from '@services/helpers/handle-navigate';
+import { recentLibraries } from './mock-data';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -20,6 +18,14 @@ import { Line, Spacer } from '@theme/components';
 export const Immersions: React.FC = () => {
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
   const { navigate } = useNavigation();
+
+  const onStartTimer = () => {
+    if (recentLibraries.length) {
+      navigate(APP_ROUTES.immersionTimer as never, recentLibraries[0] as never);
+    } else {
+      navigate(APP_ROUTES.practices as never);
+    }
+  };
 
   return (
     <Styled.Wrapper>
@@ -45,8 +51,6 @@ export const Immersions: React.FC = () => {
             <TogglerDoNotDisturb mb={48} isDoNotDisturb={isDoNotDisturb} setIsDoNotDisturb={setIsDoNotDisturb} />
           </Styled.Immersions>
 
-          <PracticeLibraries title="Picked For You" libraries={libraries} isWithForwardArrow />
-          <Spacer gap={48} />
           <PracticeLibraries title="Recent Immersions" libraries={recentLibraries} />
           <Spacer gap={20} />
         </Styled.LayoutContent>
@@ -54,7 +58,7 @@ export const Immersions: React.FC = () => {
 
       <Styled.SafeAreaView>
         <Styled.ButtonWrapper>
-          <Button buttonText="START TIMER" height={50} onPress={handleNavigate(navigate, APP_ROUTES.immersionTimer)} />
+          <Button buttonText="START TIMER" height={50} onPress={onStartTimer} />
         </Styled.ButtonWrapper>
       </Styled.SafeAreaView>
     </Styled.Wrapper>
