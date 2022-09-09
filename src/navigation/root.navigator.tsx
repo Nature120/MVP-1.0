@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import auth from '@react-native-firebase/auth';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Home } from '@screens/home/home';
 import { ImmersionTimer } from '@screens/immersion-timer';
 import { Immersions } from '@screens/immersions';
 import { SignInScreen } from '@screens/sign-in-screen/sign-in-screen';
@@ -58,12 +57,12 @@ export const RootNavigator = () => {
     return (
       <MainStack.Navigator
         screenOptions={screenOptions}
-        initialRouteName={isFirstLaunch ? APP_ROUTES.start.onBoard : APP_ROUTES.main.home}>
+        initialRouteName={isFirstLaunchOnBoarding ? APP_ROUTES.start.onBoard : APP_ROUTES.dashboard}>
         {ON_BOARD_ROUTES.map(({ component, name }) => (
           <StartStack.Screen key={name} name={name} component={component} />
         ))}
 
-        <MainStack.Screen name="Home" component={Home} />
+        <StartStack.Screen name={APP_ROUTES.dashboard} component={BottomTabNavigator} />
       </MainStack.Navigator>
     );
   }
@@ -75,7 +74,6 @@ export const RootNavigator = () => {
       <StartStack.Screen name={APP_ROUTES.start.signIn} component={SignInScreen} />
       <StartStack.Screen name={APP_ROUTES.start.signUp} component={SignUpScreen} />
 
-      <StartStack.Screen name={APP_ROUTES.dashboard} component={BottomTabNavigator} />
       <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />
       <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
     </StartStack.Navigator>
