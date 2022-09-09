@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Home } from '@screens/home/home';
 import { ImmersionTimer } from '@screens/immersion-timer';
 import { Immersions } from '@screens/immersions';
+import { SignInScreen } from '@screens/sign-in-screen/sign-in-screen';
 import { SignUpScreen } from '@screens/sign-up-screen/sign-up-screen';
 import { Splash } from '@screens/splash';
 import { BottomTabNavigator } from './bottom-tab.navigator';
@@ -26,7 +26,8 @@ const MainStack = createStackNavigator();
 export const RootNavigator = () => {
   const dispatch = useDispatch();
   const authenitcated = useSelector(getAuthentication);
-  const isFirstLaunch = true;
+  const isFirstLaunchSplash = true;
+  const isFirstLaunchOnBoarding = true;
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
@@ -69,10 +70,10 @@ export const RootNavigator = () => {
   return (
     <StartStack.Navigator
       screenOptions={screenOptions}
-      initialRouteName={isFirstLaunch ? APP_ROUTES.start.splash : APP_ROUTES.start.signUp}>
+      initialRouteName={isFirstLaunchSplash ? APP_ROUTES.start.splash : APP_ROUTES.start.signIn}>
       <StartStack.Screen name={APP_ROUTES.start.splash} component={Splash} />
+      <StartStack.Screen name={APP_ROUTES.start.signIn} component={SignInScreen} />
       <StartStack.Screen name={APP_ROUTES.start.signUp} component={SignUpScreen} />
-      <StartStack.Screen name={APP_ROUTES.start.signIn} component={() => <></>} />
 
       <StartStack.Screen name={APP_ROUTES.dashboard} component={BottomTabNavigator} />
       <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />

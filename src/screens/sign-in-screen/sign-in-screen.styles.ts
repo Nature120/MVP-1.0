@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
-export const SignUpScreenStyles = {
+export const SignInScreenStyles = {
   Container: styled.KeyboardAvoidingView`
     flex: 1;
   `,
@@ -23,6 +23,22 @@ export const SignUpScreenStyles = {
   FormWrapper: styled.View`
     flex: 1;
     margin-bottom: ${moderateScale(16)}px;
+  `,
+  LogInWrapper: styled.View`
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: ${moderateScale(110, 0.1)}px;
+  `,
+  LogInBtn: styled.TouchableOpacity`
+    width: ${scale(60)}px;
+  `,
+  LoginText: styled.Text`
+    margin-right: ${moderateScale(5)}px;
+    font-family: ${FONTS.family.lightBoreal};
+    font-size: ${moderateScale(FONTS.size.xlSmall)}px;
+    font-weight: ${FONTS.weight.light};
+    line-height: ${moderateScale(19)}px;
+    color: ${COLOR.font.darkBlue};
   `,
   GoogleButtonWrapper: styled.View`
     margin-bottom: ${moderateScale(8)}px;
@@ -44,22 +60,6 @@ export const SignUpScreenStyles = {
   Text: styled.Text`
     width: ${moderateScale(353)}px;
     margin-bottom: ${moderateScale(38)}px;
-    font-family: ${FONTS.family.lightBoreal};
-    font-size: ${moderateScale(FONTS.size.xlSmall)}px;
-    font-weight: ${FONTS.weight.light};
-    line-height: ${moderateScale(19)}px;
-    color: ${COLOR.font.darkBlue};
-  `,
-  LogInWrapper: styled.View`
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: ${moderateScale(110, 0.1)}px;
-  `,
-  LogInBtn: styled.TouchableOpacity`
-    width: ${scale(50)}px;
-  `,
-  LoginText: styled.Text`
-    margin-right: ${moderateScale(5)}px;
     font-family: ${FONTS.family.lightBoreal};
     font-size: ${moderateScale(FONTS.size.xlSmall)}px;
     font-weight: ${FONTS.weight.light};

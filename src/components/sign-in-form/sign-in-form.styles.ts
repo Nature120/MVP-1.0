@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
-export const SignUpFormStyles = {
+export const SignInFormStyles = {
   Container: styled.View`
     flex: 1;
     margin-bottom: ${moderateScale(16)}px;

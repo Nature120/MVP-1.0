@@ -7,50 +7,54 @@ import { Button } from '@components/button';
 import { Icon } from '@components/icon';
 import { Input } from '@components/input/input';
 
-import LoginFunctions from '@services/helpers/auth-social';
-import { saveInDB } from '@services/helpers/firebase-store';
-
-import { REGISTER_VALIDATION_SCHEMA } from './sign-up-form.constants';
+import { SIGN_IN_VALIDATION_SCHEMA } from './sign-in-form.constants';
 import { REACT_NATIVE_PAPER_INPUT_THEME } from '@constants/styles';
 
-import { IRegister, IValue } from './sign-up-form.typings';
+import { IHandleSignIn, IValue } from './sign-in-form.typings';
 import { IResetForm } from '@typings/formik-typings';
 
-import { SignUpFormStyles as Styled } from './sign-up-form.styles';
+import { SignInFormStyles as Styled } from './sign-in-form.styles';
 
 import { COLOR } from '@theme/colors';
 
-export const SignUpForm = () => {
+export const SignInForm = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
 
   const onSubmit = (values: IValue, { resetForm }: IResetForm): void => {
-    const { email, password, first_name } = values;
-    const isEmpty = email === '' || password === '' || first_name === '';
+    const { email, password } = values;
+    const isEmpty = email === '' || password === '';
 
     if (isEmpty) {
       return;
     }
-    handleRegister({ email, password, first_name });
+
+    handleSignIn({ email, password });
+
     resetForm();
   };
 
-  const handleRegister = async ({ email, password, first_name }: IRegister): Promise<void> => {
-    try {
-      const credential = auth.EmailAuthProvider.credential(email, password);
-      const provider = auth.EmailAuthProvider.PROVIDER_ID;
+  const handleSignIn = async ({ email, password }: IHandleSignIn) => {
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(error => {
+        handleError(error);
+      });
+  };
 
-      const response = await auth().createUserWithEmailAndPassword(email, password);
-
-      LoginFunctions.saveCredential({ provider, credential });
-
-      ////Store in DB////
-      const uid = response.user.uid;
-      const data = { email, first_name };
-
-      saveInDB({ data, uid });
-    } catch (error) {
-      handleError(error);
+  const handleError = (error: any) => {
+    if (error.code === 'auth/email-already-in-use') {
+      return setErrorMessage('That email address is already in use!');
+    } else if (error.code === 'auth/invalid-email') {
+      return setErrorMessage('That email address is invalid!');
+    } else if (error.code === 'auth/wrong-password') {
+      return setErrorMessage('Wrong password');
+    } else if (error.code === 'auth/user-not-found') {
+      return setErrorMessage('User not found');
+    } else if (error.code === 'auth/too-many-requests') {
+      return setErrorMessage('To many requests from this device');
+    } else {
+      setErrorMessage(error.message);
     }
   };
 
@@ -66,39 +70,19 @@ export const SignUpForm = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  ////Errors
-  const handleError = (error: any) => {
-    if (error.code === 'auth/email-already-in-use') {
-      return setErrorMessage('That email address is already in use!');
-    }
-    if (error.code === 'auth/invalid-email') {
-      return setErrorMessage('That email address is invalid!');
-    }
-  };
-
   const resetError = (): void => {
     setErrorMessage(null);
   };
-
   return (
     <>
       <Formik
-        validationSchema={REGISTER_VALIDATION_SCHEMA}
-        initialValues={{ email: '', password: '', first_name: '' }}
+        validationSchema={SIGN_IN_VALIDATION_SCHEMA}
+        initialValues={{ email: '', password: '' }}
         onSubmit={onSubmit}>
         {({ handleChange, handleBlur, values, errors, handleSubmit }) => {
           return (
             <>
               <Styled.InputWrapper>
-                <Input
-                  placeHolder="First name"
-                  value={values.first_name}
-                  handleChange={handleChange('first_name')}
-                  handleBlur={handleBlur('first_name')}
-                  placeHolderTextColor={'lightGrey'}
-                  onFocus={resetError}
-                />
-                <Styled.ErrorText>{errors.first_name ? errors.first_name : ''}</Styled.ErrorText>
                 <Input
                   placeHolder="Email Address"
                   value={values.email}
@@ -126,7 +110,7 @@ export const SignUpForm = () => {
                 />
                 <Styled.ErrorText>{errors.password ? errors.password : '' || errorMessage}</Styled.ErrorText>
               </Styled.InputWrapper>
-              <Button buttonText="CREATE ACCOUNT" buttonColor="blue" onPress={handleSubmit} />
+              <Button buttonText="Sign In" buttonColor="blue" onPress={handleSubmit} />
             </>
           );
         }}
