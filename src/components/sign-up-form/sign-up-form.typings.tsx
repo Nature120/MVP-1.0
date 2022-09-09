@@ -4,10 +4,6 @@ export interface IValue {
   first_name: string;
 }
 
-export interface IResetForm {
-  resetForm: () => void;
-}
-
 export interface IRegister {
   email: string;
   password: string;

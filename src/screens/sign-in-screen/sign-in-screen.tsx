@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { BackButton } from '@components/back-button/back-button';
 import { Layout } from '@components/layout';
-import { SignUpForm } from '@components/sign-up-form/sign-up-form';
+import { SignInForm } from '@components/sign-in-form/sign-in-form';
 import { SocialAuthButton } from '@components/social-auth-button/social-auth-button';
 
 import { authFaceBook } from '@services/helpers/facebook-auth';
@@ -13,9 +13,9 @@ import { APP_ROUTES } from '@constants/routes';
 
 import { TNavigation } from '@typings/common';
 
-import { SignUpScreenStyles as Styled } from './sign-up.styles';
+import { SignInScreenStyles as Styled } from './sign-in-screen.styles';
 
-export const SignUpScreen = () => {
+export const SignInScreen = () => {
   const { navigate } = useNavigation<TNavigation>();
   const onGoogleButtonPress = () => {
     authGoogle();
@@ -25,8 +25,8 @@ export const SignUpScreen = () => {
     authFaceBook();
   };
 
-  const onPressLogIn = () => {
-    navigate(APP_ROUTES.start.signIn, {});
+  const onPressSignUp = () => {
+    navigate(APP_ROUTES.start.signUp, {});
   };
 
   return (
@@ -37,15 +37,15 @@ export const SignUpScreen = () => {
             <Styled.BackButtonWrapper>
               <BackButton width={32} height={32} color={'darkBlue'} />
             </Styled.BackButtonWrapper>
-            <Styled.Title>Create an account</Styled.Title>
-            <Styled.Text>Sign up for free to start your journey to wholeness</Styled.Text>
+            <Styled.Title>Sign in account</Styled.Title>
+            <Styled.Text>Sign in for free to start your journey to wholeness</Styled.Text>
             <Styled.FormWrapper>
-              <SignUpForm />
+              <SignInForm />
             </Styled.FormWrapper>
             <Styled.LogInWrapper>
-              <Styled.LoginText>Already have an account?</Styled.LoginText>
-              <Styled.LogInBtn onPress={onPressLogIn}>
-                <Styled.LoginLabelText>Login</Styled.LoginLabelText>
+              <Styled.LoginText>Have no account yet?</Styled.LoginText>
+              <Styled.LogInBtn onPress={onPressSignUp}>
+                <Styled.LoginLabelText>Register</Styled.LoginLabelText>
               </Styled.LogInBtn>
             </Styled.LogInWrapper>
             <Styled.GoogleButtonWrapper>
