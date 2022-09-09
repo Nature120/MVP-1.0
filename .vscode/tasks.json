@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Pod install",
+      "type": "shell",
+      "command": "cd ios && pod install && cd ..",
+      "group": "none",
+      "presentation": {
+        "echo": false,
+        "focus": true,
+        "group": "dev",
+        "panel": "dedicated"
+      },
+      "runOptions": {
+        "runOn": "${relativeFileDirname}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
