@@ -1,6 +1,6 @@
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { ParamListBase, RouteProp } from '@react-navigation/native';
-import { StackNavigationOptions } from '@react-navigation/stack';
+import { StackNavigationOptions, StackNavigationProp } from '@react-navigation/stack';
 import { SimpleInterpolation } from 'styled-components';
 
 export type TStyles = SimpleInterpolation;
@@ -30,3 +30,5 @@ export type TScreenOptions =
 export type TFirebaseUser = FirebaseAuthTypes.User | null;
 export type TFirebaseUserCredentials = FirebaseAuthTypes.UserCredential;
 export type TFirebaseAuthCredentials = FirebaseAuthTypes.AuthCredential;
+
+export type TNavigation = StackNavigationProp<any, 'Sign In'>;
