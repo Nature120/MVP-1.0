@@ -41,4 +41,5 @@ export const APP_ROUTES = {
   immersionTimer: 'Immersion Timer',
 
   practices: 'Practices',
+  main: { home: 'Home' },
 };

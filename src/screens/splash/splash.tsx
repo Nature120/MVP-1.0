@@ -18,12 +18,12 @@ export const Splash: React.FC = () => {
       </Styled.SliderContainer>
 
       <ButtonWithLink
-        onButtonPressNavigateTo={APP_ROUTES.start.onBoard} //FIXME
-        onTextPressNavigateTo={APP_ROUTES.start.signIn}
+        onButtonPressNavigateTo={APP_ROUTES.start.signIn} //FIXME
+        onTextPressNavigateTo={APP_ROUTES.start.signUp}
         buttonText="get started"
         height={50}
-        bottomText="Already have an account?"
-        routeText="Sign In"
+        bottomText="Do you have an account?"
+        routeText="Sign Up"
         isWithMagrin
         marginBottom={36}
       />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { verticalScale } from 'react-native-size-matters';
 
 import { IButtonProps } from './button.typings';
 
@@ -23,7 +24,7 @@ export const Button: React.FC<IButtonProps> = props => {
       disabled={isDisabled}
       activeOpacity={activeOpacity}
       buttonColor={buttonColor}
-      height={height}
+      height={verticalScale(height)}
       styles={styles}>
       <Styled.Text isNotUpper={isNotUpper} textColor={textColor} textStyles={textStyles}>
         {buttonText}

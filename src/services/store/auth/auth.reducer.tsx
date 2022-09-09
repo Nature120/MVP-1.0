@@ -1,11 +1,12 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
 
-import * as operation from './auth.operations';
+import * as action from './auth.actions';
 
-const user = createReducer([], {
-  [operation.login.fulfilled.type]: (_, { payload }) => payload,
-  //   [operation.signUp.fulfilled.type]: (_, { payload }) => payload,
-  //   [operation.signOut.fulfilled.type]: () => [],
+import { initialState } from './auth.constants';
+
+const user = createReducer(initialState, {
+  [action.signIn.type]: (_, { payload }) => payload,
+  [action.signOut.type]: () => initialState,
   //   [action.notAuthenticated.type]: () => [],
 });
 
@@ -20,13 +21,14 @@ const error = createReducer(null, {
 });
 
 const isAuthenticated = createReducer(false, {
-  //   [operation.login.fulfilled.type]: () => true,
+  [action.signIn.type]: () => true,
+  [action.isAuthenticated.type]: (_, { payload }) => payload,
+  [action.signOut.type]: () => false,
   //   [operation.login.rejected.type]: () => false,
   //   [operation.login.pending.type]: () => false,
-  //   [operation.signUp.fulfilled.type]: () => true,
-  //   [operation.signUp.rejected.type]: () => false,
-  //   [operation.signUp.pending.type]: () => false,
-  //   [operation.signOut.fulfilled.type]: () => false,
+  // [action.signUp.fulfilled.type]: () => true,
+  // [action.signUp.rejected.type]: () => false,
+  // [action.signUp.pending.type]: () => false,
   //   [action.notAuthenticated.type]: () => false,
 });
 
