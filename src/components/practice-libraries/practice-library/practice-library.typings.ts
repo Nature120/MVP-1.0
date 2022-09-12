@@ -3,7 +3,7 @@ export interface IPracticeLibraryProps {
   type: string;
   title: string;
   description: string;
-  minuteInterval: {
+  duration: {
     from: number;
     to: number;
   };

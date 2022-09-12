@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 
 import { libraries } from '@screens/immersions/mock-data';
 import { AskModal } from '@components/ask-modal';
@@ -8,36 +7,14 @@ import { GoalProgressBar } from '@components/goal-progress-bar';
 import { Layout } from '@components/layout';
 import { PracticeLibraries } from '@components/practice-libraries';
 import { TipOfTheDay } from '@components/tip-of-the-day';
-
-import { APP_ROUTES } from '@constants/routes';
+import { useHome } from './home.state';
 
 import { StyledHome as Styled } from './home.styles';
 
 import { COLOR } from '@theme/colors';
 
-const name = 'Chelsea';
-
 export const Home: React.FC = () => {
-  const { navigate } = useNavigation();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const onToggleOpen = () => setIsOpen(prev => !prev);
-  const closeModal = () => setIsOpen(false);
-
-  const onButtonPress = async (value: string) => {
-    if (value.trim()) {
-      //TODO Record to DB
-      console.log('🛑 ~ value', value);
-    }
-    navigateToImmersions();
-  };
-
-  const navigateToImmersions = () => {
-    closeModal();
-    setTimeout(() => {
-      navigate(APP_ROUTES.immersions as never);
-    }, 500);
-  };
+  const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, onButtonPress, navigateToImmersions } = useHome();
 
   return (
     <>
@@ -55,10 +32,10 @@ export const Home: React.FC = () => {
         elasticScrollColor={COLOR.background.white}
         elasticScrollPosition="bottom">
         <Styled.MainSection>
-          <Styled.Greeting>Hi, {name}</Styled.Greeting>
+          <Styled.Greeting>Hi, {user.first_name}</Styled.Greeting>
           <Styled.MotivationText>Here’s a look at your progress this week. Keep it up!</Styled.MotivationText>
 
-          <GoalProgressBar minutes={39} maxMinutes={120} />
+          {!!weeklyGoal && <GoalProgressBar minutes={user?.goal || 0} maxMinutes={weeklyGoal} />}
 
           <Styled.ButtonWrapper>
             <Button height={50} buttonText="LET’S GO OUTSIDE" onPress={onToggleOpen} />

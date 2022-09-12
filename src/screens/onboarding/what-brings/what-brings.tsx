@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Layout } from '@components/layout';
 import { LayoutOnboarding } from '@components/layout-onboarding';
 import { TextCheckboxGroup } from '@components/text-checkbox-group';
 
+import { updateUser } from '@services/api.service';
 import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
+import { useAppDispatch } from '@services/hooks/redux';
+import { getUid } from '@services/store/auth/auth.selectors';
 
 import { whatBringsVariants } from '../onboarding.constants';
 
@@ -13,7 +17,10 @@ import { StyledWhatBrings as Styled } from './what-brings.styles';
 import { OnboardingText, OnboardingTitle } from '@theme/components';
 
 export const WhatBrings: React.FC = () => {
-  const [selectedVariants, setSelectedVariants] = useState<string[]>([]);
+  const [whatBrings, setWhatBrings] = useState<string[]>([]);
+  const dispatch = useAppDispatch();
+
+  const uid = useSelector(getUid);
 
   const getPartialUnderlinedText = (str: string) =>
     getPartialStyledText(str, (line, isMatch, index) => (
@@ -22,12 +29,12 @@ export const WhatBrings: React.FC = () => {
       </OnboardingText>
     ));
 
-  const onPress = () => {
-    console.log('🛑 ~ selectedVariants', selectedVariants);
+  const onPress = async () => {
+    await updateUser(uid, { whatBrings }, dispatch);
   };
 
   const onChangeVariants = (newVariants: string[]) => {
-    setSelectedVariants(newVariants);
+    setWhatBrings(newVariants);
   };
 
   return (
@@ -37,7 +44,7 @@ export const WhatBrings: React.FC = () => {
         isButtonWithLink
         routeText="Skip for now"
         onPress={onPress}
-        isButtonDisabled={!selectedVariants.length}>
+        isButtonDisabled={!whatBrings.length}>
         <OnboardingTitle>What brings you to Nature OneTwenty?</OnboardingTitle>
         <OnboardingText>
           {getPartialUnderlinedText('We’ll personalize recommendations based on your goals. [Select all that apply.]')}

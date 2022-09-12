@@ -3,7 +3,11 @@ import { ParamListBase, RouteProp } from '@react-navigation/native';
 import { StackNavigationOptions, StackNavigationProp } from '@react-navigation/stack';
 import { SimpleInterpolation } from 'styled-components';
 
+import { GOAL_HASH_MAP } from '@screens/onboarding/onboarding.constants';
+
 export type TStyles = SimpleInterpolation;
+
+export type TDailyGoal = keyof typeof GOAL_HASH_MAP;
 
 export interface IError {
   message?: string;

@@ -1,10 +1,31 @@
 import firestore from '@react-native-firebase/firestore';
+
+import { IError } from '../typings/common.d';
+import { TDispatch } from './store';
+import { partialUpdateUser } from './store/auth/auth.actions';
+
+import { IUser } from './store/auth/auth.interface';
+
 // import axios, { AxiosRequestConfig } from 'axios';
 
+export const userInstance = (uid: string) => {
+  return firestore().collection('Users').doc(uid);
+};
+
 export const getUser = async (uid: string) => {
-  const response = await firestore().collection('Users').doc(uid).get();
-  const data = response.data();
+  const response = await userInstance(uid).get();
+  const data = response.data() as IUser;
   return data;
+};
+
+export const updateUser = async (uid: string, body: Partial<IUser>, dispatch?: TDispatch) => {
+  try {
+    await userInstance(uid).update(body);
+    dispatch && dispatch(partialUpdateUser(body));
+  } catch (err) {
+    const error = err as IError;
+    console.error(error);
+  }
 };
 
 // import { APP_CONFIG } from '@constants/config';

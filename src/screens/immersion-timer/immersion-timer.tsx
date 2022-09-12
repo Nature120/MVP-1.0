@@ -7,7 +7,7 @@ import { PracticeLibraryCollapsed } from '@components/practice-libraries/practic
 import { SwipeToEnd } from '@components/swipe-to-end';
 import { TogglerDoNotDisturb } from '@components/toggler-do-not-disturb';
 
-import { useParam } from '@services/hooks/useParam';
+import { useParam } from '@services/hooks/param';
 
 import { StyledImmersionTimer as Styled } from './immersion-timer.styles';
 

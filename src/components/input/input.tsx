@@ -27,6 +27,7 @@ export const Input: React.FC<IProp> = ({
         onBlur={handleBlur}
         caretHidden={false}
         autoCorrect={false}
+        autoCapitalize="none"
         placeholderTextColor={COLOR.font[placeHolderTextColor]}
         cssInput={cssInput}
       />

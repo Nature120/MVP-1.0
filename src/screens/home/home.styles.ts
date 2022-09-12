@@ -6,6 +6,7 @@ import { FONTS } from '@theme/fonts';
 
 export const StyledHome = {
   MainSection: styled.View`
+    flex: 1;
     margin-horizontal: 24px;
   `,
 

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Layout } from '@components/layout';
 import { LayoutOnboarding } from '@components/layout-onboarding';
 import { WeeklyGoalCheckboxGroup } from '@components/weekly-goal-checkbox-group';
+import { useWeeklyGoal } from './weekly-goal.state';
 
 import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
 
@@ -13,7 +14,7 @@ import { StyledWeeklyGoal as Styled } from './weekly-goal.styles';
 import { OnboardingText, OnboardingTitle } from '@theme/components';
 
 export const WeeklyGoal: React.FC = () => {
-  const [selectedGoal, setSelectedGoal] = useState<string>('');
+  const { selectedGoal, onChangeGoal, onPress } = useWeeklyGoal();
 
   const getPartialBoldText = (str: string) =>
     getPartialStyledText(str, (line, isMatch, index) => (
@@ -21,14 +22,6 @@ export const WeeklyGoal: React.FC = () => {
         {line}
       </OnboardingText>
     ));
-
-  const onPress = () => {
-    console.log('🛑 ~ selectedGoal', selectedGoal);
-  };
-
-  const onChangeGoal = (newGoal: string) => {
-    setSelectedGoal(newGoal);
-  };
 
   return (
     <Layout ellipseColor="green" isWithGradient isWithScroll>

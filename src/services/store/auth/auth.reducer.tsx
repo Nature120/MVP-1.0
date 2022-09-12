@@ -6,6 +6,7 @@ import { initialState } from './auth.constants';
 
 const user = createReducer(initialState, {
   [action.signIn.type]: (_, { payload }) => payload,
+  [action.partialUpdateUser.type]: (userInfo, { payload }) => ({ ...userInfo, ...payload }),
   [action.signOut.type]: () => initialState,
   //   [action.notAuthenticated.type]: () => [],
 });

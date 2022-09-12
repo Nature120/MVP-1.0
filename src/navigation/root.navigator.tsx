@@ -24,9 +24,9 @@ const MainStack = createStackNavigator();
 
 export const RootNavigator = () => {
   const dispatch = useDispatch();
-  const authenitcated = useSelector(getAuthentication);
+  const isAuthenitcated = useSelector(getAuthentication);
   const isFirstLaunchSplash = true;
-  const isFirstLaunchOnBoarding = true;
+  const isFirstLaunchOnboarding = true;
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
@@ -53,16 +53,22 @@ export const RootNavigator = () => {
     dispatch(signIn(data));
   };
 
-  if (authenitcated) {
+  if (isAuthenitcated) {
     return (
       <MainStack.Navigator
         screenOptions={screenOptions}
-        initialRouteName={isFirstLaunchOnBoarding ? APP_ROUTES.start.onBoard : APP_ROUTES.dashboard}>
+        initialRouteName={isFirstLaunchOnboarding ? APP_ROUTES.start.onBoard : APP_ROUTES.dashboard}>
         {ON_BOARD_ROUTES.map(({ component, name }) => (
           <StartStack.Screen key={name} name={name} component={component} />
         ))}
 
-        <StartStack.Screen name={APP_ROUTES.dashboard} component={BottomTabNavigator} />
+        <StartStack.Screen
+          options={{ gestureEnabled: false }}
+          name={APP_ROUTES.dashboard}
+          component={BottomTabNavigator}
+        />
+        <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />
+        <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
       </MainStack.Navigator>
     );
   }
@@ -73,9 +79,6 @@ export const RootNavigator = () => {
       <StartStack.Screen name={APP_ROUTES.start.splash} component={Splash} />
       <StartStack.Screen name={APP_ROUTES.start.signIn} component={SignInScreen} />
       <StartStack.Screen name={APP_ROUTES.start.signUp} component={SignUpScreen} />
-
-      <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />
-      <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
     </StartStack.Navigator>
   );
 };

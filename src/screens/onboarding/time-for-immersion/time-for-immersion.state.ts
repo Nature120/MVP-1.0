@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
 import PushNotification from 'react-native-push-notification';
+import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import { ITextCheckBox } from '@components/text-checkbox/text-checkbox.typings';
 import { TPeriod } from '@components/time-picker/time-picker.typings';
 
+import { updateUser } from '@services/api.service';
 import { getMinMaxDate } from '@services/helpers/utils';
+import { useAppDispatch } from '@services/hooks/redux';
+import { getUid } from '@services/store/auth/auth.selectors';
 
 import { timeForImmersionVariants } from '../onboarding.constants';
 import { setNotificationConfig } from './time-for-immersion.constants';
@@ -17,12 +21,14 @@ export const useTimeForImmersion = () => {
   const [selectedPeriod, setSelectedPeriod] = useState<string>('');
   const [selectedCheckbox, setSelectedCheckbox] = useState<ITextCheckBox>();
   const [isChannelCreated, setIsChannelCreated] = useState(false);
-  const [notificationTime, setNotificationTime] = useState<Date>();
+  const [timeForImmersion, setTimeForImmersion] = useState<Date>();
+  const uid = useSelector(getUid);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (selectedPeriod) {
       const { minimumDate } = getMinMaxDate(selectedPeriod as TPeriod);
-      setNotificationTime(minimumDate);
+      setTimeForImmersion(minimumDate);
     }
   }, [selectedPeriod]);
 
@@ -35,9 +41,11 @@ export const useTimeForImmersion = () => {
     setSelectedCheckbox(checkboxInfo);
 
     if (selectedCheckbox?.text) {
+      await updateUser(uid, { timeForImmersion }, dispatch);
+
       !isChannelCreated && createNotificationsChannel();
       PushNotification.cancelAllLocalNotifications();
-      const config = setNotificationConfig(notificationTime!);
+      const config = setNotificationConfig(timeForImmersion!);
       PushNotification.localNotificationSchedule(config);
 
       navigate(APP_ROUTES.dashboard as never);
@@ -52,8 +60,8 @@ export const useTimeForImmersion = () => {
     selectedCheckbox,
     onPress,
     selectedPeriod,
-    notificationTime,
-    setNotificationTime,
+    timeForImmersion,
+    setTimeForImmersion,
     onChangeTime,
   };
 };

@@ -21,5 +21,6 @@ export const store = configureStore({
 });
 
 const persistor = persistStore(store);
-
+export type TStore = ReturnType<typeof store.getState>;
+export type TDispatch = typeof store.dispatch;
 export default { store, persistor };

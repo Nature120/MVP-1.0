@@ -1,11 +1,14 @@
-export interface IGoalProgressBarProps {
+export interface IGoalProgressBarProps extends IUseGoalProgressBarProps {
   textColor?: string;
   rotation?: number;
   color?: string;
-  size?: number;
+  strokeWidth?: number;
+}
+
+export interface IUseGoalProgressBarProps {
+  addedTime?: number;
   minutes: number;
   maxMinutes: number;
-  strokeWidth?: number;
+  size?: number;
   duration?: number;
-  addedTime?: number;
 }

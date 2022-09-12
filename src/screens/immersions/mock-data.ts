@@ -8,7 +8,7 @@ export const libraries: IPracticeLibraryProps[] = [
     title: 'Air Air Air Air Air Air Air Air Awareness',
     description:
       'Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice',
-    minuteInterval: {
+    duration: {
       from: 10,
       to: 20,
     },
@@ -20,7 +20,7 @@ export const libraries: IPracticeLibraryProps[] = [
     title: 'Air Awareness2',
     description:
       'Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice ',
-    minuteInterval: {
+    duration: {
       from: 10,
       to: 20,
     },
@@ -32,7 +32,7 @@ export const libraries: IPracticeLibraryProps[] = [
     title: 'Air Awareness3',
     description:
       'Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice',
-    minuteInterval: {
+    duration: {
       from: 10,
       to: 20,
     },
@@ -44,7 +44,7 @@ export const libraries: IPracticeLibraryProps[] = [
     title: 'Air Awareness4',
     description:
       'Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice',
-    minuteInterval: {
+    duration: {
       from: 10,
       to: 20,
     },
@@ -59,7 +59,7 @@ export const recentLibraries: IPracticeLibraryProps[] = [
     title: 'Air Awareness4',
     description:
       'Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice Sense, or ‘touch’ the air. What do you hear, notice',
-    minuteInterval: {
+    duration: {
       from: 10,
       to: 20,
     },

@@ -16,7 +16,7 @@ import { StyledTimeForImmersion as Styled } from './time-for-immersion.styles';
 import { OnboardingTitle } from '@theme/components';
 
 export const TimeForImmersion: React.FC = () => {
-  const { selectedCheckbox, onPress, selectedPeriod, notificationTime, setNotificationTime, onChangeTime } =
+  const { selectedCheckbox, onPress, selectedPeriod, timeForImmersion, setTimeForImmersion, onChangeTime } =
     useTimeForImmersion();
 
   return (
@@ -30,7 +30,7 @@ export const TimeForImmersion: React.FC = () => {
         isButtonDisabled={!selectedPeriod}>
         <OnboardingTitle>When is a good time for your daily nature immersion?</OnboardingTitle>
 
-        {selectedCheckbox?.text && notificationTime ? (
+        {selectedCheckbox?.text && timeForImmersion ? (
           <Styled.ReminderContainer>
             <Styled.SingleCheckBoxWrapper>
               <TextCheckbox {...selectedCheckbox} isChecked activeOpacity={1} />
@@ -38,7 +38,7 @@ export const TimeForImmersion: React.FC = () => {
             <Text>
               <Styled.Text>Great! We can remind you to spend some time in nature at:</Styled.Text>
               <Styled.TimePickerContainer>
-                <TimePicker period={selectedPeriod as TPeriod} time={notificationTime} setTime={setNotificationTime} />
+                <TimePicker period={selectedPeriod as TPeriod} time={timeForImmersion} setTime={setTimeForImmersion} />
               </Styled.TimePickerContainer>
             </Text>
           </Styled.ReminderContainer>
