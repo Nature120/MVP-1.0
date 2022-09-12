@@ -8,8 +8,12 @@ import { IUser } from './store/auth/auth.interface';
 
 // import axios, { AxiosRequestConfig } from 'axios';
 
+type TCollection = 'Users' | 'Practise library' | 'Other text';
+
+export const databaseRef = (collection: TCollection) => firestore().collection(collection);
+
 export const userInstance = (uid: string) => {
-  return firestore().collection('Users').doc(uid);
+  return databaseRef('Users').doc(uid);
 };
 
 export const getUser = async (uid: string) => {
