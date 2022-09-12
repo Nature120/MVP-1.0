@@ -1,11 +1,20 @@
 import { ITextCheckBox } from '@components/text-checkbox/text-checkbox.typings';
 import { IWeeklyGoal } from '@components/weekly-goal-checkbox/weekly-goal-checkbox.typings';
 
-export const weeklyGoalVariants: IWeeklyGoal[] = [
-  { text: 'MINIMUM 120 MINUTES PER WEEK', minPerDay: 17 },
-  { text: 'IDEAL 200 MINUTES PER WEEK', minPerDay: 32 },
-  { text: 'OPTIMAL 300 MINUTES PER WEEK', minPerDay: 44 },
-];
+import { TDailyGoal } from '@typings/common';
+
+export const GOAL_HASH_MAP = {
+  17: 120,
+  28: 200,
+  43: 300,
+} as const;
+
+const words = ['MINIMUM', 'IDEAL', 'OPTIMAL'];
+
+export const weeklyGoalVariants: IWeeklyGoal[] = Object.keys(GOAL_HASH_MAP).map((dailyGoal, index) => ({
+  text: `${words[index]} ${GOAL_HASH_MAP[+dailyGoal as TDailyGoal]} MINUTES PER WEEK`,
+  minPerDay: +dailyGoal,
+}));
 
 export const timeForImmersionVariants: ITextCheckBox[] = [
   { text: 'IN THE MORNING', icon: 'onBoardingSun', iconSize: { height: 22, width: 44 } },

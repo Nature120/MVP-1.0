@@ -18,6 +18,7 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
     buttonText,
     routeText,
     onPress,
+    onBackButtonPress,
     isButtonDisabled,
     isWithoutRedirect,
     onRoutePressNavigateTo,
@@ -29,7 +30,7 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
         <Styled.ProgressBarWrapper>
           <ProgressBar current={progress.current} total={progress.total} />
         </Styled.ProgressBarWrapper>
-        <BackButton width={32} height={32} color="darkBlue" />
+        <BackButton width={32} height={32} color="darkBlue" onPress={onBackButtonPress} />
       </Styled.Header>
 
       <Styled.ChildrenWrapper>{children}</Styled.ChildrenWrapper>

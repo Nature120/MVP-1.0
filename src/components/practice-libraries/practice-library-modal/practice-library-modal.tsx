@@ -19,7 +19,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
   const { navigate } = useNavigation();
 
   const { isWithoutActions, isOpen, closeModal, library } = props;
-  const { title, image, description, type, minuteInterval, tags } = library;
+  const { title, image, description, type, duration, tags } = library;
 
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
 
@@ -60,7 +60,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                 <Styled.TimeWrapper>
                   <Icon type="clock" colorIcon="cloudyBlue" size={18} />
                   <Styled.Time>
-                    {minuteInterval.from}-{minuteInterval.to} min
+                    {duration.from}-{duration.to} min
                   </Styled.Time>
                 </Styled.TimeWrapper>
               </Styled.Header>

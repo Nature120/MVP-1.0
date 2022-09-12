@@ -46,8 +46,9 @@ export const SignUpForm = () => {
 
       ////Store in DB////
       const uid = response.user.uid;
-      const data = { email, first_name };
 
+      const data = { email, first_name };
+      // dispatch
       saveInDB({ data, uid });
     } catch (error) {
       handleError(error);

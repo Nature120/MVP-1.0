@@ -8,7 +8,6 @@ import { DEVICE_HEIGHT } from '@services/helpers/device-utils';
 import { StyledThankYou as Styled } from './thank-you.styles';
 
 import { OnboardingCard, OnboardingText, OnboardingTitle } from '@theme/components';
-
 export const ThankYou: React.FC = () => {
   return (
     <Layout ellipseColor="green" isWithGradient isWithScroll>

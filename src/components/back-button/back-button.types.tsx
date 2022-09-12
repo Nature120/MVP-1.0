@@ -10,4 +10,5 @@ export type IBackButtonProps = {
   color?: TColorIcon;
   cssButton?: TStyles;
   iconType?: TIconNames;
+  onPress?: () => void;
 };

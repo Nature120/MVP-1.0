@@ -1,11 +1,13 @@
 import styled from 'styled-components/native';
 
+import { isIOS } from '@services/helpers/device-utils';
+
 import { COLOR } from '@theme/colors';
 import { TextComponent } from '@theme/components/text';
 
 export const StyledBottomTabBar = {
   Wrapper: styled.View`
-    padding: 15px 24px;
+    padding: 15px 24px ${isIOS ? 0 : 15}px 24px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;

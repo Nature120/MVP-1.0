@@ -8,11 +8,14 @@ import { IBackButtonProps } from './back-button.types';
 import { BackButtonStyles as Styled } from './back-button.styles';
 
 export const BackButton: React.FC<IBackButtonProps> = props => {
-  const { width, height, color, cssButton, iconType } = props;
+  const { width, height, color, cssButton, iconType, onPress } = props;
   const { goBack, canGoBack } = useNavigation();
   const isGoback = canGoBack();
 
   const onPressGoBack = () => {
+    if (onPress) {
+      return onPress();
+    }
     if (isGoback === true) {
       goBack();
     }
