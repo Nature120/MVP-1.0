@@ -2,19 +2,29 @@ import React, { useEffect, useState } from 'react';
 
 import { Icon } from '@components/icon';
 
+import { databaseRef } from '@services/api.service';
+
 import { StyledTipOfTheDay as Styled } from './tip-of-the-day.styles';
 
 import { Line } from '@theme/components';
 
-const mockText =
-  'A minimum of 120 minutes per week spent in contact with natural environments has been scientifically shown to correlate with physiological, emotional, and psychological benefits';
+const WEEKDAY = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'] as const;
 
 export const TipOfTheDay: React.FC = () => {
   const [tipText, setTipText] = useState('');
 
   useEffect(() => {
-    //TODO fetch tip text
-    setTipText(mockText);
+    const getTipOfTheDay = async () => {
+      const response = await databaseRef('Other text').doc('Tip of the day').get();
+      const allTips = response.data();
+      if (allTips) {
+        const today = new Date().getDay();
+        const tip = allTips[WEEKDAY[today]];
+        setTipText(tip);
+      }
+    };
+
+    getTipOfTheDay();
   }, []);
 
   return (
