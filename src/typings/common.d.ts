@@ -1,3 +1,5 @@
+import { StyleProp, ViewStyle } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { ParamListBase, RouteProp } from '@react-navigation/native';
 import { StackNavigationOptions, StackNavigationProp } from '@react-navigation/stack';
@@ -6,6 +8,9 @@ import { SimpleInterpolation } from 'styled-components';
 import { GOAL_HASH_MAP } from '@screens/onboarding/onboarding.constants';
 
 export type TStyles = SimpleInterpolation;
+export type TViewProps = StyleProp<ViewStyle>;
+export type TAnimatedViewProps = StyleProp<Animated.AnimateStyle<ViewStyle>>;
+export type TAnimatedNumber = Animated.Node<number>;
 
 export type TDailyGoal = keyof typeof GOAL_HASH_MAP;
 
