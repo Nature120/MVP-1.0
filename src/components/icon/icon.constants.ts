@@ -15,6 +15,8 @@ import onBoardingMoon from '@assets/icons/on-boarding-moon.svg';
 import onBoardingSun from '@assets/icons/on-boarding-sun.svg';
 import openEye from '@assets/icons/open-eye.svg';
 import pencil from '@assets/icons/pencil.svg';
+import pause from '@assets/icons/pause.svg';
+import play from '@assets/icons/play.svg';
 import practices from '@assets/icons/practices.svg';
 import stats from '@assets/icons/stats.svg';
 import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
@@ -42,4 +44,6 @@ export const ICONS = {
   eye,
   openEye,
   apple,
+  play,
+  pause,
 };
