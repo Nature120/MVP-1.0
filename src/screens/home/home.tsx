@@ -18,7 +18,7 @@ import { CenterContainer } from '@theme/components';
 export const Home: React.FC = () => {
   const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, onButtonPress, navigateToImmersions } = useHome();
 
-  const [temp, setTempe] = useState(130);
+  const [temp, setTempe] = useState(110);
 
   return (
     <>
@@ -49,8 +49,6 @@ export const Home: React.FC = () => {
           <CenterContainer>
             <Rings maxMinutes={weeklyGoal} minutes={temp} />
           </CenterContainer>
-
-          {/* {!!weeklyGoal && <GoalProgressBar minutes={ user?.goal || 0} maxMinutes={weeklyGoal} />} */}
 
           <Styled.ButtonWrapper>
             <Button height={50} buttonText="LET’S GO OUTSIDE" onPress={onToggleOpen} />
