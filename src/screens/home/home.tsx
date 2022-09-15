@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Text, TouchableOpacity } from 'react-native';
 
 import { libraries } from '@screens/immersions/mock-data';
 import { AskModal } from '@components/ask-modal';
 import { Button } from '@components/button';
-import { GoalProgressBar } from '@components/goal-progress-bar';
 import { Layout } from '@components/layout';
 import { PracticeLibraries } from '@components/practice-libraries';
+import { Rings } from '@components/rings';
 import { TipOfTheDay } from '@components/tip-of-the-day';
 import { useHome } from './home.state';
 
 import { StyledHome as Styled } from './home.styles';
 
 import { COLOR } from '@theme/colors';
+import { CenterContainer } from '@theme/components';
 
 export const Home: React.FC = () => {
   const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, onButtonPress, navigateToImmersions } = useHome();
+
+  const [temp, setTempe] = useState(130);
 
   return (
     <>
@@ -35,7 +39,18 @@ export const Home: React.FC = () => {
           <Styled.Greeting>Hi, {user.first_name}</Styled.Greeting>
           <Styled.MotivationText>Here’s a look at your progress this week. Keep it up!</Styled.MotivationText>
 
-          {!!weeklyGoal && <GoalProgressBar minutes={user?.goal || 0} maxMinutes={weeklyGoal} />}
+          <TouchableOpacity onPress={() => setTempe(prev => prev + 20)}>
+            <Text>+++++ </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setTempe(prev => prev - 20)}>
+            <Text>------ </Text>
+          </TouchableOpacity>
+
+          <CenterContainer>
+            <Rings maxMinutes={weeklyGoal} minutes={temp} />
+          </CenterContainer>
+
+          {/* {!!weeklyGoal && <GoalProgressBar minutes={ user?.goal || 0} maxMinutes={weeklyGoal} />} */}
 
           <Styled.ButtonWrapper>
             <Button height={50} buttonText="LET’S GO OUTSIDE" onPress={onToggleOpen} />

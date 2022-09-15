@@ -1,6 +1,7 @@
 import ellipseGreen from '@assets/images/ellipse-green.png';
 import ellipseLightGreen from '@assets/images/ellipse-light-green.png';
 import logo from '@assets/images/logo.png';
+import mask from '@assets/images/mask.png';
 import onBoardStart from '@assets/images/on-board/on-board-start.jpg';
 import clouds from '@assets/images/splash/clouds.png';
 import ellipses from '@assets/images/splash/ellipses.png';
@@ -11,6 +12,7 @@ import tip from '@assets/images/splash/tip.png';
 export const IMAGES = {
   flowers,
   tip,
+  mask,
   lotus,
   clouds,
   ellipses,
