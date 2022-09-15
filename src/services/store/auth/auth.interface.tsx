@@ -16,7 +16,7 @@ export interface IUser {
   email?: string | null;
   first_name?: string | null;
   whatBrings?: string[];
-  dailyGoal?: TDailyGoal;
+  dailyGoal?: number;
   goal?: number;
   timeForImmersion?: Date;
 }
