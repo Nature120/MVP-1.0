@@ -14,6 +14,7 @@ import onBoardingApple from '@assets/icons/on-boarding-apple.svg';
 import onBoardingMoon from '@assets/icons/on-boarding-moon.svg';
 import onBoardingSun from '@assets/icons/on-boarding-sun.svg';
 import openEye from '@assets/icons/open-eye.svg';
+import pencil from '@assets/icons/pencil.svg';
 import practices from '@assets/icons/practices.svg';
 import stats from '@assets/icons/stats.svg';
 import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
@@ -28,6 +29,7 @@ export const ICONS = {
   google,
   facebook,
   clock,
+  pencil,
   tip,
   onBoardingMoon,
   home,

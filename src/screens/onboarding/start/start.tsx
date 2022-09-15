@@ -13,7 +13,7 @@ import { IUser } from '@services/store/auth/auth.interface';
 import { getUid } from '@services/store/auth/auth.selectors';
 
 import { IMAGES } from '@constants/images';
-import { GOAL_HASH_MAP, whatBringsVariants } from '@screens/onboarding/onboarding.constants';
+import { ONBOARDING_GOAL_HASH_MAP, whatBringsVariants } from '@screens/onboarding/onboarding.constants';
 
 import { TDailyGoal } from '@typings/common';
 
@@ -36,7 +36,7 @@ export const Start: React.FC = () => {
   useEffect(() => {
     const setDefaultUserProperties = async () => {
       const defaultProperties: Partial<IUser> = {
-        dailyGoal: +Object.keys(GOAL_HASH_MAP)[0] as TDailyGoal,
+        dailyGoal: +Object.keys(ONBOARDING_GOAL_HASH_MAP)[0] as TDailyGoal,
         goal: 0,
         whatBrings: [whatBringsVariants[0].text.toLowerCase().replace(/ /g, '_')],
       };
