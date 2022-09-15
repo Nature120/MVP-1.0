@@ -16,6 +16,7 @@ export const FONTS = {
     large: 24,
     xLarge: 30,
     xlLarge: 34,
+    superLarge: 64,
   },
   family: {
     mediumAcumin: 'NotoSans-Medium',

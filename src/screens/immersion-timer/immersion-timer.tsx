@@ -5,6 +5,8 @@ import { Layout } from '@components/layout';
 import { IPracticeLibraryProps } from '@components/practice-libraries/practice-library/practice-library.typings';
 import { PracticeLibraryCollapsed } from '@components/practice-libraries/practice-library-collapsed';
 import { SwipeToEnd } from '@components/swipe-to-end';
+import { TimerTest } from '@components/test-timer/test-timer';
+import { TimerProgressBar } from '@components/timer-progress-bar/timer-progress-bar';
 import { TogglerDoNotDisturb } from '@components/toggler-do-not-disturb';
 
 import { useParam } from '@services/hooks/param';
@@ -37,9 +39,8 @@ export const ImmersionTimer: React.FC = () => {
 
       <PracticeLibraryCollapsed library={library} />
 
-      <Styled.MockTimerWrapper>
-        <Styled.MockTimer />
-      </Styled.MockTimerWrapper>
+      {/* <TimerProgressBar /> */}
+      <TimerTest />
 
       <TogglerDoNotDisturb
         isDark

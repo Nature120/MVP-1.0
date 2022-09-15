@@ -49,6 +49,7 @@ export const COLOR = {
     mintLight: '#ECF5F5',
     mintDark: '#D4E5DF',
     textInput: '#E7EEEE',
+    progressBar: '#C3D7CC',
   },
   title: darkBlue,
   text: darkBlue,
