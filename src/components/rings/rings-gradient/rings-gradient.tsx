@@ -1,10 +1,12 @@
 import React from 'react';
 
-import { IMAGES } from '@constants/images';
+import { Image } from '@components/image';
+
+import { URI } from '@constants/images';
 
 import { IRingsGradientProps } from './rings-gradient.typings';
 
-import { StyledRingsGradient as Styled } from './rings-gradient.styles';
+import { maskStyle, StyledRingsGradient as Styled } from './rings-gradient.styles';
 
 export const RingsGradient: React.FC<IRingsGradientProps> = props => {
   const {
@@ -14,7 +16,18 @@ export const RingsGradient: React.FC<IRingsGradientProps> = props => {
 
   return (
     <Styled.Wrapper size={size} startColor={start}>
-      <Styled.MaskedView maskElement={<Styled.MaskImage size={size} source={IMAGES.mask} />}>
+      <Styled.MaskedView
+        maskElement={
+          <Image
+            styles={maskStyle}
+            width={size}
+            height={size}
+            source={{ uri: URI.mask }}
+            borderRadius={size / 2}
+            // cache="cacheOnly"
+            priority={'high'}
+          />
+        }>
         <Styled.Inner size={size} endColor={end} />
       </Styled.MaskedView>
     </Styled.Wrapper>

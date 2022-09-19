@@ -4,11 +4,14 @@ import { Text, TouchableOpacity } from 'react-native';
 import { libraries } from '@screens/immersions/mock-data';
 import { AskModal } from '@components/ask-modal';
 import { Button } from '@components/button';
+import { Image } from '@components/image';
 import { Layout } from '@components/layout';
 import { PracticeLibraries } from '@components/practice-libraries';
 import { Rings } from '@components/rings';
 import { TipOfTheDay } from '@components/tip-of-the-day';
 import { useHome } from './home.state';
+
+import { URI } from '@constants/images';
 
 import { StyledHome as Styled } from './home.styles';
 
@@ -18,7 +21,7 @@ import { CenterContainer } from '@theme/components';
 export const Home: React.FC = () => {
   const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, onButtonPress, navigateToImmersions } = useHome();
 
-  const [temp, setTempe] = useState(110);
+  const [temp, setTempe] = useState(190);
 
   return (
     <>
@@ -39,6 +42,16 @@ export const Home: React.FC = () => {
           <Styled.Greeting>Hi, {user.first_name}</Styled.Greeting>
           <Styled.MotivationText>Here’s a look at your progress this week. Keep it up!</Styled.MotivationText>
 
+          <Image
+            styles={{ backgroundColor: 'transparent' }}
+            width={150}
+            height={150}
+            source={{ uri: URI.mask }}
+            // cache="cacheOnly"
+            borderRadius={75}
+            priority={'high'}
+          />
+
           <TouchableOpacity onPress={() => setTempe(prev => prev + 20)}>
             <Text>+++++ </Text>
           </TouchableOpacity>
@@ -47,7 +60,7 @@ export const Home: React.FC = () => {
           </TouchableOpacity>
 
           <CenterContainer>
-            <Rings maxMinutes={weeklyGoal} minutes={temp} />
+            <Rings maxMinutes={weeklyGoal || 120} minutes={temp} />
           </CenterContainer>
 
           <Styled.ButtonWrapper>

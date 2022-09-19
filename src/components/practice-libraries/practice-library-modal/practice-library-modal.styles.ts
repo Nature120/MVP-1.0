@@ -88,7 +88,6 @@ export const StyledPracticeLibraryModal = {
     font-size: ${FONTS.size.xlSmall}px;
     line-height: 26px;
     color: ${COLOR.subheading};
-    max-width: 87%;
   `,
 
   Tags: styled.View`

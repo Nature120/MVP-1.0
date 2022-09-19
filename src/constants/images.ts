@@ -1,3 +1,5 @@
+import { Source } from 'react-native-fast-image';
+
 import ellipseGreen from '@assets/images/ellipse-green.png';
 import ellipseLightGreen from '@assets/images/ellipse-light-green.png';
 import logo from '@assets/images/logo.png';
@@ -21,5 +23,11 @@ export const IMAGES = {
   ['ellipse-green']: ellipseGreen,
   ['ellipse-light-green']: ellipseLightGreen,
 };
+
+export const URI = {
+  mask: 'https://i.postimg.cc/tgdfTsKz/mask.png',
+};
+
+export const IMAGES_TO_PRELOAD: Source[] = [{ uri: URI.mask, priority: 'high', cache: 'cacheOnly' }];
 
 export type TImageNames = keyof typeof IMAGES;

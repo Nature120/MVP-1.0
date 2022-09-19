@@ -1,6 +1,12 @@
 import MaskedView from '@react-native-masked-view/masked-view';
 import styled from 'styled-components/native';
 
+import { TStyles } from '@typings/common';
+
+export const maskStyle: TStyles = {
+  backgroundColor: 'transparent',
+};
+
 export const StyledRingsGradient = {
   Wrapper: styled.View<{ size: number; startColor: string }>`
     width: ${props => props.size}px;
@@ -11,13 +17,6 @@ export const StyledRingsGradient = {
 
   MaskedView: styled(MaskedView)`
     flex: 1;
-  `,
-
-  MaskImage: styled.Image<{ size: number }>`
-    width: ${props => props.size}px;
-    height: ${props => props.size}px;
-    background-color: transparent;
-    border-radius: ${props => props.size / 2}px;
   `,
 
   Inner: styled.View<{ size: number; endColor: string }>`
