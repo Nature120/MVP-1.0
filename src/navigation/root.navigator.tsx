@@ -57,7 +57,7 @@ export const RootNavigator = () => {
     return (
       <MainStack.Navigator
         screenOptions={screenOptions}
-        initialRouteName={/* isFirstLaunchOnboarding ? APP_ROUTES.start.onBoard :  */ APP_ROUTES.dashboard}>
+        initialRouteName={isFirstLaunchOnboarding ? APP_ROUTES.start.onBoard : APP_ROUTES.dashboard}>
         {ON_BOARD_ROUTES.map(({ component, name }) => (
           <StartStack.Screen key={name} name={name} component={component} />
         ))}
@@ -75,7 +75,7 @@ export const RootNavigator = () => {
   return (
     <StartStack.Navigator
       screenOptions={screenOptions}
-      initialRouteName={/* isFirstLaunchSplash */ false ? APP_ROUTES.start.splash : APP_ROUTES.start.signIn}>
+      initialRouteName={isFirstLaunchSplash ? APP_ROUTES.start.splash : APP_ROUTES.start.signIn}>
       <StartStack.Screen name={APP_ROUTES.start.splash} component={Splash} />
       <StartStack.Screen name={APP_ROUTES.start.signIn} component={SignInScreen} />
       <StartStack.Screen name={APP_ROUTES.start.signUp} component={SignUpScreen} />

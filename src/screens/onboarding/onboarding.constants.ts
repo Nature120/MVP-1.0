@@ -21,7 +21,7 @@ const interval = 20;
 export const GOAL_HASH_MAP = () => {
   const weeklyArr = range(min, max, interval);
   const res: { [x: number]: number } = {};
-  weeklyArr.map((weekly, index) => (res[Math.round(weekly / 7)] = weekly));
+  weeklyArr.map(weekly => (res[Math.round(weekly / 7)] = weekly));
   return res;
 };
 
