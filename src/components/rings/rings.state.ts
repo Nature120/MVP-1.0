@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { Animated } from 'react-native';
+import { Animated, TextInput } from 'react-native';
 import { set, useCode, Value } from 'react-native-reanimated';
 import { timing } from 'react-native-redash';
 
@@ -15,7 +15,7 @@ export const useRings = (props: IDonutProps) => {
   const fgRadius = useMemo(() => getFgRadius(percent), [percent]);
 
   const progress = new Value(0);
-  const inputRef = useRef<any>(null);
+  const inputRef = useRef<TextInput>(null);
   const animatedText = useRef<Animated.Value>(new Animated.Value(0)).current;
   useCode(() => set(progress, timing({ duration: ANIMATION_DURATION, easing: RING_EASING })), [progress]);
 
@@ -33,11 +33,9 @@ export const useRings = (props: IDonutProps) => {
   };
 
   const setTextValue = (value: number, isAddedTime?: boolean) => {
-    if (inputRef?.current) {
-      inputRef.current.setNativeProps({
-        text: `${isAddedTime ? '+' : ''}${Math.round(value)}`,
-      });
-    }
+    inputRef?.current?.setNativeProps({
+      text: `${isAddedTime ? '+' : ''}${Math.round(value)}`,
+    });
   };
 
   useEffect(() => {
@@ -46,6 +44,7 @@ export const useRings = (props: IDonutProps) => {
       setTextValue(v.value);
       if (Math.round(v.value) === minutes) {
         animatedText.removeAllListeners();
+        animatedText.setValue(0);
       }
     });
     return () => {
