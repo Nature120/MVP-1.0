@@ -24,7 +24,6 @@ export const RingsGradient: React.FC<IRingsGradientProps> = props => {
             height={size}
             source={{ uri: URI.mask }}
             borderRadius={size / 2}
-            // cache="cacheOnly"
             priority={'high'}
           />
         }>

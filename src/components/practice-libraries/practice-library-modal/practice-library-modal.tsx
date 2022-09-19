@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Modal, SafeAreaView, View } from 'react-native';
+import { Modal, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@components/button';
@@ -17,6 +19,7 @@ import { Spacer } from '@theme/components';
 
 export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props => {
   const { navigate } = useNavigation();
+  const insets = useSafeAreaInsets();
 
   const { isWithoutActions, isOpen, closeModal, library } = props;
   const { title, image, description, type, duration, tags } = library;
@@ -25,7 +28,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
   const getParagraphes = (text: string) => {
     return text.match(/[^.!?]+[.!?]+/g)?.map((sentence, index) => (
-      <Styled.Description isFirst={index === 0} key={sentence}>
+      <Styled.Description isFirst={index === 0} key={sentence + index}>
         {sentence.trim()}
       </Styled.Description>
     ));
@@ -36,17 +39,30 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     navigate(APP_ROUTES.immersionTimer as never, library as never);
   };
 
+  const navigateToHomePage = () => {
+    closeModal();
+    navigate(APP_ROUTES.main.home as never);
+  };
+
   return (
     <Modal visible={isOpen} animationType="slide">
       <Styled.PracticeLibraryModal contentContainerStyle={contentContainerStyle}>
         <View>
           <Styled.ImageTop source={{ uri: image }} />
 
-          <Styled.CloseWrapper>
-            <SafeAreaView>
-              <ButtonIcon isWithBg type="cross" size={18} colorIcon="cloudyGreen" onPress={closeModal} />
-            </SafeAreaView>
-          </Styled.CloseWrapper>
+          <Styled.ImageHeader top={insets.top} isWithoutActions={isWithoutActions}>
+            {!isWithoutActions && (
+              <ButtonIcon
+                isWithBg
+                type="arrowLeft"
+                iconIndent={7}
+                size={36}
+                colorIcon="cloudyGreen"
+                onPress={navigateToHomePage}
+              />
+            )}
+            <ButtonIcon isWithBg type="cross" iconIndent={9} size={36} colorIcon="cloudyGreen" onPress={closeModal} />
+          </Styled.ImageHeader>
 
           <Styled.TypeContainer>
             <Styled.Type numberOfLines={1}>{type}</Styled.Type>
@@ -69,7 +85,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
               <Styled.Tags>
                 {tags.map((tag, index, arr) => (
-                  <Spacer isHorizontal key={tag} gap={8} isLastItem={index === arr.length - 1}>
+                  <Spacer isHorizontal key={tag + index} gap={8} isLastItem={index === arr.length - 1}>
                     <Spacer gap={8}>
                       <Styled.Tag>
                         <Styled.TagText>{tag}</Styled.TagText>

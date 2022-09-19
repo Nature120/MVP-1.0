@@ -1,5 +1,5 @@
-import { IPracticeLibraryProps } from '../practice-library/practice-library.typings';
+import { IPracticeLibrary } from '../practice-library/practice-library.typings';
 
 export interface IPracticeLibraryCollapsedProps {
-  library: IPracticeLibraryProps;
+  library: IPracticeLibrary;
 }

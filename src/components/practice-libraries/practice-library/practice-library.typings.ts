@@ -1,4 +1,8 @@
-export interface IPracticeLibraryProps {
+export interface IPracticeLibraryProps extends IPracticeLibrary {
+  isWithoutActions?: boolean;
+}
+
+export interface IPracticeLibrary {
   image: string;
   type: string;
   title: string;

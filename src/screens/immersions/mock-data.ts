@@ -1,7 +1,7 @@
 //TODO delete this file
-import { IPracticeLibraryProps } from '@components/practice-libraries/practice-library/practice-library.typings';
+import { IPracticeLibrary } from '@components/practice-libraries/practice-library/practice-library.typings';
 
-export const libraries: IPracticeLibraryProps[] = [
+export const libraries: IPracticeLibrary[] = [
   {
     image: 'https://i.postimg.cc/pVfG29Wq/n1.jpg',
     type: 'Reconnect',
@@ -52,7 +52,7 @@ export const libraries: IPracticeLibraryProps[] = [
   },
 ];
 
-export const recentLibraries: IPracticeLibraryProps[] = [
+export const recentLibraries: IPracticeLibrary[] = [
   {
     image: 'https://i.postimg.cc/NM76wH6X/n4.webp',
     type: 'Reconnect4',
