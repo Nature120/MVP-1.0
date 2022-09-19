@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { AskModal } from '@components/ask-modal';
 import { Layout } from '@components/layout';
-import { IPracticeLibraryProps } from '@components/practice-libraries/practice-library/practice-library.typings';
+import { IPracticeLibrary } from '@components/practice-libraries/practice-library/practice-library.typings';
 import { PracticeLibraryCollapsed } from '@components/practice-libraries/practice-library-collapsed';
 import { SwipeToEnd } from '@components/swipe-to-end';
 import { TimerTest } from '@components/test-timer/test-timer';
@@ -14,7 +14,7 @@ import { useParam } from '@services/hooks/param';
 import { StyledImmersionTimer as Styled } from './immersion-timer.styles';
 
 export const ImmersionTimer: React.FC = () => {
-  const { params: library } = useParam<IPracticeLibraryProps>();
+  const { params: library } = useParam<IPracticeLibrary>();
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
   const [isOpenAskModal, setIsOpenAskModal] = useState(false);
 

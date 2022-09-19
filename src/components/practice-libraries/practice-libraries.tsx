@@ -11,7 +11,7 @@ import { StyledPracticeLibraries as Styled } from './practice-libraries.styles';
 import { Spacer } from '@theme/components';
 
 export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
-  const { title, libraries, isWithForwardArrow } = props;
+  const { title, libraries, isWithForwardArrow, isWithoutActions } = props;
   return (
     <>
       <Styled.Header>
@@ -29,7 +29,7 @@ export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
             startEndGap={24}
             index={index}
             isLastItem={index === items.length - 1}>
-            <PracticeLibrary {...libraryItem} />
+            <PracticeLibrary {...libraryItem} isWithoutActions={isWithoutActions} />
           </Spacer>
         ))}
       </ScrollView>

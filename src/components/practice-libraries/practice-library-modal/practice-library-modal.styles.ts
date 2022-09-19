@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+import { DEVICE_WIDTH } from '@services/helpers/device-utils';
+
 import { COLOR } from '@theme/colors';
 import { TextComponent, Title } from '@theme/components';
 import { FONTS } from '@theme/fonts';
@@ -21,11 +23,13 @@ export const StyledPracticeLibraryModal = {
     height: 275px;
   `,
 
-  CloseWrapper: styled.View`
+  ImageHeader: styled.View<{ top: number; isWithoutActions?: boolean }>`
     position: absolute;
-    top: 24px;
-    right: 24px;
-    justify-content: flex-end;
+    width: ${DEVICE_WIDTH - 24 * 2}px;
+    top: ${({ top }) => top + 8}px;
+    left: 24px;
+    flex-direction: row;
+    justify-content: ${props => (props.isWithoutActions ? 'flex-end' : 'space-between')};
   `,
 
   TypeContainer: styled.View`

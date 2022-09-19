@@ -25,6 +25,7 @@ export const Practices: React.FC = () => {
     //TODO pull from DB
     setReceivedCollections(mockReceivedCollections);
   }, []);
+
   return (
     <Layout
       isWithoutMargin

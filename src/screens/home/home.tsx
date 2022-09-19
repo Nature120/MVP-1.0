@@ -47,7 +47,6 @@ export const Home: React.FC = () => {
             width={150}
             height={150}
             source={{ uri: URI.mask }}
-            // cache="cacheOnly"
             borderRadius={75}
             priority={'high'}
           />
@@ -69,7 +68,7 @@ export const Home: React.FC = () => {
         </Styled.MainSection>
 
         <Styled.InfoSectionWrapper>
-          <PracticeLibraries title="Picked For You" libraries={libraries} />
+          <PracticeLibraries title="Picked For You" libraries={libraries} isWithoutActions />
 
           <Styled.InfoSection>
             <TipOfTheDay />

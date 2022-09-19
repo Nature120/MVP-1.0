@@ -1,8 +1,8 @@
-import { IPracticeLibraryProps } from '../practice-library/practice-library.typings';
+import { IPracticeLibrary } from '../practice-library/practice-library.typings';
 
 export interface IPracticeLibraryModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  library: IPracticeLibraryProps;
+  library: IPracticeLibrary;
   isWithoutActions?: boolean;
 }
