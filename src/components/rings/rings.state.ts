@@ -8,9 +8,15 @@ import { ANIMATION_DURATION, getFgRadius, getRings, RING_EASING, TEXT_EASING } f
 import { IDonutProps } from './rings.typings';
 
 export const useRings = (props: IDonutProps) => {
-  const { maxMinutes, minutes } = props;
+  const { maxMinutes, minutes, addedTime } = props;
 
-  const percent = useMemo(() => (minutes * 100) / maxMinutes, [minutes, maxMinutes]);
+  const percent = useMemo(() => {
+    if (addedTime) {
+      return (100 * (addedTime + minutes)) / maxMinutes;
+    }
+    return (minutes * 100) / maxMinutes;
+  }, [minutes, maxMinutes, addedTime]);
+
   const rings = useMemo(() => getRings(percent), [percent]);
   const fgRadius = useMemo(() => getFgRadius(percent), [percent]);
 
@@ -39,6 +45,9 @@ export const useRings = (props: IDonutProps) => {
   };
 
   useEffect(() => {
+    if (addedTime) {
+      return setTextValue(addedTime, true);
+    }
     animation(minutes, true);
     animatedText.addListener(v => {
       setTextValue(v.value);
@@ -50,10 +59,12 @@ export const useRings = (props: IDonutProps) => {
     return () => {
       animatedText.removeAllListeners();
     };
-  }, [minutes, maxMinutes]);
+  }, [minutes, maxMinutes, addedTime]);
 
   return {
     rings,
+    minutes,
+    addedTime,
     progress,
     inputRef,
     maxMinutes,
