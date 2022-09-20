@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { AskModal } from '@components/ask-modal';
 import { Layout } from '@components/layout';
-import { IPracticeLibraryProps } from '@components/practice-libraries/practice-library/practice-library.typings';
+import { IPracticeLibrary } from '@components/practice-libraries/practice-library/practice-library.typings';
 import { PracticeLibraryCollapsed } from '@components/practice-libraries/practice-library-collapsed';
 import { SwipeToEnd } from '@components/swipe-to-end';
 import { TimerProgressBar } from '@components/timer-progress-bar/timer-progress-bar';
@@ -10,10 +11,13 @@ import { TogglerDoNotDisturb } from '@components/toggler-do-not-disturb';
 
 import { useParam } from '@services/hooks/param';
 
-import { StyledImmersionTimer as Styled } from './immersion-timer.styles';
+import { APP_ROUTES } from '@constants/routes';
+
+const MOCK_ADDED_TIME = 34; //FIXME
 
 export const ImmersionTimer: React.FC = () => {
-  const { params: library } = useParam<IPracticeLibraryProps>();
+  const { navigate } = useNavigation();
+  const { params: library } = useParam<IPracticeLibrary>();
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
   const [isOpenAskModal, setIsOpenAskModal] = useState(false);
 
@@ -24,7 +28,8 @@ export const ImmersionTimer: React.FC = () => {
   };
 
   const goToNextRoute = () => {
-    //TODO next route
+    setIsOpenAskModal(false);
+    navigate(APP_ROUTES.immersionComplete as never, { addedTime: MOCK_ADDED_TIME } as never);
   };
 
   return (

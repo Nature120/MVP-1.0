@@ -9,7 +9,7 @@ export const COLOR = {
   primary: {
     green,
     blue,
-    violet: '#6742D7',
+    violet: '#8aa4f6',
     red: '#C24331',
     darkBlue,
     lightGray: '#97A0A7',
@@ -20,7 +20,6 @@ export const COLOR = {
   secondary: {
     green: '#6BA184',
     blue: '#9BB5F8',
-    violet: '#B3A0EB',
   },
   font: {
     white,

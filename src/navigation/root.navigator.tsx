@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import auth from '@react-native-firebase/auth';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { ImmersionComplete } from '@screens/immersion-complete';
 import { ImmersionTimer } from '@screens/immersion-timer';
 import { Immersions } from '@screens/immersions';
 import { SignInScreen } from '@screens/sign-in-screen/sign-in-screen';
@@ -69,13 +70,14 @@ export const RootNavigator = () => {
         />
         <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />
         <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
+        <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />
       </MainStack.Navigator>
     );
   }
   return (
     <StartStack.Navigator
       screenOptions={screenOptions}
-      initialRouteName={/* isFirstLaunchSplash */ false ? APP_ROUTES.start.splash : APP_ROUTES.start.signIn}>
+      initialRouteName={isFirstLaunchSplash ? APP_ROUTES.start.splash : APP_ROUTES.start.signIn}>
       <StartStack.Screen name={APP_ROUTES.start.splash} component={Splash} />
       <StartStack.Screen name={APP_ROUTES.start.signIn} component={SignInScreen} />
       <StartStack.Screen name={APP_ROUTES.start.signUp} component={SignUpScreen} />

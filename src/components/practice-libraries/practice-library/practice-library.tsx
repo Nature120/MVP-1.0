@@ -8,13 +8,20 @@ import { IPracticeLibraryProps } from './practice-library.typings';
 import { StyledPracticeLibrary as Styled } from './practice-library.styles';
 
 export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
-  const { title, image, description, type } = props;
+  const { title, image, description, type, isWithoutActions } = props;
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(prev => !prev);
 
   return (
     <>
-      {isOpen && <PracticeLibraryModal isOpen={isOpen} library={props} closeModal={toggleOpen} />}
+      {isOpen && (
+        <PracticeLibraryModal
+          isOpen={isOpen}
+          library={props}
+          closeModal={toggleOpen}
+          isWithoutActions={isWithoutActions}
+        />
+      )}
 
       <Styled.PracticeLibrary activeOpacity={0.9} onPress={toggleOpen}>
         <View>

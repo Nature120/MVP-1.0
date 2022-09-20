@@ -1,56 +1,68 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Picker } from '@react-native-picker/picker';
+import React from 'react';
+import LinearGradient from 'react-native-linear-gradient';
+import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 
 import { Button } from '@components/button';
 import { ButtonIcon } from '@components/button-icon';
 import { Icon } from '@components/icon';
 import { ModalBottom } from '@components/modal-bottom';
+import { useModalChangeGoal } from './modal-change.state';
 
-import { updateUser } from '@services/api.service';
-import { useGoal } from '@services/hooks/goal';
-import { useOpenCloseModal } from '@services/hooks/open-close';
-import { useAppDispatch } from '@services/hooks/redux';
-import { getUid } from '@services/store/auth/auth.selectors';
-
+import { ITEM_WIDTH, LINEAR_GRADIENT_CONFIG, PICKER_DATA } from './modal-change-goal.constants';
 import { GOAL_HASH_MAP } from '@screens/onboarding/onboarding.constants';
 
-import { IModalChangeGoalProps } from './modal-change-goal.typings';
+import { linerarGradient, StyledModalChangeGoal as Styled } from './modal-change-goal.styles';
 
-import { StyledModalChangeGoal as Styled } from './modal-change-goal.styles';
+import { Line } from '@theme/components';
 
 export const ModalChangeGoal: React.FC = () => {
-  const uid = useSelector(getUid);
-  const { dailyGoal } = useGoal();
-  const [selectedDailyGoal, setSelectedDailyGoal] = useState(dailyGoal);
-  const dispatch = useAppDispatch();
-  const { isOpen, onClose, onOpen } = useOpenCloseModal();
+  const { isOpen, onOpen, onClose, onDone, onGoalChange, defaultIndex } = useModalChangeGoal();
 
-  const onDone = async () => {
-    if (selectedDailyGoal) {
-      await updateUser(uid, { dailyGoal: +selectedDailyGoal }, dispatch);
-      onClose();
-    }
-  };
+  const rednerItem = (goal: number) => (
+    <Styled.Item>
+      <Styled.WeeklyText>{GOAL_HASH_MAP()[goal]}</Styled.WeeklyText>
+      <Line mt={5} mb={10} width={60} />
 
-  const onGoalChange = (goal: number) => {
-    setSelectedDailyGoal(goal);
-  };
+      <Styled.Bottom>
+        <Styled.DailyText>{goal}</Styled.DailyText>
+
+        <Styled.MinDay>
+          <Styled.MinDayText>min</Styled.MinDayText>
+          <Line mt={2} mb={2} />
+          <Styled.MinDayText>day</Styled.MinDayText>
+        </Styled.MinDay>
+      </Styled.Bottom>
+    </Styled.Item>
+  );
 
   return (
     <>
       <Styled.EditGoal onPress={onOpen}>
         <Icon type="pencil" colorIcon="darkBlue" size={25} />
       </Styled.EditGoal>
+
       <ModalBottom isVisible={isOpen} onClose={onClose} isWithLogo>
         <ButtonIcon type="arrowLeft" colorIcon="cloudyGreen" size={24} onPress={onClose} />
         <Styled.ModalText>{'Select weekly goal'}</Styled.ModalText>
 
-        <Picker selectedValue={selectedDailyGoal} onValueChange={onGoalChange}>
-          {Object.keys(GOAL_HASH_MAP()).map(goal => (
-            <Picker.Item key={goal} label={`${GOAL_HASH_MAP()[+goal]} min = ${goal} min/day`} value={goal} />
-          ))}
-        </Picker>
+        <Styled.Container>
+          <HorizontalPicker
+            animatedScrollToDefaultIndex
+            defaultIndex={defaultIndex}
+            data={PICKER_DATA}
+            renderItem={rednerItem}
+            itemWidth={ITEM_WIDTH}
+            onChange={onGoalChange}
+          />
+          <LinearGradient
+            pointerEvents="none"
+            style={linerarGradient}
+            colors={LINEAR_GRADIENT_CONFIG.colors}
+            start={LINEAR_GRADIENT_CONFIG.start}
+            end={LINEAR_GRADIENT_CONFIG.end}
+          />
+        </Styled.Container>
+
         <Button buttonText="DONE" height={50} onPress={onDone} />
       </ModalBottom>
     </>

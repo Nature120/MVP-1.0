@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React from 'react';
 
 import { libraries } from '@screens/immersions/mock-data';
 import { AskModal } from '@components/ask-modal';
@@ -17,8 +16,6 @@ import { CenterContainer } from '@theme/components';
 
 export const Home: React.FC = () => {
   const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, onButtonPress, navigateToImmersions } = useHome();
-
-  const [temp, setTempe] = useState(110);
 
   return (
     <>
@@ -39,15 +36,8 @@ export const Home: React.FC = () => {
           <Styled.Greeting>Hi, {user.first_name}</Styled.Greeting>
           <Styled.MotivationText>Here’s a look at your progress this week. Keep it up!</Styled.MotivationText>
 
-          <TouchableOpacity onPress={() => setTempe(prev => prev + 20)}>
-            <Text>+++++ </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setTempe(prev => prev - 20)}>
-            <Text>------ </Text>
-          </TouchableOpacity>
-
           <CenterContainer>
-            <Rings maxMinutes={weeklyGoal} minutes={temp} />
+            {!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={user.goal || 0} />}
           </CenterContainer>
 
           <Styled.ButtonWrapper>
@@ -56,7 +46,7 @@ export const Home: React.FC = () => {
         </Styled.MainSection>
 
         <Styled.InfoSectionWrapper>
-          <PracticeLibraries title="Picked For You" libraries={libraries} />
+          <PracticeLibraries title="Picked For You" libraries={libraries} isWithoutActions />
 
           <Styled.InfoSection>
             <TipOfTheDay />

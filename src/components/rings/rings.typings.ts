@@ -9,4 +9,5 @@ export interface IRing {
 export interface IDonutProps {
   maxMinutes: number;
   minutes: number;
+  addedTime?: number;
 }
