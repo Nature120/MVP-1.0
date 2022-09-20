@@ -1,9 +1,9 @@
 import { ColorValue, StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { TAnimatedNumber, TAnimatedViewProps, TViewProps } from '@typings/common';
+import { STROKE_WIDTH } from './ring.constants';
 
-const STROKE_WIDTH = 15;
+import { TAnimatedNumber, TAnimatedViewProps, TViewProps } from '@typings/common';
 
 const commonStyles: TViewProps = {
   ...StyleSheet.absoluteFillObject,

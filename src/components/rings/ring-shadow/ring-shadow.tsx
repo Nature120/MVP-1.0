@@ -1,10 +1,12 @@
 import React from 'react';
 import Svg, { Circle, Defs, RadialGradient, Stop } from 'react-native-svg';
 
-import { STROKE_WIDTH } from '../rings.constants';
+interface IProp {
+  strokeWidth: number;
+}
 
-export const RingShadow: React.FC = () => (
-  <Svg width={STROKE_WIDTH} height={STROKE_WIDTH}>
+export const RingShadow: React.FC<IProp> = ({ strokeWidth }) => (
+  <Svg width={strokeWidth} height={strokeWidth}>
     <Defs>
       <RadialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="50%" id="shadow">
         <Stop offset="0%" stopOpacity={1} />
@@ -12,6 +14,6 @@ export const RingShadow: React.FC = () => (
         <Stop offset="100%" stopOpacity={0.1} stopColor="black" />
       </RadialGradient>
     </Defs>
-    <Circle cx={STROKE_WIDTH / 2} cy={STROKE_WIDTH / 2} r={STROKE_WIDTH / 2} fill="url(#shadow)" />
+    <Circle cx={strokeWidth / 2} cy={strokeWidth / 2} r={strokeWidth / 2} fill="url(#shadow)" />
   </Svg>
 );

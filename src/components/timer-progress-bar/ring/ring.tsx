@@ -1,16 +1,20 @@
 import React from 'react';
-import { PixelRatio, StyleSheet, Text, View } from 'react-native';
+import { PixelRatio, View } from 'react-native';
 import Animated, { lessThan, max, min, sub } from 'react-native-reanimated';
 import { interpolateColor } from 'react-native-redash';
 
 import { CircularProgress } from '@components/rings/circular-progress';
 import { RingShadow } from '@components/rings/ring-shadow';
 import { RingsGradient } from '@components/rings/rings-gradient';
-import { TAU } from '../test-timer';
+
+import { TAU } from '../timer-progress-bar.constants';
+import { STROKE_WIDTH } from './ring.constants';
+
+import { IProp } from './ring.typings';
 
 import { StyledRing as Styled } from './ring.styles';
 
-export const Ring = ({ theta, ring }: any) => {
+export const Ring = ({ theta, ring }: IProp) => {
   const radius = PixelRatio.roundToNearestPixel(ring.size / 2);
   const rotate = max(0, sub(theta, TAU));
   const opacity = lessThan(theta, TAU);
@@ -21,7 +25,7 @@ export const Ring = ({ theta, ring }: any) => {
   });
 
   return (
-    <View>
+    <>
       <Animated.View style={Styled.RotateView(rotate)}>
         <CircularProgress
           radius={radius}
@@ -34,10 +38,10 @@ export const Ring = ({ theta, ring }: any) => {
       <Animated.View style={Styled.StartProgress(opacity, radius, ring.start)} />
 
       <Animated.View style={Styled.ShadowEndProgress(radius, theta)}>
-        <RingShadow />
+        <RingShadow strokeWidth={STROKE_WIDTH} />
       </Animated.View>
 
       <Animated.View style={Styled.EndProgress(radius, theta, backgroundColor)} />
-    </View>
+    </>
   );
 };

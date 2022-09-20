@@ -1,113 +1,44 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Easing } from 'react-native';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import { moderateScale } from 'react-native-size-matters';
-import { Circle, TransformProps } from 'react-native-svg';
+import React from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { multiply } from 'react-native-reanimated';
+import { scale, verticalScale } from 'react-native-size-matters';
 
-import { CircleSvg } from './circle-svg';
-import { Timer } from './timer/timer';
+import { Icon } from '@components/icon';
+import { Ring } from './ring/ring';
+import { useTimerProgressBar } from './timer-progress-bar.state';
 
-import { TimerProgressBarStyles as Styled } from './timer-progress-bar.styles';
+import { StyledRing as Styled } from './timer-progress-bar.styles';
 
-export const TimerProgressBar = ({ max = 50, duration = 0, delay = 0 }) => {
-  const [timerSeconds, setTimerseconds] = useState<number>(45);
-  const [progressValue, setProgressValue] = useState<number>(45);
-  const [isFinished, setIsFinished] = useState(false);
+export const TimerProgressBar = () => {
+  const { ring, fgRadius, isActive, setIsActive, time } = useTimerProgressBar({ maxSeconds: 1020 });
 
-  const animatedValue = useRef(new Animated.Value(0)).current;
-  const secondAnimatedValue = useRef(new Animated.Value(0)).current;
-  const shadowAnimatedValue = useRef(new Animated.Value(0)).current;
-  const radius = moderateScale(140, 0.2);
-  const strokeWidth = moderateScale(25, 0.2);
-  const circleRef = useRef<Circle | null>(null);
-  const secondCircleRef = useRef<Circle | null>(null);
-  const shadowCircleRef = useRef<Circle | null>(null);
-  const halfCircle = radius + strokeWidth;
-  const circumference = 2 * Math.PI * radius;
-
-  const animation = (toValue: number) => {
-    return Animated.timing(animatedValue, {
-      delay,
-      toValue,
-      duration,
-      useNativeDriver: true,
-      easing: Easing.out(Easing.ease),
-    }).start();
+  const toggle = () => {
+    setIsActive(!isActive);
   };
-
-  const animationShadow = (toValue: number) => {
-    Animated.timing(shadowAnimatedValue, {
-      delay,
-      toValue,
-      duration,
-      useNativeDriver: true,
-      easing: Easing.out(Easing.ease),
-    }).start();
-  };
-
-  const secondCircleAnimation = (toValue: number) => {
-    Animated.timing(secondAnimatedValue, {
-      delay,
-      toValue,
-      duration,
-      useNativeDriver: true,
-      easing: Easing.out(Easing.ease),
-    }).start();
-  };
-
-  useEffect(() => {
-    if (progressValue === max) {
-      setProgressValue(0);
-    } else if (timerSeconds >= max) {
-      secondCircleAnimation(progressValue);
-      animationShadow(progressValue + 0.5);
-
-      secondAnimatedValue.addListener(v => {
-        const maxPerc = (v.value / max) * 100;
-        const strokeDashoffset = circumference - (circumference * maxPerc) / 100;
-        secondCircleRef?.current?.setNativeProps({ strokeDashoffset } as TransformProps);
-      });
-
-      shadowAnimatedValue.addListener(v => {
-        const maxPerc = (v.value / max) * 100;
-        const strokeDashoffset = circumference - (circumference * maxPerc) / 100;
-        shadowCircleRef?.current?.setNativeProps({ strokeDashoffset } as TransformProps);
-      });
-
-      return;
-    } else {
-      animation(progressValue);
-
-      animatedValue.addListener(v => {
-        const maxPerc = (v.value / max) * 100;
-        const strokeDashoffset = circumference - (circumference * maxPerc) / 100;
-        circleRef?.current?.setNativeProps({ strokeDashoffset } as TransformProps);
-      });
-    }
-
-    return () => {
-      animatedValue.removeAllListeners();
-      secondAnimatedValue.removeAllListeners();
-      shadowAnimatedValue.removeAllListeners();
-    };
-  }, [max, progressValue, timerSeconds]);
 
   return (
-    <Styled.Container>
-      <CircleSvg
-        halfCircle={halfCircle}
-        strokeWidth={strokeWidth}
-        radius={radius}
-        circleRef={circleRef}
-        circumference={circumference}
-        shadowCircleRef={shadowCircleRef}
-        isFinished={isFinished}
-        secondCircleRef={secondCircleRef}
-      />
+    <Styled.Wrapper>
+      <Styled.Overlay style={{ ...StyleSheet.absoluteFillObject }}>
+        <Ring theta={multiply(ring.theta, 1)} ring={ring} />
+      </Styled.Overlay>
+
       <Styled.TimerWrapper>
         <Styled.TimerTitleText>Time Elapsed</Styled.TimerTitleText>
-        <Timer timerSeconds={timerSeconds} setTimerseconds={setTimerseconds} setProgressValue={setProgressValue} />
+        <Styled.TextNumber>{time}</Styled.TextNumber>
+        <TouchableOpacity onPress={toggle}>
+          <Styled.IconWrapper>
+            {isActive ? (
+              <Icon type="pause" width={scale(33)} height={verticalScale(36)} />
+            ) : (
+              <Icon type="play" width={scale(33)} height={verticalScale(36)} />
+            )}
+          </Styled.IconWrapper>
+        </TouchableOpacity>
       </Styled.TimerWrapper>
-    </Styled.Container>
+
+      <Styled.Overlay style={{ ...StyleSheet.absoluteFillObject }}>
+        <Styled.Foreground fgRadius={fgRadius} />
+      </Styled.Overlay>
+    </Styled.Wrapper>
   );
 };
