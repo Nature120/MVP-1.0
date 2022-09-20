@@ -12,11 +12,11 @@ import { IDonutProps } from './rings.typings';
 import { StyledRing as Styled } from './rings.styles';
 
 export const Rings: React.FC<IDonutProps> = memo(props => {
-  const { rings, progress, inputRef, maxMinutes, fgRadius } = useRings(props);
+  const { rings, progress, inputRef, maxMinutes, fgRadius, minutes, addedTime } = useRings(props);
 
   return (
     <Styled.Wrapper>
-      <ModalChangeGoal />
+      {!addedTime && <ModalChangeGoal />}
 
       {rings.map((ring, i) => (
         <Styled.Overlay key={i} style={{ ...StyleSheet.absoluteFillObject }}>
@@ -24,7 +24,7 @@ export const Rings: React.FC<IDonutProps> = memo(props => {
         </Styled.Overlay>
       ))}
 
-      <GoalText inputRef={inputRef} maxMinutes={maxMinutes} />
+      <GoalText inputRef={inputRef} maxMinutes={maxMinutes} minutes={minutes} addedTime={addedTime} />
 
       <Styled.Overlay style={{ ...StyleSheet.absoluteFillObject }}>
         <Styled.Foreground fgRadius={fgRadius} />

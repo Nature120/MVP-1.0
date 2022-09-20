@@ -31,6 +31,10 @@ export interface IId {
   id: string;
 }
 
+export interface IAddedTime {
+  addedTime: number;
+}
+
 export type TScreenOptions =
   | StackNavigationOptions
   | ((props: { route: RouteProp<ParamListBase, string>; navigation: any }) => StackNavigationOptions)

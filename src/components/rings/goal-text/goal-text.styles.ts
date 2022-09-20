@@ -24,11 +24,11 @@ export const StyledGoalText = {
     color: ${props => props.textColor};
   `,
 
-  WeeklyGoal: styled.Text`
+  WeeklyGoal: styled.Text<{ isAddedTime?: boolean }>`
     font-family: ${FONTS.family.mediumBoreal};
     font-weight: ${FONTS.weight.medium};
     font-size: ${FONTS.size.xMedium}px;
-    line-height: 21px;
+    line-height: ${({ isAddedTime }) => (isAddedTime ? 41 : 21)}px;
     text-align: center;
     color: ${COLOR.subheading};
   `,
