@@ -7,7 +7,7 @@ import { CircularProgress } from '../circular-progress';
 import { RingShadow } from '../ring-shadow';
 import { RingsGradient } from '../rings-gradient';
 
-import { TAU } from '../rings.constants';
+import { STROKE_WIDTH, TAU } from '../rings.constants';
 
 import { IRingProps } from './ring.typings';
 
@@ -42,7 +42,7 @@ export const Ring: React.FC<IRingProps> = props => {
       <Animated.View style={Styled.StartProgress(opacity, radius, start)} />
 
       <Animated.View style={Styled.ShadowEndProgress(radius, theta)}>
-        <RingShadow />
+        <RingShadow strokeWidth={STROKE_WIDTH} />
       </Animated.View>
 
       <Animated.View style={Styled.EndProgress(radius, theta, backgroundColor)} />

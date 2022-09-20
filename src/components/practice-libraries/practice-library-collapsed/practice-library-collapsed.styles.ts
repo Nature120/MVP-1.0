@@ -27,7 +27,7 @@ export const StyledPracticeLibraryCollapsed = {
   CollapsedLibrary: styled.TouchableOpacity`
     width: 100%;
     height: 100px;
-    margin: 48px 0 90px;
+    margin: 48px 0 70px;
     background-color: ${COLOR.background.extraLightMint};
     flex-direction: row;
     border-radius: 18px;
