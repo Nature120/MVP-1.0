@@ -10,7 +10,7 @@ import { useTimerProgressBar } from './timer-progress-bar.state';
 import { StyledRing as Styled } from './timer-progress-bar.styles';
 
 export const TimerProgressBar = () => {
-  const { ring, fgRadius, isActive, setIsActive, time } = useTimerProgressBar({ maxSeconds: 1020 });
+  const { ring, fgRadius, isActive, setIsActive, time } = useTimerProgressBar();
 
   const toggle = () => {
     setIsActive(!isActive);

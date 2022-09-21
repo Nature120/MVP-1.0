@@ -1,4 +1,4 @@
-import { moderateScale } from 'react-native-size-matters';
+import { scale } from 'react-native-size-matters';
 
 import { STROKE_WIDTH } from './ring/ring.constants';
 import { TAU } from './timer-progress-bar.constants';
@@ -12,7 +12,7 @@ export const outerCircle = (percent: number) => ({
   end: `${COLOR.primary.lightGreen}`,
   bg: `${COLOR.background.progressBar}`,
   theta: getTheta(percent),
-  size: moderateScale(235),
+  size: scale(250),
 });
 
 export const getFgRadius = (percent: number) => {
