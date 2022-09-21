@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import { Layout } from '@components/layout';
-import { LayoutOnboarding } from '@components/layout-onboarding';
-import { TextCheckbox } from '@components/text-checkbox';
-import { TextCheckboxGroup } from '@components/text-checkbox-group';
-import { TimePicker } from '@components/time-picker';
-import { TPeriod } from '@components/time-picker/time-picker.typings';
+import { Layout } from '@components/molecules/layout';
+import { TextCheckbox } from '@components/molecules/text-checkbox';
+import { TextCheckboxGroup } from '@components/molecules/text-checkbox-group';
+import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
+import { TimePicker } from '@components/organisms/time-picker';
+import { TPeriod } from '@components/organisms/time-picker/time-picker.typings';
 import { useTimeForImmersion } from './time-for-immersion.state';
 
 import { timeForImmersionVariants } from '../onboarding.constants';

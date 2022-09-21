@@ -2,7 +2,7 @@ import React from 'react';
 import { scale, verticalScale } from 'react-native-size-matters';
 import { useNavigation } from '@react-navigation/native';
 
-import { Icon } from '@components/icon';
+import { Icon } from '@components/atoms/icon';
 import { IBackButtonProps } from './back-button.types';
 
 import { BackButtonStyles as Styled } from './back-button.styles';

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { BackButton } from '@components/back-button/back-button';
-import { Layout } from '@components/layout';
+import { BackButton } from '@components/back-button';
+import { Layout } from '@components/molecules/layout';
 import { SignInForm } from '@components/sign-in-form/sign-in-form';
 import { SocialAuthButton } from '@components/social-auth-button/social-auth-button';
 

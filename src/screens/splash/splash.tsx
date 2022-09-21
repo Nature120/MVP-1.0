@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { ButtonWithLink } from '@components/button-with-link';
-import { Layout } from '@components/layout';
-import { Slider } from '@components/slider';
+import { ButtonWithLink } from '@components/molecules/button-with-link';
+import { Layout } from '@components/molecules/layout';
+import { Slider } from '@components/molecules/slider';
 
+import { sliderContent } from './splash.constants';
 import { IMAGES } from '@constants/images';
 import { APP_ROUTES } from '@constants/routes';
-import { sliderContent } from '@constants/slider-content';
 
 import { StyledSplash as Styled } from './splash.styles';
 

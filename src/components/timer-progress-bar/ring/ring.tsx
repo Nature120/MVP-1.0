@@ -3,9 +3,9 @@ import { PixelRatio, View } from 'react-native';
 import Animated, { lessThan, max, min, sub } from 'react-native-reanimated';
 import { interpolateColor } from 'react-native-redash';
 
-import { CircularProgress } from '@components/rings/circular-progress';
-import { RingShadow } from '@components/rings/ring-shadow';
-import { RingsGradient } from '@components/rings/rings-gradient';
+import { CircularProgress } from '@components/organisms/rings/circular-progress';
+import { RingShadow } from '@components/organisms/rings/ring-shadow';
+import { RingsGradient } from '@components/organisms/rings/rings-gradient';
 
 import { TAU } from '../timer-progress-bar.constants';
 import { STROKE_WIDTH } from './ring.constants';

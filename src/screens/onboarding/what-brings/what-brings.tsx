@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Layout } from '@components/layout';
-import { LayoutOnboarding } from '@components/layout-onboarding';
-import { TextCheckboxGroup } from '@components/text-checkbox-group';
+import { Layout } from '@components/molecules/layout';
+import { TextCheckboxGroup } from '@components/molecules/text-checkbox-group';
+import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
 
 import { updateUser } from '@services/api.service';
 import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';

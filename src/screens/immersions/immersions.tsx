@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { BackButton } from '@components/back-button/back-button';
-import { Button } from '@components/button';
-import { Layout } from '@components/layout';
-import { PracticeLibraries } from '@components/practice-libraries';
-import { TogglerDoNotDisturb } from '@components/toggler-do-not-disturb';
+import { Button } from '@components/atoms/button';
+import { BackButton } from '@components/back-button';
+import { Layout } from '@components/molecules/layout';
+import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
+import { PracticeLibraries } from '@components/organisms/practice-libraries';
 import { recentLibraries } from './mock-data';
 
 import { APP_ROUTES } from '@constants/routes';

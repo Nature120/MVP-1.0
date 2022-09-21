@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import { secondsToMinutes } from 'date-fns';
 
-import { IPracticeLibrary } from '@components/practice-libraries/practice-library/practice-library.typings';
+import { IPracticeLibrary } from '@components/organisms/practice-libraries/practice-library/practice-library.typings';
 
 import { getUser, updateUser } from '@services/api.service';
 import { useParam } from '@services/hooks/param';
@@ -47,7 +48,8 @@ export const useImmersionTimer = () => {
 
   const goToNextRoute = () => {
     setIsOpenAskModal(false);
-    navigate(APP_ROUTES.immersionComplete as never, { addedTime: seconds } as never);
+    const addedTime = Math.round(secondsToMinutes(seconds));
+    navigate(APP_ROUTES.immersionComplete as never, { addedTime } as never);
   };
 
   return {

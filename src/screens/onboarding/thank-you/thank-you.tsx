@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Layout } from '@components/layout';
-import { LayoutOnboarding } from '@components/layout-onboarding';
+import { Layout } from '@components/molecules/layout';
+import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
 
 import { DEVICE_HEIGHT } from '@services/helpers/device-utils';
 

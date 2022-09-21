@@ -1,5 +1,5 @@
-import { ITextCheckBox } from '@components/text-checkbox/text-checkbox.typings';
-import { IWeeklyGoal } from '@components/weekly-goal-checkbox/weekly-goal-checkbox.typings';
+import { ITextCheckBox } from '@components/molecules/text-checkbox/text-checkbox.typings';
+import { IWeeklyGoal } from '@components/molecules/weekly-goal-checkbox/weekly-goal-checkbox.typings';
 
 import { TDailyGoal } from '@typings/common';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Layout } from '@components/layout';
-import { LayoutOnboarding } from '@components/layout-onboarding';
-import { WeeklyGoalCheckboxGroup } from '@components/weekly-goal-checkbox-group';
+import { Layout } from '@components/molecules/layout';
+import { WeeklyGoalCheckboxGroup } from '@components/molecules/weekly-goal-checkbox-group';
+import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
 import { useWeeklyGoal } from './weekly-goal.state';
 
 import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
