@@ -1,3 +1,4 @@
+import { moderateScale, verticalScale } from 'react-native-size-matters';
 import styled from 'styled-components/native';
 
 import { COLOR } from '@theme/colors';
@@ -26,12 +27,19 @@ export const StyledPracticeLibraryCollapsed = {
 
   CollapsedLibrary: styled.TouchableOpacity`
     width: 100%;
-    height: 100px;
-    margin: 48px 0 70px;
+    height: ${verticalScale(85)}px;
+    margin: ${moderateScale(40)}px 0 ${moderateScale(60)}px;
     background-color: ${COLOR.background.extraLightMint};
     flex-direction: row;
     border-radius: 18px;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+
+    shadow-color: ${COLOR.shadow.black};
+    shadow-offset: 0px -5px;
+    shadow-opacity: 0.37;
+    shadow-radius: 6.68px;
+
+    elevation: 11;
   `,
 
   Left: styled.View`

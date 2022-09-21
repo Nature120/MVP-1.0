@@ -35,8 +35,9 @@ export const StyledSwipeToEnd = {
   `,
 
   Text: styled(Title)`
+    font-family: ${FONTS.family.mediumAcumin};
     font-weight: ${FONTS.weight.medium};
-    font-size: 18px;
+    font-size: ${FONTS.size.xMedium}px;
     line-height: 22px;
     letter-spacing: 5px;
   `,

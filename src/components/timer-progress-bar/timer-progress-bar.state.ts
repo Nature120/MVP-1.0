@@ -5,8 +5,9 @@ import { addSeconds, format, minutesToSeconds } from 'date-fns';
 import * as utils from './timer-progress-bar.utils';
 import { getDailyGoal } from '@services/store/auth/auth.selectors';
 
-export const useTimerProgressBar = () => {
-  const [seconds, setSeconds] = useState<number>(0);
+import { IProp } from './timer-progress-bar.typings';
+
+export const useTimerProgressBar = ({ seconds, setSeconds }: IProp) => {
   const [time, setTime] = useState<string>('0:00');
   const [isActive, setIsActive] = useState<boolean>(false);
 

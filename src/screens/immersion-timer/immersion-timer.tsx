@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { moderateScale } from 'react-native-size-matters';
 import { useNavigation } from '@react-navigation/native';
 
 import { AskModal } from '@components/ask-modal';
 import { Layout } from '@components/layout';
 import { IPracticeLibrary } from '@components/practice-libraries/practice-library/practice-library.typings';
 import { PracticeLibraryCollapsed } from '@components/practice-libraries/practice-library-collapsed';
+import { SwipeTest } from '@components/swipe-test/swipe-test';
 import { SwipeToEnd } from '@components/swipe-to-end';
 import { TimerProgressBar } from '@components/timer-progress-bar/timer-progress-bar';
 import { TogglerDoNotDisturb } from '@components/toggler-do-not-disturb';
@@ -13,9 +15,8 @@ import { useParam } from '@services/hooks/param';
 
 import { APP_ROUTES } from '@constants/routes';
 
-const MOCK_ADDED_TIME = 34; //FIXME
-
 export const ImmersionTimer: React.FC = () => {
+  const [seconds, setSeconds] = useState<number>(0);
   const { navigate } = useNavigation();
   const { params: library } = useParam<IPracticeLibrary>();
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
@@ -29,7 +30,7 @@ export const ImmersionTimer: React.FC = () => {
 
   const goToNextRoute = () => {
     setIsOpenAskModal(false);
-    navigate(APP_ROUTES.immersionComplete as never, { addedTime: MOCK_ADDED_TIME } as never);
+    navigate(APP_ROUTES.immersionComplete as never, { addedTime: seconds } as never);
   };
 
   return (
@@ -43,17 +44,17 @@ export const ImmersionTimer: React.FC = () => {
 
       <PracticeLibraryCollapsed library={library} />
 
-      <TimerProgressBar />
+      <TimerProgressBar setSeconds={setSeconds} seconds={seconds} />
 
       <TogglerDoNotDisturb
         isDark
-        mb={62}
-        mt={72}
         isDoNotDisturb={isDoNotDisturb}
+        mb={moderateScale(45)}
         setIsDoNotDisturb={setIsDoNotDisturb}
       />
 
       <SwipeToEnd onEndReached={toggleOpenAskModal} />
+      {/* <SwipeTest /> */}
     </Layout>
   );
 };
