@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import { useGoal } from '@services/hooks/goal';
+import { useAppDispatch } from '@services/hooks/redux';
+import { setCommentBeforeImmersion } from '@services/store/app';
 import { getUserInfo } from '@services/store/auth/auth.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
@@ -12,15 +14,14 @@ export const useHome = () => {
   const user = useSelector(getUserInfo);
   const { weeklyGoal } = useGoal();
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useAppDispatch();
 
   const onToggleOpen = () => setIsOpen(prev => !prev);
   const closeModal = () => setIsOpen(false);
 
-  const onButtonPress = async (value: string) => {
-    if (value.trim()) {
-      //TODO Record to DB
-      console.log('🛑 ~ value', value);
-    }
+  const saveResponse = async (value: string) => {
+    const response = value.trim();
+    dispatch(setCommentBeforeImmersion(response));
     navigateToImmersions();
   };
 
@@ -37,7 +38,7 @@ export const useHome = () => {
     isOpen,
     closeModal,
     onToggleOpen,
-    onButtonPress,
+    saveResponse,
     navigateToImmersions,
   };
 };
