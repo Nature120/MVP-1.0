@@ -1,8 +1,10 @@
 import React from 'react';
+import { moderateScale } from 'react-native-size-matters';
 
 import { AskModal } from '@components/ask-modal';
 import { Layout } from '@components/layout';
 import { PracticeLibraryCollapsed } from '@components/practice-libraries/practice-library-collapsed';
+import { SwipeTest } from '@components/swipe-test/swipe-test';
 import { SwipeToEnd } from '@components/swipe-to-end';
 import { TimerProgressBar } from '@components/timer-progress-bar/timer-progress-bar';
 import { TogglerDoNotDisturb } from '@components/toggler-do-not-disturb';
@@ -17,6 +19,8 @@ export const ImmersionTimer: React.FC = () => {
     isDoNotDisturb,
     setIsDoNotDisturb,
     toggleOpenAskModal,
+    seconds,
+    setSeconds,
   } = useImmersionTimer();
 
   return (
@@ -30,17 +34,17 @@ export const ImmersionTimer: React.FC = () => {
 
       <PracticeLibraryCollapsed library={library} />
 
-      <TimerProgressBar />
+      <TimerProgressBar setSeconds={setSeconds} seconds={seconds} />
 
       <TogglerDoNotDisturb
         isDark
-        mb={62}
-        mt={72}
         isDoNotDisturb={isDoNotDisturb}
+        mb={moderateScale(45)}
         setIsDoNotDisturb={setIsDoNotDisturb}
       />
 
       <SwipeToEnd onEndReached={toggleOpenAskModal} />
+      {/* <SwipeTest /> */}
     </Layout>
   );
 };

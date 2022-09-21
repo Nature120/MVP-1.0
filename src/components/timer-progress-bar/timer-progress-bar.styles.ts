@@ -1,4 +1,4 @@
-import { moderateScale, moderateVerticalScale } from 'react-native-size-matters';
+import { moderateScale, moderateVerticalScale, scale, verticalScale } from 'react-native-size-matters';
 import styled from 'styled-components/native';
 
 import { COLOR } from '@theme/colors';
@@ -6,12 +6,13 @@ import { FONTS } from '@theme/fonts';
 
 export const StyledRing = {
   Wrapper: styled.View`
-    background-color: transparent;
+    width: ${scale(250)}px;
+    height: ${verticalScale(250)}px;
+    margin-bottom: ${verticalScale(55)}px;
     justify-content: center;
     align-items: center;
     align-self: center;
-    width: ${moderateScale(235)}px;
-    height: ${moderateScale(235)}px;
+    background-color: transparent;
   `,
 
   Overlay: styled.View`

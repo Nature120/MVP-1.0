@@ -20,7 +20,7 @@ export interface IUser {
   email?: string | null;
   first_name?: string | null;
   whatBrings?: string[];
-  dailyGoal?: number;
+  dailyGoal: number;
   goal?: number;
   timeForImmersion?: Date;
   comments?: IUserComment[];

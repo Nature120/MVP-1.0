@@ -4,6 +4,7 @@ const lightGreen = '#0CA152';
 const cloudyBlue = '#5A7082';
 const white = '#fff';
 const blue = '#376CF1';
+const black = '#000';
 
 export const COLOR = {
   primary: {
@@ -23,7 +24,7 @@ export const COLOR = {
   },
   font: {
     white,
-    black: '#000',
+    black,
     cloudyBlue,
     darkBlue,
     lightGrey: '#8498A8',
@@ -50,6 +51,7 @@ export const COLOR = {
     textInput: '#E7EEEE',
     progressBar: '#C3D7CC',
   },
+  shadow: { black },
   title: darkBlue,
   text: darkBlue,
   subheading: '#254660',

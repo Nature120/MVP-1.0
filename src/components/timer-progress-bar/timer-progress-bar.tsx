@@ -7,10 +7,12 @@ import { Icon } from '@components/icon';
 import { Ring } from './ring/ring';
 import { useTimerProgressBar } from './timer-progress-bar.state';
 
+import { IProp } from './timer-progress-bar.typings';
+
 import { StyledRing as Styled } from './timer-progress-bar.styles';
 
-export const TimerProgressBar = () => {
-  const { ring, fgRadius, isActive, setIsActive, time } = useTimerProgressBar({ maxSeconds: 1020 });
+export const TimerProgressBar: React.FC<IProp> = ({ seconds, setSeconds }) => {
+  const { ring, fgRadius, isActive, setIsActive, time } = useTimerProgressBar({ seconds, setSeconds });
 
   const toggle = () => {
     setIsActive(!isActive);
