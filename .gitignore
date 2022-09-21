@@ -62,4 +62,5 @@ buck-out/
 /ios/Pods/
 /vendor/bundle/
 /src/screens/test.tsx
+/src/components/test.ts
 .env
