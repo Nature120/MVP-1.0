@@ -13,8 +13,14 @@ export const AskModal: React.FC<IAskModalProps> = props => {
 
   const [text, setText] = useState('');
 
-  const onDone = () => {
+  const handleDone = () => {
     onButtonPress(text);
+    setText('');
+  };
+
+  const handleTextPress = () => {
+    onTextPress();
+    setText('');
   };
 
   return (
@@ -31,7 +37,13 @@ export const AskModal: React.FC<IAskModalProps> = props => {
         placeholder="Add a note..."
       />
 
-      <ButtonWithLink buttonText="DONE" height={50} routeText="Skip" onPress={onDone} onTextPress={onTextPress} />
+      <ButtonWithLink
+        buttonText="DONE"
+        height={50}
+        routeText="Skip"
+        onPress={handleDone}
+        onTextPress={handleTextPress}
+      />
     </ModalBottom>
   );
 };

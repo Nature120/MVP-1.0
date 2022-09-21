@@ -15,14 +15,14 @@ import { COLOR } from '@theme/colors';
 import { CenterContainer } from '@theme/components';
 
 export const Home: React.FC = () => {
-  const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, onButtonPress, navigateToImmersions } = useHome();
+  const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, saveResponse, navigateToImmersions } = useHome();
 
   return (
     <>
       <AskModal
         isVisible={isOpen}
         onClose={closeModal}
-        onButtonPress={onButtonPress}
+        onButtonPress={saveResponse}
         onTextPress={navigateToImmersions}
       />
 

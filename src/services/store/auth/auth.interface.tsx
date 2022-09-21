@@ -1,5 +1,3 @@
-import { TDailyGoal } from '@typings/common';
-
 export interface IState {
   auth: IAuth;
 }
@@ -11,6 +9,12 @@ interface IAuth {
   isFirstLaunchApp: boolean;
 }
 
+interface IUserComment {
+  date: Date;
+  before?: string;
+  after?: string;
+}
+
 export interface IUser {
   uid: string;
   email?: string | null;
@@ -19,4 +23,5 @@ export interface IUser {
   dailyGoal?: number;
   goal?: number;
   timeForImmersion?: Date;
+  comments?: IUserComment[];
 }

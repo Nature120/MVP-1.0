@@ -23,6 +23,7 @@ export const useStart = () => {
       const defaultProperties: Partial<IUser> = {
         dailyGoal: +Object.keys(ONBOARDING_GOAL_HASH_MAP)[0] as TDailyGoal,
         goal: 0,
+        comments: [],
         whatBrings: [whatBringsVariants[0].text.toLowerCase().replace(/ /g, '_')],
       };
       await updateUser(uid, defaultProperties, dispatch);

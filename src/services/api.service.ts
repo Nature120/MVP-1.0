@@ -17,9 +17,14 @@ export const userInstance = (uid: string) => {
 };
 
 export const getUser = async (uid: string) => {
-  const response = await userInstance(uid).get();
-  const data = response.data() as IUser;
-  return data;
+  try {
+    const response = await userInstance(uid).get();
+    const data = response.data() as IUser;
+    return data;
+  } catch (err) {
+    const error = err as IError;
+    console.error(error);
+  }
 };
 
 export const updateUser = async (uid: string, body: Partial<IUser>, dispatch?: TDispatch) => {
