@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import { libraries } from '@screens/immersions/mock-data';
-import { BackButton } from '@components/back-button/back-button';
-import { Layout } from '@components/layout';
-import { PracticeLibraries } from '@components/practice-libraries';
+import { BackButton } from '@components/back-button';
+import { Layout } from '@components/molecules/layout';
+import { PracticeLibraries } from '@components/organisms/practice-libraries';
 
 import { IPractice } from './practices.typings';
 

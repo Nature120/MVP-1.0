@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { multiply } from 'react-native-reanimated';
 import { scale, verticalScale } from 'react-native-size-matters';
 
-import { Icon } from '@components/icon';
+import { Icon } from '@components/atoms/icon';
 import { Ring } from './ring/ring';
 import { useTimerProgressBar } from './timer-progress-bar.state';
 

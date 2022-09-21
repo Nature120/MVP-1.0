@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import { libraries } from '@screens/immersions/mock-data';
-import { Button } from '@components/button';
-import { ImmersionsDaily } from '@components/immersions-daily';
-import { Layout } from '@components/layout';
-import { PracticeLibraries } from '@components/practice-libraries';
-import { Rings } from '@components/rings';
+import { Button } from '@components/atoms/button';
+import { ImmersionsDaily } from '@components/molecules/immersions-daily';
+import { Layout } from '@components/molecules/layout';
+import { PracticeLibraries } from '@components/organisms/practice-libraries';
+import { Rings } from '@components/organisms/rings';
 
 import { updateUser } from '@services/api.service';
 import { useGoal } from '@services/hooks/goal';
@@ -31,9 +31,6 @@ export const ImmersionComplete: React.FC = () => {
   const { weeklyGoal } = useGoal();
 
   const onDone = async () => {
-    if (!params.addedTime) {
-      return;
-    }
     await updateUser(user.uid, { goal: user.goal! + params.addedTime }, dispatch);
     navigate(APP_ROUTES.dashboard as never);
   };
@@ -51,7 +48,7 @@ export const ImmersionComplete: React.FC = () => {
           <Styled.Subtitile>This Week at a Glance</Styled.Subtitile>
 
           <Styled.ProgressBar>
-            {<Rings maxMinutes={weeklyGoal} minutes={user.goal || 0} addedTime={params.addedTime || 0} />}
+            {<Rings maxMinutes={weeklyGoal} minutes={user.goal || 0} addedTime={params.addedTime} />}
           </Styled.ProgressBar>
         </Styled.MainSection>
 

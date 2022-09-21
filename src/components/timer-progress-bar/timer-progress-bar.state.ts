@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { addSeconds, format, minutesToSeconds } from 'date-fns';
 
 import * as utils from './timer-progress-bar.utils';
-import { getDailyGoal } from '@services/store/auth/auth.selectors';
+import { useGoal } from '@services/hooks/goal';
 
 import { IProp } from './timer-progress-bar.typings';
 
@@ -11,7 +10,7 @@ export const useTimerProgressBar = ({ seconds, setSeconds }: IProp) => {
   const [time, setTime] = useState<string>('0:00');
   const [isActive, setIsActive] = useState<boolean>(false);
 
-  const dailyGoal = useSelector(getDailyGoal);
+  const { dailyGoal } = useGoal();
   const maxSeconds = minutesToSeconds(dailyGoal);
   const percent = (seconds / maxSeconds) * 100;
 

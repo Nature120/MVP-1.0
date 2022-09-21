@@ -1,4 +1,4 @@
-import { TIconNames } from '@components/icon/icon.typings';
+import { TIconNames } from '@components/atoms/icon/icon.typings';
 
 import { TStyles } from '@typings/common';
 

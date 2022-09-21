@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { libraries } from '@screens/immersions/mock-data';
-import { AskModal } from '@components/ask-modal';
-import { Button } from '@components/button';
-import { Layout } from '@components/layout';
-import { PracticeLibraries } from '@components/practice-libraries';
-import { Rings } from '@components/rings';
-import { TipOfTheDay } from '@components/tip-of-the-day';
+import { Button } from '@components/atoms/button';
+import { AskModal } from '@components/molecules/ask-modal';
+import { Layout } from '@components/molecules/layout';
+import { TipOfTheDay } from '@components/molecules/tip-of-the-day';
+import { PracticeLibraries } from '@components/organisms/practice-libraries';
+import { Rings } from '@components/organisms/rings';
 import { useHome } from './home.state';
 
 import { StyledHome as Styled } from './home.styles';

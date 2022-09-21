@@ -1,5 +1,5 @@
-import { TIME_HASH_MAP } from '@components/time-picker/time-picker.constants';
-import { TPeriod } from '@components/time-picker/time-picker.typings';
+import { TIME_HASH_MAP } from '@components/organisms/time-picker/time-picker.constants';
+import { TPeriod } from '@components/organisms/time-picker/time-picker.typings';
 
 export const getMinMaxDate = (period: TPeriod) => {
   const d = new Date().getDate();

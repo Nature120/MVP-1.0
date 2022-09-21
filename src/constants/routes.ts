@@ -3,7 +3,7 @@ import { Home } from '@screens/home';
 import { QuestionsStart, Start, ThankYou, TimeForImmersion, WeeklyGoal, WhatBrings } from '@screens/onboarding';
 import { Practices } from '@screens/practices';
 import { TimerStats } from '@screens/timer-stats';
-import { TIconNames } from '@components/icon/icon.typings';
+import { TIconNames } from '@components/atoms/icon/icon.typings';
 
 interface IOnboardingRoutes {
   name: string;

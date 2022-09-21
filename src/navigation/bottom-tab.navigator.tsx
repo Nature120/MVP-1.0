@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { BottomTabBar } from '../components/bottom-tab-bar/bottom-tab-bar';
+import { BottomTabBar } from '../components/atoms/bottom-tab-bar/bottom-tab-bar';
 import { noHeaderOptions } from './navigation.options';
 
 import { BOTTOM_TAB_ROUTES } from '@constants/routes';

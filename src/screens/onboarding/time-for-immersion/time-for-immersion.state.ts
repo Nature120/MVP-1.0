@@ -3,8 +3,8 @@ import PushNotification from 'react-native-push-notification';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
-import { ITextCheckBox } from '@components/text-checkbox/text-checkbox.typings';
-import { TPeriod } from '@components/time-picker/time-picker.typings';
+import { ITextCheckBox } from '@components/molecules/text-checkbox/text-checkbox.typings';
+import { TPeriod } from '@components/organisms/time-picker/time-picker.typings';
 
 import { updateUser } from '@services/api.service';
 import { getMinMaxDate } from '@services/helpers/utils';

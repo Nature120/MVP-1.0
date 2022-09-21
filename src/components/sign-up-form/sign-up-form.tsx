@@ -3,8 +3,8 @@ import { TextInput } from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 import { Formik } from 'formik';
 
-import { Button } from '@components/button';
-import { Icon } from '@components/icon';
+import { Button } from '@components/atoms/button';
+import { Icon } from '@components/atoms/icon';
 import { Input } from '@components/input/input';
 
 import LoginFunctions from '@services/helpers/auth-social';

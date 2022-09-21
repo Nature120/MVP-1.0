@@ -1,8 +1,8 @@
 import React from 'react';
 import { ImageBackground } from 'react-native';
 
-import { Layout } from '@components/layout';
-import { LayoutOnboarding } from '@components/layout-onboarding';
+import { Layout } from '@components/molecules/layout';
+import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
 import { useStart } from './start.state';
 
 import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
