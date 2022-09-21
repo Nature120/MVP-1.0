@@ -12,11 +12,10 @@ import { getUserInfo } from '@services/store/auth/auth.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
 
-const MOCK_ADDED_TIME = 34; //FIXME
-
 export const useImmersionTimer = () => {
   const { navigate } = useNavigation();
   const { params: library } = useParam<IPracticeLibrary>();
+  const [seconds, setSeconds] = useState<number>(0);
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
   const [isOpenAskModal, setIsOpenAskModal] = useState(false);
   const user = useSelector(getUserInfo);
@@ -48,7 +47,7 @@ export const useImmersionTimer = () => {
 
   const goToNextRoute = () => {
     setIsOpenAskModal(false);
-    navigate(APP_ROUTES.immersionComplete as never, { addedTime: MOCK_ADDED_TIME } as never);
+    navigate(APP_ROUTES.immersionComplete as never, { addedTime: seconds } as never);
   };
 
   return {
@@ -59,5 +58,7 @@ export const useImmersionTimer = () => {
     isDoNotDisturb,
     setIsDoNotDisturb,
     toggleOpenAskModal,
+    seconds,
+    setSeconds,
   };
 };
