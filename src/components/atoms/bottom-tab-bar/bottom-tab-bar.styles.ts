@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 import { isIOS } from '@services/helpers/device-utils';
 
@@ -12,6 +12,15 @@ export const StyledBottomTabBar = {
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;
     background-color: ${COLOR.background.white};
+
+    ${!isIOS &&
+    css`
+      shadow-color: ${COLOR.shadow.black};
+      shadow-offset: {width: 0, height: 13};
+      shadow-opacity: 0.24;
+      shadow-radius: 14.86px;
+      elevation: 18;
+    `}
   `,
 
   BottomTabBar: styled.View`

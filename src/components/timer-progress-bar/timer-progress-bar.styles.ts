@@ -6,8 +6,8 @@ import { FONTS } from '@theme/fonts';
 
 export const StyledRing = {
   Wrapper: styled.View`
-    width: ${scale(250)}px;
-    height: ${verticalScale(250)}px;
+    width: ${moderateScale(250)}px;
+    height: ${moderateScale(250)}px;
     margin-bottom: ${verticalScale(55)}px;
     justify-content: center;
     align-items: center;
