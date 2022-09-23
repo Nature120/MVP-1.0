@@ -6,7 +6,7 @@ import { useGoal } from '@services/hooks/goal';
 
 import { IProp } from './timer-progress-bar.typings';
 
-export const useTimerProgressBar = ({ seconds, setSeconds }: IProp) => {
+export const useTimerProgressBar = ({ seconds, setSeconds, isOpenAskModal }: IProp) => {
   const [time, setTime] = useState<string>('0:00');
   const [isActive, setIsActive] = useState<boolean>(false);
 
@@ -33,6 +33,14 @@ export const useTimerProgressBar = ({ seconds, setSeconds }: IProp) => {
       }
     };
   }, [isActive, seconds]);
+
+  useEffect(() => {
+    if (!isOpenAskModal) {
+      return;
+    }
+
+    setIsActive(false);
+  }, [isOpenAskModal]);
 
   useEffect(() => {
     const correctTime = formattedTime(seconds);
