@@ -1,13 +1,13 @@
 export const TIME_HASH_MAP = {
-  in_the_morning: {
+  ['IN THE MORNING']: {
     min: 5,
     max: 11,
   },
-  at_lunch: {
+  ['AT LUNCH']: {
     min: 11,
     max: 15,
   },
-  after_work: {
+  ['AFTER WORK']: {
     min: 15,
     max: 24,
   },

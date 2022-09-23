@@ -23,7 +23,7 @@ export const PracticeLibraryCollapsed: React.FC<IPracticeLibraryCollapsedProps> 
         <Styled.Right>
           <Styled.Image source={{ uri: library.image }} />
           <Styled.TypeContainer>
-            <Styled.Type numberOfLines={1}>{library.type}</Styled.Type>
+            <Styled.Type numberOfLines={1}>{library.userGoals[0]}</Styled.Type>
           </Styled.TypeContainer>
         </Styled.Right>
       </Styled.CollapsedLibrary>

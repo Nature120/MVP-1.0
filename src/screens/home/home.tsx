@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { libraries } from '@screens/immersions/mock-data';
 import { Button } from '@components/atoms/button';
 import { AskModal } from '@components/molecules/ask-modal';
 import { Layout } from '@components/molecules/layout';
@@ -15,7 +14,8 @@ import { COLOR } from '@theme/colors';
 import { CenterContainer } from '@theme/components';
 
 export const Home: React.FC = () => {
-  const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, saveResponse, navigateToImmersions } = useHome();
+  const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, saveResponse, navigateToImmersions, practiceLibraries } =
+    useHome();
 
   return (
     <>
@@ -46,7 +46,7 @@ export const Home: React.FC = () => {
         </Styled.MainSection>
 
         <Styled.InfoSectionWrapper>
-          <PracticeLibraries title="Picked For You" libraries={libraries} isWithoutActions />
+          <PracticeLibraries title="Picked For You" libraries={practiceLibraries} isWithoutActions />
 
           <Styled.InfoSection>
             <TipOfTheDay />

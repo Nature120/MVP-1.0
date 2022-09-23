@@ -9,9 +9,11 @@ import { IUser } from '@services/store/auth/auth.interface';
 import { getUid } from '@services/store/auth/auth.selectors';
 
 import { IMAGES_TO_PRELOAD } from '@constants/images';
-import { ONBOARDING_GOAL_HASH_MAP, whatBringsVariants } from '@screens/onboarding/onboarding.constants';
+import { ONBOARDING_GOAL_HASH_MAP } from '@screens/onboarding/onboarding.constants';
 
 import { TDailyGoal } from '@typings/common';
+
+const WHAT_BRINGS_DEFAULT = 'Mental Well-being';
 
 export const useStart = () => {
   const { onSignOut } = useSignOut();
@@ -24,7 +26,7 @@ export const useStart = () => {
         dailyGoal: +Object.keys(ONBOARDING_GOAL_HASH_MAP)[0] as TDailyGoal,
         goal: 0,
         comments: [],
-        whatBrings: [whatBringsVariants[0].text.toLowerCase().replace(/ /g, '_')],
+        whatBrings: [WHAT_BRINGS_DEFAULT],
       };
       await updateUser(uid, defaultProperties, dispatch);
     };

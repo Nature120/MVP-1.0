@@ -1,5 +1,7 @@
 import { moderateScale, verticalScale } from 'react-native-size-matters';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
+
+import { isIOS } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
 import { TextComponent, Title } from '@theme/components';
@@ -34,12 +36,14 @@ export const StyledPracticeLibraryCollapsed = {
     border-radius: 18px;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
 
-    shadow-color: ${COLOR.shadow.black};
-    shadow-offset: 0px -5px;
-    shadow-opacity: 0.37;
-    shadow-radius: 6.68px;
-
-    elevation: 11;
+    ${!isIOS &&
+    css`
+      shadow-color: ${COLOR.shadow.black};
+      shadow-offset: 0px -5px;
+      shadow-opacity: 0.37;
+      shadow-radius: 6.68px;
+      elevation: 11;
+    `}
   `,
 
   Left: styled.View`

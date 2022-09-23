@@ -4,4 +4,4 @@ export interface ITimePickerProps {
   setTime: React.Dispatch<React.SetStateAction<Date | undefined>>;
 }
 
-export type TPeriod = 'in_the_morning' | 'at_lunch' | 'after_work';
+export type TPeriod = 'IN THE MORNING' | 'AT LUNCH' | 'AFTER WORK';

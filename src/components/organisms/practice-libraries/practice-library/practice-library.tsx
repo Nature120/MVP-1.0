@@ -8,7 +8,7 @@ import { IPracticeLibraryProps } from './practice-library.typings';
 import { StyledPracticeLibrary as Styled } from './practice-library.styles';
 
 export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
-  const { title, image, description, type, isWithoutActions } = props;
+  const { title, image, description, userGoals, isWithoutActions } = props;
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(prev => !prev);
 
@@ -28,7 +28,7 @@ export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
           <Styled.Image source={{ uri: image }} />
 
           <Styled.TypeContainer>
-            <Styled.Type numberOfLines={1}>{type}</Styled.Type>
+            <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
           </Styled.TypeContainer>
         </View>
 

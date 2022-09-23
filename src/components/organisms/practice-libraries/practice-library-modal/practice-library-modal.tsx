@@ -21,12 +21,18 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
   const insets = useSafeAreaInsets();
 
   const { isWithoutActions, isOpen, closeModal, library } = props;
-  const { title, image, description, type, duration, tags } = library;
+  const { title, image, description, duration, userGoals } = library;
 
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
 
   const getParagraphes = (text: string) => {
-    return text.match(/[^.!?]+[.!?]+/g)?.map((sentence, index) => (
+    const splitted = text.match(/[^.!?]+[.!?]+/g);
+
+    if (!splitted) {
+      return <Styled.Description isFirst>{text.trim()}</Styled.Description>;
+    }
+
+    return splitted.map((sentence, index) => (
       <Styled.Description isFirst={index === 0} key={sentence + index}>
         {sentence.trim()}
       </Styled.Description>
@@ -64,7 +70,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           </Styled.ImageHeader>
 
           <Styled.TypeContainer>
-            <Styled.Type numberOfLines={1}>{type}</Styled.Type>
+            <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
           </Styled.TypeContainer>
         </View>
         <Styled.ContentWrapper>
@@ -83,11 +89,11 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
               {getParagraphes(description)}
 
               <Styled.Tags>
-                {tags.map((tag, index, arr) => (
-                  <Spacer isHorizontal key={tag + index} gap={8} isLastItem={index === arr.length - 1}>
+                {userGoals.map((userGoal, index, arr) => (
+                  <Spacer isHorizontal key={userGoal + index} gap={8} isLastItem={index === arr.length - 1}>
                     <Spacer gap={8}>
                       <Styled.Tag>
-                        <Styled.TagText>{tag}</Styled.TagText>
+                        <Styled.TagText>{userGoal}</Styled.TagText>
                       </Styled.Tag>
                     </Spacer>
                   </Spacer>
