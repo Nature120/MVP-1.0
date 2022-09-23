@@ -11,8 +11,8 @@ import { IProp } from './timer-progress-bar.typings';
 
 import { StyledRing as Styled } from './timer-progress-bar.styles';
 
-export const TimerProgressBar: React.FC<IProp> = ({ seconds, setSeconds }) => {
-  const { ring, fgRadius, isActive, setIsActive, time } = useTimerProgressBar({ seconds, setSeconds });
+export const TimerProgressBar: React.FC<IProp> = ({ seconds, setSeconds, isOpenAskModal }) => {
+  const { ring, fgRadius, isActive, setIsActive, time } = useTimerProgressBar({ seconds, setSeconds, isOpenAskModal });
 
   const toggle = () => {
     setIsActive(!isActive);
