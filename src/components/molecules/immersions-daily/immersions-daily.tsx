@@ -7,6 +7,8 @@ import { StyledImmersionsDaily as Styled } from './immersions-daily.styles';
 const WEEKDAY = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const COMPLETED = ['Sun', 'Tue', 'Wed', 'Sat'];
 
+const pluralize = (count: number, noun: string, suffix = 's') => `${count} ${noun}${count !== 1 ? suffix : ''}`;
+
 export const ImmersionsDaily: React.FC = () => {
   const todayIndex = new Date().getDay();
   const today = WEEKDAY[todayIndex];
@@ -17,7 +19,7 @@ export const ImmersionsDaily: React.FC = () => {
         <Icon type="human" colorIcon="green" size={26} />
 
         <Styled.Title>
-          You’ve completed <Styled.Immersions>{COMPLETED.length} immersions</Styled.Immersions> this week!
+          You’ve completed <Styled.Immersions>{pluralize(COMPLETED.length, 'immersion')}</Styled.Immersions> this week!
         </Styled.Title>
       </Styled.Header>
 

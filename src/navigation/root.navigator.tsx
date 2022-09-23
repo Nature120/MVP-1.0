@@ -58,7 +58,7 @@ export const RootNavigator = () => {
     return (
       <MainStack.Navigator
         screenOptions={screenOptions}
-        initialRouteName={/* isFirstLaunchOnboarding ? APP_ROUTES.start.onBoard :  */ APP_ROUTES.dashboard}>
+        initialRouteName={isFirstLaunchOnboarding ? APP_ROUTES.start.onBoard : APP_ROUTES.dashboard}>
         {ON_BOARD_ROUTES.map(({ component, name }) => (
           <StartStack.Screen key={name} name={name} component={component} />
         ))}

@@ -1,4 +1,4 @@
-import { IPracticeLibrary } from '@components/organisms/practice-libraries/practice-library/practice-library.typings';
+import { IPracticeLibrary } from '@typings/common';
 
 export interface IPractice {
   title: string;

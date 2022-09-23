@@ -35,6 +35,18 @@ export interface IAddedTime {
   addedTime: number;
 }
 
+export interface IPracticeLibrary {
+  image: string;
+  title: string;
+  season: string;
+  description: string;
+  duration: {
+    from: number;
+    to: number;
+  };
+  userGoals: string[];
+}
+
 export type TScreenOptions =
   | StackNavigationOptions
   | ((props: { route: RouteProp<ParamListBase, string>; navigation: any }) => StackNavigationOptions)
