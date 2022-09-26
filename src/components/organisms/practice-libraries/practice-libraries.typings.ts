@@ -1,4 +1,4 @@
-import { IPracticeLibrary } from './practice-library/practice-library.typings';
+import { IPracticeLibrary } from '@typings/common';
 
 export interface IPracticeLibrariesProps {
   title: string;

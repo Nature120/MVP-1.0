@@ -7,7 +7,7 @@ export const getCheckboxGroupState = <T extends object, K extends Extract<keyof 
 
     const transformedVar =
       typeof extractedVariable === 'string' || typeof extractedVariable === 'number'
-        ? extractedVariable.toString().toLowerCase().replace(/ /g, '_')
+        ? extractedVariable.toString()
         : '';
 
     return {

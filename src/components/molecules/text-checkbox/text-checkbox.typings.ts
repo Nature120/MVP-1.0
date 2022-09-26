@@ -27,6 +27,7 @@ export interface ITextCheckBox {
   icon?: TIconNames;
   iconSize?: IIconSize;
   text: string;
+  value?: string;
 }
 
 export interface IIsChecked {

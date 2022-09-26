@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { getCheckboxGroupState } from '@services/helpers/get-checkbox-group-state';
 
@@ -6,7 +6,14 @@ import { IGroupState, TTextCheckboxGroupProps } from './text-checkbox-group.typi
 
 export const useTextCheckboxGroup = (props: TTextCheckboxGroupProps) => {
   const { isMulti, onChange, variants } = props;
-  const [states, setStates] = useState<IGroupState[]>(getCheckboxGroupState(variants, 'text'));
+  const [states, setStates] = useState<IGroupState[]>(getCheckboxGroupState(variants, 'value'));
+
+  useEffect(() => {
+    if (!variants) {
+      return;
+    }
+    setStates(getCheckboxGroupState(variants, 'value'));
+  }, [variants]);
 
   const onChangeVariants = (value: boolean, name?: string) => {
     const newState = states.map(state => {
