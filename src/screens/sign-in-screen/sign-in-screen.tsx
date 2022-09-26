@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { BackButton } from '@components/back-button';
+import { BackButton } from '@components/molecules/back-button';
 import { Layout } from '@components/molecules/layout';
-import { SignInForm } from '@components/sign-in-form/sign-in-form';
-import { SocialAuthButton } from '@components/social-auth-button/social-auth-button';
+import { SocialAuthButton } from '@components/molecules/social-auth-button/social-auth-button';
+import { SignInForm } from '@components/organisms/sign-in-form/sign-in-form';
 
 import { isIOS } from '@services/helpers/device-utils';
 import { authFaceBook } from '@services/helpers/facebook-auth';

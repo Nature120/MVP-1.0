@@ -1,62 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TextInput } from 'react-native-paper';
-import auth from '@react-native-firebase/auth';
 import { Formik } from 'formik';
 
 import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
-import { Input } from '@components/input/input';
+import { Input } from '@components/atoms/input/input';
+import { useSignInState } from './sign-in-form.state';
 
 import { SIGN_IN_VALIDATION_SCHEMA } from './sign-in-form.constants';
 import { REACT_NATIVE_PAPER_INPUT_THEME } from '@constants/styles';
-
-import { IHandleSignIn, IValue } from './sign-in-form.typings';
-import { IResetForm } from '@typings/formik-typings';
 
 import { SignInFormStyles as Styled } from './sign-in-form.styles';
 
 import { COLOR } from '@theme/colors';
 
 export const SignInForm = () => {
-  const [passwordVisible, setPasswordVisible] = useState<boolean>(true);
-  const [errorMessage, setErrorMessage] = useState<null | string>(null);
-
-  const onSubmit = (values: IValue, { resetForm }: IResetForm): void => {
-    const { email, password } = values;
-    const isEmpty = email === '' || password === '';
-
-    if (isEmpty) {
-      return;
-    }
-
-    handleSignIn({ email, password });
-
-    resetForm();
-  };
-
-  const handleSignIn = async ({ email, password }: IHandleSignIn) => {
-    auth()
-      .signInWithEmailAndPassword(email, password)
-      .catch(error => {
-        handleError(error);
-      });
-  };
-
-  const handleError = (error: any) => {
-    if (error.code === 'auth/email-already-in-use') {
-      return setErrorMessage('That email address is already in use!');
-    } else if (error.code === 'auth/invalid-email') {
-      return setErrorMessage('That email address is invalid!');
-    } else if (error.code === 'auth/wrong-password') {
-      return setErrorMessage('Wrong password');
-    } else if (error.code === 'auth/user-not-found') {
-      return setErrorMessage('User not found');
-    } else if (error.code === 'auth/too-many-requests') {
-      return setErrorMessage('To many requests from this device');
-    } else {
-      setErrorMessage(error.message);
-    }
-  };
+  const { passwordVisible, onSubmit, resetError, changeVisiblePassword, errorMessage } = useSignInState();
 
   const handleChangeIcon = (): JSX.Element => {
     return passwordVisible ? (
@@ -66,13 +25,6 @@ export const SignInForm = () => {
     );
   };
 
-  const changeVisiblePassword = (): void => {
-    setPasswordVisible(!passwordVisible);
-  };
-
-  const resetError = (): void => {
-    setErrorMessage(null);
-  };
   return (
     <>
       <Formik

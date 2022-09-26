@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ProgressBar } from '@components/atoms/progress-bar';
-import { BackButton } from '@components/back-button';
+import { BackButton } from '@components/molecules/back-button';
 import { ButtonOnboarding } from '@components/molecules/button-onboarding';
 import { ButtonWithLink } from '@components/molecules/button-with-link';
 import { useLayoutOnboarding } from './layout-onboarding.state';
@@ -22,6 +22,7 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
     isButtonDisabled,
     isWithoutRedirect,
     onRoutePressNavigateTo,
+    onTextPress,
   } = props;
   const { progress, pressHandler, nextRoute } = useLayoutOnboarding(onPress, isWithoutRedirect);
   return (
@@ -38,10 +39,11 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
         <ButtonWithLink
           isDisabled={isButtonDisabled}
           onPress={pressHandler}
-          onTextPressNavigateTo={onRoutePressNavigateTo || nextRoute}
+          onTextPressNavigateTo={onTextPress ? '' : onRoutePressNavigateTo || nextRoute}
           buttonText={buttonText}
           bottomText={bottomText}
           routeText={routeText}
+          onTextPress={onTextPress}
         />
       ) : (
         <ButtonOnboarding buttonText={buttonText} onPress={pressHandler} isDisabled={isButtonDisabled} />

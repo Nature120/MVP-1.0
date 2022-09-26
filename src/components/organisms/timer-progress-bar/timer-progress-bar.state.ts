@@ -52,12 +52,16 @@ export const useTimerProgressBar = ({ seconds, setSeconds, isOpenAskModal }: IPr
     return format(helperDate, 'm:ss');
   };
 
+  const toggle = () => {
+    setIsActive(!isActive);
+  };
+
   return {
     ring,
     maxSeconds,
     fgRadius,
     isActive,
     time,
-    setIsActive,
+    toggle,
   };
 };
