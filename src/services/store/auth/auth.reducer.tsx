@@ -8,38 +8,20 @@ const user = createReducer(initialState, {
   [action.signIn.type]: (_, { payload }) => payload,
   [action.partialUpdateUser.type]: (userInfo, { payload }) => ({ ...userInfo, ...payload }),
   [action.signOut.type]: () => initialState,
-  //   [action.notAuthenticated.type]: () => [],
-});
-
-const error = createReducer(null, {
-  //   [operation.login.rejected.type]: (_, { payload }) => payload,
-  //   [operation.login.fulfilled.type]: () => null,
-  //   [operation.signUp.rejected.type]: (_, { payload }) => payload,
-  //   [operation.signUp.fulfilled.type]: () => null,
-  //   [operation.signOut.rejected.type]: (_, { payload }) => payload,
-  //   [operation.signUp.fulfilled.type]: () => null,
-  //   [action.errorReset.type]: () => null,
 });
 
 const isAuthenticated = createReducer(false, {
   [action.signIn.type]: () => true,
   [action.isAuthenticated.type]: (_, { payload }) => payload,
   [action.signOut.type]: () => false,
-  //   [operation.login.rejected.type]: () => false,
-  //   [operation.login.pending.type]: () => false,
-  // [action.signUp.fulfilled.type]: () => true,
-  // [action.signUp.rejected.type]: () => false,
-  // [action.signUp.pending.type]: () => false,
-  //   [action.notAuthenticated.type]: () => false,
 });
 
 const isFirstLaunchApp = createReducer(true, {
-  //   [action.firstLaunch.type]: () => false,
+  [action.isNotFirstLaunch.type]: () => false,
 });
 
 export default combineReducers({
   user,
-  error,
   isAuthenticated,
   isFirstLaunchApp,
 });

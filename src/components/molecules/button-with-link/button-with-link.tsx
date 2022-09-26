@@ -23,18 +23,22 @@ export const ButtonWithLink: React.FC<IButtonWithLinkProps> = props => {
   } = props;
   const { navigate } = useNavigation();
 
+  const onPressUpperButton = () => {
+    return onButtonPressNavigateTo ? handleNavigate(navigate, onButtonPressNavigateTo) : buttonProps.onPress;
+  };
+
+  const onPressBottomButton = () => {
+    return onTextPressNavigateTo ? handleNavigate(navigate, onTextPressNavigateTo) : onTextPress;
+  };
+
   return (
     <Styled.ButtonWithLink isWithMagrin={isWithMagrin} marginBottom={marginBottom}>
-      <Button
-        {...buttonProps}
-        onPress={onButtonPressNavigateTo ? handleNavigate(navigate, onButtonPressNavigateTo) : buttonProps.onPress}
-      />
+      <Button {...buttonProps} onPress={onPressUpperButton()} />
 
       <Styled.SubButton>
         {bottomText && <Styled.SubButtonText>{bottomText}</Styled.SubButtonText>}
 
-        <TouchableOpacity
-          onPress={onTextPressNavigateTo ? handleNavigate(navigate, onTextPressNavigateTo) : onTextPress}>
+        <TouchableOpacity onPress={onPressBottomButton()}>
           <Styled.TouchableText isBottomText={!!bottomText}>{routeText}</Styled.TouchableText>
         </TouchableOpacity>
       </Styled.SubButton>

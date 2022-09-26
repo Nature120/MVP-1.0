@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@components/atoms/button';
-import { BackButton } from '@components/back-button';
+import { BackButton } from '@components/molecules/back-button';
 import { Layout } from '@components/molecules/layout';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
 import { PracticeLibraries } from '@components/organisms/practice-libraries';

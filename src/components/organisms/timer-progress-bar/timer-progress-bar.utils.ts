@@ -1,6 +1,6 @@
 import { moderateScale } from 'react-native-size-matters';
 
-import { STROKE_WIDTH } from './ring/ring.constants';
+import { STROKE_WIDTH } from '../../molecules/ring/ring.constants';
 import { TAU } from './timer-progress-bar.constants';
 
 import { COLOR } from '@theme/colors';

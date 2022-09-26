@@ -4,7 +4,7 @@ import { multiply } from 'react-native-reanimated';
 import { scale, verticalScale } from 'react-native-size-matters';
 
 import { Icon } from '@components/atoms/icon';
-import { Ring } from './ring/ring';
+import { Ring } from '../../molecules/ring/ring';
 import { useTimerProgressBar } from './timer-progress-bar.state';
 
 import { IProp } from './timer-progress-bar.typings';
@@ -12,11 +12,11 @@ import { IProp } from './timer-progress-bar.typings';
 import { StyledRing as Styled } from './timer-progress-bar.styles';
 
 export const TimerProgressBar: React.FC<IProp> = ({ seconds, setSeconds, isOpenAskModal }) => {
-  const { ring, fgRadius, isActive, setIsActive, time } = useTimerProgressBar({ seconds, setSeconds, isOpenAskModal });
-
-  const toggle = () => {
-    setIsActive(!isActive);
-  };
+  const { ring, fgRadius, isActive, time, toggle } = useTimerProgressBar({
+    seconds,
+    setSeconds,
+    isOpenAskModal,
+  });
 
   return (
     <Styled.Wrapper>

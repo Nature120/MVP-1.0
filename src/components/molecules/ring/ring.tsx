@@ -7,7 +7,7 @@ import { CircularProgress } from '@components/organisms/rings/circular-progress'
 import { RingShadow } from '@components/organisms/rings/ring-shadow';
 import { RingsGradient } from '@components/organisms/rings/rings-gradient';
 
-import { TAU } from '../timer-progress-bar.constants';
+import { TAU } from '../../organisms/timer-progress-bar/timer-progress-bar.constants';
 import { STROKE_WIDTH } from './ring.constants';
 
 import { IProp } from './ring.typings';

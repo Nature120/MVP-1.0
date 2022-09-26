@@ -1,59 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TextInput } from 'react-native-paper';
-import auth from '@react-native-firebase/auth';
 import { Formik } from 'formik';
 
 import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
-import { Input } from '@components/input/input';
-
-import LoginFunctions from '@services/helpers/auth-social';
-import { saveInDB } from '@services/helpers/firebase-store';
+import { Input } from '@components/atoms/input/input';
+import { useSignUpState } from './sign-up-form.state';
 
 import { REGISTER_VALIDATION_SCHEMA } from './sign-up-form.constants';
 import { REACT_NATIVE_PAPER_INPUT_THEME } from '@constants/styles';
-
-import { IRegister, IValue } from './sign-up-form.typings';
-import { IResetForm } from '@typings/formik-typings';
 
 import { SignUpFormStyles as Styled } from './sign-up-form.styles';
 
 import { COLOR } from '@theme/colors';
 
 export const SignUpForm = () => {
-  const [passwordVisible, setPasswordVisible] = useState<boolean>(true);
-  const [errorMessage, setErrorMessage] = useState<null | string>(null);
-
-  const onSubmit = (values: IValue, { resetForm }: IResetForm): void => {
-    const { email, password, first_name } = values;
-    const isEmpty = email === '' || password === '' || first_name === '';
-
-    if (isEmpty) {
-      return;
-    }
-    handleRegister({ email, password, first_name });
-    resetForm();
-  };
-
-  const handleRegister = async ({ email, password, first_name }: IRegister): Promise<void> => {
-    try {
-      const credential = auth.EmailAuthProvider.credential(email, password);
-      const provider = auth.EmailAuthProvider.PROVIDER_ID;
-
-      const response = await auth().createUserWithEmailAndPassword(email, password);
-
-      LoginFunctions.saveCredential({ provider, credential });
-
-      ////Store in DB////
-      const uid = response.user.uid;
-
-      const data = { email, first_name };
-      // dispatch
-      saveInDB({ data, uid });
-    } catch (error) {
-      handleError(error);
-    }
-  };
+  const { passwordVisible, onSubmit, resetError, changeVisiblePassword, errorMessage } = useSignUpState();
 
   const handleChangeIcon = (): JSX.Element => {
     return passwordVisible ? (
@@ -61,24 +23,6 @@ export const SignUpForm = () => {
     ) : (
       <Icon type="openEye" width={32} height={32} colorIcon="grey" />
     );
-  };
-
-  const changeVisiblePassword = (): void => {
-    setPasswordVisible(!passwordVisible);
-  };
-
-  ////Errors
-  const handleError = (error: any) => {
-    if (error.code === 'auth/email-already-in-use') {
-      return setErrorMessage('That email address is already in use!');
-    }
-    if (error.code === 'auth/invalid-email') {
-      return setErrorMessage('That email address is invalid!');
-    }
-  };
-
-  const resetError = (): void => {
-    setErrorMessage(null);
   };
 
   return (

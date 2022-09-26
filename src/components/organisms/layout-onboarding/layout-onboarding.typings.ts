@@ -8,6 +8,7 @@ interface ICommonProps {
   onPress?: TOnPress;
   onRoutePressNavigateTo?: string;
   onBackButtonPress?: () => void;
+  onTextPress?: () => void;
 }
 
 interface ILayoutOnboardingWithLink extends ICommonProps {
