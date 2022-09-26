@@ -16,7 +16,6 @@ import { CenterContainer } from '@theme/components';
 
 export const Home: React.FC = () => {
   const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, saveResponse, navigateToImmersions } = useHome();
-
   return (
     <>
       <AskModal

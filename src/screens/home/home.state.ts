@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch } from '@services/hooks/redux';
 import { setCommentBeforeImmersion } from '@services/store/app';
-import { getUserInfo } from '@services/store/auth/auth.selectors';
+import { isNotFirstLaunch } from '@services/store/auth/auth.actions';
+import { getFirstLaunch, getUserInfo } from '@services/store/auth/auth.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -15,6 +16,7 @@ export const useHome = () => {
   const { weeklyGoal } = useGoal();
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
+  const isFirstLaunch = useSelector(getFirstLaunch);
 
   const onToggleOpen = () => setIsOpen(prev => !prev);
   const closeModal = () => setIsOpen(false);
@@ -24,6 +26,13 @@ export const useHome = () => {
     dispatch(setCommentBeforeImmersion(response));
     navigateToImmersions();
   };
+
+  useEffect(() => {
+    if (isFirstLaunch === false) {
+      return;
+    }
+    dispatch(isNotFirstLaunch(null));
+  }, []);
 
   const navigateToImmersions = () => {
     closeModal();
