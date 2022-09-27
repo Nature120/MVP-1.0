@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { addTOTDToDB } from '@components/test';
+
 import { databaseRef } from '@services/api.service';
 
 export const usePractices = () => {

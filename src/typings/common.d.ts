@@ -17,6 +17,11 @@ export type TDailyGoal = keyof typeof ONBOARDING_GOAL_HASH_MAP;
 
 export type TDocument = FirebaseFirestoreTypes.QueryDocumentSnapshot<FirebaseFirestoreTypes.DocumentData>;
 
+export interface ITipOfTheDay {
+  title: string;
+  body: string;
+}
+
 export interface IError {
   message?: string;
   code?: number | string;

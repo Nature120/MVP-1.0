@@ -1,3 +1,5 @@
+import { ITipOfTheDay } from '@typings/common';
+
 export interface IState {
   auth: IAuth;
 }
@@ -24,4 +26,8 @@ export interface IUser {
   goal?: number;
   timeForImmersion?: Date;
   comments?: IUserComment[];
+  tipOfTheDay?: {
+    timestamp: number;
+    tip: ITipOfTheDay;
+  };
 }
