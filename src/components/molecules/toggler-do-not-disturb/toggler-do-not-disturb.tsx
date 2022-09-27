@@ -7,9 +7,9 @@ import { ITogglerDoNotDisturbProps } from './toggler-do-not-disturb.typings';
 
 import { StyledTogglerDoNotDisturb as Styled } from './toggler-do-not-disturb.styles';
 export const TogglerDoNotDisturb: React.FC<ITogglerDoNotDisturbProps> = props => {
-  const { isDoNotDisturb, setIsDoNotDisturb, mb, mt, isDark } = props;
+  const { isDoNotDisturb, setIsDoNotDisturb, marginBottom, marginTop, isDark } = props;
   return (
-    <Styled.TogglerWrapper mb={mb} mt={mt}>
+    <Styled.TogglerWrapper marginBottom={marginBottom} marginTop={marginTop}>
       <Toggler
         value={isDoNotDisturb}
         onChange={setIsDoNotDisturb}

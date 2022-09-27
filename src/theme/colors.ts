@@ -43,6 +43,7 @@ export const COLOR = {
   background: {
     white,
     blue,
+    dark: 'rgba(22, 48, 69, 0.8)',
     beigeDark: '#E9E0D8',
     beigeLight: '#EFECE9',
     extraLightMint: '#F0F7F7',

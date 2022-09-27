@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 import { updateUser } from '@services/api.service';
 import { useAppDispatch } from '@services/hooks/redux';
 import { useSignOut } from '@services/hooks/sign-out';
-import { IUser } from '@services/store/auth/auth.interface';
 import { getUid } from '@services/store/auth/auth.selectors';
+import { IUser } from '@services/store/auth/auth.typings';
 
 import { IMAGES_TO_PRELOAD } from '@constants/images';
 import { ONBOARDING_GOAL_HASH_MAP } from '@screens/onboarding/onboarding.constants';

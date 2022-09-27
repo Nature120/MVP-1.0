@@ -21,14 +21,14 @@ export const ModalChangeGoal: React.FC = () => {
   const rednerItem = (goal: number) => (
     <Styled.Item>
       <Styled.WeeklyText>{GOAL_HASH_MAP()[goal]}</Styled.WeeklyText>
-      <Line mt={5} mb={10} width={60} />
+      <Line marginTop={5} marginBottom={10} width={60} />
 
       <Styled.Bottom>
         <Styled.DailyText>{goal}</Styled.DailyText>
 
         <Styled.MinDay>
           <Styled.MinDayText>min</Styled.MinDayText>
-          <Line mt={2} mb={2} />
+          <Line marginTop={2} marginBottom={2} />
           <Styled.MinDayText>day</Styled.MinDayText>
         </Styled.MinDay>
       </Styled.Bottom>

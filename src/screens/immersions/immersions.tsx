@@ -46,9 +46,13 @@ export const Immersions: React.FC = () => {
               Choosing an immersion can help guide your time in nature. You can skip this step.
             </Styled.SubTitle>
 
-            <Line mt={24} mb={28} />
+            <Line marginTop={24} marginBottom={28} />
 
-            <TogglerDoNotDisturb mb={48} isDoNotDisturb={isDoNotDisturb} setIsDoNotDisturb={setIsDoNotDisturb} />
+            <TogglerDoNotDisturb
+              marginBottom={48}
+              isDoNotDisturb={isDoNotDisturb}
+              setIsDoNotDisturb={setIsDoNotDisturb}
+            />
           </Styled.Immersions>
 
           <PracticeLibraries title="Recent Immersions" libraries={recentLibraries} />

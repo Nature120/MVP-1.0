@@ -7,6 +7,7 @@ import { TextComponent, Title } from '@theme/components';
 import { FONTS } from '@theme/fonts';
 
 const SIZE = (DEVICE_WIDTH - 24 * 2) / 7 - 4;
+const bacgroundColor = '#e9eaec';
 
 interface IDayProps {
   isToday: boolean;
@@ -50,7 +51,7 @@ export const StyledImmersionsDaily = {
     align-items: center;
     justify-content: center;
 
-    background-color: #e9eaec;
+    background-color: ${bacgroundColor};
 
     ${({ isCompleted }) =>
       isCompleted &&

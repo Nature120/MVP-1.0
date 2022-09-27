@@ -8,9 +8,9 @@ import { Input } from '@components/atoms/input/input';
 import { useSignInState } from './sign-in-form.state';
 
 import { SIGN_IN_VALIDATION_SCHEMA } from './sign-in-form.constants';
-import { REACT_NATIVE_PAPER_INPUT_THEME } from '@constants/styles';
 
 import { SignInFormStyles as Styled } from './sign-in-form.styles';
+import { REACT_NATIVE_PAPER_INPUT_THEME } from '@theme/styles';
 
 import { COLOR } from '@theme/colors';
 

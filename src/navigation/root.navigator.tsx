@@ -11,7 +11,8 @@ import { BottomTabNavigator } from './bottom-tab.navigator';
 import { screenOptions } from './navigation.options';
 import { useNavigationSate } from './navigation.state';
 
-import { APP_ROUTES, ON_BOARD_ROUTES } from '@constants/routes';
+import { ON_BOARD_ROUTES } from './navigation.constants';
+import { APP_ROUTES } from '@constants/routes';
 
 const StartStack = createStackNavigator();
 const MainStack = createStackNavigator();

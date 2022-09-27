@@ -5,9 +5,9 @@ import { TextComponent } from '@theme/components';
 import { FONTS } from '@theme/fonts';
 
 export const StyledTogglerDoNotDisturb = {
-  TogglerWrapper: styled.View<{ mb?: number; mt?: number }>`
-    margin-bottom: ${props => (props.mb ? props.mb : 0)}px;
-    margin-top: ${props => (props.mt ? props.mt : 0)}px;
+  TogglerWrapper: styled.View<{ marginBottom?: number; marginTop?: number }>`
+    margin-bottom: ${props => (props.marginBottom ? props.marginBottom : 0)}px;
+    margin-top: ${props => (props.marginTop ? props.marginTop : 0)}px;
   `,
 
   DoNotDisturbWrapper: styled.View`

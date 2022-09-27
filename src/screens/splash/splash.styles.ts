@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+import { Z_INDEX } from '@theme/z-index';
+
 export const StyledSplash = {
   SliderContainer: styled.View`
     flex: 1;
@@ -10,6 +12,6 @@ export const StyledSplash = {
     width: 100%;
     height: 423px;
     bottom: -40px;
-    z-index: -1;
+    z-index: ${Z_INDEX.hidden};
   `,
 };

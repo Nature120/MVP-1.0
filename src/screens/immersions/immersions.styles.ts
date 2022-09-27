@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import { COLOR } from '@theme/colors';
 import { TextComponent, Title } from '@theme/components';
 import { FONTS } from '@theme/fonts';
+import { Z_INDEX } from '@theme/z-index';
 
 export const StyledImmersions = {
   Wrapper: styled.View`
@@ -40,7 +41,7 @@ export const StyledImmersions = {
   `,
 
   SafeAreaView: styled.SafeAreaView`
-    z-index: 20;
+    z-index: ${Z_INDEX.alwaysTop};
   `,
 
   ButtonWrapper: styled.View`
