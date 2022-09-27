@@ -32,7 +32,7 @@ export const useTipOfTheDay = () => {
     const { tipOfTheDay } = user.data() as IUser;
 
     if (!tipOfTheDay) {
-      return;
+      return getTipFromDatabase();
     }
 
     const isToday = checkIsToday(tipOfTheDay.timestamp);
