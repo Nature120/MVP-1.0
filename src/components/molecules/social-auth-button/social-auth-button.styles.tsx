@@ -19,7 +19,7 @@ export const SocialAuthButtonStyles = {
   Text: styled.Text`
     font-family: ${FONTS.family.mediumAcumin};
     font-size: ${moderateScale(FONTS.size.xMedium)}px;
-    font-weight: 500;
+    font-weight: ${FONTS.weight.medium};
     line-height: ${moderateScale(20)}px;
     color: ${COLOR.font.black};
   `,

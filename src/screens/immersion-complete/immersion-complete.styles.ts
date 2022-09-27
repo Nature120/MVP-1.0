@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { COLOR } from '@theme/colors';
 import { CenterContainer, TextComponent } from '@theme/components';
 import { FONTS } from '@theme/fonts';
+import { Z_INDEX } from '@theme/z-index';
 
 export const StyledImmersionComplete = {
   ImmersionComplete: styled.View`
@@ -11,7 +12,7 @@ export const StyledImmersionComplete = {
   `,
 
   SafeAreaView: styled.SafeAreaView`
-    z-index: 20;
+    z-index: ${Z_INDEX.alwaysTop};
   `,
 
   ProgressBar: styled(CenterContainer)`

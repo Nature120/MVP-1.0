@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 
 import { COLOR } from '@theme/colors';
+import { Z_INDEX } from '@theme/z-index';
 
 const logoSize = 170;
 
@@ -22,7 +23,7 @@ export const StyledPractices = {
   `,
 
   Loader: styled.View`
-    z-index: 20;
+    z-index: ${Z_INDEX.alwaysTop};
     display: flex;
     align-items: center;
     justify-content: center;

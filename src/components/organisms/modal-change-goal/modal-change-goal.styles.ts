@@ -10,6 +10,7 @@ import { TViewProps } from '@typings/common';
 
 import { TextComponent } from '@theme/components';
 import { FONTS } from '@theme/fonts';
+import { Z_INDEX } from '@theme/z-index';
 
 export const linerarGradient: TViewProps = {
   ...StyleSheet.absoluteFillObject,
@@ -27,7 +28,7 @@ export const StyledModalChangeGoal = {
     position: absolute;
     top: 17%;
     left: ${RINGS_SIZE / 2 - 25 / 2}px;
-    z-index: 20;
+    z-index: ${Z_INDEX.alwaysTop};
   `,
 
   Container: styled.View`

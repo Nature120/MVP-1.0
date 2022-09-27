@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabBar } from '../components/atoms/bottom-tab-bar/bottom-tab-bar';
 import { noHeaderOptions } from './navigation.options';
 
-import { BOTTOM_TAB_ROUTES } from '@constants/routes';
+import { BOTTOM_TAB_ROUTES } from './navigation.constants';
 
 const Tab = createBottomTabNavigator();
 

@@ -3,8 +3,6 @@ import axios from 'axios';
 
 import { IResponseError } from '@typings/common.d';
 
-// axios.defaults.baseURL = CONFIG.apiURL;
-
 const TOKEN = {
   set(token: string) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;

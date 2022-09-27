@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 
-import { IUser } from './auth.interface';
+import { IUser } from './auth.typings';
 
 export const signIn = createAction<IUser>('auth/signIn');
 export const isNotFirstLaunch = createAction<null>('auth/isNotFirstLaunch');

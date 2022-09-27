@@ -12,7 +12,7 @@ export const TipOfTheDay: React.FC = () => {
 
   return (
     <>
-      <Line mt={12} />
+      <Line marginTop={12} />
       <Styled.TipOfTheDay>
         <Styled.Header>
           <Icon type="tip" colorIcon="green" width={24} height={22} />

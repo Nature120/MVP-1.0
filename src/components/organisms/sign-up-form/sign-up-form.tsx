@@ -8,9 +8,9 @@ import { Input } from '@components/atoms/input/input';
 import { useSignUpState } from './sign-up-form.state';
 
 import { REGISTER_VALIDATION_SCHEMA } from './sign-up-form.constants';
-import { REACT_NATIVE_PAPER_INPUT_THEME } from '@constants/styles';
 
 import { SignUpFormStyles as Styled } from './sign-up-form.styles';
+import { REACT_NATIVE_PAPER_INPUT_THEME } from '@theme/styles';
 
 import { COLOR } from '@theme/colors';
 
