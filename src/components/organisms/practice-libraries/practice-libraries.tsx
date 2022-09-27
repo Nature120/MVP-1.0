@@ -1,17 +1,32 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { FlatList, ListRenderItem } from 'react-native';
 
 import { Icon } from '@components/atoms/icon';
 import { PracticeLibrary } from './practice-library';
 
 import { IPracticeLibrariesProps } from './practice-libraries.typings';
+import { IPracticeLibrary } from '@typings/common';
 
 import { StyledPracticeLibraries as Styled } from './practice-libraries.styles';
 
 import { Spacer } from '@theme/components';
 
 export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
-  const { title, libraries, isWithForwardArrow, isWithoutActions } = props;
+  const { title, isWithForwardArrow, libraries, isWithoutActions, onEndReached, onMomentumScrollBegin } = props;
+
+  const renderItem: ListRenderItem<IPracticeLibrary> = ({ item, index }) => (
+    <Spacer
+      key={item.title}
+      gap={16}
+      isHorizontal
+      isEqual
+      startEndGap={24}
+      index={index}
+      isLastItem={index === libraries.length - 1}>
+      <PracticeLibrary {...item} isWithoutActions={isWithoutActions} />
+    </Spacer>
+  );
+
   return (
     <>
       <Styled.Header>
@@ -19,20 +34,18 @@ export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
         {isWithForwardArrow && <Icon type="arrowRight" colorIcon="cloudyGreen" size={24} />}
       </Styled.Header>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} decelerationRate="fast" scrollEventThrottle={16}>
-        {libraries.map((libraryItem, index, items) => (
-          <Spacer
-            key={libraryItem.title}
-            gap={16}
-            isHorizontal
-            isEqual
-            startEndGap={24}
-            index={index}
-            isLastItem={index === items.length - 1}>
-            <PracticeLibrary {...libraryItem} isWithoutActions={isWithoutActions} />
-          </Spacer>
-        ))}
-      </ScrollView>
+      <FlatList
+        data={libraries}
+        decelerationRate="fast"
+        renderItem={renderItem}
+        keyExtractor={item => item.title}
+        showsHorizontalScrollIndicator={false}
+        numColumns={1}
+        horizontal
+        onEndReachedThreshold={0.1}
+        onMomentumScrollBegin={onMomentumScrollBegin}
+        onEndReached={onEndReached}
+      />
     </>
   );
 };

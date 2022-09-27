@@ -4,7 +4,7 @@ import { Button } from '@components/atoms/button';
 import { AskModal } from '@components/molecules/ask-modal';
 import { Layout } from '@components/molecules/layout';
 import { TipOfTheDay } from '@components/molecules/tip-of-the-day';
-import { PracticeLibraries } from '@components/organisms/practice-libraries';
+import { PracticeLibrariesPagination } from '@components/organisms/practice-libraries/practice-libraries-pagination';
 import { Rings } from '@components/organisms/rings';
 import { useHome } from './home.state';
 
@@ -14,8 +14,7 @@ import { COLOR } from '@theme/colors';
 import { CenterContainer } from '@theme/components';
 
 export const Home: React.FC = () => {
-  const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, saveResponse, navigateToImmersions, practiceLibraries } =
-    useHome();
+  const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, saveResponse, navigateToImmersions } = useHome();
 
   return (
     <>
@@ -46,7 +45,7 @@ export const Home: React.FC = () => {
         </Styled.MainSection>
 
         <Styled.InfoSectionWrapper>
-          <PracticeLibraries title="Picked For You" libraries={practiceLibraries} isWithoutActions />
+          {user.whatBrings && <PracticeLibrariesPagination title="Picked For You" documentId={user.whatBrings} />}
 
           <Styled.InfoSection>
             <TipOfTheDay />
