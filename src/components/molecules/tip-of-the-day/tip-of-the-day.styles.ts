@@ -21,6 +21,7 @@ export const StyledTipOfTheDay = {
   `,
 
   Title: styled.Text`
+    width: 80%;
     line-height: 20px;
     font-family: ${FONTS.family.semiBoldAcumin};
     font-weight: ${FONTS.weight.semiBold};

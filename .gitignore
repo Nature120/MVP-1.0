@@ -64,4 +64,5 @@ buck-out/
 /src/screens/test.tsx
 /src/components/test.ts
 /src/components/practices-data.json
+/src/components/TOTD-data.json
 .env
