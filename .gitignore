@@ -63,4 +63,5 @@ buck-out/
 /vendor/bundle/
 /src/screens/test.tsx
 /src/components/test.ts
+/src/components/practices-data.json
 .env

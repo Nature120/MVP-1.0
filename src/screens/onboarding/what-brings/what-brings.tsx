@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 
 import { Layout } from '@components/molecules/layout';
-import { ITextCheckBox } from '@components/molecules/text-checkbox/text-checkbox.typings';
 import { TextCheckboxGroup } from '@components/molecules/text-checkbox-group';
 import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
+import { useWhatBrings } from './what-brings.state';
 
-import { databaseRef, updateUser } from '@services/api.service';
 import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
-import { useAppDispatch } from '@services/hooks/redux';
-import { getUid } from '@services/store/auth/auth.selectors';
 
 import { StyledWhatBrings as Styled } from './what-brings.styles';
 
 import { OnboardingText, OnboardingTitle } from '@theme/components';
 
 export const WhatBrings: React.FC = () => {
-  const [whatBrings, setWhatBrings] = useState<string[]>([]);
-  const [whatBringsVariants, setWhatBringsVariants] = useState<ITextCheckBox[]>([]);
-  const dispatch = useAppDispatch();
-
-  const uid = useSelector(getUid);
+  const { whatBrings, whatBringsVariants, onPress, onChangeVariants } = useWhatBrings();
 
   const getPartialUnderlinedText = (str: string) =>
     getPartialStyledText(str, (line, isMatch, index) => (
@@ -28,25 +20,6 @@ export const WhatBrings: React.FC = () => {
         {line}
       </OnboardingText>
     ));
-
-  const onPress = async () => {
-    await updateUser(uid, { whatBrings }, dispatch);
-  };
-
-  const onChangeVariants = (newVariants: string[]) => {
-    setWhatBrings(newVariants);
-  };
-
-  useEffect(() => {
-    const getVariants = async () => {
-      const res = await databaseRef('Practise library').get();
-      const uIds: ITextCheckBox[] = res.docs.map(doc => ({ text: doc.id.toUpperCase(), value: doc.id }));
-
-      setWhatBringsVariants(uIds);
-    };
-
-    getVariants();
-  }, []);
 
   return (
     <Layout ellipseColor="green" isWithGradient isWithScroll>

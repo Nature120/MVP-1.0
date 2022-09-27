@@ -5,4 +5,6 @@ export interface IPracticeLibrariesProps {
   libraries: IPracticeLibrary[];
   isWithForwardArrow?: boolean;
   isWithoutActions?: boolean;
+  onEndReached?: () => void;
+  onMomentumScrollBegin?: () => void;
 }

@@ -1,6 +1,7 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import { ParamListBase, RouteProp } from '@react-navigation/native';
 import { StackNavigationOptions, StackNavigationProp } from '@react-navigation/stack';
 import { SimpleInterpolation } from 'styled-components';
@@ -13,6 +14,8 @@ export type TAnimatedViewProps = StyleProp<Animated.AnimateStyle<ViewStyle>>;
 export type TAnimatedNumber = Animated.Node<number>;
 
 export type TDailyGoal = keyof typeof ONBOARDING_GOAL_HASH_MAP;
+
+export type TDocument = FirebaseFirestoreTypes.QueryDocumentSnapshot<FirebaseFirestoreTypes.DocumentData>;
 
 export interface IError {
   message?: string;
@@ -40,6 +43,7 @@ export interface IPracticeLibrary {
   title: string;
   season: string;
   description: string;
+  topCategory: string;
   duration: {
     from: number;
     to: number;
