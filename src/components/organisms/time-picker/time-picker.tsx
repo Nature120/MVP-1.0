@@ -5,9 +5,8 @@ import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
 import { ModalBottom } from '@components/molecules/modal-bottom';
 
+import { timeString12hr } from './time-picker.utils';
 import { getMinMaxDate } from '@services/helpers/utils';
-
-import { timeString12hr } from './time-picker.constants';
 
 import { ITimePickerProps } from './time-picker.typings';
 

@@ -26,10 +26,11 @@ export const useTimeForImmersion = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (selectedPeriod) {
-      const { minimumDate } = getMinMaxDate(selectedPeriod as TPeriod);
-      setTimeForImmersion(minimumDate);
+    if (!selectedPeriod) {
+      return;
     }
+    const { minimumDate } = getMinMaxDate(selectedPeriod as TPeriod);
+    setTimeForImmersion(minimumDate);
   }, [selectedPeriod]);
 
   const createNotificationsChannel = () =>
@@ -40,16 +41,17 @@ export const useTimeForImmersion = () => {
     const checkboxInfo = timeForImmersionVariants.find(variant => variant.text === checkboxText);
     setSelectedCheckbox(checkboxInfo);
 
-    if (selectedCheckbox?.text) {
-      await updateUser(uid, { timeForImmersion }, dispatch);
-
-      !isChannelCreated && createNotificationsChannel();
-      PushNotification.cancelAllLocalNotifications();
-      const config = setNotificationConfig(timeForImmersion!);
-      PushNotification.localNotificationSchedule(config);
-
-      navigate(APP_ROUTES.dashboard as never);
+    if (!selectedCheckbox?.text) {
+      return;
     }
+
+    await updateUser(uid, { timeForImmersion }, dispatch);
+    !isChannelCreated && createNotificationsChannel();
+    PushNotification.cancelAllLocalNotifications();
+    const config = setNotificationConfig(timeForImmersion!);
+    PushNotification.localNotificationSchedule(config);
+
+    navigate(APP_ROUTES.dashboard as never);
   };
 
   const onChangeTime = (newTime: string) => {

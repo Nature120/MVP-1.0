@@ -4,6 +4,7 @@ import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 
 import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
+import { Line } from '@components/atoms/line';
 import { ButtonIcon } from '@components/molecules/button-icon';
 import { ModalBottom } from '@components/molecules/modal-bottom';
 import { useModalChangeGoal } from './modal-change.state';
@@ -13,22 +14,20 @@ import { GOAL_HASH_MAP } from '@screens/onboarding/onboarding.constants';
 
 import { linerarGradient, StyledModalChangeGoal as Styled } from './modal-change-goal.styles';
 
-import { Line } from '@theme/components';
-
 export const ModalChangeGoal: React.FC = () => {
   const { isOpen, onOpen, onClose, onDone, onGoalChange, defaultIndex } = useModalChangeGoal();
 
   const rednerItem = (goal: number) => (
     <Styled.Item>
       <Styled.WeeklyText>{GOAL_HASH_MAP()[goal]}</Styled.WeeklyText>
-      <Line mt={5} mb={10} width={60} />
+      <Line marginTop={5} marginBottom={10} width={60} />
 
       <Styled.Bottom>
         <Styled.DailyText>{goal}</Styled.DailyText>
 
         <Styled.MinDay>
           <Styled.MinDayText>min</Styled.MinDayText>
-          <Line mt={2} mb={2} />
+          <Line marginTop={2} marginBottom={2} />
           <Styled.MinDayText>day</Styled.MinDayText>
         </Styled.MinDay>
       </Styled.Bottom>

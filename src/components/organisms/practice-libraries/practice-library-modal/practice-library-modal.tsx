@@ -1,29 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
+import { Spacer } from '@components/atoms/spacer';
 import { ButtonIcon } from '@components/molecules/button-icon';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
-
-import { APP_ROUTES } from '@constants/routes';
+import { usePracticeLibraryModal } from './practice-library-modal.state';
 
 import { IPracticeLibraryModalProps } from './practice-library-modal.typings';
 
 import { contentContainerStyle, StyledPracticeLibraryModal as Styled } from './practice-library-modal.styles';
 
-import { Spacer } from '@theme/components';
-
 export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props => {
-  const { navigate } = useNavigation();
+  const {
+    isOpen,
+    isWithoutActions,
+    navigateToHomePage,
+    closeModal,
+    isDoNotDisturb,
+    setIsDoNotDisturb,
+    navigateToTimer,
+  } = usePracticeLibraryModal(props);
+
+  const { title, image, description, duration, userGoals } = props.library;
+
   const insets = useSafeAreaInsets();
-
-  const { isWithoutActions, isOpen, closeModal, library } = props;
-  const { title, image, description, duration, userGoals } = library;
-
-  const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
 
   const getParagraphes = (text: string) => {
     const splitted = text.match(/[^.!?]+[.!?]+/g);
@@ -37,16 +40,6 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
         {sentence.trim()}
       </Styled.Description>
     ));
-  };
-
-  const navigateToTimer = () => {
-    closeModal();
-    navigate(APP_ROUTES.immersionTimer as never, library as never);
-  };
-
-  const navigateToHomePage = () => {
-    closeModal();
-    navigate(APP_ROUTES.main.home as never);
   };
 
   return (

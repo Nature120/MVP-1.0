@@ -1,9 +1,12 @@
 import { Title } from 'react-native-paper';
 import styled from 'styled-components/native';
 
+import { CenterContainer } from '@components/atoms/center-container';
+import { TextComponent } from '@components/atoms/text-component';
+
 import { COLOR } from '@theme/colors';
-import { CenterContainer, TextComponent } from '@theme/components';
 import { FONTS } from '@theme/fonts';
+import { Z_INDEX } from '@theme/z-index';
 
 export const StyledImmersionComplete = {
   ImmersionComplete: styled.View`
@@ -11,7 +14,7 @@ export const StyledImmersionComplete = {
   `,
 
   SafeAreaView: styled.SafeAreaView`
-    z-index: 20;
+    z-index: ${Z_INDEX.alwaysTop};
   `,
 
   ProgressBar: styled(CenterContainer)`

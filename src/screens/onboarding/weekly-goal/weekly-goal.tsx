@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { OnboardingText } from '@components/atoms/onboarding-text';
+import { OnboardingTitle } from '@components/atoms/onboarding-title';
 import { Layout } from '@components/molecules/layout';
 import { WeeklyGoalCheckboxGroup } from '@components/molecules/weekly-goal-checkbox-group';
 import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
@@ -10,8 +12,6 @@ import { getPartialStyledText } from '@services/helpers/get-partial-styled-text'
 import { weeklyGoalVariants } from '../onboarding.constants';
 
 import { StyledWeeklyGoal as Styled } from './weekly-goal.styles';
-
-import { OnboardingText, OnboardingTitle } from '@theme/components';
 
 export const WeeklyGoal: React.FC = () => {
   const { selectedGoal, onChangeGoal, onPress } = useWeeklyGoal();

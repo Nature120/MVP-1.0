@@ -1,12 +1,11 @@
 import React from 'react';
 
+import { OnboardingText } from '@components/atoms/onboarding-text/onboarding-text';
+import { OnboardingTitle } from '@components/atoms/onboarding-title/onboarding-title';
 import { Layout } from '@components/molecules/layout';
 import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
 
 import { APP_ROUTES } from '@constants/routes';
-
-import { OnboardingText } from '@theme/components/onboarding-text';
-import { OnboardingTitle } from '@theme/components/onboarding-title';
 
 export const QuestionsStart: React.FC = () => {
   return (

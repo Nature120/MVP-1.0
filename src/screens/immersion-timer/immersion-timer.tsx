@@ -38,7 +38,7 @@ export const ImmersionTimer: React.FC = () => {
       <TogglerDoNotDisturb
         isDark
         isDoNotDisturb={isDoNotDisturb}
-        mb={moderateScale(45)}
+        marginBottom={moderateScale(45)}
         setIsDoNotDisturb={setIsDoNotDisturb}
       />
 

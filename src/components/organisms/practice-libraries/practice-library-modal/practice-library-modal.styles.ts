@@ -1,9 +1,11 @@
 import styled from 'styled-components/native';
 
+import { TextComponent } from '@components/atoms/text-component';
+import { Title } from '@components/atoms/title';
+
 import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
-import { TextComponent, Title } from '@theme/components';
 import { FONTS } from '@theme/fonts';
 
 const imageIndent = 15;
@@ -38,7 +40,7 @@ export const StyledPracticeLibraryModal = {
     position: absolute;
     left: 24px;
     bottom: ${imageIndent + 24}px;
-    background: rgba(22, 48, 69, 0.8);
+    background: ${COLOR.background.dark};
     align-items: center;
     justify-content: center;
   `,

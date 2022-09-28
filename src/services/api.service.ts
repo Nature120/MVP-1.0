@@ -4,9 +4,7 @@ import { IError } from '../typings/common.d';
 import { TDispatch } from './store';
 import { partialUpdateUser } from './store/auth/auth.actions';
 
-import { IUser } from './store/auth/auth.interface';
-
-// import axios, { AxiosRequestConfig } from 'axios';
+import { IUser } from './store/auth/auth.typings';
 
 type TCollection = 'Users' | 'Practise library' | 'Other text';
 
@@ -36,42 +34,3 @@ export const updateUser = async (uid: string, body: Partial<IUser>, dispatch?: T
     console.error(error);
   }
 };
-
-// import { APP_CONFIG } from '@constants/config';
-
-// const getInstance = () => {
-//   const instance = axios.create({
-//     baseURL: APP_CONFIG.BASE_API_URL,
-//     timeout: 15000,
-//   });
-
-//   instance.interceptors.request.use(async (config: AxiosRequestConfig) => {
-//     return config;
-//   });
-
-//   return instance;
-// };
-
-// export const getRequest = async (requestUrl: string) => {
-//   const { data } = await getInstance().get(requestUrl);
-
-//   return data;
-// };
-
-// export const postRequest = async (requestUrl: string, payload: object) => {
-//   const { data } = await getInstance().post(requestUrl, payload);
-
-//   return data;
-// };
-
-// export const deleteRequest = async (requestUrl: string) => {
-//   const { data } = await getInstance().delete(requestUrl);
-
-//   return data;
-// };
-
-// export const putRequest = async (requestUrl: string, payload: object) => {
-//   const { data } = await getInstance().put(requestUrl, payload);
-
-//   return data;
-// };

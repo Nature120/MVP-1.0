@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@components/atoms/button';
+import { Line } from '@components/atoms/line';
+import { Spacer } from '@components/atoms/spacer';
 import { BackButton } from '@components/molecules/back-button';
 import { Layout } from '@components/molecules/layout';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
@@ -13,7 +15,6 @@ import { APP_ROUTES } from '@constants/routes';
 import { StyledImmersions as Styled } from './immersions.styles';
 
 import { COLOR } from '@theme/colors';
-import { Line, Spacer } from '@theme/components';
 
 export const Immersions: React.FC = () => {
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
@@ -46,9 +47,13 @@ export const Immersions: React.FC = () => {
               Choosing an immersion can help guide your time in nature. You can skip this step.
             </Styled.SubTitle>
 
-            <Line mt={24} mb={28} />
+            <Line marginTop={24} marginBottom={28} />
 
-            <TogglerDoNotDisturb mb={48} isDoNotDisturb={isDoNotDisturb} setIsDoNotDisturb={setIsDoNotDisturb} />
+            <TogglerDoNotDisturb
+              marginBottom={48}
+              isDoNotDisturb={isDoNotDisturb}
+              setIsDoNotDisturb={setIsDoNotDisturb}
+            />
           </Styled.Immersions>
 
           <PracticeLibraries title="Recent Immersions" libraries={recentLibraries} />

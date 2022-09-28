@@ -1,10 +1,11 @@
 import { moderateScale } from 'react-native-size-matters';
 import styled from 'styled-components/native';
 
+import { TextComponent } from '@components/atoms/text-component';
+
 import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
-import { TextComponent } from '@theme/components/text';
 import { FONTS } from '@theme/fonts';
 
 export const StyledPracticeLibrary = {
@@ -24,7 +25,7 @@ export const StyledPracticeLibrary = {
     position: absolute;
     left: 7px;
     bottom: 6px;
-    background: rgba(22, 48, 69, 0.8);
+    background: ${COLOR.background.dark};
     align-items: center;
     justify-content: center;
   `,

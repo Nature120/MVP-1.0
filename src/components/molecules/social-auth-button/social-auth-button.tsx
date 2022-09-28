@@ -2,7 +2,8 @@ import React from 'react';
 import { scale, verticalScale } from 'react-native-size-matters';
 
 import { Icon } from '@components/atoms/icon';
-import { IProp } from './social-auth-button.types';
+
+import { IProp } from './social-auth-button.typings';
 
 import { SocialAuthButtonStyles as Styled } from './social-auth-button.styles';
 

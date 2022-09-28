@@ -1,4 +1,4 @@
-import { IState } from './auth.interface';
+import { IState } from './auth.typings';
 
 export const getAuthentication = (state: IState) => state.auth.isAuthenticated;
 export const getEmail = (state: IState) => state.auth.user.email;

@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 
+import { OnboardingText } from '@components/atoms/onboarding-text';
+
 import { isIOS } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
-import { OnboardingText } from '@theme/components';
 
 export const StyledTimeForImmersion = {
   CheckboxGroup: styled.View`

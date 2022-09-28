@@ -53,7 +53,7 @@ export const SignInScreenStyles = {
     margin-bottom: ${moderateScale(8)}px;
     font-family: ${FONTS.family.semiBoldAcumin};
     font-size: ${moderateScale(FONTS.size.xLarge)}px;
-    font-weight: 600;
+    font-weight: ${FONTS.weight.semiBold};
     line-height: ${moderateScale(36)}px;
     color: ${COLOR.font.darkBlue};
   `,

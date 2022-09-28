@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button } from '@components/atoms/button';
+import { CenterContainer } from '@components/atoms/center-container';
 import { AskModal } from '@components/molecules/ask-modal';
 import { Layout } from '@components/molecules/layout';
 import { TipOfTheDay } from '@components/molecules/tip-of-the-day';
@@ -11,7 +12,6 @@ import { useHome } from './home.state';
 import { StyledHome as Styled } from './home.styles';
 
 import { COLOR } from '@theme/colors';
-import { CenterContainer } from '@theme/components';
 
 export const Home: React.FC = () => {
   const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, saveResponse, navigateToImmersions } = useHome();

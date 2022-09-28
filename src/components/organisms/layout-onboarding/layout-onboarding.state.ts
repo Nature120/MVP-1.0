@@ -3,9 +3,9 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { IProgressBarProps } from '@components/atoms/progress-bar/progress-bar.typings';
 
-import { useOnboardingNextRoute } from '@services/hooks/onboarding-next-route';
+import { ON_BOARD_ROUTES } from '@navigation/navigation.constants';
 
-import { ON_BOARD_ROUTES } from '@constants/routes';
+import { useOnboardingNextRoute } from '@services/hooks/onboarding-next-route';
 
 import { TOnPress } from './layout-onboarding.typings';
 

@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 
+import { TextComponent } from '@components/atoms/text-component/text-component';
+
 import { COLOR } from '@theme/colors';
-import { TextComponent } from '@theme/components/text';
 import { FONTS } from '@theme/fonts';
 
 export const StyledTipOfTheDay = {
@@ -21,6 +22,7 @@ export const StyledTipOfTheDay = {
   `,
 
   Title: styled.Text`
+    width: 80%;
     line-height: 20px;
     font-family: ${FONTS.family.semiBoldAcumin};
     font-weight: ${FONTS.weight.semiBold};

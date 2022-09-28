@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components/native';
 import { IElasticScrollViewProps, IStyledLayoutProps } from './layout.typings';
 
 import { COLOR } from '@theme/colors';
+import { Z_INDEX } from '@theme/z-index';
 
 export const contentContainerStyle = { flexGrow: 1 };
 
@@ -19,7 +20,7 @@ export const StyledLayout = {
   `,
 
   Layout: styled.SafeAreaView<TLayoutProps>`
-    z-index: 1;
+    z-index: ${Z_INDEX.visible};
     flex: 1;
     ${props =>
       props.bottomColor
@@ -67,6 +68,6 @@ export const StyledLayout = {
     width: 100%;
     height: 310px;
     bottom: 0;
-    z-index: 0;
+    z-index: ${Z_INDEX.normal};
   `,
 };
