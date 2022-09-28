@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 
+import { TextComponent } from '@components/atoms/text-component/text-component';
+
 import { COLOR } from '@theme/colors';
-import { TextComponent } from '@theme/components/text';
 import { FONTS } from '@theme/fonts';
 
 export const StyledTipOfTheDay = {

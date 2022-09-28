@@ -2,14 +2,13 @@ import React from 'react';
 import { FlatList, ListRenderItem } from 'react-native';
 
 import { Icon } from '@components/atoms/icon';
+import { Spacer } from '@components/atoms/spacer';
 import { PracticeLibrary } from './practice-library';
 
 import { IPracticeLibrariesProps } from './practice-libraries.typings';
 import { IPracticeLibrary } from '@typings/common';
 
 import { StyledPracticeLibraries as Styled } from './practice-libraries.styles';
-
-import { Spacer } from '@theme/components';
 
 export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
   const { title, isWithForwardArrow, libraries, isWithoutActions, onEndReached, onMomentumScrollBegin } = props;

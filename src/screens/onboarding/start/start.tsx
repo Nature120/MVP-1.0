@@ -1,6 +1,8 @@
 import React from 'react';
 import { ImageBackground } from 'react-native';
 
+import { OnboardingCard } from '@components/atoms/onboarding-card';
+import { OnboardingTitle } from '@components/atoms/onboarding-title';
 import { Layout } from '@components/molecules/layout';
 import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
 import { useStart } from './start.state';
@@ -10,8 +12,6 @@ import { getPartialStyledText } from '@services/helpers/get-partial-styled-text'
 import { IMAGES } from '@constants/images';
 
 import { imageStyle, StyledStart as Styled } from './start.styles';
-
-import { OnboardingCard, OnboardingTitle } from '@theme/components';
 
 export const Start: React.FC = () => {
   const { onSignOut } = useStart();

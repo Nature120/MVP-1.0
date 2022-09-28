@@ -1,10 +1,11 @@
 import { moderateScale } from 'react-native-size-matters';
 import styled from 'styled-components/native';
 
+import { TextComponent } from '@components/atoms/text-component';
+
 import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
-import { TextComponent } from '@theme/components/text';
 import { FONTS } from '@theme/fonts';
 
 export const StyledPracticeLibrary = {

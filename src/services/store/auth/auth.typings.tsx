@@ -29,5 +29,6 @@ export interface IUser {
   tipOfTheDay?: {
     timestamp: number;
     tip: ITipOfTheDay;
+    tipIndex: number;
   };
 }

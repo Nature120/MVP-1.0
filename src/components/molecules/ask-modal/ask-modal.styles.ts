@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 
+import { Title } from '@components/atoms/title';
+
 import { COLOR } from '@theme/colors';
-import { Title } from '@theme/components';
 import { FONTS } from '@theme/fonts';
 
 export const StyledAskModal = {

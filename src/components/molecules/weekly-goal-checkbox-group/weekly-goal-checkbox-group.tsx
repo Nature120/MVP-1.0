@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { Spacer } from '@components/atoms/spacer';
+import { Wrapper } from '@components/atoms/wrapper';
 import { WeeklyGoalCheckbox } from '@components/molecules/weekly-goal-checkbox';
 import { useWeeklyGoalCheckboxGroup } from './weekly-goal-checkbox-group.state';
 
 import { IWeeklyGoalCheckboxGroupProps } from './weekly-goal-checkbox-group.typings';
-
-import { Spacer, Wrapper } from '@theme/components';
 
 export const WeeklyGoalCheckboxGroup: React.FC<IWeeklyGoalCheckboxGroupProps> = props => {
   const { gap, styles } = props;

@@ -37,20 +37,19 @@ export const RootNavigator = () => {
           <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />
         </>
       );
-    } else {
-      return (
-        <>
-          <StartStack.Screen
-            options={{ gestureEnabled: false }}
-            name={APP_ROUTES.dashboard}
-            component={BottomTabNavigator}
-          />
-          <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />
-          <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
-          <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />
-        </>
-      );
     }
+    return (
+      <>
+        <StartStack.Screen
+          options={{ gestureEnabled: false }}
+          name={APP_ROUTES.dashboard}
+          component={BottomTabNavigator}
+        />
+        <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />
+        <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
+        <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />
+      </>
+    );
   };
 
   const onMarkUpSplashRoute = () => {
@@ -62,14 +61,13 @@ export const RootNavigator = () => {
           <StartStack.Screen name={APP_ROUTES.start.signUp} component={SignUpScreen} />
         </>
       );
-    } else {
-      return (
-        <>
-          <StartStack.Screen name={APP_ROUTES.start.signIn} component={SignInScreen} />
-          <StartStack.Screen name={APP_ROUTES.start.signUp} component={SignUpScreen} />
-        </>
-      );
     }
+    return (
+      <>
+        <StartStack.Screen name={APP_ROUTES.start.signIn} component={SignInScreen} />
+        <StartStack.Screen name={APP_ROUTES.start.signUp} component={SignUpScreen} />
+      </>
+    );
   };
 
   const boardRoute = onMarkUpOnBoardRoute();

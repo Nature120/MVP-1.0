@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 
+import { OnboardingTitle } from '@components/atoms/onboarding-title';
 import { Layout } from '@components/molecules/layout';
 import { TextCheckbox } from '@components/molecules/text-checkbox';
 import { TextCheckboxGroup } from '@components/molecules/text-checkbox-group';
@@ -12,8 +13,6 @@ import { useTimeForImmersion } from './time-for-immersion.state';
 import { timeForImmersionVariants } from '../onboarding.constants';
 
 import { StyledTimeForImmersion as Styled } from './time-for-immersion.styles';
-
-import { OnboardingTitle } from '@theme/components';
 
 export const TimeForImmersion: React.FC = () => {
   const { selectedCheckbox, onPress, selectedPeriod, timeForImmersion, setTimeForImmersion, onChangeTime } =

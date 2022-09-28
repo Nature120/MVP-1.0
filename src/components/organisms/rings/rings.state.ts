@@ -27,16 +27,17 @@ export const useRings = (props: IDonutProps) => {
   useCode(() => set(progress, timing({ duration: ANIMATION_DURATION, easing: RING_EASING })), [progress]);
 
   const animation = (toValue: number, isFirstAnimation: boolean) => {
-    if (isFirstAnimation) {
-      return Animated.timing(animatedText, {
-        toValue,
-        useNativeDriver: true,
-        duration: ANIMATION_DURATION,
-        easing: TEXT_EASING,
-      }).start(() => {
-        animation(minutes, false);
-      });
+    if (!isFirstAnimation) {
+      return;
     }
+    return Animated.timing(animatedText, {
+      toValue,
+      useNativeDriver: true,
+      duration: ANIMATION_DURATION,
+      easing: TEXT_EASING,
+    }).start(() => {
+      animation(minutes, false);
+    });
   };
 
   const setTextValue = (value: number, isWithPlus?: boolean) => {

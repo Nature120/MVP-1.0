@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import { Title } from './title';
+import { Title } from '../title/title';
 
 export const OnboardingTitle = styled(Title)<{ isCentered?: boolean }>`
   margin-bottom: 12px;

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { OnboardingText } from '@components/atoms/onboarding-text';
+import { OnboardingTitle } from '@components/atoms/onboarding-title';
 import { Layout } from '@components/molecules/layout';
 import { TextCheckboxGroup } from '@components/molecules/text-checkbox-group';
 import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
@@ -8,8 +10,6 @@ import { useWhatBrings } from './what-brings.state';
 import { getPartialStyledText } from '@services/helpers/get-partial-styled-text';
 
 import { StyledWhatBrings as Styled } from './what-brings.styles';
-
-import { OnboardingText, OnboardingTitle } from '@theme/components';
 
 export const WhatBrings: React.FC = () => {
   const { whatBrings, whatBringsVariants, onPress, onChangeVariants } = useWhatBrings();

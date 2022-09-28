@@ -1,15 +1,16 @@
 import { databaseRef } from '@services/api.service';
 
-import { IPracticeLibrary, TDocument } from '@typings/common';
+import { IGetPracticesByFilter } from './practice-libraries-pagination.typings';
+import { IPracticeLibrary } from '@typings/common';
 
 const practicesRef = () => databaseRef('Practise library');
 
 const ITEMS_PER_PAGE = 4;
 
-export const getPracticesByCategories = async (topCategory: string | string[], lastPracticeDoc?: TDocument) => {
-  const isArray = Array.isArray(topCategory);
+export const getPracticesByFilter = async ({ searchedDocs, lastPracticeDoc, searchField }: IGetPracticesByFilter) => {
+  const isArray = Array.isArray(searchedDocs);
 
-  let query = practicesRef().where('topCategory', isArray ? 'in' : '==', topCategory);
+  let query = practicesRef().where(searchField || 'topCategory', isArray ? 'in' : '==', searchedDocs);
 
   if (lastPracticeDoc !== undefined) {
     query = query.startAfter(lastPracticeDoc);

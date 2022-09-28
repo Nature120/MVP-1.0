@@ -2,13 +2,13 @@ import { StyleSheet } from 'react-native';
 import { Title } from 'react-native-paper';
 import styled from 'styled-components/native';
 
+import { TextComponent } from '@components/atoms/text-component';
 import { RINGS_SIZE } from '@components/organisms/rings/rings.constants';
 
 import { ITEM_WIDTH } from './modal-change-goal.constants';
 
 import { TViewProps } from '@typings/common';
 
-import { TextComponent } from '@theme/components';
 import { FONTS } from '@theme/fonts';
 import { Z_INDEX } from '@theme/z-index';
 

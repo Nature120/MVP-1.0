@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@components/atoms/button';
+import { Line } from '@components/atoms/line';
+import { Spacer } from '@components/atoms/spacer';
 import { BackButton } from '@components/molecules/back-button';
 import { Layout } from '@components/molecules/layout';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
@@ -13,7 +15,6 @@ import { APP_ROUTES } from '@constants/routes';
 import { StyledImmersions as Styled } from './immersions.styles';
 
 import { COLOR } from '@theme/colors';
-import { Line, Spacer } from '@theme/components';
 
 export const Immersions: React.FC = () => {
   const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
