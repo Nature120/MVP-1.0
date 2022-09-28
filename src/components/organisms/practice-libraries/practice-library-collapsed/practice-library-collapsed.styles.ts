@@ -1,10 +1,12 @@
 import { moderateScale, verticalScale } from 'react-native-size-matters';
 import styled, { css } from 'styled-components/native';
 
+import { TextComponent } from '@components/atoms/text-component';
+import { Title } from '@components/atoms/title';
+
 import { isIOS } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
-import { TextComponent, Title } from '@theme/components';
 import { FONTS } from '@theme/fonts';
 
 export const StyledPracticeLibraryCollapsed = {

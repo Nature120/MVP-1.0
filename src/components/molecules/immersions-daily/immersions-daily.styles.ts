@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components/native';
 
+import { TextComponent } from '@components/atoms/text-component';
+import { Title } from '@components/atoms/title';
+
 import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
-import { TextComponent, Title } from '@theme/components';
 import { FONTS } from '@theme/fonts';
 
 const SIZE = (DEVICE_WIDTH - 24 * 2) / 7 - 4;

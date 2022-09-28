@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 
+import { TextComponent } from '@components/atoms/text-component';
+
 import { COLOR } from '@theme/colors';
-import { TextComponent } from '@theme/components';
 import { FONTS } from '@theme/fonts';
 
 export const StyledTogglerDoNotDisturb = {

@@ -4,6 +4,7 @@ import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 
 import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
+import { Line } from '@components/atoms/line';
 import { ButtonIcon } from '@components/molecules/button-icon';
 import { ModalBottom } from '@components/molecules/modal-bottom';
 import { useModalChangeGoal } from './modal-change.state';
@@ -12,8 +13,6 @@ import { ITEM_WIDTH, LINEAR_GRADIENT_CONFIG, PICKER_DATA } from './modal-change-
 import { GOAL_HASH_MAP } from '@screens/onboarding/onboarding.constants';
 
 import { linerarGradient, StyledModalChangeGoal as Styled } from './modal-change-goal.styles';
-
-import { Line } from '@theme/components';
 
 export const ModalChangeGoal: React.FC = () => {
   const { isOpen, onOpen, onClose, onDone, onGoalChange, defaultIndex } = useModalChangeGoal();

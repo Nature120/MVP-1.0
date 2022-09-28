@@ -1,8 +1,17 @@
+import { IPracticeLibrary, TDocument } from '@typings/common';
+
 export interface IPracticeLibrariesPaginationProps extends IPracticeLibrariesPaginationStateProps {
   title: string;
 }
 
 export interface IPracticeLibrariesPaginationStateProps {
   documentId: string | string[];
-  setLoading?: React.Dispatch<React.SetStateAction<any>>;
+  searchField?: keyof IPracticeLibrary;
+  setLoading?: React.Dispatch<React.SetStateAction<{ [key: string]: boolean }>>;
+}
+
+export interface IGetPracticesByFilter {
+  searchedDocs: string | string[];
+  lastPracticeDoc?: TDocument;
+  searchField?: keyof IPracticeLibrary;
 }

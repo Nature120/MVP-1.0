@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
+import { Spacer } from '@components/atoms/spacer';
 import { BackButton } from '@components/molecules/back-button';
 import { Layout } from '@components/molecules/layout';
 import { PracticeLibrariesPagination } from '@components/organisms/practice-libraries/practice-libraries-pagination';
@@ -11,7 +12,6 @@ import { IMAGES } from '@constants/images';
 import { StyledPractices as Styled } from './practices.styles';
 
 import { COLOR } from '@theme/colors';
-import { Spacer } from '@theme/components';
 
 export const Practices: React.FC = () => {
   const { topCategories, setLoadingState, isLoading } = usePractices();

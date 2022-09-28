@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components/native';
 
+import { TextComponent } from '@components/atoms/text-component/text-component';
+
 import { isIOS } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
-import { TextComponent } from '@theme/components/text';
 
 export const StyledBottomTabBar = {
   Wrapper: styled.View`

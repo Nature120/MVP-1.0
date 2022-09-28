@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 
-import { CenterContainer, OnboardingText } from '@theme/components';
+import { CenterContainer } from '@components/atoms/center-container';
+import { OnboardingText } from '@components/atoms/onboarding-text';
 
 export const imageStyle = { flex: 1 };
 

@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { getPracticesByCategories } from './practice-libraries-pagination.utils';
+import { getPracticesByFilter } from './practice-libraries-pagination.utils';
 
 import { IPracticeLibrariesPaginationStateProps } from './practice-libraries-pagination.typings';
 import { IPracticeLibrary, TDocument } from '@typings/common';
 
 export const usePracticeLibrariesPagination = (props: IPracticeLibrariesPaginationStateProps) => {
-  const { documentId, setLoading } = props;
+  const { documentId, setLoading, searchField } = props;
 
   const [libraries, setLibraries] = useState<IPracticeLibrary[]>([]);
   const [isMoreLoading, setIsMoreLoading] = useState(false);
@@ -14,9 +14,13 @@ export const usePracticeLibrariesPagination = (props: IPracticeLibrariesPaginati
   const [isEndReached, setIsEndReached] = useState(false);
 
   const fetchPracticesByCategory = useCallback(
-    async (lastPracticeProps?: TDocument) => {
+    async (lastPracticeDoc?: TDocument) => {
       try {
-        const { practiceList, nextLastPractice } = await getPracticesByCategories(documentId, lastPracticeProps);
+        const { practiceList, nextLastPractice } = await getPracticesByFilter({
+          searchedDocs: documentId,
+          lastPracticeDoc,
+          searchField,
+        });
         setLibraries([...libraries, ...practiceList]);
         setLastPractice(nextLastPractice);
       } catch (error) {
@@ -30,9 +34,7 @@ export const usePracticeLibrariesPagination = (props: IPracticeLibrariesPaginati
     await fetchPracticesByCategory();
 
     if (documentId && setLoading && typeof documentId === 'string') {
-      setLoading((prev: { [key: string]: boolean }) => {
-        return { ...prev, [documentId]: false };
-      });
+      setLoading(prev => ({ ...prev, [documentId]: false }));
     }
   };
 
@@ -47,12 +49,13 @@ export const usePracticeLibrariesPagination = (props: IPracticeLibrariesPaginati
   }, []);
 
   const loadMoreData = async () => {
-    if (lastPractice) {
-      setIsMoreLoading(true);
-      await fetchPracticesByCategory(lastPractice);
-      setIsMoreLoading(false);
-      setIsEndReached(true);
+    if (!lastPractice) {
+      return;
     }
+    setIsMoreLoading(true);
+    await fetchPracticesByCategory(lastPractice);
+    setIsMoreLoading(false);
+    setIsEndReached(true);
   };
 
   const onEndReached = () => {
