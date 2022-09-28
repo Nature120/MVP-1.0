@@ -7,6 +7,10 @@ import { initialState } from './auth.constants';
 const user = createReducer(initialState, {
   [action.signIn.type]: (_, { payload }) => payload,
   [action.partialUpdateUser.type]: (userInfo, { payload }) => ({ ...userInfo, ...payload }),
+  [action.addFinishedPractic.type]: (state, { payload }) => ({
+    ...state,
+    finishedPractices: [...state.finishedPractices, payload],
+  }),
   [action.signOut.type]: () => initialState,
 });
 
@@ -18,6 +22,7 @@ const isAuthenticated = createReducer(false, {
 
 const isFirstLaunchApp = createReducer(true, {
   [action.isNotFirstLaunch.type]: () => false,
+  [action.firstLaunch.type]: () => true,
 });
 
 export default combineReducers({

@@ -25,3 +25,8 @@ export interface IUser {
   timeForImmersion?: Date;
   comments?: IUserComment[];
 }
+
+export interface IActionAddPractic {
+  title: string;
+  created_at: Date;
+}

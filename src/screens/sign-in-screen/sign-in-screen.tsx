@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import { BackButton } from '@components/molecules/back-button';
@@ -9,6 +10,7 @@ import { SignInForm } from '@components/organisms/sign-in-form/sign-in-form';
 import { isIOS } from '@services/helpers/device-utils';
 import { authFaceBook } from '@services/helpers/facebook-auth';
 import { authGoogle } from '@services/helpers/google-auth';
+import { firstLaunch, isNotFirstLaunch } from '@services/store/auth/auth.actions';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -18,12 +20,22 @@ import { SignInScreenStyles as Styled } from './sign-in-screen.styles';
 
 export const SignInScreen = () => {
   const { navigate } = useNavigation<TNavigation>();
-  const onGoogleButtonPress = () => {
-    authGoogle();
+  const dispatch = useDispatch();
+  const onGoogleButtonPress = async () => {
+    const isFisrtTimeAuth = await authGoogle();
+    if (isFisrtTimeAuth) {
+      return dispatch(firstLaunch(null));
+    }
+    dispatch(isNotFirstLaunch(null));
   };
 
-  const onFacebookButtonPress = () => {
-    authFaceBook();
+  const onFacebookButtonPress = async () => {
+    const isFirstTimeAuth = await authFaceBook();
+    console.log('isFirstTimeAuth', isFirstTimeAuth);
+    if (isFirstTimeAuth) {
+      return dispatch(firstLaunch(null));
+    }
+    dispatch(isNotFirstLaunch(null));
   };
 
   const onPressSignUp = () => {

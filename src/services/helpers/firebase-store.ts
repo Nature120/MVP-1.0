@@ -24,16 +24,17 @@ export const storeWithSocial = async ({ response, first_name: registerFirstName 
   const user = await firestore().collection('Users').doc(uid).get();
   const isExistUser = user.exists === true;
   if (isExistUser) {
-    return;
+    return false;
   }
 
   const name = getFirstName(displayName);
-  let data = { first_name: name, email };
+  let data = { first_name: name, email, finishedPractices: [] };
   if (displayName === null) {
-    data = { first_name: registerFirstName, email };
+    data = { first_name: registerFirstName, email, finishedPractices: [] };
   }
 
   saveInDB({ data, uid });
+  return true;
 };
 
 export const saveInDB = ({ data, uid }: ISaveInDB) => {
