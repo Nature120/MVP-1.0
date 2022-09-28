@@ -23,7 +23,10 @@ export const useNavigationSate = () => {
       dispatch(isAuthenticated(false));
       return;
     }
-    saveUser(user);
+
+    setTimeout(() => {
+      saveUser(user);
+    }, 0);
   };
 
   const saveUser = async (currentUser: TFirebaseUser) => {
@@ -34,7 +37,6 @@ export const useNavigationSate = () => {
 
     const userCredentials = await getUser(uid);
     const data = { ...userCredentials, uid };
-
     dispatch(signIn(data));
   };
   return { isFirstLaunch, isAuthenitcated };

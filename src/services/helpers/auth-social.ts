@@ -33,7 +33,8 @@ const LoginFunctions = {
         }
       });
     ///Store user in Database///
-    storeWithSocial({ response });
+    const isFirstTime = await storeWithSocial({ response });
+    return isFirstTime;
   },
 
   getCredential: async function (provider: string) {

@@ -32,3 +32,8 @@ export interface IUser {
     tipIndex: number;
   };
 }
+
+export interface IActionAddPractic {
+  title: string;
+  created_at: Date;
+}

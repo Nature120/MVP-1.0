@@ -11,11 +11,11 @@ export const authGoogle = async () => {
 
     // Create a Google credential with the token
     const credential = auth.GoogleAuthProvider.credential(idToken);
-
     // Sign-in the user with the credential
     const provider = auth.GoogleAuthProvider.PROVIDER_ID;
 
-    await LoginFunctions.signInOrLink({ provider, credential, email });
+    const isFirstTimeAuth = await LoginFunctions.signInOrLink({ provider, credential, email });
+    return isFirstTimeAuth;
   } catch (error: any) {
     console.log(error.message);
   }

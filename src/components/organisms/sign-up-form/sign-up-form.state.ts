@@ -34,7 +34,7 @@ export const useSignUpState = () => {
       ////Store in DB////
       const uid = response.user.uid;
 
-      const data = { email, first_name };
+      const data = { email, first_name, finishedPractices: [] };
       // dispatch
       saveInDB({ data, uid });
     } catch (error: any) {
