@@ -6,7 +6,7 @@ import { userInstance } from '@services/api.service';
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch } from '@services/hooks/redux';
 import { setCommentBeforeImmersion } from '@services/store/app';
-import { isNotFirstLaunch, partialUpdateUser } from '@services/store/auth/auth.actions';
+import { isFirstLaunch, partialUpdateUser } from '@services/store/auth/auth.actions';
 import { getFirstLaunch, getUserInfo } from '@services/store/auth/auth.selectors';
 import { IUser } from '@services/store/auth/auth.typings';
 
@@ -18,7 +18,7 @@ export const useHome = () => {
   const { weeklyGoal } = useGoal();
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const isFirstLaunch = useSelector(getFirstLaunch);
+  const firstLaunch = useSelector(getFirstLaunch);
 
   const onToggleOpen = () => setIsOpen(prev => !prev);
   const closeModal = () => setIsOpen(false);
@@ -30,6 +30,13 @@ export const useHome = () => {
   };
 
   useEffect(() => {
+    if (firstLaunch === false) {
+      return;
+    }
+    dispatch(isFirstLaunch(false));
+  }, []);
+  
+  useEffect(() => {
     const getUser = async () => {
       const userInfo = await userInstance(user.uid).get();
       const userData = userInfo.data() as IUser;
@@ -38,13 +45,6 @@ export const useHome = () => {
     };
 
     getUser();
-  }, []);
-
-  useEffect(() => {
-    if (isFirstLaunch === false) {
-      return;
-    }
-    dispatch(isNotFirstLaunch(null));
   }, []);
 
   const navigateToImmersions = () => {

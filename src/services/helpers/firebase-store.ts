@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
 
 import { getFirstName } from './get-firstName';
@@ -16,7 +17,7 @@ interface ISaveInDB {
 
 type TData = { email: string | null; first_name?: string };
 
-export const storeWithSocial = async ({ response, first_name: registerFirstName }: IStoreDB) => {
+export const storeInDB = async ({ response, first_name: registerFirstName }: IStoreDB) => {
   if (response === undefined) {
     return;
   }
@@ -24,20 +25,21 @@ export const storeWithSocial = async ({ response, first_name: registerFirstName 
   const user = await firestore().collection('Users').doc(uid).get();
   const isExistUser = user.exists === true;
   if (isExistUser) {
-    return false;
+    await AsyncStorage.setItem('isFirstLaunchNature120', 'false');
+    return;
   }
-
   const name = getFirstName(displayName);
   let data = { first_name: name, email, finishedPractices: [], recentPractices: [] };
   if (displayName === null) {
     data = { first_name: registerFirstName, email, finishedPractices: [], recentPractices: [] };
   }
 
-  saveInDB({ data, uid });
-  return true;
+  await AsyncStorage.setItem('isFirstLaunchNature120', 'true');
+
+  fireStoreSetDB({ data, uid });
 };
 
-export const saveInDB = ({ data, uid }: ISaveInDB) => {
+export const fireStoreSetDB = ({ data, uid }: ISaveInDB) => {
   const usersRef = firestore().collection('Users');
   usersRef.doc(uid).set(data);
 };

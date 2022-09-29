@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
 
 import LoginFunctions from '@services/helpers/auth-social';
-import { saveInDB } from '@services/helpers/firebase-store';
+import { storeInDB } from '@services/helpers/firebase-store';
+import { isFirstLaunch } from '@services/store/auth/auth.actions';
 
 import { IRegister, IValue } from './sign-up-form.typings';
 import { IResetForm } from '@typings/formik-typings';
@@ -10,15 +13,17 @@ import { IResetForm } from '@typings/formik-typings';
 export const useSignUpState = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
+  const dispatch = useDispatch();
 
-  const onSubmit = (values: IValue, { resetForm }: IResetForm): void => {
+  const onSubmit = async (values: IValue, { resetForm }: IResetForm): Promise<void> => {
     const { email, password, first_name } = values;
     const isEmpty = email === '' || password === '' || first_name === '';
 
     if (isEmpty) {
       return;
     }
-    handleRegister({ email, password, first_name });
+    await handleRegister({ email, password, first_name });
+    await isFirstLaunchCheck();
     resetForm();
   };
 
@@ -32,11 +37,7 @@ export const useSignUpState = () => {
       LoginFunctions.saveCredential({ provider, credential });
 
       ////Store in DB////
-      const uid = response.user.uid;
-
-      const data = { email, first_name, finishedPractices: [], recentPractices: [] };
-      // dispatch
-      saveInDB({ data, uid });
+      await storeInDB({ response, first_name });
     } catch (error: any) {
       handleError(error.code);
     }
@@ -44,6 +45,15 @@ export const useSignUpState = () => {
 
   const changeVisiblePassword = (): void => {
     setPasswordVisible(!passwordVisible);
+  };
+
+  const isFirstLaunchCheck = async () => {
+    const value = await AsyncStorage.getItem('isFirstLaunchNature120');
+    const isFirstTime = value === 'true';
+    if (isFirstTime) {
+      return dispatch(isFirstLaunch(true));
+    }
+    dispatch(isFirstLaunch(false));
   };
 
   ////Errors

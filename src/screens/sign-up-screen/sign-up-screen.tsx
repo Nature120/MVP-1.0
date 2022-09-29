@@ -1,6 +1,9 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
+import { Loader } from '@components/atoms/loader/loader';
 import { BackButton } from '@components/molecules/back-button';
 import { Layout } from '@components/molecules/layout';
 import { SocialAuthButton } from '@components/molecules/social-auth-button/social-auth-button';
@@ -9,6 +12,8 @@ import { SignUpForm } from '@components/organisms/sign-up-form/sign-up-form';
 import { isIOS } from '@services/helpers/device-utils';
 import { authFaceBook } from '@services/helpers/facebook-auth';
 import { authGoogle } from '@services/helpers/google-auth';
+import { isFirstLaunch } from '@services/store/auth/auth.actions';
+import { getLoading } from '@services/store/auth/auth.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -17,13 +22,20 @@ import { TNavigation } from '@typings/common';
 import { SignUpScreenStyles as Styled } from './sign-up.styles';
 
 export const SignUpScreen = () => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(getLoading);
   const { navigate } = useNavigation<TNavigation>();
-  const onGoogleButtonPress = () => {
-    authGoogle();
+
+  const onGoogleButtonPress = async () => {
+    await authGoogle();
+    await isFirstLaunchCheck();
   };
 
-  const onFacebookButtonPress = () => {
-    authFaceBook();
+  const onFacebookButtonPress = async () => {
+    await authFaceBook();
+    setTimeout(async () => {
+      await isFirstLaunchCheck();
+    }, 1800);
   };
 
   const onAppleButtonPress = () => {
@@ -32,6 +44,15 @@ export const SignUpScreen = () => {
 
   const onPressLogIn = () => {
     navigate(APP_ROUTES.start.signIn, {});
+  };
+
+  const isFirstLaunchCheck = async () => {
+    const value = await AsyncStorage.getItem('isFirstLaunchNature120');
+    const isFirstTime = value === 'true';
+    if (isFirstTime) {
+      return dispatch(isFirstLaunch(true));
+    }
+    dispatch(isFirstLaunch(false));
   };
 
   const screenLayout = () => (
@@ -65,14 +86,20 @@ export const SignUpScreen = () => {
   );
 
   return (
-    <Styled.Container behavior="height">
-      {isIOS ? (
-        screenLayout()
+    <>
+      {isLoading ? (
+        <Loader />
       ) : (
-        <Styled.KeyboardAwareScrollView keyboardShouldPersistTaps="handled" enableOnAndroid={true}>
-          {screenLayout()}
-        </Styled.KeyboardAwareScrollView>
+        <Styled.Container behavior="height">
+          {isIOS ? (
+            screenLayout()
+          ) : (
+            <Styled.KeyboardAwareScrollView keyboardShouldPersistTaps="handled" enableOnAndroid={true}>
+              {screenLayout()}
+            </Styled.KeyboardAwareScrollView>
+          )}
+        </Styled.Container>
       )}
-    </Styled.Container>
+    </>
   );
 };

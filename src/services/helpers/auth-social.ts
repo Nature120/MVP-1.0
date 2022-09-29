@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
 
-import { storeWithSocial } from './firebase-store';
+import { storeInDB } from './firebase-store';
 
 import { TFirebaseAuthCredentials } from '@typings/common';
 
@@ -33,8 +33,7 @@ const LoginFunctions = {
         }
       });
     ///Store user in Database///
-    const isFirstTime = await storeWithSocial({ response });
-    return isFirstTime;
+    await storeInDB({ response });
   },
 
   getCredential: async function (provider: string) {

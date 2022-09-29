@@ -3,10 +3,10 @@ import { createAction } from '@reduxjs/toolkit';
 import { IActionAddPractic, IUser } from './auth.typings';
 
 export const signIn = createAction<IUser>('auth/signIn');
-export const firstLaunch = createAction<null>('auth/firstLaunch');
-export const isNotFirstLaunch = createAction<null>('auth/isNotFirstLaunch');
+export const isFirstLaunch = createAction<boolean>('auth/isFirstLaunch');
 export const partialUpdateUser = createAction<Partial<IUser>>('auth/partialUpdateUser');
 export const isAuthenticated = createAction<boolean>('auth/isAuthenticated');
 export const signOut = createAction<null>('auth/signOut');
 export const addFinishedPractic = createAction<IActionAddPractic>('auth/addedFinishedPractic');
 export const addRecentPractice = createAction<IActionAddPractic>('auth/addRecentPractice');
+export const loading = createAction<boolean>('auth/loading');

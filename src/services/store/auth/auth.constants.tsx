@@ -9,4 +9,5 @@ export const initialState = {
   dailyGoadl: null,
   finishedPractices: [],
   recentPractices: [],
+  isLoading: false,
 };

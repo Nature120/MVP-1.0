@@ -9,6 +9,7 @@ interface IAuth {
   error: string | null;
   isAuthenticated: boolean;
   isFirstLaunchApp: boolean;
+  isLoading: boolean;
 }
 
 interface IUserComment {

@@ -16,7 +16,6 @@ export const authFaceBook = async () => {
     }
 
     let credential = <TFirebaseAuthCredentials>{};
-    let isFirstTimeAuth;
 
     const _responseInfoCallback = async (
       error: Record<string, unknown> | undefined,
@@ -27,8 +26,7 @@ export const authFaceBook = async () => {
       if (error) {
         console.log(error.message);
       } else {
-        // console.log('t', t);
-        return await LoginFunctions.signInOrLink({ provider, credential, email });
+        await LoginFunctions.signInOrLink({ provider, credential, email });
       }
     };
 
@@ -36,23 +34,9 @@ export const authFaceBook = async () => {
     if (!token) {
       throw 'Something went wrong obtaining access token';
     }
-
-    credential = auth.FacebookAuthProvider.credential(token.accessToken);
-    console.log('credential', credential);
-
-    const t = false;
-
-    // const infoRequest = new GraphRequest(
-    //   '/me?fields=name,email',
-    //   undefined,
-    //   (error: Record<string, unknown> | undefined, resultUser: Record<string, unknown> | undefined) =>
-    //     _responseInfoCallback(error, resultUser, t),
-    // );
-
-    const infoRequest = new GraphRequest('/me?fields=name,email', undefined, _responseInfoCallback);
-    console.log('infoRequest', infoRequest);
-    new GraphRequestManager().addRequest(infoRequest).start();
-    return isFirstTimeAuth;
+    credential = await auth.FacebookAuthProvider.credential(token.accessToken);
+    const infoRequest = await new GraphRequest('/me?fields=name,email', undefined, _responseInfoCallback);
+    await new GraphRequestManager().addRequest(infoRequest).start();
   } catch (error: any) {
     console.log(error.message);
   }
