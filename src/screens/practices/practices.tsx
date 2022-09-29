@@ -1,13 +1,11 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 
+import { Loader } from '@components/atoms/loader/loader';
 import { Spacer } from '@components/atoms/spacer';
 import { BackButton } from '@components/molecules/back-button';
 import { Layout } from '@components/molecules/layout';
 import { PracticeLibrariesPagination } from '@components/organisms/practice-libraries/practice-libraries-pagination';
 import { usePractices } from './practices.state';
-
-import { IMAGES } from '@constants/images';
 
 import { StyledPractices as Styled } from './practices.styles';
 
@@ -18,11 +16,7 @@ export const Practices: React.FC = () => {
 
   return (
     <>
-      {isLoading && (
-        <Styled.Loader style={{ ...StyleSheet.absoluteFillObject }}>
-          <Styled.Logo source={IMAGES.logo} />
-        </Styled.Loader>
-      )}
+      {isLoading && <Loader />}
       <Layout
         isWithoutMargin
         isWithScroll

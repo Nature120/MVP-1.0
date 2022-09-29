@@ -14,8 +14,7 @@ export const authGoogle = async () => {
     // Sign-in the user with the credential
     const provider = auth.GoogleAuthProvider.PROVIDER_ID;
 
-    const isFirstTimeAuth = await LoginFunctions.signInOrLink({ provider, credential, email });
-    return isFirstTimeAuth;
+    await LoginFunctions.signInOrLink({ provider, credential, email });
   } catch (error: any) {
     console.log(error.message);
   }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import auth from '@react-native-firebase/auth';
 
 import { getUser } from '@services/api.service';
-import { isAuthenticated, signIn } from '@services/store/auth/auth.actions';
+import { isAuthenticated, loading, signIn } from '@services/store/auth/auth.actions';
 import { getAuthentication, getFirstLaunch } from '@services/store/auth/auth.selectors';
 
 import { TFirebaseUser } from '@typings/common';
@@ -24,9 +24,11 @@ export const useNavigationSate = () => {
       return;
     }
 
+    dispatch(loading(true));
+
     setTimeout(() => {
       saveUser(user);
-    }, 0);
+    }, 2000);
   };
 
   const saveUser = async (currentUser: TFirebaseUser) => {
@@ -38,6 +40,7 @@ export const useNavigationSate = () => {
     const userCredentials = await getUser(uid);
     const data = { ...userCredentials, uid };
     dispatch(signIn(data));
+    dispatch(loading(false));
   };
   return { isFirstLaunch, isAuthenitcated };
 };

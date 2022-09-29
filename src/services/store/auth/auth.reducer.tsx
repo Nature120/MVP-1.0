@@ -21,12 +21,16 @@ const isAuthenticated = createReducer(false, {
 });
 
 const isFirstLaunchApp = createReducer(true, {
-  [action.isNotFirstLaunch.type]: () => false,
-  [action.firstLaunch.type]: () => true,
+  [action.isFirstLaunch.type]: (_, { payload }) => payload,
+});
+
+const isLoading = createReducer(false, {
+  [action.loading.type]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
   user,
   isAuthenticated,
   isFirstLaunchApp,
+  isLoading,
 });
