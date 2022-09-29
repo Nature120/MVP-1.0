@@ -8,4 +8,5 @@ export const initialState = {
   timeForImmersion: {},
   dailyGoadl: null,
   finishedPractices: [],
+  isLoading: false,
 };

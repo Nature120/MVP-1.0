@@ -1,7 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
+import { Loader } from '@components/atoms/loader/loader';
 import { BackButton } from '@components/molecules/back-button';
 import { Layout } from '@components/molecules/layout';
 import { SocialAuthButton } from '@components/molecules/social-auth-button/social-auth-button';
@@ -10,7 +12,8 @@ import { SignInForm } from '@components/organisms/sign-in-form/sign-in-form';
 import { isIOS } from '@services/helpers/device-utils';
 import { authFaceBook } from '@services/helpers/facebook-auth';
 import { authGoogle } from '@services/helpers/google-auth';
-import { firstLaunch, isNotFirstLaunch } from '@services/store/auth/auth.actions';
+import { isFirstLaunch } from '@services/store/auth/auth.actions';
+import { getLoading } from '@services/store/auth/auth.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -21,27 +24,32 @@ import { SignInScreenStyles as Styled } from './sign-in-screen.styles';
 export const SignInScreen = () => {
   const { navigate } = useNavigation<TNavigation>();
   const dispatch = useDispatch();
+  const isLoading = useSelector(getLoading);
+
   const onGoogleButtonPress = async () => {
-    const isFisrtTimeAuth = await authGoogle();
-    if (isFisrtTimeAuth) {
-      return dispatch(firstLaunch(null));
-    }
-    dispatch(isNotFirstLaunch(null));
+    await authGoogle();
+    await isFirstLaunchCheck();
   };
 
   const onFacebookButtonPress = async () => {
-    const isFirstTimeAuth = await authFaceBook();
-    console.log('isFirstTimeAuth', isFirstTimeAuth);
-    if (isFirstTimeAuth) {
-      return dispatch(firstLaunch(null));
-    }
-    dispatch(isNotFirstLaunch(null));
+    await authFaceBook();
+    setTimeout(async () => {
+      await isFirstLaunchCheck();
+    }, 1800);
   };
 
   const onPressSignUp = () => {
     navigate(APP_ROUTES.start.signUp, {});
   };
 
+  const isFirstLaunchCheck = async () => {
+    const value = await AsyncStorage.getItem('isFirstLaunchNature120');
+    const isFirstTime = value === 'true';
+    if (isFirstTime) {
+      return dispatch(isFirstLaunch(true));
+    }
+    dispatch(isFirstLaunch(false));
+  };
   const screenLayout = () => (
     <Layout bgColor="beigeLight" isWithScroll={isIOS}>
       <Styled.SafeAreaView>
@@ -73,14 +81,20 @@ export const SignInScreen = () => {
   );
 
   return (
-    <Styled.Container behavior="height">
-      {isIOS ? (
-        screenLayout()
+    <>
+      {isLoading ? (
+        <Loader />
       ) : (
-        <Styled.KeyboardAwareScrollView keyboardShouldPersistTaps="handled" enableOnAndroid={true}>
-          {screenLayout()}
-        </Styled.KeyboardAwareScrollView>
+        <Styled.Container behavior="height">
+          {isIOS ? (
+            screenLayout()
+          ) : (
+            <Styled.KeyboardAwareScrollView keyboardShouldPersistTaps="handled" enableOnAndroid={true}>
+              {screenLayout()}
+            </Styled.KeyboardAwareScrollView>
+          )}
+        </Styled.Container>
       )}
-    </Styled.Container>
+    </>
   );
 };
