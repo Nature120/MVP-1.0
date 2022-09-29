@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 
 import { Button } from '@components/atoms/button';
 import { Line } from '@components/atoms/line';
@@ -8,25 +7,14 @@ import { BackButton } from '@components/molecules/back-button';
 import { Layout } from '@components/molecules/layout';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
 import { PracticeLibraries } from '@components/organisms/practice-libraries';
-import { recentLibraries } from './mock-data';
-
-import { APP_ROUTES } from '@constants/routes';
+import { useImmersions } from './immersions.state';
 
 import { StyledImmersions as Styled } from './immersions.styles';
 
 import { COLOR } from '@theme/colors';
 
 export const Immersions: React.FC = () => {
-  const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
-  const { navigate } = useNavigation();
-
-  const onStartTimer = () => {
-    if (recentLibraries.length) {
-      navigate(APP_ROUTES.immersionTimer as never, recentLibraries[0] as never);
-    } else {
-      navigate(APP_ROUTES.practices as never);
-    }
-  };
+  const { isDoNotDisturb, setIsDoNotDisturb, recentLibraries, onStartTimer, isLoading } = useImmersions();
 
   return (
     <Styled.Wrapper>
@@ -56,14 +44,14 @@ export const Immersions: React.FC = () => {
             />
           </Styled.Immersions>
 
-          <PracticeLibraries title="Recent Immersions" libraries={recentLibraries} />
+          {!!recentLibraries.length && <PracticeLibraries title={'Recent Immersions'} libraries={recentLibraries} />}
           <Spacer gap={20} />
         </Styled.LayoutContent>
       </Layout>
 
       <Styled.SafeAreaView>
         <Styled.ButtonWrapper>
-          <Button buttonText="START TIMER" height={50} onPress={onStartTimer} />
+          <Button buttonText="START TIMER" height={50} onPress={onStartTimer} isDisabled={isLoading} />
         </Styled.ButtonWrapper>
       </Styled.SafeAreaView>
     </Styled.Wrapper>

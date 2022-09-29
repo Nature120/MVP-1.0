@@ -1,4 +1,4 @@
-import { ITipOfTheDay } from '@typings/common';
+import { IId, IUserTipOfTheDay } from '@typings/common';
 
 export interface IState {
   auth: IAuth;
@@ -27,11 +27,9 @@ export interface IUser {
   goal?: number;
   timeForImmersion?: Date;
   comments?: IUserComment[];
-  tipOfTheDay?: {
-    timestamp: number;
-    tip: ITipOfTheDay;
-    tipIndex: number;
-  };
+  tipOfTheDay?: IUserTipOfTheDay;
+  finishedPractices: IActionAddPractic[];
+  recentPractices: IActionAddPractic[];
 }
 
 export interface IActionAddPractic {

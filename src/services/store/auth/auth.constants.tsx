@@ -8,5 +8,6 @@ export const initialState = {
   timeForImmersion: {},
   dailyGoadl: null,
   finishedPractices: [],
+  recentPractices: [],
   isLoading: false,
 };

@@ -11,6 +11,10 @@ const user = createReducer(initialState, {
     ...state,
     finishedPractices: [...state.finishedPractices, payload],
   }),
+  [action.addRecentPractice.type]: (state, { payload }) => ({
+    ...state,
+    recentPractices: [...state.recentPractices, payload],
+  }),
   [action.signOut.type]: () => initialState,
 });
 

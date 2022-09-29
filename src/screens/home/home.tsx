@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Button } from '@components/atoms/button';
 import { CenterContainer } from '@components/atoms/center-container';
+import { Line } from '@components/atoms/line';
 import { AskModal } from '@components/molecules/ask-modal';
 import { Layout } from '@components/molecules/layout';
 import { TipOfTheDay } from '@components/molecules/tip-of-the-day';
@@ -48,7 +49,9 @@ export const Home: React.FC = () => {
           {user.whatBrings && <PracticeLibrariesPagination title="Picked For You" documentId={user.whatBrings} />}
 
           <Styled.InfoSection>
-            <TipOfTheDay />
+            <Line marginTop={12} />
+
+            <TipOfTheDay userTipOfTheDay={user.tipOfTheDay} />
           </Styled.InfoSection>
         </Styled.InfoSectionWrapper>
       </Layout>
