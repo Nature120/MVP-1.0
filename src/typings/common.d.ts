@@ -22,6 +22,12 @@ export interface ITipOfTheDay {
   body: string;
 }
 
+export interface IUserTipOfTheDay {
+  timestamp: number;
+  tip: ITipOfTheDay;
+  tipIndex: number;
+}
+
 export interface IError {
   message?: string;
   code?: number | string;

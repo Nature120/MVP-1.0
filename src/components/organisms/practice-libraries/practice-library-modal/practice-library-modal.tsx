@@ -44,7 +44,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
   return (
     <Modal visible={isOpen} animationType="slide">
-      <Styled.PracticeLibraryModal contentContainerStyle={contentContainerStyle}>
+      <Styled.PracticeLibraryModal contentContainerStyle={contentContainerStyle} showsVerticalScrollIndicator={false}>
         <View>
           <Styled.ImageTop source={{ uri: image }} />
 

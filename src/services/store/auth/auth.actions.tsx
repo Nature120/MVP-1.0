@@ -9,3 +9,4 @@ export const partialUpdateUser = createAction<Partial<IUser>>('auth/partialUpdat
 export const isAuthenticated = createAction<boolean>('auth/isAuthenticated');
 export const signOut = createAction<null>('auth/signOut');
 export const addFinishedPractic = createAction<IActionAddPractic>('auth/addedFinishedPractic');
+export const addRecentPractice = createAction<IActionAddPractic>('auth/addRecentPractice');
