@@ -4,12 +4,14 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { secondsToMinutes } from 'date-fns';
 
+import { clearRecentPractices } from './immersion-timer.utils';
 import { getUser, updateUser } from '@services/api.service';
 import { useParam } from '@services/hooks/param';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { setCommentBeforeImmersion } from '@services/store/app';
-import { addFinishedPractic } from '@services/store/auth/auth.actions';
+import { addFinishedPractic, addRecentPractice } from '@services/store/auth/auth.actions';
 import { getUserInfo } from '@services/store/auth/auth.selectors';
+import { IFinishedPractices } from '@services/store/auth/auth.typings';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -36,7 +38,7 @@ export const useImmersionTimer = () => {
       return;
     }
 
-    const { comments } = userInfo;
+    const { comments, recentPractices } = userInfo;
 
     const newComment = {
       before: commentBeforeImmersion,
@@ -46,28 +48,41 @@ export const useImmersionTimer = () => {
 
     await updateUser(uid, { comments: [...comments!, newComment] });
     dispatch(setCommentBeforeImmersion(''));
-    goToNextRoute();
+    goToNextRoute(recentPractices);
   };
 
-  const goToNextRoute = () => {
-    savePractic();
-
-    setIsOpenAskModal(false);
-    const addedTime = Math.round(secondsToMinutes(seconds));
-    navigate(APP_ROUTES.immersionComplete as never, { addedTime } as never);
-  };
-
-  const savePractic = () => {
+  const savePractices = async () => {
     const fireBaseDate = firestore.Timestamp.fromDate(new Date());
 
-    dispatch(addFinishedPractic({ title, created_at: fireBaseDate }));
+    const finishedPractice: IFinishedPractices = { title, created_at: fireBaseDate };
 
-    firestore()
-      .collection('Users')
-      .doc(uid)
-      .update({
-        finishedPractices: firestore.FieldValue.arrayUnion({ title, created_at: fireBaseDate }),
-      });
+    dispatch(addFinishedPractic(finishedPractice));
+
+    dispatch(addRecentPractice(finishedPractice));
+
+    const updatedPractices = firestore.FieldValue.arrayUnion(finishedPractice) as unknown as IFinishedPractices[];
+
+    await updateUser(uid, { finishedPractices: updatedPractices, recentPractices: updatedPractices });
+  };
+
+  const goToNextRoute = (userRecentPractices?: IFinishedPractices[]) => {
+    try {
+      clearRecentPractices(uid, title, userRecentPractices);
+    } catch (e) {
+      console.error('Cannot clear recent immersions:', e);
+    }
+
+    try {
+      savePractices();
+    } catch (e) {
+      console.error('Cannot save practices:', e);
+    }
+
+    setIsOpenAskModal(false);
+
+    const addedTime = Math.round(secondsToMinutes(seconds));
+
+    navigate(APP_ROUTES.immersionComplete as never, { addedTime } as never);
   };
 
   return {

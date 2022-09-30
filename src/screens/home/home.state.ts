@@ -4,12 +4,14 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { getWeek } from 'date-fns';
 
+import { userInstance } from '@services/api.service';
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch } from '@services/hooks/redux';
 import { setCommentBeforeImmersion } from '@services/store/app';
-import { filterExpiredPractices, isFirstLaunch } from '@services/store/auth/auth.actions';
+import { filterExpiredPractices, isFirstLaunch, partialUpdateUser } from '@services/store/auth/auth.actions';
 import { getFirstLaunch, getFisishedPractices, getUserInfo } from '@services/store/auth/auth.selectors';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
+import { IUser } from '@services/store/auth/auth.typings';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -26,7 +28,7 @@ export const useHome = () => {
   const onToggleOpen = () => setIsOpen(prev => !prev);
   const closeModal = () => setIsOpen(false);
 
-  const saveResponse = async (value: string) => {
+  const saveResponse = (value: string) => {
     const response = value.trim();
     dispatch(setCommentBeforeImmersion(response));
     navigateToImmersions();
@@ -38,6 +40,17 @@ export const useHome = () => {
     }
     dispatch(isFirstLaunch(false));
   }, []);
+
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     const userInfo = await userInstance(user.uid).get();
+  //     const userData = userInfo.data() as IUser;
+
+  //     dispatch(partialUpdateUser(userData));
+  //   };
+
+  //   getUser();
+  // }, []);
 
   useEffect(() => {
     const filteredPractices = removeLastWeekPractices();

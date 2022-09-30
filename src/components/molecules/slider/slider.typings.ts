@@ -8,5 +8,4 @@ export interface ISlide {
   title: string;
   description: string;
   image: TImageNames;
-  isWithClouds: boolean;
 }

@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { isToday as checkIsToday } from 'date-fns';
 
-import { databaseRef, updateUser, userInstance } from '@services/api.service';
+import { databaseRef, updateUser } from '@services/api.service';
 import { getUserInfo } from '@services/store/auth/auth.selectors';
-import { IUser } from '@services/store/auth/auth.typings';
 
+import { IUserTipOfTheDay } from '@typings/common';
 import { ITipOfTheDay } from '@typings/common';
 
-export const useTipOfTheDay = () => {
+export const useTipOfTheDay = (userTipOfTheDay?: IUserTipOfTheDay) => {
   const [tipOfTheDayState, setTipOfTheDayState] = useState<ITipOfTheDay>();
   const { uid } = useSelector(getUserInfo);
 
@@ -28,19 +28,16 @@ export const useTipOfTheDay = () => {
   };
 
   const getTipOfTheDay = async () => {
-    const user = await userInstance(uid).get();
-    const { tipOfTheDay } = user.data() as IUser;
-
-    if (!tipOfTheDay) {
+    if (!userTipOfTheDay) {
       return getTipFromDatabase(0);
     }
 
-    const isToday = checkIsToday(tipOfTheDay.timestamp);
+    const isToday = checkIsToday(userTipOfTheDay.timestamp);
 
     if (isToday) {
-      return setTipOfTheDayState(tipOfTheDay.tip);
+      return setTipOfTheDayState(userTipOfTheDay.tip);
     }
-    getTipFromDatabase(tipOfTheDay.tipIndex + 1);
+    getTipFromDatabase(userTipOfTheDay.tipIndex + 1);
   };
 
   useEffect(() => {
