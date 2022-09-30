@@ -38,13 +38,11 @@ export const ImmersionComplete: React.FC = () => {
 
     const today = uniqueLibraries
       .filter(practice => {
-        let time;
         try {
-          time = practice.created_at.getTime();
+          return isToday(practice.created_at.toDate());
         } catch {
-          time = (practice.created_at as unknown as { seconds: number }).seconds * 1000;
+          return isToday((practice.created_at as unknown as { seconds: number }).seconds * 1000);
         }
-        return isToday(time);
       })
       .map(practice => practice.title);
 
