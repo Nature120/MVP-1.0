@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { setCommentBeforeImmersion } from '@services/store/app';
 import { addFinishedPractic, addRecentPractice } from '@services/store/auth/auth.actions';
 import { getUserInfo } from '@services/store/auth/auth.selectors';
-import { IActionAddPractic } from '@services/store/auth/auth.typings';
+import { IFinishedPractices } from '@services/store/auth/auth.typings';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -52,18 +52,20 @@ export const useImmersionTimer = () => {
   };
 
   const savePractices = async () => {
-    const date = new Date();
+    const fireBaseDate = firestore.Timestamp.fromDate(new Date());
 
-    const finishedPractice: IActionAddPractic = { title, created_at: date };
+    const finishedPractice: IFinishedPractices = { title, created_at: fireBaseDate };
 
     dispatch(addFinishedPractic(finishedPractice));
+
     dispatch(addRecentPractice(finishedPractice));
 
-    const updatedPractices = firestore.FieldValue.arrayUnion(finishedPractice) as unknown as IActionAddPractic[];
-    updateUser(uid, { finishedPractices: updatedPractices, recentPractices: updatedPractices });
+    const updatedPractices = firestore.FieldValue.arrayUnion(finishedPractice) as unknown as IFinishedPractices[];
+
+    await updateUser(uid, { finishedPractices: updatedPractices, recentPractices: updatedPractices });
   };
 
-  const goToNextRoute = (userRecentPractices?: IActionAddPractic[]) => {
+  const goToNextRoute = (userRecentPractices?: IFinishedPractices[]) => {
     try {
       clearRecentPractices(uid, title, userRecentPractices);
     } catch (e) {
@@ -77,7 +79,9 @@ export const useImmersionTimer = () => {
     }
 
     setIsOpenAskModal(false);
+
     const addedTime = Math.round(secondsToMinutes(seconds));
+
     navigate(APP_ROUTES.immersionComplete as never, { addedTime } as never);
   };
 

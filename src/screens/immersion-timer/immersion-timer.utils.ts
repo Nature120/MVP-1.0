@@ -3,9 +3,9 @@ import firestore from '@react-native-firebase/firestore';
 import { MAX_RECENT_LIBRARIES_COUNT } from '@screens/immersions/immersions.utils';
 
 import { getUser, updateUser } from '@services/api.service';
-import { IActionAddPractic } from '@services/store/auth/auth.typings';
+import { IFinishedPractices } from '@services/store/auth/auth.typings';
 
-const removeRestRecentPractices = async (uid: string, recentPractices: IActionAddPractic[]) => {
+const removeRestRecentPractices = async (uid: string, recentPractices: IFinishedPractices[]) => {
   if (recentPractices.length < MAX_RECENT_LIBRARIES_COUNT) {
     return;
   }
@@ -15,21 +15,21 @@ const removeRestRecentPractices = async (uid: string, recentPractices: IActionAd
 
   const removePromise = remove.map(item =>
     updateUser(uid, {
-      recentPractices: firestore.FieldValue.arrayRemove(item) as unknown as IActionAddPractic[],
+      recentPractices: firestore.FieldValue.arrayRemove(item) as unknown as IFinishedPractices[],
     }),
   );
 
   await Promise.all(removePromise);
 };
 
-const removePracticeDublicate = async (uid: string, recentPractices: IActionAddPractic[], practiceTitle: string) => {
+const removePracticeDublicate = async (uid: string, recentPractices: IFinishedPractices[], practiceTitle: string) => {
   const practiceDublicate = recentPractices.find(practice => practice.title === practiceTitle);
 
   if (!practiceDublicate) {
     return;
   }
 
-  const updatedRecentPractices = firestore.FieldValue.arrayRemove(practiceDublicate) as unknown as IActionAddPractic[];
+  const updatedRecentPractices = firestore.FieldValue.arrayRemove(practiceDublicate) as unknown as IFinishedPractices[];
 
   await updateUser(uid, { recentPractices: updatedRecentPractices });
 };
@@ -37,7 +37,7 @@ const removePracticeDublicate = async (uid: string, recentPractices: IActionAddP
 export const clearRecentPractices = async (
   uid: string,
   practiceTitle: string,
-  userRecentPractices?: IActionAddPractic[],
+  userRecentPractices?: IFinishedPractices[],
 ) => {
   if (userRecentPractices) {
     await removeRestRecentPractices(uid, userRecentPractices);

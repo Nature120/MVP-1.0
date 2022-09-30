@@ -11,6 +11,7 @@ const user = createReducer(initialState, {
     ...state,
     finishedPractices: [...state.finishedPractices, payload],
   }),
+  [action.filterExpiredPractices.type]: (state, { payload }) => ({ ...state, finishedPractices: [...payload] }),
   [action.addRecentPractice.type]: (state, { payload }) => ({
     ...state,
     recentPractices: [...state.recentPractices, payload],

@@ -9,12 +9,6 @@ import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 const SIZE = (DEVICE_WIDTH - 24 * 2) / 7 - 4;
-const bacgroundColor = '#e9eaec';
-
-interface IDayProps {
-  isToday: boolean;
-  isCompleted?: boolean;
-}
 
 export const StyledImmersionsDaily = {
   ImmersionsDaily: styled.View`
@@ -46,33 +40,27 @@ export const StyledImmersionsDaily = {
     width: 100%;
   `,
 
-  Day: styled.View<IDayProps>`
+  Day: styled.View<{ isMatchDay: boolean; isCurrentDay: boolean }>`
     width: ${SIZE}px;
     height: ${SIZE}px;
     border-radius: ${SIZE / 2}px;
     align-items: center;
     justify-content: center;
 
-    background-color: ${bacgroundColor};
-
-    ${({ isCompleted }) =>
-      isCompleted &&
-      css`
-        background-color: ${COLOR.primary.violet};
-      `}
-
-    ${({ isToday }) =>
-      isToday &&
-      css`
-        background-color: ${COLOR.primary.blue};
-      `}
+    background-color: ${({ isMatchDay, isCurrentDay }) =>
+      isMatchDay
+        ? isCurrentDay
+          ? COLOR.background.blueWeekDayCicrcle
+          : COLOR.background.lightBlueWeekDayCircle
+        : COLOR.background.grayWeekDayCircle};
   `,
 
-  DayText: styled(Title)<IDayProps>`
+  DayText: styled(Title)<{ isCurrentDay: boolean }>`
     margin-top: 2px;
-    font-weight: ${({ isToday }) => (isToday ? FONTS.weight.bold : FONTS.weight.medium)};
+    font-family: ${FONTS.family.mediumAcumin};
+    font-weight: ${FONTS.weight.medium};
     font-size: ${FONTS.size.xlSmall}px;
     line-height: 18px;
-    color: ${({ isToday }) => (isToday ? COLOR.font.white : COLOR.font.darkBlue)};
+    color: ${({ isCurrentDay }) => (isCurrentDay ? COLOR.font.white : COLOR.font.darkBlue)};
   `,
 };

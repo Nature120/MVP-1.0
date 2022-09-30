@@ -1,10 +1,10 @@
-import { IActionAddPractic } from '@services/store/auth/auth.typings';
+import { IFinishedPractices } from '@services/store/auth/auth.typings';
 
 import { IPracticeLibrary } from '@typings/common';
 
 export const MAX_RECENT_LIBRARIES_COUNT = 10;
 
-export const getRecentLibraries = (finishedPractices: IActionAddPractic[]) => {
+export const getRecentLibraries = (finishedPractices: IFinishedPractices[]) => {
   const newArr = [...finishedPractices];
   newArr.reverse();
   const uniqueLibraries = [...new Map(newArr.map(item => [item.title, item])).values()];

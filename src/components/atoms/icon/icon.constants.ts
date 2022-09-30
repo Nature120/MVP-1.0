@@ -2,6 +2,7 @@ import apple from '@assets/icons/apple_logo.svg';
 import arrowDown from '@assets/icons/arrow-down.svg';
 import arrowLeft from '@assets/icons/arrow-left.svg';
 import arrowRight from '@assets/icons/arrow-right.svg';
+import brandIcon from '@assets/icons/brand_icon.svg';
 import clock from '@assets/icons/clock.svg';
 import community from '@assets/icons/community.svg';
 import cross from '@assets/icons/cross.svg';
@@ -48,4 +49,5 @@ export const ICONS = {
   apple,
   play,
   pause,
+  brandIcon,
 };
