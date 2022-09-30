@@ -5,10 +5,6 @@ import { ISlideTextProps } from './slide.typings';
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
-export const CloudsStyle = {
-  height: 290,
-};
-
 export const StyledSlide = {
   Slide: styled.View`
     flex: 1;

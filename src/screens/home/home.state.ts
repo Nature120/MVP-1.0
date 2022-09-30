@@ -23,7 +23,7 @@ export const useHome = () => {
   const onToggleOpen = () => setIsOpen(prev => !prev);
   const closeModal = () => setIsOpen(false);
 
-  const saveResponse = async (value: string) => {
+  const saveResponse = (value: string) => {
     const response = value.trim();
     dispatch(setCommentBeforeImmersion(response));
     navigateToImmersions();
@@ -35,7 +35,7 @@ export const useHome = () => {
     }
     dispatch(isFirstLaunch(false));
   }, []);
-  
+
   useEffect(() => {
     const getUser = async () => {
       const userInfo = await userInstance(user.uid).get();

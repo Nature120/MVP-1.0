@@ -5,6 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
 import { Spacer } from '@components/atoms/spacer';
+import { AskModal } from '@components/molecules/ask-modal';
 import { ButtonIcon } from '@components/molecules/button-icon';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
 import { usePracticeLibraryModal } from './practice-library-modal.state';
@@ -21,7 +22,11 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     closeModal,
     isDoNotDisturb,
     setIsDoNotDisturb,
+    isOpenAsk,
+    closeModalAsk,
+    saveResponse,
     navigateToTimer,
+    openModalAsk,
   } = usePracticeLibraryModal(props);
 
   const { title, image, description, duration, userGoals } = props.library;
@@ -44,6 +49,13 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
   return (
     <Modal visible={isOpen} animationType="slide">
+      <AskModal
+        isVisible={isOpenAsk}
+        onClose={closeModalAsk}
+        onButtonPress={saveResponse}
+        onTextPress={navigateToTimer}
+      />
+
       <Styled.PracticeLibraryModal contentContainerStyle={contentContainerStyle} showsVerticalScrollIndicator={false}>
         <View>
           <Styled.ImageTop source={{ uri: image }} />
@@ -100,7 +112,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
             {!isWithoutActions && (
               <Styled.ButtonWrapper>
-                <Button buttonText="START TIMER" height={50} onPress={navigateToTimer} />
+                <Button buttonText="START TIMER" height={50} onPress={openModalAsk} />
               </Styled.ButtonWrapper>
             )}
           </Styled.Content>
