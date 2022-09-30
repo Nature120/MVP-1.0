@@ -58,15 +58,15 @@ export const useImmersionTimer = () => {
   };
 
   const savePractic = () => {
-    const date = new Date();
+    const fireBaseDate = firestore.Timestamp.fromDate(new Date());
 
-    dispatch(addFinishedPractic({ title, created_at: date }));
+    dispatch(addFinishedPractic({ title, created_at: fireBaseDate }));
 
     firestore()
       .collection('Users')
       .doc(uid)
       .update({
-        finishedPractices: firestore.FieldValue.arrayUnion({ title, created_at: date }),
+        finishedPractices: firestore.FieldValue.arrayUnion({ title, created_at: fireBaseDate }),
       });
   };
 

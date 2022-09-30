@@ -1,3 +1,5 @@
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+
 import { ITipOfTheDay } from '@typings/common';
 
 export interface IState {
@@ -24,6 +26,7 @@ export interface IUser {
   first_name?: string | null;
   whatBrings?: string[];
   dailyGoal?: number;
+  finishedPractices?: Array<IFinishedPractices>;
   goal?: number;
   timeForImmersion?: Date;
   comments?: IUserComment[];
@@ -34,7 +37,7 @@ export interface IUser {
   };
 }
 
-export interface IActionAddPractic {
+export interface IFinishedPractices {
   title: string;
-  created_at: Date;
+  created_at: FirebaseFirestoreTypes.Timestamp;
 }

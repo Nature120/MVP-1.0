@@ -25,7 +25,6 @@ export const useNavigationSate = () => {
     }
 
     dispatch(loading(true));
-
     setTimeout(() => {
       saveUser(user);
     }, 2000);
