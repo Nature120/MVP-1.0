@@ -12,6 +12,7 @@ import { Rings } from '@components/organisms/rings';
 import { BOTTOM_TAB_ROUTES } from '@navigation/navigation.constants';
 
 import { databaseRef, updateUser } from '@services/api.service';
+import { getUniqueArray } from '@services/helpers/get-unique-array';
 import { useGoal } from '@services/hooks/goal';
 import { useParam } from '@services/hooks/param';
 import { useAppDispatch } from '@services/hooks/redux';
@@ -32,23 +33,16 @@ export const ImmersionComplete: React.FC = () => {
   const [todayImmersions, setTodayImmersions] = useState<IPracticeLibrary[]>([]);
 
   const getTodayImmersions = async () => {
-    const finishedPractices = [...user.finishedPractices];
-    finishedPractices.reverse();
-    const uniqueLibraries = [...new Map(finishedPractices.map(item => [item.title, item])).values()];
+    const uniqueLibraries = getUniqueArray(user.finishedPractices, 'title');
+    const todayLibrariesTitles = uniqueLibraries.filter(practice => isToday(practice.created_at.toDate()));
 
-    const today = uniqueLibraries
-      .filter(practice => {
-        try {
-          return isToday(practice.created_at.toDate());
-        } catch {
-          return isToday((practice.created_at as unknown as { seconds: number }).seconds * 1000);
-        }
-      })
+    const s = todayLibrariesTitles
+      .sort((a, b) => b.created_at.toDate().getTime() - a.created_at.toDate().getTime())
       .map(practice => practice.title);
 
-    const allLibraries = await databaseRef('Practise library').where('title', 'in', today).get();
+    const allLibraries = await databaseRef('Practise library').where('title', 'in', s).get();
     const librariesData = allLibraries.docs.map(lib => lib.data() as IPracticeLibrary);
-    const sortedLibraries = today.map(title => librariesData.find(lib => lib.title === title)!);
+    const sortedLibraries = s.map(title => librariesData.find(lib => lib.title === title)!);
 
     setTodayImmersions(sortedLibraries);
   };

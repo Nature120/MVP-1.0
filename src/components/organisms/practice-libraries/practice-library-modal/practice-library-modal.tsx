@@ -10,6 +10,8 @@ import { ButtonIcon } from '@components/molecules/button-icon';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
 import { usePracticeLibraryModal } from './practice-library-modal.state';
 
+import { useAppSelector } from '@services/hooks/redux';
+
 import { IPracticeLibraryModalProps } from './practice-library-modal.typings';
 
 import { contentContainerStyle, StyledPracticeLibraryModal as Styled } from './practice-library-modal.styles';
@@ -28,6 +30,8 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     navigateToTimer,
     openModalAsk,
   } = usePracticeLibraryModal(props);
+
+  const { commentBeforeImmersion } = useAppSelector(store => store.app);
 
   const { title, image, description, duration, userGoals } = props.library;
 
@@ -112,7 +116,11 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
             {!isWithoutActions && (
               <Styled.ButtonWrapper>
-                <Button buttonText="START TIMER" height={50} onPress={openModalAsk} />
+                <Button
+                  buttonText="START TIMER"
+                  height={50}
+                  onPress={commentBeforeImmersion ? navigateToTimer : openModalAsk}
+                />
               </Styled.ButtonWrapper>
             )}
           </Styled.Content>
