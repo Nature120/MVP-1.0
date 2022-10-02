@@ -8,11 +8,17 @@ import authReducer from './auth/auth.reducer';
 const config = {
   key: 'root',
   storage: AsyncStorage,
-  // blacklist: ["error"],
+  blacklist: ['auth'],
+};
+
+const authPersistConfig = {
+  key: 'auth',
+  storage: AsyncStorage,
+  blacklist: ['user', 'isAuthenticated'],
 };
 
 const combinedReducer = combineReducers({
-  auth: authReducer,
+  auth: persistReducer(authPersistConfig, authReducer),
   app: appReducer,
 });
 

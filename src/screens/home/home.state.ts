@@ -55,17 +55,23 @@ export const useHome = () => {
   };
 
   const removeLastWeekPractices = () => {
-    const isfinishedPracticesEmpty = finishedPractices?.length === 0;
+    const isfinishedPracticesEmpty = finishedPractices.length === 0;
 
     if (!finishedPractices || isfinishedPracticesEmpty) {
       return;
     }
 
-    return finishedPractices.filter(practice => {
-      const normalizeDate = practice.created_at.toDate();
+    return finishedPractices.reduce((prevPractices, practice, inxde, array): any => {
+      const validNumberDate = practice.created_at.seconds * 1000;
+      const normalizeDate = new Date(validNumberDate);
+      const fireBaseDate = firestore.Timestamp.fromDate(normalizeDate);
       const getPracticeWeek = getWeek(normalizeDate);
-      return getCurrentWeek === getPracticeWeek;
-    });
+      const isValidPractice = getCurrentWeek === getPracticeWeek;
+      if (isValidPractice) {
+        return [...prevPractices, { title: practice.title, created_at: fireBaseDate }];
+      }
+      return [...prevPractices];
+    }, []);
   };
 
   const saveFilteredPractices = (filteredPractices: IFinishedPractices[]) => {
