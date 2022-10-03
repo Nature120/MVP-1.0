@@ -18,6 +18,7 @@ export const StyledImmersionComplete = {
   `,
 
   ProgressBar: styled(CenterContainer)`
+    z-index: 20;
     margin-bottom: 36px;
   `,
 
@@ -32,6 +33,12 @@ export const StyledImmersionComplete = {
   MainSection: styled.View`
     flex: 1;
     margin-horizontal: 24px;
+  `,
+
+  Image: styled.Image`
+    position: absolute;
+    left: -24px;
+    bottom: -93px;
   `,
 
   Title: styled(Title)`

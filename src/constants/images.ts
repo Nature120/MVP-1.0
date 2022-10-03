@@ -10,10 +10,12 @@ import ellipses from '@assets/images/splash/ellipses.png';
 import flowers from '@assets/images/splash/flowers.png';
 import lotus from '@assets/images/splash/lotus.png';
 import tip from '@assets/images/splash/tip.png';
+import wave from '@assets/images/wave.png';
 
 export const IMAGES = {
   flowers,
   tip,
+  wave,
   mask,
   lotus,
   clouds,
