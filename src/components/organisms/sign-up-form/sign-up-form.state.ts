@@ -8,14 +8,13 @@ import { storeInDB } from '@services/helpers/firebase-store';
 import { isFirstLaunch } from '@services/store/auth/auth.actions';
 
 import { IRegister, IValue } from './sign-up-form.typings';
-import { IResetForm } from '@typings/formik-typings';
 
 export const useSignUpState = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
   const dispatch = useDispatch();
 
-  const onSubmit = async (values: IValue, { resetForm }: IResetForm): Promise<void> => {
+  const onSubmit = async (values: IValue): Promise<void> => {
     const { email, password, first_name } = values;
     const isEmpty = email === '' || password === '' || first_name === '';
 
@@ -24,7 +23,6 @@ export const useSignUpState = () => {
     }
     await handleRegister({ email, password, first_name });
     await isFirstLaunchCheck();
-    resetForm();
   };
 
   const handleRegister = async ({ email, password, first_name }: IRegister): Promise<void> => {
