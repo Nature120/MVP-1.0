@@ -18,8 +18,8 @@ export const AskModal: React.FC<IAskModalProps> = props => {
     setText('');
   };
 
-  const handleTextPress = () => {
-    onTextPress();
+  const handleTextPress = async () => {
+    await onTextPress();
     setText('');
   };
 

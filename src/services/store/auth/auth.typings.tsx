@@ -14,12 +14,6 @@ interface IAuth {
   isLoading: boolean;
 }
 
-interface IUserComment {
-  date: Date;
-  before?: string;
-  after?: string;
-}
-
 export interface IUser {
   uid: string;
   email?: string | null;
@@ -29,7 +23,6 @@ export interface IUser {
   finishedPractices: Array<IFinishedPractices>;
   goal?: number;
   timeForImmersion?: Date;
-  comments?: IUserComment[];
   tipOfTheDay?: IUserTipOfTheDay;
   recentPractices: Array<IFinishedPractices>;
 }

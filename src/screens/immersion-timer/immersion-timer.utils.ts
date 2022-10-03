@@ -34,24 +34,15 @@ const removePracticeDublicate = async (uid: string, recentPractices: IFinishedPr
   await updateUser(uid, { recentPractices: updatedRecentPractices });
 };
 
-export const clearRecentPractices = async (
-  uid: string,
-  practiceTitle: string,
-  userRecentPractices?: IFinishedPractices[],
-) => {
-  if (userRecentPractices) {
-    await removeRestRecentPractices(uid, userRecentPractices);
-    await removePracticeDublicate(uid, userRecentPractices, practiceTitle);
-  } else {
-    const userInfo = await getUser(uid);
+export const clearRecentPractices = async (uid: string, practiceTitle: string) => {
+  const userInfo = await getUser(uid);
 
-    if (!userInfo) {
-      return;
-    }
-
-    const { recentPractices: userFetchedRecentPractices } = userInfo;
-
-    await removeRestRecentPractices(uid, userFetchedRecentPractices);
-    await removePracticeDublicate(uid, userFetchedRecentPractices, practiceTitle);
+  if (!userInfo) {
+    return;
   }
+
+  const { recentPractices } = userInfo;
+
+  await removeRestRecentPractices(uid, recentPractices);
+  await removePracticeDublicate(uid, recentPractices, practiceTitle);
 };

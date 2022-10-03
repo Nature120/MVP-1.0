@@ -13,7 +13,7 @@ export const ImmersionTimer: React.FC = () => {
   const {
     isOpenAskModal,
     saveResponse,
-    goToNextRoute,
+    onModalClose,
     library,
     isDoNotDisturb,
     setIsDoNotDisturb,
@@ -28,7 +28,7 @@ export const ImmersionTimer: React.FC = () => {
         isVisible={isOpenAskModal}
         onClose={toggleOpenAskModal}
         onButtonPress={saveResponse}
-        onTextPress={goToNextRoute}
+        onTextPress={onModalClose}
       />
 
       <PracticeLibraryCollapsed library={library} />
