@@ -74,11 +74,12 @@ export const useHome = () => {
     }, []);
   };
 
-  const saveFilteredPractices = (filteredPractices: IFinishedPractices[]) => {
-    dispatch(filterExpiredPractices(filteredPractices));
-    firestore().collection('Users').doc(user.uid).update({
+  const saveFilteredPractices = async (filteredPractices: IFinishedPractices[]) => {
+    await firestore().collection('Users').doc(user.uid).update({
       finishedPractices: filteredPractices,
     });
+
+    dispatch(filterExpiredPractices(filteredPractices));
   };
 
   return {

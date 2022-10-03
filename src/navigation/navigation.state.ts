@@ -37,6 +37,7 @@ export const useNavigationSate = () => {
     const { uid } = currentUser;
     const userCredentials = await getUser(uid);
     const data = { ...userCredentials, uid };
+
     dispatch(signIn(data));
     dispatch(loading(false));
   };

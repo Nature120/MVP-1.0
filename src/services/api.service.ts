@@ -27,9 +27,7 @@ export const getUser = async (uid: string) => {
 
 export const updateUser = async (uid: string, body: any, dispatch?: TDispatch) => {
   try {
-    console.log('body', body);
     await userInstance(uid).update(body);
-    console.log('dispatch', dispatch);
     dispatch && dispatch(partialUpdateUser(body));
   } catch (err) {
     const error = err as IError;
