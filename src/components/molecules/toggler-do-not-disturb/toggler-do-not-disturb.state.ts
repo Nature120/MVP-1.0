@@ -43,8 +43,8 @@ export const useStateToggleDoNotDisturb = () => {
       const hasDndAccess = await checkDndAccess();
 
       if (!hasDndAccess) {
-        dispatch(isDisturb(false));
-        requestDndAccess();
+        const permission = await requestDndAccess();
+        permission && dispatch(isDisturb(mode === 0 ? true : false));
         return;
       }
     }
