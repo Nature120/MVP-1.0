@@ -1,22 +1,19 @@
-import { moderateScale } from 'react-native-size-matters';
 import styled from 'styled-components/native';
 
 import { TextComponent } from '@components/atoms/text-component';
 
-import { DEVICE_WIDTH } from '@services/helpers/device-utils';
+import { TStyles } from '@typings/common';
 
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
-export const StyledPracticeLibrary = {
-  PracticeLibrary: styled.TouchableOpacity`
-    width: ${(DEVICE_WIDTH * 42) / 100}px; //42% of device width
-  `,
+export const StyledImage: TStyles = {
+  borderRadius: 10,
+};
 
-  Image: styled.Image`
-    border-radius: 10px;
-    width: 100%;
-    height: ${moderateScale(103)}px;
+export const StyledPracticeLibrary = {
+  PracticeLibrary: styled.TouchableOpacity<{ width: number }>`
+    width: ${({ width }) => width}px; //42% of device width
   `,
 
   TypeContainer: styled.View`

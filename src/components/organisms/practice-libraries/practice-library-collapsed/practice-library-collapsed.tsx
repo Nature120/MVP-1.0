@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 
+import { Image } from '@components/atoms/image';
 import { PracticeLibraryModal } from '../practice-library-modal';
 
 import { IPracticeLibraryCollapsedProps } from './practice-library-collapsed.typings';
 
-import { StyledPracticeLibraryCollapsed as Styled } from './practice-library-collapsed.styles';
+import {
+  COLLAPSED_HEIGHT,
+  IMAGE_WIDTH,
+  StyledImage,
+  StyledPracticeLibraryCollapsed as Styled,
+} from './practice-library-collapsed.styles';
 
 export const PracticeLibraryCollapsed: React.FC<IPracticeLibraryCollapsedProps> = ({ library }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -21,7 +27,7 @@ export const PracticeLibraryCollapsed: React.FC<IPracticeLibraryCollapsedProps> 
         </Styled.Left>
 
         <Styled.Right>
-          <Styled.Image source={{ uri: library.image }} />
+          <Image source={{ uri: library.image }} width={IMAGE_WIDTH} height={COLLAPSED_HEIGHT} styles={StyledImage} />
           <Styled.TypeContainer>
             <Styled.Type numberOfLines={1}>{library.userGoals[0]}</Styled.Type>
           </Styled.TypeContainer>
