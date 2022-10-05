@@ -10,17 +10,8 @@ import { TimerProgressBar } from '@components/organisms/timer-progress-bar/timer
 import { useImmersionTimer } from './immersion-timer.state';
 
 export const ImmersionTimer: React.FC = () => {
-  const {
-    isOpenAskModal,
-    saveResponse,
-    onModalClose,
-    library,
-    isDoNotDisturb,
-    setIsDoNotDisturb,
-    toggleOpenAskModal,
-    seconds,
-    setSeconds,
-  } = useImmersionTimer();
+  const { isOpenAskModal, saveResponse, onModalClose, library, toggleOpenAskModal, seconds, setSeconds } =
+    useImmersionTimer();
 
   return (
     <Layout isWithGradient ellipseColor="light-green">
@@ -35,12 +26,7 @@ export const ImmersionTimer: React.FC = () => {
 
       <TimerProgressBar setSeconds={setSeconds} seconds={seconds} isOpenAskModal={isOpenAskModal} />
 
-      <TogglerDoNotDisturb
-        isDark
-        isDoNotDisturb={isDoNotDisturb}
-        marginBottom={moderateScale(45)}
-        setIsDoNotDisturb={setIsDoNotDisturb}
-      />
+      <TogglerDoNotDisturb isDark marginBottom={moderateScale(45)} />
 
       <Swiper toggleOpenAskModal={toggleOpenAskModal} text="SWIPE TO END" marginW={62} />
     </Layout>

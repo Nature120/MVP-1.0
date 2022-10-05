@@ -17,8 +17,6 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
 
   const { isWithoutActions, isOpen, closeModal, library } = props;
 
-  const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
-
   const saveResponse = (value: string) => {
     const response = value.trim();
     dispatch(setCommentBeforeImmersion(response));
@@ -41,8 +39,6 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
     isWithoutActions,
     navigateToHomePage,
     closeModal,
-    isDoNotDisturb,
-    setIsDoNotDisturb,
     isOpenAsk,
     closeModalAsk,
     saveResponse,

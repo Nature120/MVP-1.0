@@ -16,7 +16,6 @@ export const useImmersions = () => {
   const { recentPractices } = useSelector(getUserInfo);
   const recentLibrariesTitles = useMemo(() => getRecentLibraries(recentPractices), [recentPractices]);
   const [recentLibraries, setRecentLibraries] = useState<IPracticeLibrary[]>([]);
-  const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
   const { navigate } = useNavigation();
 
   const getRecentLibrariesFromDB = useCallback(async () => {
@@ -46,8 +45,6 @@ export const useImmersions = () => {
   };
 
   return {
-    isDoNotDisturb,
-    setIsDoNotDisturb,
     recentLibraries,
     onStartTimer,
     isLoading,
