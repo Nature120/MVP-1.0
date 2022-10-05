@@ -21,10 +21,6 @@ export const StyledPracticeLibraryModal = {
     background-color: ${COLOR.background.extraLightMint};
   `,
 
-  ImageTop: styled.Image`
-    height: 275px;
-  `,
-
   ImageHeader: styled.View<{ top: number; isWithoutActions?: boolean }>`
     position: absolute;
     width: ${DEVICE_WIDTH - 24 * 2}px;

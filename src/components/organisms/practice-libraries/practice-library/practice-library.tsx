@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
+import { Image } from '@components/atoms/image';
 import { PracticeLibraryModal } from '../practice-library-modal';
+
+import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 
 import { IPracticeLibraryProps } from './practice-library.typings';
 
-import { StyledPracticeLibrary as Styled } from './practice-library.styles';
+import { StyledImage, StyledPracticeLibrary as Styled } from './practice-library.styles';
+
+const WIDTH = (DEVICE_WIDTH * 42) / 100;
 
 export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
   const { title, image, description, userGoals, isWithoutActions } = props;
@@ -23,9 +29,9 @@ export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
         />
       )}
 
-      <Styled.PracticeLibrary activeOpacity={0.9} onPress={toggleOpen}>
+      <Styled.PracticeLibrary activeOpacity={0.9} onPress={toggleOpen} width={WIDTH}>
         <View>
-          <Styled.Image source={{ uri: image }} />
+          <Image source={{ uri: image }} width={WIDTH} height={moderateScale(103)} styles={StyledImage} />
 
           <Styled.TypeContainer>
             <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>

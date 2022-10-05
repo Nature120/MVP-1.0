@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 
-import { TextComponent } from '@components/atoms/text-component';
 import { Title } from '@components/atoms/title';
 
 import { COLOR } from '@theme/colors';
@@ -17,14 +16,6 @@ export const StyledHome = {
     font-size: ${FONTS.size.large}px;
     line-height: 29px;
     margin: 16px 0 8px;
-  `,
-
-  MotivationText: styled(TextComponent)`
-    font-size: ${FONTS.size.xlSmall}px;
-    line-height: 19px;
-    color: ${COLOR.subheading};
-    margin-bottom: 16px;
-    max-width: 70%;
   `,
 
   ButtonWrapper: styled.View`

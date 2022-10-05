@@ -4,10 +4,21 @@ import styled, { css } from 'styled-components/native';
 import { TextComponent } from '@components/atoms/text-component';
 import { Title } from '@components/atoms/title';
 
-import { isIOS } from '@services/helpers/device-utils';
+import { DEVICE_WIDTH, isIOS } from '@services/helpers/device-utils';
+
+import { TStyles } from '@typings/common';
 
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
+
+export const StyledImage: TStyles = {
+  borderRadius: 18,
+  width: '100%',
+};
+
+const rightWidthPercent = 44;
+export const COLLAPSED_HEIGHT = verticalScale(85);
+export const IMAGE_WIDTH = (DEVICE_WIDTH * rightWidthPercent) / 100;
 
 export const StyledPracticeLibraryCollapsed = {
   TypeContainer: styled.View`
@@ -31,7 +42,7 @@ export const StyledPracticeLibraryCollapsed = {
 
   CollapsedLibrary: styled.TouchableOpacity`
     width: 100%;
-    height: ${verticalScale(85)}px;
+    height: ${COLLAPSED_HEIGHT}px;
     margin: ${moderateScale(40)}px 0 ${moderateScale(60)}px;
     background-color: ${COLOR.background.extraLightMint};
     flex-direction: row;
@@ -67,12 +78,6 @@ export const StyledPracticeLibraryCollapsed = {
   `,
 
   Right: styled.View`
-    width: 44%;
-  `,
-
-  Image: styled.Image`
-    border-radius: 18px;
-    height: 100%;
-    width: 100%;
+    width: ${rightWidthPercent}%;
   `,
 };
