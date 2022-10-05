@@ -12,6 +12,7 @@ interface IAuth {
   isAuthenticated: boolean;
   isFirstLaunchApp: boolean;
   isLoading: boolean;
+  isDisturb: boolean;
 }
 
 export interface IUser {

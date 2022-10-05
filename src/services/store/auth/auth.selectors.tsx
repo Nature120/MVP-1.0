@@ -8,3 +8,4 @@ export const getFirstLaunch = (state: IState) => state.auth.isFirstLaunchApp;
 export const getUserInfo = (state: IState) => state.auth.user;
 export const getLoading = (state: IState) => state.auth.isLoading;
 export const getFisishedPractices = (state: IState) => state.auth.user.finishedPractices;
+export const getIsDisturb = (state: IState) => state.auth.isDisturb;

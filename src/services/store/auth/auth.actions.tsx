@@ -11,3 +11,4 @@ export const addFinishedPractic = createAction<IFinishedPractices>('auth/addedFi
 export const addRecentPractice = createAction<IFinishedPractices>('auth/addRecentPractice');
 export const loading = createAction<boolean>('auth/loading');
 export const filterExpiredPractices = createAction<IFinishedPractices[] | undefined>('auth/filterExpiredPractices');
+export const isDisturb = createAction<boolean>('auth/isDisturb');
