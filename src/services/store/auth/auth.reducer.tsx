@@ -33,9 +33,14 @@ const isLoading = createReducer(false, {
   [action.loading.type]: (_, { payload }) => payload,
 });
 
+const isDisturb = createReducer(false, {
+  [action.isDisturb.type]: (_, { payload }) => payload,
+});
+
 export default combineReducers({
   user,
   isAuthenticated,
   isFirstLaunchApp,
   isLoading,
+  isDisturb,
 });
