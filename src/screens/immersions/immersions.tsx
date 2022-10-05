@@ -14,7 +14,7 @@ import { StyledImmersions as Styled } from './immersions.styles';
 import { COLOR } from '@theme/colors';
 
 export const Immersions: React.FC = () => {
-  const { isDoNotDisturb, setIsDoNotDisturb, recentLibraries, onStartTimer, isLoading } = useImmersions();
+  const { recentLibraries, onStartTimer, isLoading } = useImmersions();
 
   return (
     <Styled.Wrapper>
@@ -37,11 +37,7 @@ export const Immersions: React.FC = () => {
 
             <Line marginTop={24} marginBottom={28} />
 
-            <TogglerDoNotDisturb
-              marginBottom={48}
-              isDoNotDisturb={isDoNotDisturb}
-              setIsDoNotDisturb={setIsDoNotDisturb}
-            />
+            <TogglerDoNotDisturb marginBottom={48} />
           </Styled.Immersions>
 
           {!!recentLibraries.length && <PracticeLibraries title={'Recent Immersions'} libraries={recentLibraries} />}

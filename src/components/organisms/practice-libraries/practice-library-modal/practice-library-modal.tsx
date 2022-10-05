@@ -24,8 +24,6 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     isWithoutActions,
     navigateToHomePage,
     closeModal,
-    isDoNotDisturb,
-    setIsDoNotDisturb,
     isOpenAsk,
     closeModalAsk,
     saveResponse,
@@ -97,9 +95,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                 ))}
               </Styled.Tags>
 
-              {!isWithoutActions && (
-                <TogglerDoNotDisturb isDoNotDisturb={isDoNotDisturb} setIsDoNotDisturb={setIsDoNotDisturb} />
-              )}
+              {!isWithoutActions && <TogglerDoNotDisturb />}
             </View>
 
             {!isWithoutActions && (

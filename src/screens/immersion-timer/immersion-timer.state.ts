@@ -21,7 +21,6 @@ export const useImmersionTimer = () => {
   const { navigate } = useNavigation();
   const { params: library } = useParam<IPracticeLibrary>();
   const [seconds, setSeconds] = useState<number>(0);
-  const [isDoNotDisturb, setIsDoNotDisturb] = useState(false);
   const [isOpenAskModal, setIsOpenAskModal] = useState(false);
   const { uid } = useSelector(getUserInfo);
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
@@ -83,8 +82,6 @@ export const useImmersionTimer = () => {
     saveResponse,
     onModalClose,
     library,
-    isDoNotDisturb,
-    setIsDoNotDisturb,
     toggleOpenAskModal,
     seconds,
     setSeconds,
