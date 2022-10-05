@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@components/atoms/button';
 import { CenterContainer } from '@components/atoms/center-container';
 import { Line } from '@components/atoms/line';
+import { DynamicHeader } from '@components/dynamic-header';
 import { AskModal } from '@components/molecules/ask-modal';
 import { Layout } from '@components/molecules/layout';
 import { TipOfTheDay } from '@components/molecules/tip-of-the-day';
@@ -16,6 +17,8 @@ import { COLOR } from '@theme/colors';
 
 export const Home: React.FC = () => {
   const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, saveResponse, navigateToImmersions } = useHome();
+
+  const goal = user.goal || 0;
 
   return (
     <>
@@ -34,11 +37,9 @@ export const Home: React.FC = () => {
         elasticScrollPosition="bottom">
         <Styled.MainSection>
           <Styled.Greeting>Hi, {user.first_name}</Styled.Greeting>
-          <Styled.MotivationText>Here’s a look at your progress this week. Keep it up!</Styled.MotivationText>
+          <DynamicHeader goal={goal} weeklyGoal={weeklyGoal} />
 
-          <CenterContainer>
-            {!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={user.goal || 0} />}
-          </CenterContainer>
+          <CenterContainer>{!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={goal} />}</CenterContainer>
 
           <Styled.ButtonWrapper>
             <Button height={50} buttonText="LET’S GO OUTSIDE" onPress={onToggleOpen} />
