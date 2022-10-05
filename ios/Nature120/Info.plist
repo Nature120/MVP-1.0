@@ -36,18 +36,18 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Lexend-Medium.ttf</string>
-		<string>Lexend-Regular.ttf</string>
-		<string>NotoSans-Bold.ttf</string>
-		<string>NotoSans-Medium.ttf</string>
-		<string>NotoSans-SemiBold.ttf</string>
-		<string>Roboto-Light.ttf</string>
-		<string>Roboto-LightItalic.ttf</string>
-		<string>Roboto-Medium.ttf</string>
-		<string>Roboto-Regular.ttf</string>
+		<string>Acumin-Pro-Bold.otf</string>
+		<string>Acumin-Pro-Medium.otf</string>
+		<string>Acumin-Pro-Semibold.otf</string>
+		<string>Boreal-Light-Italic.otf</string>
+		<string>Boreal-Light.otf</string>
+		<string>Boreal-Medium.otf</string>
+		<string>Boreal-Regular.otf</string>
+		<string>New-Order-Medium.otf</string>
+		<string>New-Order-Regular.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

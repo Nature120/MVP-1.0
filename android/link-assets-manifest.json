@@ -2,44 +2,40 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/.gitkeep",
-      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+      "path": "src/assets/fonts/Acumin-Pro-Bold.otf",
+      "sha1": "efaa996218051b75248badaf21f93345f08c39bd"
     },
     {
-      "path": "src/assets/fonts/Lexend-Medium.ttf",
-      "sha1": "218c9c979c6806fc0c9f773c2f01cdcfc627b63c"
+      "path": "src/assets/fonts/Acumin-Pro-Medium.otf",
+      "sha1": "33cfbcdac05aa8a5ba09aa7f6a369dacbeaa38a3"
     },
     {
-      "path": "src/assets/fonts/Lexend-Regular.ttf",
-      "sha1": "0af1323597034bccfe8b8c62b0dde2b269ae0c2e"
+      "path": "src/assets/fonts/Acumin-Pro-Semibold.otf",
+      "sha1": "bec42086821f8e371a4698a09f7bdc456a2d5230"
     },
     {
-      "path": "src/assets/fonts/NotoSans-Bold.ttf",
-      "sha1": "20f80dbd99b857c66796321d3f596400d1334ca7"
+      "path": "src/assets/fonts/Boreal-Light-Italic.otf",
+      "sha1": "da181b0912966feb20054af5bc0dd39672fff1fa"
     },
     {
-      "path": "src/assets/fonts/NotoSans-Medium.ttf",
-      "sha1": "24d2fbcedc876231b51ea8c096f21883d27ece5a"
+      "path": "src/assets/fonts/Boreal-Light.otf",
+      "sha1": "7f693cb05e10514e0e0484bd8eba10d2b035ca70"
     },
     {
-      "path": "src/assets/fonts/NotoSans-SemiBold.ttf",
-      "sha1": "b85778134956f02b1c3c20617f14ae29b4680e12"
+      "path": "src/assets/fonts/Boreal-Medium.otf",
+      "sha1": "5b8f9d149ecb2e82b5f34613282ede2f2c1b12c3"
     },
     {
-      "path": "src/assets/fonts/Roboto-Light.ttf",
-      "sha1": "18788c5d630fa695f9283f6393bfa541b2031508"
+      "path": "src/assets/fonts/Boreal-Regular.otf",
+      "sha1": "629d9cbc5b75785ecc61005a70b664bc50c13a28"
     },
     {
-      "path": "src/assets/fonts/Roboto-LightItalic.ttf",
-      "sha1": "6e01f9df9449565697032b002706a94b51862bbe"
+      "path": "src/assets/fonts/New-Order-Medium.otf",
+      "sha1": "81b61201f58c3d16ec82e369ac38d9f815f925cd"
     },
     {
-      "path": "src/assets/fonts/Roboto-Medium.ttf",
-      "sha1": "3c6a09fcc6a454924c81af7dff94fc6d399ed79b"
-    },
-    {
-      "path": "src/assets/fonts/Roboto-Regular.ttf",
-      "sha1": "56c5c0d38bde4c1f1549dda43db37b09c608aad3"
+      "path": "src/assets/fonts/New-Order-Regular.otf",
+      "sha1": "07d90cde6a96c3910da7f0c53df65a3e5048c901"
     }
   ]
 }
