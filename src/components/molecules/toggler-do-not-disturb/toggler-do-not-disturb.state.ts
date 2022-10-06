@@ -37,7 +37,7 @@ export const useStateToggleDoNotDisturb = () => {
   };
 
   const onChange = async (toggleValue: boolean) => {
-    const newMode = switchMode(toggleValue);
+    const newMode = getNewMode(toggleValue);
     ////Check permmision if silent mode///
     if (newMode === RINGER_MODE.silent || mode === RINGER_MODE.silent) {
       const hasDndAccess = await checkDndAccess();
@@ -52,7 +52,7 @@ export const useStateToggleDoNotDisturb = () => {
     setMode(newMode);
   };
 
-  const switchMode = (toggleValue: boolean) => {
+  const getNewMode = (toggleValue: boolean) => {
     return toggleValue ? RINGER_MODE.silent : RINGER_MODE.normal;
   };
 

@@ -7,7 +7,7 @@ YupPassword(yup);
 
 export const REGISTER_VALIDATION_SCHEMA = yup.object().shape({
   email: yup.string().matches(REG_EXP_EMAIL, 'Not valid email').email('Not valid email'),
-  first_name: yup.string().min(3, ({ min }) => `First name must be ${min} symbols`),
+  first_name: yup.string().min(3, ({ min }) => `First name must contain at least ${min} symbols`),
   password: yup
     .string()
     .min(8, 'Password must contain at least 8 symbols')

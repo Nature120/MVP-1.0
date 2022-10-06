@@ -25,7 +25,7 @@ interface ISwipeState {
 export const useSwiperState = ({ marginW, toggleOpenAskModal }: ISwipeState) => {
   const [status, setStatus] = useState<string>('start');
 
-  const MAX_WIDTH = DEVICE_WIDTH - (marginW + 62);
+  const MAX_WIDTH = DEVICE_WIDTH - (marginW + marginW);
 
   const transX = useRef(new Value(0)).current;
   const offsetX = useRef(new Value(0)).current;
