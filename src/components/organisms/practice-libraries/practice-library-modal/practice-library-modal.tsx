@@ -3,7 +3,6 @@ import { Modal, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@components/atoms/button';
-import { Icon } from '@components/atoms/icon';
 import { Image } from '@components/atoms/image';
 import { Spacer } from '@components/atoms/spacer';
 import { AskModal } from '@components/molecules/ask-modal';
@@ -33,7 +32,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
 
-  const { title, image, description, duration, userGoals } = props.library;
+  const { title, image, description, userGoals } = props.library;
 
   const insets = useSafeAreaInsets();
 
@@ -73,12 +72,12 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
             <View>
               <Styled.Header>
                 <Styled.Title numberOfLines={1}>{title}</Styled.Title>
-                <Styled.TimeWrapper>
+                {/* <Styled.TimeWrapper>
                   <Icon type="clock" colorIcon="cloudyBlue" size={18} />
                   <Styled.Time>
                     {duration.from}-{duration.to} min
                   </Styled.Time>
-                </Styled.TimeWrapper>
+                </Styled.TimeWrapper> */}
               </Styled.Header>
 
               <Styled.Description isFirst>{description}</Styled.Description>
