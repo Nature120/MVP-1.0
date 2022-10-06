@@ -1,25 +1,29 @@
-import { isFriday, isSaturday, isSunday } from 'date-fns';
+import { format } from 'date-fns';
 
 import { DYNAMIC_HEADER_TEXTS } from './dynamic-header.constants';
 
 export const getHeader = (goal: number, weeklyGoal: number) => {
   const goalPercent = (goal * 100) / weeklyGoal;
-  const today = new Date();
 
-  if (goalPercent < 50 && isFriday(today)) {
-    return DYNAMIC_HEADER_TEXTS.fridayAndLessThan50;
-  }
-  if (goalPercent < 50 && isSaturday(today)) {
-    return DYNAMIC_HEADER_TEXTS.saturdayAndLessThan50;
-  }
-  if (goalPercent < 50 && isSunday(today)) {
-    return DYNAMIC_HEADER_TEXTS.sundayAndLessThan50;
-  }
   if (goalPercent > 200) {
     return DYNAMIC_HEADER_TEXTS.biggerThan200;
   }
   if (goalPercent > 100) {
     return DYNAMIC_HEADER_TEXTS.biggerThan100;
   }
-  return DYNAMIC_HEADER_TEXTS.default;
+
+  const currentWeekDay = format(new Date(), 'EEEE');
+  switch (currentWeekDay) {
+    case 'Friday':
+      return DYNAMIC_HEADER_TEXTS[goalPercent < 50 ? 'fridayAndLessThan50' : 'fridayAndMoreThan50'];
+
+    case 'Saturday':
+      return DYNAMIC_HEADER_TEXTS[goalPercent < 50 ? 'saturdayAndLessThan50' : 'saturdayAndMoreThan50'];
+
+    case 'Sunday':
+      return DYNAMIC_HEADER_TEXTS[goalPercent < 50 ? 'sundayAndLessThan50' : 'sundayAndMoreThan50'];
+
+    default:
+      return DYNAMIC_HEADER_TEXTS.default;
+  }
 };
