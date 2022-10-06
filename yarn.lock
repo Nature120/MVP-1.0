@@ -1442,6 +1442,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-15.4.0.tgz#9941cc2e256a11c1ea0d7614776fae54ed3a17d0"
   integrity sha512-7Kiqn9c4uzQyURFQ4LGCZ4waeZb/hZb/IWl6MlpfkCtII9PnpdqbvQwEKKKg8RQMocP5sbw0qPsKEdYEYUNKhg==
 
+"@react-native-firebase/messaging@^15.7.0":
+  version "15.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-15.7.0.tgz#fa81872ceb202125652678ebf310ae5e22107d2a"
+  integrity sha512-c2BLLbBm4kMjbkm1fJ465qZ2o24GHylLxeHSjU63SHIUVhnD5j7rWV/XvumNIEkSWtZmy9v+uGpmArLCAjZraw==
+
 "@react-native-firebase/storage@^15.6.0":
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-15.6.0.tgz#6891af70b5b55fc2cc70a15c79809685540c77e8"
@@ -6965,6 +6970,11 @@ react-native-size-matters@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.4.0.tgz#01bfd0d59454318f4e0b13fe9c1eb0523d70f2e0"
   integrity sha512-8/C0htHrFWeUm9N8JegmadovUfgTWkGBkDPZ1N3YkXtDWb+98Ya2gThiKcu445r8c7YhcrBfnHz/mYsXIusaOQ==
+
+react-native-sound-manager@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-sound-manager/-/react-native-sound-manager-1.0.9.tgz#0845c00489fb4e724d04479344652ea91b66b37b"
+  integrity sha512-K8ZyV2Ajhu3SkVczytU/dRGe0cUAYapBFsFa1MfttQk+vI06Me6N8Qn422AL8eYasYiv9iGi8rmcyU1zrk39ag==
 
 react-native-splash-screen@^3.3.0:
   version "3.3.0"

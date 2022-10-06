@@ -70,20 +70,20 @@ export const StyledPracticeLibraryModal = {
   `,
 
   Title: styled(Title)`
-    max-width: 60%;
+    max-width: 100%;
   `,
 
-  TimeWrapper: styled.View`
-    flex-direction: row;
-    align-items: center;
-  `,
+  // TimeWrapper: styled.View`
+  //   flex-direction: row;
+  //   align-items: center;
+  // `,
 
-  Time: styled(TextComponent)`
-    margin-left: 8px;
-    font-size: ${FONTS.size.xlSmall}px;
-    line-height: 19px;
-    color: ${COLOR.font.cloudyBlue};
-  `,
+  // Time: styled(TextComponent)`
+  //   margin-left: 8px;
+  //   font-size: ${FONTS.size.xlSmall}px;
+  //   line-height: 19px;
+  //   color: ${COLOR.font.cloudyBlue};
+  // `,
 
   Description: styled(TextComponent)<{ isFirst: boolean }>`
     margin-top: ${props => (props.isFirst ? 0 : 20)}px;
