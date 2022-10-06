@@ -10,11 +10,11 @@ const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 export const StyledGoalText = {
   AnimatedTextInput: styled(AnimatedTextInput)<{ textColor: string }>`
     color: ${props => props.textColor};
-    padding-top: ${isIOS ? 60 : 100}px;
+    padding-top: ${isIOS ? 70 : 100}px;
     text-align: center;
     font-family: ${FONTS.family.boldAcumin};
     font-weight: ${FONTS.weight.bold};
-    font-size: 60px;
+    font-size: 64px;
   `,
 
   Min: styled.Text<{ textColor: string }>`

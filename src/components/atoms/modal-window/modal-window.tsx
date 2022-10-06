@@ -40,9 +40,7 @@ export const ModalWindow: React.FC<IModalWindowProps> = props => {
       customBackdrop={
         <TouchableWithoutFeedback onPress={onBackdropPress}>
           {isIOS ? (
-            <View style={[styles.flex, styles.bg]}>
-              <BlurView style={styles.flex} blurType={'light'} blurAmount={2} />
-            </View>
+            <View style={[styles.flex, styles.bg]} />
           ) : (
             <BlurView style={styles.flex} blurType={'dark'} blurAmount={1} overlayColor={'rgba(0, 0, 0, 0.2)'} />
           )}

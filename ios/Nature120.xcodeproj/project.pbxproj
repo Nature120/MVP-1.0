@@ -15,15 +15,15 @@
 		36C5EB465B858CE374086D6C /* Pods_Nature120_Nature120Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA22600A7C8CC60F040D1D13 /* Pods_Nature120_Nature120Tests.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		87E15D09CB751836F2487841 /* Pods_Nature120.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B3923750B81EE25FCF861C /* Pods_Nature120.framework */; };
-		541F07F34FB74AD2BA7E3533 /* Acumin-Pro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 962BDF4B40EE4C279781F981 /* Acumin-Pro-Bold.otf */; };
-		6A1A6BAA1BD847D09B10DCC1 /* Acumin-Pro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7B44BB25F2504DF5A80F4D75 /* Acumin-Pro-Medium.otf */; };
-		3793761ECFB04E5A978A4ECE /* Acumin-Pro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8FC3A2F1AF4E497F8B7EF6D1 /* Acumin-Pro-Semibold.otf */; };
-		65B2EC983FA949C9AA32A9C4 /* Boreal-Light-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 708AA2E0E6D44BFFBFC39838 /* Boreal-Light-Italic.otf */; };
 		9B21695CA99E4AC29E9E11CE /* Boreal-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 27251069EAD746F2AD54C261 /* Boreal-Light.otf */; };
 		BC82B3FB7FF644B0BD693BC7 /* Boreal-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BDA971D43BE14661B08EB0C5 /* Boreal-Medium.otf */; };
 		30C8DD2C83B84C35A17D7ECA /* Boreal-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E28D3EECFEB5463AB862DA16 /* Boreal-Regular.otf */; };
-		957D70E0E64F4CCB9EDFDFB0 /* New-Order-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1A6277F117414EB8B6CE9DC3 /* New-Order-Medium.otf */; };
-		ABD8454D8CCB4733A7C34B2A /* New-Order-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF12C5B4B6D043D2B0FF0BE2 /* New-Order-Regular.otf */; };
+		8347B9E1B3A641DDA500BE5F /* AcuminPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ED1939B1E9D490883126DF5 /* AcuminPro-Bold.otf */; };
+		F5DC755B2503483B8B0FB986 /* AcuminPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6599152968724B23BF646C96 /* AcuminPro-Medium.otf */; };
+		4AA0DCA608C8468881CC848F /* AcuminPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BEFDA97511D24E108932A9C4 /* AcuminPro-Semibold.otf */; };
+		7B46030B5D8040328F1E155C /* Boreal-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E09CD002A1B04AF1BA573F91 /* Boreal-LightItalic.otf */; };
+		C7BBCFB415734A97A0DD9C4A /* NewOrder-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0B3A00003114B48B1BC0DA4 /* NewOrder-Medium.otf */; };
+		5283FCC1990E4F2692CD7CBA /* NewOrder-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F8AD43EDDD945A386FF16E5 /* NewOrder-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,15 +57,15 @@
 		D8B3923750B81EE25FCF861C /* Pods_Nature120.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nature120.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FA22600A7C8CC60F040D1D13 /* Pods_Nature120_Nature120Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nature120_Nature120Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		962BDF4B40EE4C279781F981 /* Acumin-Pro-Bold.otf */ = {isa = PBXFileReference; name = "Acumin-Pro-Bold.otf"; path = "../src/assets/fonts/Acumin-Pro-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7B44BB25F2504DF5A80F4D75 /* Acumin-Pro-Medium.otf */ = {isa = PBXFileReference; name = "Acumin-Pro-Medium.otf"; path = "../src/assets/fonts/Acumin-Pro-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		8FC3A2F1AF4E497F8B7EF6D1 /* Acumin-Pro-Semibold.otf */ = {isa = PBXFileReference; name = "Acumin-Pro-Semibold.otf"; path = "../src/assets/fonts/Acumin-Pro-Semibold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		708AA2E0E6D44BFFBFC39838 /* Boreal-Light-Italic.otf */ = {isa = PBXFileReference; name = "Boreal-Light-Italic.otf"; path = "../src/assets/fonts/Boreal-Light-Italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		27251069EAD746F2AD54C261 /* Boreal-Light.otf */ = {isa = PBXFileReference; name = "Boreal-Light.otf"; path = "../src/assets/fonts/Boreal-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		BDA971D43BE14661B08EB0C5 /* Boreal-Medium.otf */ = {isa = PBXFileReference; name = "Boreal-Medium.otf"; path = "../src/assets/fonts/Boreal-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E28D3EECFEB5463AB862DA16 /* Boreal-Regular.otf */ = {isa = PBXFileReference; name = "Boreal-Regular.otf"; path = "../src/assets/fonts/Boreal-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1A6277F117414EB8B6CE9DC3 /* New-Order-Medium.otf */ = {isa = PBXFileReference; name = "New-Order-Medium.otf"; path = "../src/assets/fonts/New-Order-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CF12C5B4B6D043D2B0FF0BE2 /* New-Order-Regular.otf */ = {isa = PBXFileReference; name = "New-Order-Regular.otf"; path = "../src/assets/fonts/New-Order-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6ED1939B1E9D490883126DF5 /* AcuminPro-Bold.otf */ = {isa = PBXFileReference; name = "AcuminPro-Bold.otf"; path = "../src/assets/fonts/AcuminPro-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6599152968724B23BF646C96 /* AcuminPro-Medium.otf */ = {isa = PBXFileReference; name = "AcuminPro-Medium.otf"; path = "../src/assets/fonts/AcuminPro-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BEFDA97511D24E108932A9C4 /* AcuminPro-Semibold.otf */ = {isa = PBXFileReference; name = "AcuminPro-Semibold.otf"; path = "../src/assets/fonts/AcuminPro-Semibold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E09CD002A1B04AF1BA573F91 /* Boreal-LightItalic.otf */ = {isa = PBXFileReference; name = "Boreal-LightItalic.otf"; path = "../src/assets/fonts/Boreal-LightItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C0B3A00003114B48B1BC0DA4 /* NewOrder-Medium.otf */ = {isa = PBXFileReference; name = "NewOrder-Medium.otf"; path = "../src/assets/fonts/NewOrder-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9F8AD43EDDD945A386FF16E5 /* NewOrder-Regular.otf */ = {isa = PBXFileReference; name = "NewOrder-Regular.otf"; path = "../src/assets/fonts/NewOrder-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,15 +131,15 @@
 		4A2D2526883D446EBA12BE4E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				962BDF4B40EE4C279781F981 /* Acumin-Pro-Bold.otf */,
-				7B44BB25F2504DF5A80F4D75 /* Acumin-Pro-Medium.otf */,
-				8FC3A2F1AF4E497F8B7EF6D1 /* Acumin-Pro-Semibold.otf */,
-				708AA2E0E6D44BFFBFC39838 /* Boreal-Light-Italic.otf */,
 				27251069EAD746F2AD54C261 /* Boreal-Light.otf */,
 				BDA971D43BE14661B08EB0C5 /* Boreal-Medium.otf */,
 				E28D3EECFEB5463AB862DA16 /* Boreal-Regular.otf */,
-				1A6277F117414EB8B6CE9DC3 /* New-Order-Medium.otf */,
-				CF12C5B4B6D043D2B0FF0BE2 /* New-Order-Regular.otf */,
+				6ED1939B1E9D490883126DF5 /* AcuminPro-Bold.otf */,
+				6599152968724B23BF646C96 /* AcuminPro-Medium.otf */,
+				BEFDA97511D24E108932A9C4 /* AcuminPro-Semibold.otf */,
+				E09CD002A1B04AF1BA573F91 /* Boreal-LightItalic.otf */,
+				C0B3A00003114B48B1BC0DA4 /* NewOrder-Medium.otf */,
+				9F8AD43EDDD945A386FF16E5 /* NewOrder-Regular.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -288,15 +288,15 @@
 				118F35B928CB4BB700624F6E /* GoogleService-Info.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				541F07F34FB74AD2BA7E3533 /* Acumin-Pro-Bold.otf in Resources */,
-				6A1A6BAA1BD847D09B10DCC1 /* Acumin-Pro-Medium.otf in Resources */,
-				3793761ECFB04E5A978A4ECE /* Acumin-Pro-Semibold.otf in Resources */,
-				65B2EC983FA949C9AA32A9C4 /* Boreal-Light-Italic.otf in Resources */,
 				9B21695CA99E4AC29E9E11CE /* Boreal-Light.otf in Resources */,
 				BC82B3FB7FF644B0BD693BC7 /* Boreal-Medium.otf in Resources */,
 				30C8DD2C83B84C35A17D7ECA /* Boreal-Regular.otf in Resources */,
-				957D70E0E64F4CCB9EDFDFB0 /* New-Order-Medium.otf in Resources */,
-				ABD8454D8CCB4733A7C34B2A /* New-Order-Regular.otf in Resources */,
+				8347B9E1B3A641DDA500BE5F /* AcuminPro-Bold.otf in Resources */,
+				F5DC755B2503483B8B0FB986 /* AcuminPro-Medium.otf in Resources */,
+				4AA0DCA608C8468881CC848F /* AcuminPro-Semibold.otf in Resources */,
+				7B46030B5D8040328F1E155C /* Boreal-LightItalic.otf in Resources */,
+				C7BBCFB415734A97A0DD9C4A /* NewOrder-Medium.otf in Resources */,
+				5283FCC1990E4F2692CD7CBA /* NewOrder-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

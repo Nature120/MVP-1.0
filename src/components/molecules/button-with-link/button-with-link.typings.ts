@@ -13,5 +13,5 @@ export interface IButtonWithLinkProps extends IButtonProps, IStyledButtonWithLin
 
 export interface IStyledButtonWithLinkProps {
   isWithMagrin?: boolean;
-  marginBottom?: 24 | 36;
+  marginBottom?: number;
 }

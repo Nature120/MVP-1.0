@@ -6,14 +6,15 @@ import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 export const StyledAskModal = {
-  ModalText: styled(Title)`
+  ModalText: styled(Title)<{ marginVertical: number }>`
     font-size: ${FONTS.size.large}px;
     line-height: 29px;
     text-align: center;
-    margin: 43px 0 24px;
+    margin: ${({ marginVertical }) => `${marginVertical}px 0 24px`};
   `,
 
-  TextInput: styled.TextInput`
+  TextInput: styled.TextInput<{ marginBottom: number }>`
+    margin-bottom: ${({ marginBottom }) => marginBottom}px;
     padding: 8px;
     border-radius: 5px;
     max-height: 97px;
@@ -24,6 +25,6 @@ export const StyledAskModal = {
     font-size: ${FONTS.size.xMedium}px;
     line-height: 21px;
     color: ${COLOR.font.cloudyBlue};
-    margin-bottom: 46px;
+    text-align-vertical: top;
   `,
 };

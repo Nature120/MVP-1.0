@@ -19,15 +19,15 @@ export const FONTS = {
     superLarge: 64,
   },
   family: {
-    mediumAcumin: 'Acumin-Pro-Medium',
-    semiBoldAcumin: 'Acumin-Pro-Semibold',
-    boldAcumin: 'Acumin-Pro-Bold',
+    mediumAcumin: 'AcuminPro-Medium',
+    semiBoldAcumin: 'AcuminPro-Semibold',
+    boldAcumin: 'AcuminPro-Bold',
     lightBoreal: 'Boreal-Light',
-    lightItalicBoreal: 'Boreal-Light-Italic',
+    lightItalicBoreal: 'Boreal-LightItalic',
     regularBoreal: 'Boreal-Regular',
     mediumBoreal: 'Boreal-Medium',
-    regularNewOrder: 'New-Order-Regular',
-    mediumNewOrder: 'New-Order-Medium',
+    regularNewOrder: 'NewOrder-Regular',
+    mediumNewOrder: 'NewOrder-Medium',
   },
 } as const;
 

@@ -37,7 +37,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
   const insets = useSafeAreaInsets();
 
   return (
-    <Modal visible={isOpen} animationType="slide">
+    <Modal transparent={false} visible={isOpen} animationType="slide">
       <AskModal
         isVisible={isOpenAsk}
         onClose={closeModalAsk}
