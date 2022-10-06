@@ -1,4 +1,4 @@
-import { moderateScale, verticalScale } from 'react-native-size-matters';
+import { moderateScale } from 'react-native-size-matters';
 import styled, { css } from 'styled-components/native';
 
 import { TextComponent } from '@components/atoms/text-component';
@@ -17,7 +17,7 @@ export const StyledImage: TStyles = {
 };
 
 const rightWidthPercent = 44;
-export const COLLAPSED_HEIGHT = verticalScale(85);
+export const COLLAPSED_HEIGHT = 100;
 export const IMAGE_WIDTH = (DEVICE_WIDTH * rightWidthPercent) / 100;
 
 export const StyledPracticeLibraryCollapsed = {

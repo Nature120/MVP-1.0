@@ -39,15 +39,15 @@
 	<string/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Acumin-Pro-Bold.otf</string>
-		<string>Acumin-Pro-Medium.otf</string>
-		<string>Acumin-Pro-Semibold.otf</string>
-		<string>Boreal-Light-Italic.otf</string>
 		<string>Boreal-Light.otf</string>
 		<string>Boreal-Medium.otf</string>
 		<string>Boreal-Regular.otf</string>
-		<string>New-Order-Medium.otf</string>
-		<string>New-Order-Regular.otf</string>
+		<string>AcuminPro-Bold.otf</string>
+		<string>AcuminPro-Medium.otf</string>
+		<string>AcuminPro-Semibold.otf</string>
+		<string>Boreal-LightItalic.otf</string>
+		<string>NewOrder-Medium.otf</string>
+		<string>NewOrder-Regular.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

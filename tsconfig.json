@@ -6,7 +6,7 @@
       {
         "name": "typescript-styled-plugin",
         "lint": {
-          "validProperties": ["margin-horizontal", "margin-vertical", "padding-horizontal", "padding-vertical"]
+          "validProperties": ["margin-horizontal", "margin-vertical", "padding-horizontal", "padding-vertical", "text-align-vertical"]
         }
       }
     ],

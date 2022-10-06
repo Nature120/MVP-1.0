@@ -2,24 +2,24 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/Acumin-Pro-Bold.otf",
+      "path": "src/assets/fonts/AcuminPro-Bold.otf",
       "sha1": "efaa996218051b75248badaf21f93345f08c39bd"
     },
     {
-      "path": "src/assets/fonts/Acumin-Pro-Medium.otf",
+      "path": "src/assets/fonts/AcuminPro-Medium.otf",
       "sha1": "33cfbcdac05aa8a5ba09aa7f6a369dacbeaa38a3"
     },
     {
-      "path": "src/assets/fonts/Acumin-Pro-Semibold.otf",
+      "path": "src/assets/fonts/AcuminPro-Semibold.otf",
       "sha1": "bec42086821f8e371a4698a09f7bdc456a2d5230"
-    },
-    {
-      "path": "src/assets/fonts/Boreal-Light-Italic.otf",
-      "sha1": "da181b0912966feb20054af5bc0dd39672fff1fa"
     },
     {
       "path": "src/assets/fonts/Boreal-Light.otf",
       "sha1": "7f693cb05e10514e0e0484bd8eba10d2b035ca70"
+    },
+    {
+      "path": "src/assets/fonts/Boreal-LightItalic.otf",
+      "sha1": "da181b0912966feb20054af5bc0dd39672fff1fa"
     },
     {
       "path": "src/assets/fonts/Boreal-Medium.otf",
@@ -30,11 +30,11 @@
       "sha1": "629d9cbc5b75785ecc61005a70b664bc50c13a28"
     },
     {
-      "path": "src/assets/fonts/New-Order-Medium.otf",
+      "path": "src/assets/fonts/NewOrder-Medium.otf",
       "sha1": "81b61201f58c3d16ec82e369ac38d9f815f925cd"
     },
     {
-      "path": "src/assets/fonts/New-Order-Regular.otf",
+      "path": "src/assets/fonts/NewOrder-Regular.otf",
       "sha1": "07d90cde6a96c3910da7f0c53df65a3e5048c901"
     }
   ]
