@@ -1,4 +1,6 @@
 export const APP_ROUTES = {
+  agreePrivacyPolicy: 'agreePrivacyPolicy',
+  privacyPolicy: 'privacyPolicy',
   start: {
     splash: 'Splash',
     signUp: 'Sign Up',
