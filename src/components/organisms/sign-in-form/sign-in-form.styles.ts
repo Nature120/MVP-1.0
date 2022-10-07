@@ -33,4 +33,8 @@ export const SignInFormStyles = {
     line-height: ${moderateScale(21)}px;
     font-weight: ${FONTS.weight.light};
   `,
+  ClosedEye: styled.Image`
+    width: 24px;
+    height: 24px;
+  `,
 };

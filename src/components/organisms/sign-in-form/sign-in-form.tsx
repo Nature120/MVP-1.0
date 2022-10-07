@@ -8,6 +8,7 @@ import { Input } from '@components/atoms/input/input';
 import { useSignInState } from './sign-in-form.state';
 
 import { SIGN_IN_VALIDATION_SCHEMA } from './sign-in-form.constants';
+import { IMAGES } from '@constants/images';
 
 import { SignInFormStyles as Styled } from './sign-in-form.styles';
 import { REACT_NATIVE_PAPER_INPUT_THEME } from '@theme/styles';
@@ -19,9 +20,9 @@ export const SignInForm = () => {
 
   const handleChangeIcon = (): JSX.Element => {
     return passwordVisible ? (
-      <Icon type="eye" width={32} height={32} />
+      <Styled.ClosedEye source={IMAGES.closedEye} />
     ) : (
-      <Icon type="openEye" width={32} height={32} colorIcon="grey" />
+      <Icon type="openEye" width={24} height={24} colorIcon="grey" />
     );
   };
 

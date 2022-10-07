@@ -8,6 +8,7 @@ import { Input } from '@components/atoms/input/input';
 import { useSignUpState } from './sign-up-form.state';
 
 import { REGISTER_VALIDATION_SCHEMA } from './sign-up-form.constants';
+import { IMAGES } from '@constants/images';
 
 import { SignUpFormStyles as Styled } from './sign-up-form.styles';
 import { REACT_NATIVE_PAPER_INPUT_THEME } from '@theme/styles';
@@ -18,10 +19,11 @@ export const SignUpForm = () => {
   const { passwordVisible, onSubmit, resetError, changeVisiblePassword, errorMessage } = useSignUpState();
 
   const handleChangeIcon = (): JSX.Element => {
+    console.log('passwordVisible', passwordVisible);
     return passwordVisible ? (
-      <Icon type="eye" width={32} height={32} />
+      <Styled.ClosedEye source={IMAGES.closedEye} />
     ) : (
-      <Icon type="openEye" width={32} height={32} colorIcon="grey" />
+      <Icon type="openEye" width={24} height={24} colorIcon="grey" />
     );
   };
 

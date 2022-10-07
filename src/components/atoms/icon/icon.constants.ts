@@ -6,7 +6,6 @@ import brandIcon from '@assets/icons/brand_icon.svg';
 import clock from '@assets/icons/clock.svg';
 import community from '@assets/icons/community.svg';
 import cross from '@assets/icons/cross.svg';
-import eye from '@assets/icons/eye.svg';
 import facebook from '@assets/icons/facebook.svg';
 import google from '@assets/icons/google.svg';
 import home from '@assets/icons/home.svg';
@@ -44,7 +43,6 @@ export const ICONS = {
   mute,
   cross,
   swipeToEndArrow,
-  eye,
   openEye,
   apple,
   play,
