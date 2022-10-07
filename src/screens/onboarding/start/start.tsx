@@ -14,7 +14,7 @@ import { IMAGES } from '@constants/images';
 import { imageStyle, StyledStart as Styled } from './start.styles';
 
 export const Start: React.FC = () => {
-  const { onSignOut } = useStart();
+  useStart();
 
   const getPartialBoldText = (str: string) =>
     getPartialStyledText(str, (line, isMatch, index) => (
@@ -26,7 +26,7 @@ export const Start: React.FC = () => {
   return (
     <ImageBackground source={IMAGES.onBoardStart} style={imageStyle}>
       <Layout>
-        <LayoutOnboarding buttonText="CONTINUE" onBackButtonPress={onSignOut}>
+        <LayoutOnboarding buttonText="CONTINUE">
           <Styled.Card>
             <OnboardingCard>
               <OnboardingTitle>You’re not alone.</OnboardingTitle>

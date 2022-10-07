@@ -11,7 +11,7 @@ export const sliderContent: ISlide[] = [
     image: 'flowers',
     title: 'Turn time spent in nature into moments of [wonder] & [healing]',
     description:
-      'Spending at least 120 minutes per week in nature has been scientifally proven to improve mental and pysical health over time',
+      'Spending at least 120 minutes per week in nature has been scientifically proven to improve mental and physical health over time',
   },
   {
     image: 'tip',
