@@ -4,6 +4,7 @@ interface ICommonProps {
   children: React.ReactNode;
   buttonText: string;
   isButtonDisabled?: boolean;
+  routePayload?: any;
   isWithoutRedirect?: boolean;
   onPress?: TOnPress;
   onRoutePressNavigateTo?: string;

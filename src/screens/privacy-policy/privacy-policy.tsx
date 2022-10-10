@@ -10,12 +10,8 @@ export const PrivacyPolicy: React.FC = () => {
   const [policyUrl, setPolicyUrl] = useState<string>('');
 
   const getPDF = async () => {
-    console.log(1);
-
-    const defaultApp = storage().ref('Privacy Policy/privacy policy.pdf');
-    console.log(2);
-    const pdfUrl = await defaultApp.getDownloadURL();
-    console.log(pdfUrl);
+    const pdf = storage().ref('Privacy Policy/privacy policy.pdf');
+    const pdfUrl = await pdf.getDownloadURL();
     setPolicyUrl(pdfUrl);
   };
 
@@ -31,6 +27,7 @@ export const PrivacyPolicy: React.FC = () => {
           Privacy Policy
         </Styled.Title>
       </Styled.Header>
+
       <Pdf
         source={{
           uri: policyUrl,

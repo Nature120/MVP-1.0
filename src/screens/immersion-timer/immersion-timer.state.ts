@@ -6,6 +6,7 @@ import { secondsToMinutes } from 'date-fns';
 
 import { clearRecentPractices } from './immersion-timer.utils';
 import { databaseRef, updateUser } from '@services/api.service';
+import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useParam } from '@services/hooks/param';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { setCommentBeforeImmersion } from '@services/store/app';
@@ -21,13 +22,11 @@ export const useImmersionTimer = () => {
   const { navigate } = useNavigation();
   const { params: library } = useParam<IPracticeLibrary>();
   const [seconds, setSeconds] = useState<number>(0);
-  const [isOpenAskModal, setIsOpenAskModal] = useState(false);
+  const { isOpen: isOpenAskModal, onClose: closeAskModal, onToggle: toggleOpenAskModal } = useOpenCloseModal();
   const { uid } = useSelector(getUserInfo);
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
   const dispatch = useAppDispatch();
   const { title } = library;
-
-  const toggleOpenAskModal = () => setIsOpenAskModal(prev => !prev);
 
   const onModalClose = async () => {
     try {
@@ -72,7 +71,7 @@ export const useImmersionTimer = () => {
   };
 
   const goToNextRoute = () => {
-    setIsOpenAskModal(false);
+    closeAskModal();
     const addedTime = Math.round(secondsToMinutes(seconds));
     navigate(APP_ROUTES.immersionComplete as never, { addedTime } as never);
   };

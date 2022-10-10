@@ -9,7 +9,7 @@ import { useOnboardingNextRoute } from '@services/hooks/onboarding-next-route';
 
 import { TOnPress } from './layout-onboarding.typings';
 
-export const useLayoutOnboarding = (onPress?: TOnPress, isWithoutRedirect?: boolean) => {
+export const useLayoutOnboarding = (onPress?: TOnPress, isWithoutRedirect?: boolean, routePayload?: any) => {
   const { name } = useRoute();
   const nextRoute = useOnboardingNextRoute();
   const [progress, setProgress] = useState<IProgressBarProps>({} as IProgressBarProps);
@@ -22,14 +22,18 @@ export const useLayoutOnboarding = (onPress?: TOnPress, isWithoutRedirect?: bool
     });
   }, [name]);
 
+  const navigateToNextRoute = () => {
+    !isWithoutRedirect && navigate(nextRoute as never, routePayload as never);
+  };
+
   const onButtonPressAsync = async () => {
     onPress && (await onPress());
-    !isWithoutRedirect && navigate(nextRoute as never);
+    navigateToNextRoute();
   };
 
   const onButtonPress = () => {
     onPress && onPress();
-    !isWithoutRedirect && navigate(nextRoute as never);
+    navigateToNextRoute();
   };
 
   const isAsync = onPress && onPress.constructor.name === 'AsyncFunction';

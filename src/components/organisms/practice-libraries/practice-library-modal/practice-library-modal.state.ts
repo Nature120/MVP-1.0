@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
+import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useAppDispatch } from '@services/hooks/redux';
 import { setCommentBeforeImmersion } from '@services/store/app';
 
@@ -11,11 +11,9 @@ import { IPracticeLibraryModalProps } from './practice-library-modal.typings';
 export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   const { navigate } = useNavigation();
   const dispatch = useAppDispatch();
-  const [isOpenAsk, setIsOpenAsk] = useState(false);
-  const closeModalAsk = () => setIsOpenAsk(false);
-  const openModalAsk = () => setIsOpenAsk(true);
+  const { isOpen: isOpenAsk, onClose: closeModalAsk, onOpen: openModalAsk } = useOpenCloseModal();
 
-  const { isWithoutActions, isOpen, closeModal, library } = props;
+  const { isWithoutActions, isWithoutAskModal, isOpen, closeModal, library } = props;
 
   const saveResponse = (value: string) => {
     const response = value.trim();
@@ -37,6 +35,7 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   return {
     isOpen,
     isWithoutActions,
+    isWithoutAskModal,
     navigateToHomePage,
     closeModal,
     isOpenAsk,

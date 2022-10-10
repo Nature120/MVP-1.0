@@ -3,6 +3,8 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 import LoginFunctions from '@services/helpers/auth-social';
 
+import { IError } from '@typings/common';
+
 export const authGoogle = async () => {
   try {
     const { idToken, user } = await GoogleSignin.signIn();
@@ -15,7 +17,8 @@ export const authGoogle = async () => {
     const provider = auth.GoogleAuthProvider.PROVIDER_ID;
 
     await LoginFunctions.signInOrLink({ provider, credential, email });
-  } catch (error: any) {
+  } catch (err) {
+    const error = err as IError;
     console.log(error.message);
   }
 };
