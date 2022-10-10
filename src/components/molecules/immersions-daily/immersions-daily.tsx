@@ -17,7 +17,6 @@ export const ImmersionsDaily: React.FC = () => {
     if (!lastPractices) {
       return;
     }
-    console.log('work');
     return WEEKDAY.map(day => {
       const isCurrentDay = day === currentWeekDay;
       const isMatchDay = lastPractices.some(({ created_at }) => {

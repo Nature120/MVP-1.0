@@ -18,6 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
 
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
 import io.invertase.firebase.firestore.ReactNativeFirebaseFirestorePackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -25,7 +26,7 @@ import com.facebook.react.shell.MainReactPackage;
 public class MainApplication extends Application implements ReactApplication {
 
   protected List<ReactPackage> getPackages() {
-    return Arrays.asList(new MainReactPackage(),new ReactNativeFirebaseAuthPackage(),new ReactNativeFirebaseFirestorePackage(),new FBSDKPackage(),new ReactNativeConfigPackage()
+    return Arrays.asList(new MainReactPackage(),new ReactNativeFirebaseAuthPackage(),new ReactNativeFirebaseFirestorePackage(),new FBSDKPackage(),new ReactNativeConfigPackage(),new SplashScreenReactPackage()
       );
   }
 
