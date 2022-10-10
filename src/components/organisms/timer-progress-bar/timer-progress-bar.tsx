@@ -4,7 +4,7 @@ import { multiply } from 'react-native-reanimated';
 import { scale, verticalScale } from 'react-native-size-matters';
 
 import { Icon } from '@components/atoms/icon';
-import { Ring } from '../../molecules/ring/ring';
+import { Ring } from '@components/molecules/ring';
 import { useTimerProgressBar } from './timer-progress-bar.state';
 
 import { IProp } from './timer-progress-bar.typings';

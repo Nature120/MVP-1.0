@@ -55,13 +55,13 @@ export const useHome = () => {
   };
 
   const removeLastWeekPractices = () => {
-    const isfinishedPracticesEmpty = finishedPractices.length === 0;
+    const isfinishedPracticesEmpty = finishedPractices?.length === 0;
 
     if (!finishedPractices || isfinishedPracticesEmpty) {
       return;
     }
 
-    return finishedPractices.reduce((prevPractices, practice, inxde, array): any => {
+    return finishedPractices.reduce((prevPractices, practice): any => {
       const validNumberDate = practice.created_at.seconds * 1000;
       const normalizeDate = new Date(validNumberDate);
       const fireBaseDate = firestore.Timestamp.fromDate(normalizeDate);

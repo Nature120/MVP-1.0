@@ -1,8 +1,8 @@
 import React from 'react';
 import Swiper from 'react-native-swiper';
 
+import { Slide } from '../slide';
 import { renderPagination } from './render-pagination';
-import { Slide } from './slide';
 
 import { ISliderProps } from './slider.typings';
 

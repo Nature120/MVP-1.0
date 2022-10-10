@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ButtonWithLink } from '@components/molecules/button-with-link';
 import { Layout } from '@components/molecules/layout';
-import { Slider } from '@components/molecules/slider';
+import { Slider } from './molecules/slider';
 
 import { sliderContent } from './splash.constants';
 import { IMAGES } from '@constants/images';

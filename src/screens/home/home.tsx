@@ -1,9 +1,9 @@
 import React from 'react';
 
+import { DynamicHeader } from '@screens/home/atoms/dynamic-header';
 import { Button } from '@components/atoms/button';
 import { CenterContainer } from '@components/atoms/center-container';
 import { Line } from '@components/atoms/line';
-import { DynamicHeader } from '@components/dynamic-header';
 import { AskModal } from '@components/molecules/ask-modal';
 import { Layout } from '@components/molecules/layout';
 import { TipOfTheDay } from '@components/molecules/tip-of-the-day';

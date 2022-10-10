@@ -23,8 +23,11 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
     isWithoutRedirect,
     onRoutePressNavigateTo,
     onTextPress,
+    routePayload,
   } = props;
-  const { progress, pressHandler, nextRoute } = useLayoutOnboarding(onPress, isWithoutRedirect);
+
+  const { progress, pressHandler, nextRoute } = useLayoutOnboarding(onPress, isWithoutRedirect, routePayload);
+
   return (
     <>
       <Styled.Header>

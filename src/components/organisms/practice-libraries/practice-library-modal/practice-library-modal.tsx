@@ -21,6 +21,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
   const {
     isOpen,
     isWithoutActions,
+    isWithoutAskModal,
     navigateToHomePage,
     closeModal,
     isOpenAsk,
@@ -38,12 +39,14 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
   return (
     <Modal transparent={false} visible={isOpen} animationType="slide">
-      <AskModal
-        isVisible={isOpenAsk}
-        onClose={closeModalAsk}
-        onButtonPress={saveResponse}
-        onTextPress={navigateToTimer}
-      />
+      {!isWithoutAskModal && (
+        <AskModal
+          isVisible={isOpenAsk}
+          onClose={closeModalAsk}
+          onButtonPress={saveResponse}
+          onTextPress={navigateToTimer}
+        />
+      )}
 
       <Styled.PracticeLibraryModal contentContainerStyle={contentContainerStyle} showsVerticalScrollIndicator={false}>
         <View>
@@ -102,7 +105,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                 <Button
                   buttonText="START TIMER"
                   height={50}
-                  onPress={commentBeforeImmersion ? navigateToTimer : openModalAsk}
+                  onPress={isWithoutAskModal || commentBeforeImmersion ? navigateToTimer : openModalAsk}
                 />
               </Styled.ButtonWrapper>
             )}

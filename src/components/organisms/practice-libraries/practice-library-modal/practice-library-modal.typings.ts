@@ -5,4 +5,5 @@ export interface IPracticeLibraryModalProps {
   closeModal: () => void;
   library: IPracticeLibrary;
   isWithoutActions?: boolean;
+  isWithoutAskModal?: boolean;
 }

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 
 import { TextComponent } from '@components/atoms/text-component';
 import { Title } from '@components/atoms/title';

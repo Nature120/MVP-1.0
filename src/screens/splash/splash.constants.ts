@@ -1,4 +1,4 @@
-import { ISlide } from '@components/molecules/slider/slider.typings';
+import { ISlide } from './molecules/slider/slider.typings';
 
 export const sliderContent: ISlide[] = [
   {

@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Keyboard } from 'react-native';
+import { useState } from 'react';
 
 import { IUseAskModalProps } from './ask-modal.typings';
 
 export const useAskModal = (props: IUseAskModalProps) => {
   const { onTextPress, onButtonPress } = props;
-  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
   const [text, setText] = useState('');
 
@@ -19,22 +17,7 @@ export const useAskModal = (props: IUseAskModalProps) => {
     setText('');
   };
 
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
-      setIsKeyboardVisible(true);
-    });
-    const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
-      setIsKeyboardVisible(false);
-    });
-
-    return () => {
-      keyboardDidHideListener.remove();
-      keyboardDidShowListener.remove();
-    };
-  }, []);
-
   return {
-    isKeyboardVisible,
     text,
     setText,
     handleDone,
