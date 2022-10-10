@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 import { updateUser } from '@services/api.service';
 import { useAppDispatch } from '@services/hooks/redux';
-import { useSignOut } from '@services/hooks/sign-out';
 import { getUid } from '@services/store/auth/auth.selectors';
 import { IUser } from '@services/store/auth/auth.typings';
 
@@ -16,7 +15,6 @@ import { TDailyGoal } from '@typings/common';
 const WHAT_BRINGS_DEFAULT = 'Mental Well-being';
 
 export const useStart = () => {
-  const { onSignOut } = useSignOut();
   const uid = useSelector(getUid);
   const dispatch = useAppDispatch();
 
@@ -36,8 +34,4 @@ export const useStart = () => {
   useEffect(() => {
     FastImage.preload(IMAGES_TO_PRELOAD);
   }, []);
-
-  return {
-    onSignOut,
-  };
 };

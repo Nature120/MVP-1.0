@@ -1,9 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { AgreePrivacyPolicy } from '@screens/agree-privacy-policy';
 import { ImmersionComplete } from '@screens/immersion-complete';
 import { ImmersionTimer } from '@screens/immersion-timer';
 import { Immersions } from '@screens/immersions';
+import { PrivacyPolicy } from '@screens/privacy-policy';
 import { SignInScreen } from '@screens/sign-in-screen/sign-in-screen';
 import { SignUpScreen } from '@screens/sign-up-screen/sign-up-screen';
 import { Splash } from '@screens/splash';
@@ -24,6 +26,12 @@ export const RootNavigator = () => {
     if (isFirstLaunch) {
       return (
         <>
+          <StartStack.Screen
+            options={{ gestureEnabled: false }}
+            name={APP_ROUTES.agreePrivacyPolicy}
+            component={AgreePrivacyPolicy}
+          />
+          <StartStack.Screen name={APP_ROUTES.privacyPolicy} component={PrivacyPolicy} />
           {ON_BOARD_ROUTES.map(({ component, name }) => (
             <StartStack.Screen key={name} name={name} component={component} />
           ))}

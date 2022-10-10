@@ -18,7 +18,7 @@ export const StyledImmersionComplete = {
   `,
 
   ProgressBar: styled(CenterContainer)`
-    z-index: 20;
+    z-index: ${Z_INDEX.alwaysTop};
     margin-bottom: 36px;
   `,
 

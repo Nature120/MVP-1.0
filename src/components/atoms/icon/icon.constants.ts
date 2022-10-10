@@ -3,6 +3,7 @@ import arrowDown from '@assets/icons/arrow-down.svg';
 import arrowLeft from '@assets/icons/arrow-left.svg';
 import arrowRight from '@assets/icons/arrow-right.svg';
 import brandIcon from '@assets/icons/brand_icon.svg';
+import checkbox from '@assets/icons/checkbox.svg';
 import clock from '@assets/icons/clock.svg';
 import community from '@assets/icons/community.svg';
 import cross from '@assets/icons/cross.svg';
@@ -35,6 +36,7 @@ export const ICONS = {
   pencil,
   human,
   tip,
+  checkbox,
   onBoardingMoon,
   home,
   practices,
