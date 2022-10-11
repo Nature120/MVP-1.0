@@ -15,7 +15,7 @@ export const SignInFormStyles = {
     margin-bottom: ${moderateScale(20)}px;
   `,
   ErrorText: styled.Text`
-    height: ${verticalScale(20)}px;
+    height: ${verticalScale(25)}px;
     margin-top: ${moderateScale(2)}px;
     margin-bottom: ${moderateScale(5)}px;
     font-family: ${FONTS.family.lightBoreal};
