@@ -19,7 +19,6 @@ export const SignUpForm = () => {
   const { passwordVisible, onSubmit, resetError, changeVisiblePassword, errorMessage } = useSignUpState();
 
   const handleChangeIcon = (): JSX.Element => {
-    console.log('passwordVisible', passwordVisible);
     return passwordVisible ? (
       <Styled.ClosedEye source={IMAGES.closedEye} />
     ) : (

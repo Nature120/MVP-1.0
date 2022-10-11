@@ -12,7 +12,7 @@ export const SignUpScreenStyles = {
   KeyboardAwareScrollView: styled(KeyboardAwareScrollView)`
     flex-grow: 1;
   `,
-  SafeAreaView: styled.SafeAreaView`
+  Wrapper: styled.View`
     flex: 1;
   `,
   BackButtonWrapper: styled.View`
