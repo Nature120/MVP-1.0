@@ -25,7 +25,7 @@ export const getUser = async (uid: string) => {
   }
 };
 
-export const updateUser = async (uid: string, body: any, dispatch?: TDispatch) => {
+export const updateUser = async (uid: string, body: Partial<IUser>, dispatch?: TDispatch) => {
   try {
     await userInstance(uid).update(body);
     dispatch && dispatch(partialUpdateUser(body));

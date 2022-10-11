@@ -5,13 +5,16 @@ import { ButtonWithLink } from '@components/molecules/button-with-link';
 import { ModalBottom } from '@components/molecules/modal-bottom';
 import { useAskModal } from './ask-modal.state';
 
+import { useKeyboard } from '@services/hooks/keyboard';
+
 import { IAskModalProps } from './ask-modal.typings';
 
 import { StyledAskModal as Styled } from './ask-modal.styles';
 
 export const AskModal: React.FC<IAskModalProps> = props => {
   const { isVisible, onClose, modalText, onModalHide, onTextPress, onButtonPress } = props;
-  const { isKeyboardVisible, text, setText, handleDone, handleTextPress } = useAskModal({ onTextPress, onButtonPress });
+  const { text, setText, handleDone, handleTextPress } = useAskModal({ onTextPress, onButtonPress });
+  const isKeyboardVisible = useKeyboard();
 
   return (
     <ModalBottom isVisible={isVisible} onClose={onClose} isWithLogo onModalHide={onModalHide}>

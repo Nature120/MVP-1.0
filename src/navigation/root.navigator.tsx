@@ -9,7 +9,7 @@ import { PrivacyPolicy } from '@screens/privacy-policy';
 import { SignInScreen } from '@screens/sign-in-screen/sign-in-screen';
 import { SignUpScreen } from '@screens/sign-up-screen/sign-up-screen';
 import { Splash } from '@screens/splash';
-import { BottomTabNavigator } from './bottom-tab.navigator';
+import { BottomTabNavigator } from './molecules/bottom-tab/bottom-tab.navigator';
 import { screenOptions } from './navigation.options';
 import { useNavigationSate } from './navigation.state';
 

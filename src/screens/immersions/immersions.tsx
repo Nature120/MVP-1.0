@@ -40,7 +40,9 @@ export const Immersions: React.FC = () => {
             <TogglerDoNotDisturb marginBottom={48} />
           </Styled.Immersions>
 
-          {!!recentLibraries.length && <PracticeLibraries title={'Recent Immersions'} libraries={recentLibraries} />}
+          {!!recentLibraries.length && (
+            <PracticeLibraries title={'Recent Immersions'} libraries={recentLibraries} isWithoutAskModal />
+          )}
           <Spacer gap={20} />
         </Styled.LayoutContent>
       </Layout>

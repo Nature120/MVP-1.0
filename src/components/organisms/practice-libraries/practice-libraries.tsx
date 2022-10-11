@@ -11,7 +11,15 @@ import { IPracticeLibrary } from '@typings/common';
 import { StyledPracticeLibraries as Styled } from './practice-libraries.styles';
 
 export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
-  const { title, isWithForwardArrow, libraries, isWithoutActions, onEndReached, onMomentumScrollBegin } = props;
+  const {
+    title,
+    isWithForwardArrow,
+    libraries,
+    isWithoutActions,
+    isWithoutAskModal,
+    onEndReached,
+    onMomentumScrollBegin,
+  } = props;
 
   const renderItem: ListRenderItem<IPracticeLibrary> = ({ item, index }) => (
     <Spacer
@@ -22,7 +30,7 @@ export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
       startEndGap={24}
       index={index}
       isLastItem={index === libraries.length - 1}>
-      <PracticeLibrary {...item} isWithoutActions={isWithoutActions} />
+      <PracticeLibrary {...item} isWithoutActions={isWithoutActions} isWithoutAskModal={isWithoutAskModal} />
     </Spacer>
   );
 

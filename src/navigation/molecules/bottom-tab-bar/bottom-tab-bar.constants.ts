@@ -2,7 +2,7 @@ import { Insets } from 'react-native';
 
 import { IIconProps } from '@components/atoms/icon/icon.typings';
 
-import { BOTTOM_TAB_ROUTES } from '@navigation/navigation.constants';
+import { BOTTOM_TAB_ROUTES } from '../bottom-tab/bottom-tab.constants';
 
 import { TColorIcon } from '@theme/colors';
 

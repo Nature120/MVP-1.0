@@ -8,6 +8,7 @@ import { storeInDB } from '@services/helpers/firebase-store';
 import { isFirstLaunch } from '@services/store/auth/auth.actions';
 
 import { IRegister, IValue } from './sign-up-form.typings';
+import { IError } from '@typings/common';
 
 export const useSignUpState = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(true);
@@ -36,8 +37,9 @@ export const useSignUpState = () => {
 
       ////Store in DB////
       await storeInDB({ response, first_name });
-    } catch (error: any) {
-      handleError(error.code);
+    } catch (err) {
+      const error = err as IError;
+      handleError(error.code as string);
     }
   };
 

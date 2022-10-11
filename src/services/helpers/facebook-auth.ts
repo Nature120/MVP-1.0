@@ -3,7 +3,7 @@ import auth from '@react-native-firebase/auth';
 
 import LoginFunctions from '@services/helpers/auth-social';
 
-import { TFirebaseAuthCredentials } from '@typings/common';
+import { IError, TFirebaseAuthCredentials } from '@typings/common';
 
 export const authFaceBook = async () => {
   try {
@@ -37,7 +37,8 @@ export const authFaceBook = async () => {
     credential = await auth.FacebookAuthProvider.credential(token.accessToken);
     const infoRequest = await new GraphRequest('/me?fields=name,email', undefined, _responseInfoCallback);
     await new GraphRequestManager().addRequest(infoRequest).start();
-  } catch (error: any) {
+  } catch (err) {
+    const error = err as IError;
     console.log(error.message);
   }
 };
