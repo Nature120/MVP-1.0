@@ -13,7 +13,7 @@ export const ImmersionsDaily: React.FC = () => {
   const lastPractices = useSelector(getFisishedPractices);
   const currentWeekDay = format(new Date(), 'iii');
 
-  const markUpWeekDay = () => {
+  const markUpWeekDays = () => {
     if (!lastPractices) {
       return;
     }
@@ -32,12 +32,12 @@ export const ImmersionsDaily: React.FC = () => {
     });
   };
 
-  const weekDays = markUpWeekDay();
+  const weekDays = markUpWeekDays();
 
   return (
     <Styled.ImmersionsDaily>
       <Styled.Header>
-        <Icon type="brandIcon" colorIcon="green" size={35} />
+        <Icon type="brandIcon" colorIcon="green" size={28} />
 
         <Styled.Title>
           You’ve completed <Styled.Immersions>{lastPractices?.length} immersions</Styled.Immersions> this week!

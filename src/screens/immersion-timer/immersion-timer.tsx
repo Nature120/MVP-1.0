@@ -14,7 +14,7 @@ export const ImmersionTimer: React.FC = () => {
     useImmersionTimer();
 
   return (
-    <Layout isWithGradient ellipseColor="light-green">
+    <Layout isWithGradient ellipseColor="light-green" isWithScroll={true}>
       <AskModal
         isVisible={isOpenAskModal}
         onClose={toggleOpenAskModal}
@@ -28,7 +28,7 @@ export const ImmersionTimer: React.FC = () => {
 
       <TogglerDoNotDisturb isDark marginBottom={moderateScale(45)} />
 
-      <Swiper toggleOpenAskModal={toggleOpenAskModal} text="SWIPE TO END" marginW={62} />
+      <Swiper toggleOpenAskModal={toggleOpenAskModal} text="SWIPE TO END" marginW={62} marginBottom={48} />
     </Layout>
   );
 };

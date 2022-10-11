@@ -8,9 +8,11 @@ import { FONTS } from '@theme/fonts';
 const { View: AView } = Animated;
 
 export const SwipeStyles = {
-  Container: styled(LinearGradient)`
+  Container: styled(LinearGradient)<{ marginTop?: number; marginBottom?: number }>`
     width: 100%;
     height: 72px;
+    margin-top: ${({ marginTop }) => (marginTop ? marginTop : 0)}px;
+    margin-bottom: ${({ marginBottom }) => (marginBottom ? marginBottom : 0)}px;
     justify-content: center;
     align-items: center;
     border-radius: 50px;

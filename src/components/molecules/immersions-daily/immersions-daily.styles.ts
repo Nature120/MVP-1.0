@@ -22,7 +22,7 @@ export const StyledImmersionsDaily = {
   `,
 
   Title: styled(TextComponent)`
-    margin-left: 16px;
+    margin-left: 10px;
     font-size: ${FONTS.size.xlSmall}px;
     line-height: 19px;
     color: ${COLOR.subheading};
