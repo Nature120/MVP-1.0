@@ -15,7 +15,7 @@ export const SignUpScreen = () => {
   const { onPressLogIn, onGoogleButtonPress, onFacebookButtonPress, onAppleButtonPress, isLoading } = useSignUpState();
   const screenLayout = () => (
     <Layout bgColor="beigeLight" isWithScroll={isIOS}>
-      <Styled.SafeAreaView>
+      <Styled.Wrapper>
         <Styled.BackButtonWrapper>
           <BackButton width={32} height={32} color={'darkBlue'} />
         </Styled.BackButtonWrapper>
@@ -35,7 +35,7 @@ export const SignUpScreen = () => {
           onFacebookButtonPress={onFacebookButtonPress}
           onAppleButtonPress={onAppleButtonPress} ///Fix
         />
-      </Styled.SafeAreaView>
+      </Styled.Wrapper>
     </Layout>
   );
 
@@ -48,7 +48,7 @@ export const SignUpScreen = () => {
           {isIOS ? (
             screenLayout()
           ) : (
-            <Styled.KeyboardAwareScrollView keyboardShouldPersistTaps="handled" enableOnAndroid={true}>
+            <Styled.KeyboardAwareScrollView keyboardShouldPersistTaps="handled">
               {screenLayout()}
             </Styled.KeyboardAwareScrollView>
           )}
