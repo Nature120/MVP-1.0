@@ -40,15 +40,6 @@ export const SignInScreenStyles = {
     line-height: ${moderateScale(19)}px;
     color: ${COLOR.font.darkBlue};
   `,
-  GoogleButtonWrapper: styled.View`
-    margin-bottom: ${moderateScale(8)}px;
-  `,
-  FaceBookButtonWrapper: styled.View`
-    margin-bottom: ${moderateScale(8)}px;
-  `,
-  AppleButtonWrapper: styled.View`
-    margin-bottom: ${moderateScale(24)}px;
-  `,
   Title: styled.Text`
     margin-bottom: ${moderateScale(8)}px;
     font-family: ${FONTS.family.semiBoldAcumin};
@@ -58,10 +49,9 @@ export const SignInScreenStyles = {
     color: ${COLOR.font.darkBlue};
   `,
   Text: styled.Text`
-    width: ${moderateScale(353)}px;
     margin-bottom: ${moderateScale(38)}px;
     font-family: ${FONTS.family.lightBoreal};
-    font-size: ${moderateScale(FONTS.size.xlSmall)}px;
+    font-size: ${moderateScale(FONTS.size.xSmall)}px;
     font-weight: ${FONTS.weight.light};
     line-height: ${moderateScale(19)}px;
     color: ${COLOR.font.darkBlue};
