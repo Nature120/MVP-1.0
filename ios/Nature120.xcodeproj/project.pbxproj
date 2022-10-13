@@ -47,23 +47,23 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Nature120/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Nature120/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Nature120/main.m; sourceTree = "<group>"; };
-		27251069EAD746F2AD54C261 /* Boreal-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Boreal-Light.otf"; path = "../src/assets/fonts/Boreal-Light.otf"; sourceTree = "<group>"; };
+		27251069EAD746F2AD54C261 /* Boreal-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Boreal-Light.otf"; path = "../src/assets/fonts/Boreal-Light.otf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Nature120.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nature120.debug.xcconfig"; path = "Target Support Files/Pods-Nature120/Pods-Nature120.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Nature120.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nature120.release.xcconfig"; path = "Target Support Files/Pods-Nature120/Pods-Nature120.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Nature120-Nature120Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nature120-Nature120Tests.debug.xcconfig"; path = "Target Support Files/Pods-Nature120-Nature120Tests/Pods-Nature120-Nature120Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		6599152968724B23BF646C96 /* AcuminPro-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AcuminPro-Medium.otf"; path = "../src/assets/fonts/AcuminPro-Medium.otf"; sourceTree = "<group>"; };
-		6ED1939B1E9D490883126DF5 /* AcuminPro-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AcuminPro-Bold.otf"; path = "../src/assets/fonts/AcuminPro-Bold.otf"; sourceTree = "<group>"; };
+		6599152968724B23BF646C96 /* AcuminPro-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AcuminPro-Medium.otf"; path = "../src/assets/fonts/AcuminPro-Medium.otf"; sourceTree = "<group>"; };
+		6ED1939B1E9D490883126DF5 /* AcuminPro-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AcuminPro-Bold.otf"; path = "../src/assets/fonts/AcuminPro-Bold.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Nature120/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Nature120-Nature120Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nature120-Nature120Tests.release.xcconfig"; path = "Target Support Files/Pods-Nature120-Nature120Tests/Pods-Nature120-Nature120Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9A503208CBC78BE7E75C5AD4 /* Pods-Nature120Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nature120Tests.release.xcconfig"; path = "Target Support Files/Pods-Nature120Tests/Pods-Nature120Tests.release.xcconfig"; sourceTree = "<group>"; };
-		9F8AD43EDDD945A386FF16E5 /* NewOrder-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NewOrder-Regular.otf"; path = "../src/assets/fonts/NewOrder-Regular.otf"; sourceTree = "<group>"; };
+		9F8AD43EDDD945A386FF16E5 /* NewOrder-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NewOrder-Regular.otf"; path = "../src/assets/fonts/NewOrder-Regular.otf"; sourceTree = "<group>"; };
 		BAC77129DCA4D81E9E2227CE /* Pods-Nature120Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nature120Tests.debug.xcconfig"; path = "Target Support Files/Pods-Nature120Tests/Pods-Nature120Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		BDA971D43BE14661B08EB0C5 /* Boreal-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Boreal-Medium.otf"; path = "../src/assets/fonts/Boreal-Medium.otf"; sourceTree = "<group>"; };
-		BEFDA97511D24E108932A9C4 /* AcuminPro-Semibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AcuminPro-Semibold.otf"; path = "../src/assets/fonts/AcuminPro-Semibold.otf"; sourceTree = "<group>"; };
-		C0B3A00003114B48B1BC0DA4 /* NewOrder-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NewOrder-Medium.otf"; path = "../src/assets/fonts/NewOrder-Medium.otf"; sourceTree = "<group>"; };
+		BDA971D43BE14661B08EB0C5 /* Boreal-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Boreal-Medium.otf"; path = "../src/assets/fonts/Boreal-Medium.otf"; sourceTree = "<group>"; };
+		BEFDA97511D24E108932A9C4 /* AcuminPro-Semibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AcuminPro-Semibold.otf"; path = "../src/assets/fonts/AcuminPro-Semibold.otf"; sourceTree = "<group>"; };
+		C0B3A00003114B48B1BC0DA4 /* NewOrder-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NewOrder-Medium.otf"; path = "../src/assets/fonts/NewOrder-Medium.otf"; sourceTree = "<group>"; };
 		D8B3923750B81EE25FCF861C /* Pods_Nature120.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nature120.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E09CD002A1B04AF1BA573F91 /* Boreal-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Boreal-LightItalic.otf"; path = "../src/assets/fonts/Boreal-LightItalic.otf"; sourceTree = "<group>"; };
-		E28D3EECFEB5463AB862DA16 /* Boreal-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Boreal-Regular.otf"; path = "../src/assets/fonts/Boreal-Regular.otf"; sourceTree = "<group>"; };
+		E09CD002A1B04AF1BA573F91 /* Boreal-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Boreal-LightItalic.otf"; path = "../src/assets/fonts/Boreal-LightItalic.otf"; sourceTree = "<group>"; };
+		E28D3EECFEB5463AB862DA16 /* Boreal-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Boreal-Regular.otf"; path = "../src/assets/fonts/Boreal-Regular.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FA22600A7C8CC60F040D1D13 /* Pods_Nature120_Nature120Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nature120_Nature120Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -554,7 +554,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J8Q7KXMA56;
+				DEVELOPMENT_TEAM = 9375Z9P858;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Nature120/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
@@ -585,7 +585,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J8Q7KXMA56;
+				DEVELOPMENT_TEAM = 9375Z9P858;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Nature120/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
