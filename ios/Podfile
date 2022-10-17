@@ -23,6 +23,7 @@ target 'Nature120' do
 
   pod 'GoogleSignIn'
 
+  pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
 
   pod 'Firebase/Analytics'

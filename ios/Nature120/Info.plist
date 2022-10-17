@@ -20,6 +20,41 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.460645181759-3r095d3t69i6ej4ooh28jrq5hohm9hh0</string>
+			</array>
+		</dict>
+	</array>
+
+
+	
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<string>fb1483195782143860</string>
+		</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>1483195782143860</string>
+	<key>FacebookClientToken</key>
+	<string>0ef076dc685f464a5198e2dc4cef7fc3</string>
+	<key>FacebookDisplayName</key>
+	<string>Nature120</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+	</array>
+
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
