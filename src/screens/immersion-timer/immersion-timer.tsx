@@ -12,7 +12,6 @@ import { useImmersionTimer } from './immersion-timer.state';
 export const ImmersionTimer: React.FC = () => {
   const { isOpenAskModal, saveResponse, onModalClose, library, toggleOpenAskModal, seconds, setSeconds } =
     useImmersionTimer();
-
   return (
     <Layout isWithGradient ellipseColor="light-green" isWithScroll={true}>
       <AskModal

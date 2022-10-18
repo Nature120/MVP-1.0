@@ -18,3 +18,5 @@ export const outerCircle = (percent: number) => ({
 export const getFgRadius = (percent: number) => {
   return outerCircle(percent).size / 2 - STROKE_WIDTH;
 };
+
+export const zeroPad = (num: number) => String(num).padStart(2, '0');
