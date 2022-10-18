@@ -12,12 +12,11 @@ import { IProp } from './timer-progress-bar.typings';
 import { StyledRing as Styled } from './timer-progress-bar.styles';
 
 export const TimerProgressBar: React.FC<IProp> = ({ seconds, setSeconds, isOpenAskModal }) => {
-  const { ring, fgRadius, isActive, time, toggle } = useTimerProgressBar({
+  const { ring, fgRadius, time, toggle, isActive } = useTimerProgressBar({
     seconds,
     setSeconds,
     isOpenAskModal,
   });
-
   return (
     <Styled.Wrapper>
       <Styled.Overlay style={{ ...StyleSheet.absoluteFillObject }}>

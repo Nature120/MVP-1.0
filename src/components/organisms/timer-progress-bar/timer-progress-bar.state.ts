@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { addSeconds, format, minutesToSeconds } from 'date-fns';
+import BackgroundTimer from 'react-native-background-timer';
+import { minutesToSeconds } from 'date-fns';
 
 import * as utils from './timer-progress-bar.utils';
+import { isIOS } from '@services/helpers/device-utils';
 import { useGoal } from '@services/hooks/goal';
 
 import { IProp } from './timer-progress-bar.typings';
 
 export const useTimerProgressBar = ({ seconds, setSeconds, isOpenAskModal }: IProp) => {
   const [time, setTime] = useState<string>('0:00');
-  const [isActive, setIsActive] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(true);
 
   const { dailyGoal } = useGoal();
   const maxSeconds = minutesToSeconds(dailyGoal);
@@ -17,22 +19,25 @@ export const useTimerProgressBar = ({ seconds, setSeconds, isOpenAskModal }: IPr
   const ring = utils.outerCircle(percent);
   const fgRadius = utils.getFgRadius(percent);
 
-  useEffect(() => {
-    let interval: number | null = null;
+  //Timer
 
+  let timerId: number | null = null;
+  let expected: number;
+  const interval = 1000;
+
+  useEffect(() => {
     if (isActive) {
-      interval = setInterval(() => {
-        setSeconds((sec: number) => sec + 1);
-      }, 1000);
-    } else if (!isActive && seconds !== 0 && interval !== null) {
-      clearInterval(interval);
+      startTimer();
     }
+
     return () => {
-      if (interval !== null) {
-        clearInterval(interval);
+      if (timerId !== null) {
+        stopTimer();
       }
     };
-  }, [isActive, seconds]);
+  }, [isActive]);
+
+  ///Stoping timer when we opened modal///
 
   useEffect(() => {
     if (!isOpenAskModal) {
@@ -42,14 +47,62 @@ export const useTimerProgressBar = ({ seconds, setSeconds, isOpenAskModal }: IPr
     setIsActive(false);
   }, [isOpenAskModal]);
 
+  ////Formate to valide date///
+
   useEffect(() => {
     const correctTime = formattedTime(seconds);
     setTime(correctTime);
   }, [seconds]);
 
+  //Start timer implementation---------------------///
+
+  const startTimer = () => {
+    expected = Date.now() + interval;
+
+    if (!isIOS) {
+      timerId = BackgroundTimer.setTimeout(step, interval);
+      return;
+    }
+    BackgroundTimer.start();
+    timerId = setTimeout(step, interval);
+  };
+
+  const stopTimer = () => {
+    if (!timerId) {
+      return;
+    } else if (!isIOS) {
+      BackgroundTimer.clearInterval(timerId);
+      return;
+    } else {
+      BackgroundTimer.stop();
+      clearInterval(timerId);
+    }
+  };
+
+  const step = () => {
+    const drift = Date.now() - expected;
+    if (drift > interval) {
+      // You could have some default stuff here too...
+    }
+
+    setSeconds((sec: number) => sec + 1);
+
+    expected += interval;
+
+    if (!isIOS) {
+      timerId = BackgroundTimer.setTimeout(step, Math.max(0, interval - drift));
+      return;
+    }
+    BackgroundTimer.start();
+    timerId = setTimeout(step, Math.max(0, interval - drift));
+  };
+
+  //End Timer implementation-----------------------///
+
   const formattedTime = (sec: number) => {
-    const helperDate = addSeconds(new Date(0), sec);
-    return format(helperDate, 'm:ss');
+    const forrmatedMinutes = Math.floor(sec / 60);
+    const forrmatedSeconds = sec - forrmatedMinutes * 60;
+    return `${utils.zeroPad(forrmatedMinutes)}:${utils.zeroPad(forrmatedSeconds)}`;
   };
 
   const toggle = () => {
@@ -60,8 +113,8 @@ export const useTimerProgressBar = ({ seconds, setSeconds, isOpenAskModal }: IPr
     ring,
     maxSeconds,
     fgRadius,
-    isActive,
     time,
     toggle,
+    isActive,
   };
 };
