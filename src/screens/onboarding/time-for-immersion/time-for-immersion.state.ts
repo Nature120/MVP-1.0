@@ -50,6 +50,13 @@ export const useTimeForImmersion = () => {
     await updateUser(uid, { timeForImmersion }, dispatch);
 
     if (isIOS) {
+      await PushNotificationIOS.requestPermissions({
+        alert: true,
+        badge: true,
+        sound: true,
+        lockScreen: true,
+      });
+
       PushNotificationIOS.removeAllPendingNotificationRequests();
       PushNotificationIOS.removeAllDeliveredNotifications();
       const config = setNotificationIOSConfig(timeForImmersion!);
