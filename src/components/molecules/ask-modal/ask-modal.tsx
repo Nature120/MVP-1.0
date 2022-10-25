@@ -5,8 +5,6 @@ import { ButtonWithLink } from '@components/molecules/button-with-link';
 import { ModalBottom } from '@components/molecules/modal-bottom';
 import { useAskModal } from './ask-modal.state';
 
-import { useKeyboard } from '@services/hooks/keyboard';
-
 import { IAskModalProps } from './ask-modal.typings';
 
 import { StyledAskModal as Styled } from './ask-modal.styles';
@@ -14,23 +12,19 @@ import { StyledAskModal as Styled } from './ask-modal.styles';
 export const AskModal: React.FC<IAskModalProps> = props => {
   const { isVisible, onClose, modalText, onModalHide, onTextPress, onButtonPress } = props;
   const { text, setText, handleDone, handleTextPress } = useAskModal({ onTextPress, onButtonPress });
-  const isKeyboardVisible = useKeyboard();
 
   return (
     <ModalBottom isVisible={isVisible} onClose={onClose} isWithLogo onModalHide={onModalHide}>
       <ButtonIcon type="arrowLeft" colorIcon="cloudyGreen" size={24} onPress={onClose} />
-      <Styled.ModalText marginVertical={isKeyboardVisible ? 20 : 43}>
-        {modalText || 'How do you feel?'}
-      </Styled.ModalText>
+      <Styled.ModalText marginVertical={43}>{modalText || 'How do you feel?'}</Styled.ModalText>
       <Styled.TextInput
         value={text}
         onChangeText={setText}
-        showSoftInputOnFocus={false}
         autoCorrect={false}
         autoCapitalize="sentences"
         multiline
         placeholder="Add a note..."
-        marginBottom={isKeyboardVisible ? 20 : 46}
+        marginBottom={46}
       />
 
       <ButtonWithLink
@@ -39,7 +33,7 @@ export const AskModal: React.FC<IAskModalProps> = props => {
         routeText="Skip"
         onPress={handleDone}
         onTextPress={handleTextPress}
-        marginBottom={isKeyboardVisible ? -15 : 24}
+        marginBottom={24}
       />
     </ModalBottom>
   );
