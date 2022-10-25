@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { CenterContainer } from '@components/atoms/center-container';
 import { OnboardingCard } from '@components/atoms/onboarding-card';
 
-export const StyledAgreePrivacyPolicy = {
+export const StyledAgreeTermsOfServices = {
   Wrapper: styled.View`
     flex: 1;
   `,

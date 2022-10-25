@@ -4,13 +4,13 @@ import storage from '@react-native-firebase/storage';
 
 import { BackButton } from '@components/molecules/back-button';
 
-import { pdfStyles, StyledPrivacyPolicy as Styled } from './privacy-policy.styles';
+import { pdfStyles, StyledTermsOfServices as Styled } from './terms-of-services.styles';
 
-export const PrivacyPolicy: React.FC = () => {
+export const TermsOfServices: React.FC = () => {
   const [policyUrl, setPolicyUrl] = useState<string>('');
 
   const getPDF = async () => {
-    const pdf = storage().ref('Privacy Policy/privacy policy.pdf');
+    const pdf = storage().ref('Terms of Services/Terms of Services.pdf');
     const pdfUrl = await pdf.getDownloadURL();
     setPolicyUrl(pdfUrl);
   };
@@ -20,11 +20,11 @@ export const PrivacyPolicy: React.FC = () => {
   }, []);
 
   return (
-    <Styled.PrivacyPolicy>
+    <Styled.TermsOfServices>
       <Styled.Header>
         <BackButton height={24} width={24} color="cloudyGreen" />
         <Styled.Title isCentered isBold fontSize={20}>
-          Privacy Policy
+          Terms of Services
         </Styled.Title>
       </Styled.Header>
 
@@ -35,6 +35,6 @@ export const PrivacyPolicy: React.FC = () => {
         style={pdfStyles}
         trustAllCerts={false}
       />
-    </Styled.PrivacyPolicy>
+    </Styled.TermsOfServices>
   );
 };

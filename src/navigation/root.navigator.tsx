@@ -1,14 +1,14 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { AgreePrivacyPolicy } from '@screens/agree-privacy-policy';
+import { AgreeTermsOfServices } from '@screens/agree-terms-of-services';
 import { ImmersionComplete } from '@screens/immersion-complete';
 import { ImmersionTimer } from '@screens/immersion-timer';
 import { Immersions } from '@screens/immersions';
-import { PrivacyPolicy } from '@screens/privacy-policy';
 import { SignInScreen } from '@screens/sign-in-screen/sign-in-screen';
 import { SignUpScreen } from '@screens/sign-up-screen/sign-up-screen';
 import { Splash } from '@screens/splash';
+import { TermsOfServices } from '@screens/terms-of-services';
 import { BottomTabNavigator } from './molecules/bottom-tab/bottom-tab.navigator';
 import { screenOptions } from './navigation.options';
 import { useNavigationSate } from './navigation.state';
@@ -28,10 +28,10 @@ export const RootNavigator = () => {
         <>
           <StartStack.Screen
             options={{ gestureEnabled: false }}
-            name={APP_ROUTES.agreePrivacyPolicy}
-            component={AgreePrivacyPolicy}
+            name={APP_ROUTES.agreeTermsOfServices}
+            component={AgreeTermsOfServices}
           />
-          <StartStack.Screen name={APP_ROUTES.privacyPolicy} component={PrivacyPolicy} />
+          <StartStack.Screen name={APP_ROUTES.TermsOfServices} component={TermsOfServices} />
           {ON_BOARD_ROUTES.map(({ component, name }) => (
             <StartStack.Screen key={name} name={name} component={component} />
           ))}

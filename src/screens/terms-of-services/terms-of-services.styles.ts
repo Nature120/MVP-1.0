@@ -10,8 +10,8 @@ export const pdfStyles: StyleProp<ViewStyle> = {
   backgroundColor: COLOR.background.white,
 };
 
-export const StyledPrivacyPolicy = {
-  PrivacyPolicy: styled.View`
+export const StyledTermsOfServices = {
+  TermsOfServices: styled.View`
     flex: 1;
     padding-horizontal: 24px;
   `,
