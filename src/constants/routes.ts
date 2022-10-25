@@ -8,6 +8,7 @@ export const APP_ROUTES = {
     onBoard: 'start',
   },
   dashboard: 'Dashboard',
+  drawer: 'Drawer',
   immersions: 'Immersions',
   immersionTimer: 'Immersion Timer',
   immersionComplete: 'Immersion Complete',

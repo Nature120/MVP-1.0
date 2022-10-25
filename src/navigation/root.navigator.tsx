@@ -10,6 +10,7 @@ import { SignUpScreen } from '@screens/sign-up-screen/sign-up-screen';
 import { Splash } from '@screens/splash';
 import { TermsOfServices } from '@screens/terms-of-services';
 import { BottomTabNavigator } from './molecules/bottom-tab/bottom-tab.navigator';
+import { DrawerNavigator } from './molecules/drawer/drawer.navigator';
 import { screenOptions } from './navigation.options';
 import { useNavigationSate } from './navigation.state';
 
@@ -48,11 +49,7 @@ export const RootNavigator = () => {
     }
     return (
       <>
-        <StartStack.Screen
-          options={{ gestureEnabled: false }}
-          name={APP_ROUTES.dashboard}
-          component={BottomTabNavigator}
-        />
+        <StartStack.Screen name={APP_ROUTES.drawer} component={DrawerNavigator} options={{ headerShown: false }} />
         <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} />
         <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
         <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />
