@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 import { Title } from '@components/atoms/title';
 
-import { DEVICE_WIDTH } from '@services/helpers/device-utils';
+import { DEVICE_WIDTH, isIOS } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
@@ -34,7 +34,9 @@ export const StyledHome = {
   `,
 
   InfoSectionWrapper: styled.View`
-    padding: 36px 0 ${PAGE_PADDING}px;
+    padding-top: 36px;
+    padding-bottom: ${isIOS ? 56 + PAGE_PADDING : 71 + PAGE_PADDING}px;
+
     background-color: ${COLOR.background.white};
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;

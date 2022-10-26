@@ -35,43 +35,41 @@ export const SignUpForm = () => {
         {({ handleChange, handleBlur, values, errors, handleSubmit }) => {
           return (
             <>
-              <Styled.InputWrapper>
-                <Input
-                  placeHolder="First name"
-                  value={values.first_name}
-                  handleChange={handleChange('first_name')}
-                  handleBlur={handleBlur('first_name')}
-                  placeHolderTextColor={'lightGrey'}
-                  onFocus={resetError}
-                />
-                <Styled.ErrorText>{errors.first_name ? errors.first_name : ''}</Styled.ErrorText>
-                <Input
-                  placeHolder="Email Address"
-                  value={values.email}
-                  handleChange={handleChange('email')}
-                  handleBlur={handleBlur('email')}
-                  keyboardType="email-address"
-                  placeHolderTextColor={'lightGrey'}
-                  onFocus={resetError}
-                />
-                <Styled.ErrorText>{errors.email ? errors.email : ''}</Styled.ErrorText>
-                <Styled.InputPassword
-                  placeholderTextColor={COLOR.font.lightGrey}
-                  theme={REACT_NATIVE_PAPER_INPUT_THEME}
-                  underlineColor="transparent"
-                  selectionColor={COLOR.font.lightGrey}
-                  activeUnderlineColor="transparent"
-                  placeholder="Password"
-                  value={values.password}
-                  onFocus={resetError}
-                  caretHidden={false}
-                  onChangeText={handleChange('password')}
-                  onBlur={handleBlur('password')}
-                  secureTextEntry={passwordVisible}
-                  right={<TextInput.Icon onPress={changeVisiblePassword} name={handleChangeIcon} />}
-                />
-                <Styled.ErrorText>{errors.password ? errors.password : '' || errorMessage}</Styled.ErrorText>
-              </Styled.InputWrapper>
+              <Input
+                placeHolder="First name"
+                value={values.first_name}
+                handleChange={handleChange('first_name')}
+                handleBlur={handleBlur('first_name')}
+                placeHolderTextColor={'lightGrey'}
+                onFocus={resetError}
+              />
+              <Styled.ErrorText>{errors.first_name ? errors.first_name : ''}</Styled.ErrorText>
+              <Input
+                placeHolder="Email Address"
+                value={values.email}
+                handleChange={handleChange('email')}
+                handleBlur={handleBlur('email')}
+                keyboardType="email-address"
+                placeHolderTextColor={'lightGrey'}
+                onFocus={resetError}
+              />
+              <Styled.ErrorText>{errors.email ? errors.email : ''}</Styled.ErrorText>
+              <Styled.InputPassword
+                placeholderTextColor={COLOR.font.lightGrey}
+                theme={REACT_NATIVE_PAPER_INPUT_THEME}
+                underlineColor="transparent"
+                selectionColor={COLOR.font.lightGrey}
+                activeUnderlineColor="transparent"
+                placeholder="Password"
+                value={values.password}
+                onFocus={resetError}
+                caretHidden={false}
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                secureTextEntry={passwordVisible}
+                right={<TextInput.Icon onPress={changeVisiblePassword} name={handleChangeIcon} />}
+              />
+              <Styled.ErrorText>{errors.password ? errors.password : '' || errorMessage}</Styled.ErrorText>
               <Button buttonText="CREATE ACCOUNT" buttonColor="blue" onPress={handleSubmit} />
             </>
           );
