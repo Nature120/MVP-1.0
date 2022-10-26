@@ -9,7 +9,11 @@ import { useOnboardingNextRoute } from '@services/hooks/onboarding-next-route';
 
 import { TOnPress } from './layout-onboarding.typings';
 
-export const useLayoutOnboarding = (onPress?: TOnPress, isWithoutRedirect?: boolean, routePayload?: any) => {
+export const useLayoutOnboarding = <T extends object>(
+  onPress?: TOnPress,
+  isWithoutRedirect?: boolean,
+  routePayload?: T,
+) => {
   const { name } = useRoute();
   const nextRoute = useOnboardingNextRoute();
   const [progress, setProgress] = useState<IProgressBarProps>({} as IProgressBarProps);

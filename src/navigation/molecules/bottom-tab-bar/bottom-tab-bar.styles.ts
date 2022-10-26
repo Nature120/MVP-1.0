@@ -8,11 +8,16 @@ import { COLOR } from '@theme/colors';
 
 export const StyledBottomTabBar = {
   Wrapper: styled.View`
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     padding: 15px 24px ${isIOS ? 0 : 15}px 24px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;
     background-color: ${COLOR.background.white};
+    width: 100%;
 
     ${!isIOS &&
     css`

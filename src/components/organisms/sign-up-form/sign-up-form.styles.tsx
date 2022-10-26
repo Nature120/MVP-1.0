@@ -6,18 +6,9 @@ import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 export const SignUpFormStyles = {
-  Container: styled.View`
-    flex: 1;
-    margin-bottom: ${moderateScale(16)}px;
-  `,
-  InputWrapper: styled.View`
-    flex: 1;
-    margin-bottom: ${moderateScale(20)}px;
-  `,
   ErrorText: styled.Text`
     height: ${verticalScale(25)}px;
     margin-top: ${moderateScale(2)}px;
-    margin-bottom: ${moderateScale(5)}px;
     font-family: ${FONTS.family.lightBoreal};
     font-size: ${moderateScale(FONTS.size.xSmall)}px;
     font-weight: ${FONTS.weight.light};

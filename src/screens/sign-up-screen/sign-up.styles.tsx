@@ -43,7 +43,7 @@ export const SignUpScreenStyles = {
   LogInWrapper: styled.View`
     flex-direction: row;
     justify-content: center;
-    margin-bottom: ${moderateScale(110, 0.1)}px;
+    margin-bottom: 50px;
   `,
   LogInBtn: styled.TouchableOpacity`
     width: ${scale(50)}px;
@@ -57,7 +57,6 @@ export const SignUpScreenStyles = {
     color: ${COLOR.font.darkBlue};
   `,
   LoginLabelText: styled.Text`
-    font-family: ${FONTS.family.mediumAcumin};
     font-size: ${moderateScale(FONTS.size.xlSmall)}px;
     font-weight: ${FONTS.weight.medium};
     line-height: ${moderateScale(19)}px;

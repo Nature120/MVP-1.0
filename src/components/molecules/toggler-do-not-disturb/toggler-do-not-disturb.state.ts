@@ -6,15 +6,13 @@ import {
   useRingerMode,
   VolumeManager,
 } from 'react-native-volume-manager';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { isIOS } from '@services/helpers/device-utils';
 import { isDisturb } from '@services/store/auth/auth.actions';
-import { getIsDisturb } from '@services/store/auth/auth.selectors';
 
-export const useStateToggleDoNotDisturb = () => {
+export const useTogglerDoNotDisturb = () => {
   const dispatch = useDispatch();
-  const getDisturb = useSelector(getIsDisturb);
   const { mode, setMode } = useRingerMode();
 
   useEffect(() => {
@@ -56,5 +54,5 @@ export const useStateToggleDoNotDisturb = () => {
     return toggleValue ? RINGER_MODE.silent : RINGER_MODE.normal;
   };
 
-  return { onChange, getDisturb };
+  return { onChange };
 };

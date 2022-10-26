@@ -16,6 +16,12 @@ export const StyledTogglerDoNotDisturb = {
     align-items: center;
   `,
 
+  TextHint: styled(TextComponent)`
+    font-size: ${FONTS.size.xlSmall}px;
+    line-height: 19px;
+    color: ${COLOR.subheading};
+  `,
+
   DoNotDisturb: styled(TextComponent)<{ isDark?: boolean }>`
     margin-left: 16px;
     font-weight: ${FONTS.weight.medium};

@@ -27,7 +27,7 @@ export const SignInScreenStyles = {
   LogInWrapper: styled.View`
     flex-direction: row;
     justify-content: center;
-    margin-bottom: ${moderateScale(110, 0.1)}px;
+    margin-bottom: 50px;
   `,
   LogInBtn: styled.TouchableOpacity`
     width: ${scale(60)}px;
@@ -49,7 +49,7 @@ export const SignInScreenStyles = {
     color: ${COLOR.font.darkBlue};
   `,
   Text: styled.Text`
-    margin-bottom: ${moderateScale(38)}px;
+    margin-bottom: ${moderateScale(28)}px;
     font-family: ${FONTS.family.lightBoreal};
     font-size: ${moderateScale(FONTS.size.xSmall)}px;
     font-weight: ${FONTS.weight.light};
@@ -57,7 +57,6 @@ export const SignInScreenStyles = {
     color: ${COLOR.font.darkBlue};
   `,
   LoginLabelText: styled.Text`
-    font-family: ${FONTS.family.mediumAcumin};
     font-size: ${moderateScale(FONTS.size.xlSmall)}px;
     font-weight: ${FONTS.weight.medium};
     line-height: ${moderateScale(19)}px;
