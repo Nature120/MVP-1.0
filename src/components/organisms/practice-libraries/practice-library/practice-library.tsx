@@ -34,9 +34,11 @@ export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
         <View>
           <Image source={{ uri: image }} width={WIDTH} height={moderateScale(103)} styles={StyledImage} />
 
-          <Styled.TypeContainer>
-            <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
-          </Styled.TypeContainer>
+          {userGoals[0] && (
+            <Styled.TypeContainer>
+              <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
+            </Styled.TypeContainer>
+          )}
         </View>
 
         <Styled.Title numberOfLines={1}>{title}</Styled.Title>
