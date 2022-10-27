@@ -13,18 +13,20 @@ import { ITogglerDoNotDisturbProps } from './toggler-do-not-disturb.typings';
 import { StyledTogglerDoNotDisturb as Styled } from './toggler-do-not-disturb.styles';
 
 export const TogglerDoNotDisturb: React.FC<ITogglerDoNotDisturbProps> = props => {
-  const { marginBottom, marginTop, isDark } = props;
+  const { marginBottom, marginTop, isDark, isWithPadding } = props;
   const { onChange } = useTogglerDoNotDisturb();
   const isDisturb = useSelector(getIsDisturb);
 
   return (
     <Styled.TogglerWrapper marginBottom={marginBottom} marginTop={marginTop}>
       {isIOS ? (
-        isDisturb && (
-          <Styled.TextHint>
-            Use Flight Mode or the Silent mode on your device to avoid interruptions and make your Nature immersion more
-            powerful.
-          </Styled.TextHint>
+        !isDisturb && (
+          <Styled.TextHintWrapper isWithPadding={isWithPadding}>
+            <Styled.TextHint>
+              Use Flight Mode or the Silent mode on your device to avoid interruptions and make your Nature immersion
+              more powerful.
+            </Styled.TextHint>
+          </Styled.TextHintWrapper>
         )
       ) : (
         <Toggler

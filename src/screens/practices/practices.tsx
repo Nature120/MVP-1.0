@@ -35,6 +35,8 @@ export const Practices: React.FC = () => {
               </Spacer>
             ))}
           </Styled.Practices>
+
+          <Styled.Space />
         </Styled.LayoutContent>
       </Layout>
     </>

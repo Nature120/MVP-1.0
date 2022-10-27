@@ -74,7 +74,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           <Styled.Content>
             <View>
               <Styled.Header>
-                <Styled.Title numberOfLines={1}>{title}</Styled.Title>
+                <Styled.Title>{title}</Styled.Title>
                 {/* <Styled.TimeWrapper>
                   <Icon type="clock" colorIcon="cloudyBlue" size={18} />
                   <Styled.Time>
