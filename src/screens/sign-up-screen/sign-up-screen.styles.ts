@@ -15,6 +15,10 @@ export const SignUpScreenStyles = {
   Wrapper: styled.View`
     flex: 1;
   `,
+  InnerWrapper: styled.View`
+    flex: 1;
+    justify-content: space-between;
+  `,
   BackButtonWrapper: styled.View`
     width: ${scale(32)}px;
     margin-top: ${moderateScale(50)}px;
