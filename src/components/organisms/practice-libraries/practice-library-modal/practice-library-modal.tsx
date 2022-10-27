@@ -66,9 +66,11 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
             <ButtonIcon isWithBg type="cross" iconIndent={9} size={36} colorIcon="cloudyGreen" onPress={closeModal} />
           </Styled.ImageHeader>
 
-          <Styled.TypeContainer>
-            <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
-          </Styled.TypeContainer>
+          {userGoals[0] && (
+            <Styled.TypeContainer>
+              <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
+            </Styled.TypeContainer>
+          )}
         </View>
         <Styled.ContentWrapper>
           <Styled.Content>
@@ -97,7 +99,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                 ))}
               </Styled.Tags>
 
-              {!isWithoutActions && <TogglerDoNotDisturb />}
+              {!isWithoutActions && <TogglerDoNotDisturb isWithPadding />}
             </View>
 
             {!isWithoutActions && (
