@@ -4,6 +4,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 
 import { appReducer } from './app';
 import authReducer from './auth/auth.reducer';
+import timerReducer from './timer/timer.reducer';
 
 const config = {
   key: 'root',
@@ -17,9 +18,15 @@ const authPersistConfig = {
   blacklist: ['user', 'isAuthenticated'],
 };
 
+const timerPersistConfig = {
+  key: 'timer',
+  storage: AsyncStorage,
+};
+
 const combinedReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   app: appReducer,
+  timer: persistReducer(timerPersistConfig, timerReducer),
 });
 
 const reducer = (state: any, action: any) => {

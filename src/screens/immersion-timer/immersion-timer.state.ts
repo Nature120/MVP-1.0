@@ -4,10 +4,11 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { secondsToMinutes } from 'date-fns';
 
+import { getLatestLibrary } from './../../services/store/auth/auth.selectors';
+
 import { clearRecentPractices } from './immersion-timer.utils';
 import { databaseRef, updateUser } from '@services/api.service';
 import { useOpenCloseModal } from '@services/hooks/open-close';
-import { useParam } from '@services/hooks/param';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { setCommentBeforeImmersion } from '@services/store/app';
 import { addFinishedPractic, addRecentPractice } from '@services/store/auth/auth.actions';
@@ -16,16 +17,14 @@ import { IFinishedPractices } from '@services/store/auth/auth.typings';
 
 import { APP_ROUTES } from '@constants/routes';
 
-import { IPracticeLibrary } from '@typings/common';
-
 export const useImmersionTimer = () => {
   const { navigate } = useNavigation();
-  const { params: library } = useParam<IPracticeLibrary>();
   const [seconds, setSeconds] = useState<number>(0);
   const { isOpen: isOpenAskModal, onClose: closeAskModal, onToggle: toggleOpenAskModal } = useOpenCloseModal();
   const { uid } = useSelector(getUserInfo);
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
   const dispatch = useAppDispatch();
+  const library = useSelector(getLatestLibrary);
   const { title } = library;
 
   const onModalClose = async () => {

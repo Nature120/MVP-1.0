@@ -1,13 +1,15 @@
 import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 
-import { IUserTipOfTheDay } from '@typings/common';
+import { IPracticeLibrary, IUserTipOfTheDay } from '@typings/common';
 
 export interface IState {
   auth: IAuth;
+  timer: ITimer;
 }
 
 interface IAuth {
   user: IUser;
+  latestLibrary: IPracticeLibrary;
   error: string | null;
   isAuthenticated: boolean;
   isFirstLaunchApp: boolean;
@@ -31,4 +33,10 @@ export interface IUser {
 export interface IFinishedPractices {
   title: string;
   created_at: FirebaseFirestoreTypes.Timestamp;
+}
+
+export interface ITimer {
+  startDate: number;
+  seconds: number;
+  isActiveTimer: boolean;
 }

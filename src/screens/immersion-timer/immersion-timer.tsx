@@ -22,11 +22,8 @@ export const ImmersionTimer: React.FC = () => {
       />
 
       <PracticeLibraryCollapsed library={library} />
-
       <TimerProgressBar setSeconds={setSeconds} seconds={seconds} isOpenAskModal={isOpenAskModal} />
-
       <TogglerDoNotDisturb isDark marginBottom={moderateScale(45)} />
-
       <Swiper toggleOpenAskModal={toggleOpenAskModal} text="SWIPE TO END" marginW={62} marginBottom={48} />
     </Layout>
   );
