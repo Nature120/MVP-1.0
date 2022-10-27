@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+import { PAGE_PADDING } from '@screens/home/home.styles';
+
+import { isIOS } from '@services/helpers/device-utils';
+
 import { COLOR } from '@theme/colors';
 import { Z_INDEX } from '@theme/z-index';
 
@@ -20,6 +24,10 @@ export const StyledPractices = {
     background-color: ${COLOR.background.white};
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
+  `,
+
+  Space: styled.View`
+    margin-bottom: ${isIOS ? 36 + PAGE_PADDING : 51 + PAGE_PADDING}px;
   `,
 
   Loader: styled.View`

@@ -16,6 +16,12 @@ export const StyledTogglerDoNotDisturb = {
     align-items: center;
   `,
 
+  TextHintWrapper: styled.View<{ isWithPadding?: boolean }>`
+    background-color: ${COLOR.background.white};
+    padding: 16px ${({ isWithPadding }) => (isWithPadding ? 16 : 0)}px;
+    border-radius: 16px;
+  `,
+
   TextHint: styled(TextComponent)`
     font-size: ${FONTS.size.xlSmall}px;
     line-height: 19px;

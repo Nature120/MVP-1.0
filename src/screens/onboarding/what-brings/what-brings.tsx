@@ -1,10 +1,11 @@
 import React from 'react';
 
+import { OnboardingText } from '@components/atoms/onboarding-text';
+import { OnboardingTitle } from '@components/atoms/onboarding-title';
 import { Layout } from '@components/molecules/layout';
 import { ITextCheckBox } from '@components/molecules/text-checkbox/text-checkbox.typings';
 import { TextCheckboxGroup } from '@components/molecules/text-checkbox-group';
 import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
-import { Header } from './molecules/header';
 import { useWhatBrings } from './what-brings.state';
 
 import { useParam } from '@services/hooks/param';
@@ -23,7 +24,8 @@ export const WhatBrings: React.FC = () => {
         routeText="Skip for now"
         onPress={onPress}
         isButtonDisabled={!whatBrings.length}>
-        <Header />
+        <OnboardingTitle>What brings you to Nature OneTwenty?</OnboardingTitle>
+        <OnboardingText>We’ll personalize recommendations based on your goals. Choose one or more.</OnboardingText>
 
         <Styled.CheckboxGroup>
           <TextCheckboxGroup
