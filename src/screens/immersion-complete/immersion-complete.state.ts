@@ -8,6 +8,7 @@ import { getUniqueArray } from '@services/helpers/get-unique-array';
 import { useGoal } from '@services/hooks/goal';
 import { useParam } from '@services/hooks/param';
 import { useAppDispatch } from '@services/hooks/redux';
+import { useSetDefaultTimer } from '@services/hooks/setDefaultTimer';
 import { getUserInfo } from '@services/store/auth/auth.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
@@ -21,6 +22,8 @@ export const useImmersionComplete = () => {
   const dispatch = useAppDispatch();
   const { weeklyGoal } = useGoal();
   const [todayImmersions, setTodayImmersions] = useState<IPracticeLibrary[]>([]);
+
+  const { defaultTimer } = useSetDefaultTimer('done');
 
   const getTodayImmersions = async () => {
     const uniqueLibraries = getUniqueArray(user.finishedPractices, 'title');
@@ -42,6 +45,8 @@ export const useImmersionComplete = () => {
   }, []);
 
   const onDone = async () => {
+    defaultTimer();
+
     const goal = user.goal! + params.addedTime;
     await updateUser(user.uid, { goal }, dispatch);
     navigate(APP_ROUTES.main.home as never);

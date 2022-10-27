@@ -22,7 +22,6 @@ export const ImmersionTimer: React.FC = () => {
       />
 
       <PracticeLibraryCollapsed library={library} />
-
       <TimerProgressBar setSeconds={setSeconds} seconds={seconds} isOpenAskModal={isOpenAskModal} />
 
       <TogglerDoNotDisturb isWithPadding isDark marginBottom={moderateScale(45)} />

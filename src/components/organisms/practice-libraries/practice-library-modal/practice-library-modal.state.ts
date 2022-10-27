@@ -2,7 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 
 import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useAppDispatch } from '@services/hooks/redux';
+import { useSetDefaultTimer } from '@services/hooks/setDefaultTimer';
 import { setCommentBeforeImmersion } from '@services/store/app';
+import * as action from '@services/store/auth/auth.actions';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -12,7 +14,7 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   const { navigate } = useNavigation();
   const dispatch = useAppDispatch();
   const { isOpen: isOpenAsk, onClose: closeModalAsk, onOpen: openModalAsk } = useOpenCloseModal();
-
+  const { defaultTimer } = useSetDefaultTimer('startTimer');
   const { isWithoutActions, isWithoutAskModal, isOpen, closeModal, library } = props;
 
   const saveResponse = (value: string) => {
@@ -24,7 +26,10 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   const navigateToTimer = () => {
     closeModalAsk();
     closeModal();
-    navigate(APP_ROUTES.immersionTimer as never, library as never);
+
+    defaultTimer();
+    dispatch(action.addLatestLibrary(library));
+    navigate(APP_ROUTES.immersionTimer as never);
   };
 
   const navigateToHomePage = () => {
