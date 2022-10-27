@@ -19,6 +19,11 @@ const user = createReducer(initialState, {
   [action.signOut.type]: () => initialState,
 });
 
+const latestLibrary = createReducer([], {
+  [action.addLatestLibrary.type]: (_, { payload }) => payload,
+  [action.clearLatestLibrary.type]: () => [],
+});
+
 const isAuthenticated = createReducer(false, {
   [action.signIn.type]: () => true,
   [action.isAuthenticated.type]: (_, { payload }) => payload,
@@ -39,6 +44,7 @@ const isDisturb = createReducer(false, {
 
 export default combineReducers({
   user,
+  latestLibrary,
   isAuthenticated,
   isFirstLaunchApp,
   isLoading,

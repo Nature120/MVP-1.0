@@ -10,6 +10,7 @@ import { setCommentBeforeImmersion } from '@services/store/app';
 import { filterExpiredPractices, isFirstLaunch } from '@services/store/auth/auth.actions';
 import { getFirstLaunch, getFisishedPractices, getUserInfo } from '@services/store/auth/auth.selectors';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
+import * as selector from '@services/store/timer/timer.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -23,6 +24,9 @@ export const useHome = () => {
   const finishedPractices = useSelector(getFisishedPractices);
   const getCurrentWeek = getWeek(new Date());
 
+  const startDate = useSelector(selector.getStartDate);
+  const secondsTimer = useSelector(selector.getSeconds);
+
   const onToggleOpen = () => setIsOpen(prev => !prev);
   const closeModal = () => setIsOpen(false);
 
@@ -33,11 +37,21 @@ export const useHome = () => {
   };
 
   useEffect(() => {
-    if (firstLaunch === false) {
+    if (!firstLaunch) {
       return;
     }
     dispatch(isFirstLaunch(false));
   }, []);
+
+  ////If we have startDate or Seconds redirect to timer///
+
+  useEffect(() => {
+    if (startDate || secondsTimer) {
+      navigate(APP_ROUTES.immersionTimer as never);
+    }
+  }, []);
+
+  /////Filtering practices if its a new week"
 
   useEffect(() => {
     const filteredPractices = removeLastWeekPractices();
