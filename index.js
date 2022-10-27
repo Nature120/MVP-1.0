@@ -1,3 +1,4 @@
+import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Main } from './src/screens/_main';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -25,4 +26,13 @@ GoogleSignin.configure({
   webClientId: CONFIG.webClientId,
 });
 
-AppRegistry.registerComponent(appName, () => Main);
+function HeadlessCheck({ isHeadless }) {
+  if (isHeadless) {
+    // App has been launched in the background by iOS, ignore
+    return null;
+  }
+
+  return <Main />;
+}
+
+AppRegistry.registerComponent(appName, () => HeadlessCheck);

@@ -1,6 +1,6 @@
 export const APP_ROUTES = {
-  agreePrivacyPolicy: 'agreePrivacyPolicy',
-  privacyPolicy: 'privacyPolicy',
+  agreeTermsOfServices: 'agreeTermsOfServices',
+  TermsOfServices: 'TermsOfServices',
   start: {
     splash: 'Splash',
     signUp: 'Sign Up',
@@ -8,6 +8,7 @@ export const APP_ROUTES = {
     onBoard: 'start',
   },
   dashboard: 'Dashboard',
+  drawer: 'Drawer',
   immersions: 'Immersions',
   immersionTimer: 'Immersion Timer',
   immersionComplete: 'Immersion Complete',

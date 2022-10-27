@@ -8,14 +8,14 @@ import { CheckBox } from './molecules/check-box';
 
 import { APP_ROUTES } from '@constants/routes';
 
-import { StyledAgreePrivacyPolicy as Styled } from './agree-privacy-policy.styles';
+import { StyledAgreeTermsOfServices as Styled } from './agree-terms-of-services.styles';
 
-export const AgreePrivacyPolicy: React.FC = () => {
+export const AgreeTermsOfServices: React.FC = () => {
   const { navigate } = useNavigation();
   const [isCheckBoxActive, setIsCheckBoxActive] = useState(false);
 
-  const navigateToPrivacyPolicy = () => {
-    navigate(APP_ROUTES.privacyPolicy as never);
+  const navigateToTermsOfServices = () => {
+    navigate(APP_ROUTES.TermsOfServices as never);
   };
 
   const toggleCheckBox = () => {
@@ -35,8 +35,8 @@ export const AgreePrivacyPolicy: React.FC = () => {
 
             <OnboardingText>
               I agree to the{' '}
-              <OnboardingText isUnderlined onPress={navigateToPrivacyPolicy}>
-                Privacy Policy
+              <OnboardingText isUnderlined onPress={navigateToTermsOfServices}>
+                Terms of Services
               </OnboardingText>
             </OnboardingText>
           </Styled.OnboardingCard>

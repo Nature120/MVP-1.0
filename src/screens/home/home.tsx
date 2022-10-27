@@ -1,8 +1,11 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { DynamicHeader } from '@screens/home/atoms/dynamic-header';
 import { Button } from '@components/atoms/button';
 import { CenterContainer } from '@components/atoms/center-container';
+import { Icon } from '@components/atoms/icon';
 import { Line } from '@components/atoms/line';
 import { AskModal } from '@components/molecules/ask-modal';
 import { Layout } from '@components/molecules/layout';
@@ -11,14 +14,23 @@ import { PracticeLibrariesPagination } from '@components/organisms/practice-libr
 import { Rings } from '@components/organisms/rings';
 import { useHome } from './home.state';
 
-import { StyledHome as Styled } from './home.styles';
+import { BURGER_MENU_WIDTH, StyledHome as Styled } from './home.styles';
 
 import { COLOR } from '@theme/colors';
 
+const hitSlop = { top: 10, bottom: 10, left: 10, right: 10 };
+
 export const Home: React.FC = () => {
   const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, saveResponse, navigateToImmersions } = useHome();
+  const navigation = useNavigation();
 
   const goal = user.goal || 0;
+
+  const onPressDrawer = () => {
+    //eslint-disable-next-line
+    //@ts-ignore
+    navigation.openDrawer();
+  };
 
   return (
     <>
@@ -36,7 +48,12 @@ export const Home: React.FC = () => {
         elasticScrollColor={COLOR.background.white}
         elasticScrollPosition="bottom">
         <Styled.MainSection>
-          <Styled.Greeting>Hi, {user.first_name}</Styled.Greeting>
+          <Styled.Header>
+            <Styled.Greeting>Hi, {user.first_name}</Styled.Greeting>
+            <TouchableOpacity onPress={onPressDrawer} hitSlop={hitSlop}>
+              <Icon width={BURGER_MENU_WIDTH} height={25} type="menu" colorIcon="cloudyGreen" />
+            </TouchableOpacity>
+          </Styled.Header>
           <DynamicHeader goal={goal} weeklyGoal={weeklyGoal} />
 
           <CenterContainer>{!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={goal} />}</CenterContainer>

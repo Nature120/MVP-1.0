@@ -9,6 +9,6 @@ export const SocialButtonGroupStyles = {
     margin-bottom: ${moderateScale(8)}px;
   `,
   AppleButtonWrapper: styled.View`
-    margin-bottom: ${moderateScale(24)}px;
+    margin-bottom: ${moderateScale(14)}px;
   `,
 };

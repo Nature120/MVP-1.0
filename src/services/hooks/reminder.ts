@@ -4,21 +4,24 @@ import { useSelector } from 'react-redux';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import { useNavigation } from '@react-navigation/native';
 
+import {
+  setNotificationAndroidConfig,
+  setNotificationIOSConfig,
+} from '@screens/onboarding/time-for-immersion/time-for-immersion.utils';
 import { ITextCheckBox } from '@components/molecules/text-checkbox/text-checkbox.typings';
 import { TPeriod } from '@components/organisms/time-picker/time-picker.typings';
+import { useAppDispatch } from './redux';
 
-import { setNotificationAndroidConfig, setNotificationIOSConfig } from './time-for-immersion.utils';
 import { updateUser } from '@services/api.service';
 import { isIOS } from '@services/helpers/device-utils';
 import { getMinMaxDate } from '@services/helpers/utils';
-import { useAppDispatch } from '@services/hooks/redux';
 import { getUid } from '@services/store/auth/auth.selectors';
 
-import { timeForImmersionVariants } from '../onboarding.constants';
 import { CHANNEL_CONFIG } from '@constants/notifications';
 import { APP_ROUTES } from '@constants/routes';
+import { timeForImmersionVariants } from '@screens/onboarding/onboarding.constants';
 
-export const useTimeForImmersion = () => {
+export const useReminder = () => {
   const { navigate } = useNavigation();
   const [selectedPeriod, setSelectedPeriod] = useState<string>('');
   const [selectedCheckbox, setSelectedCheckbox] = useState<ITextCheckBox>();
@@ -68,11 +71,24 @@ export const useTimeForImmersion = () => {
       PushNotification.localNotificationSchedule(config);
     }
 
+    clearState();
     navigate(APP_ROUTES.dashboard as never);
   };
 
   const onChangeTime = (newTime: string) => {
     setSelectedPeriod(newTime);
+  };
+
+  const onPressGoBack = () => {
+    if (!selectedCheckbox?.text) {
+      return navigate(APP_ROUTES.dashboard as never);
+    }
+    clearState();
+  };
+
+  const clearState = () => {
+    setSelectedCheckbox(undefined);
+    setSelectedPeriod('');
   };
 
   return {
@@ -81,6 +97,7 @@ export const useTimeForImmersion = () => {
     selectedPeriod,
     timeForImmersion,
     setTimeForImmersion,
+    onPressGoBack,
     onChangeTime,
   };
 };
