@@ -26,6 +26,7 @@ export const Layout: React.FC<ILayoutProps> = props => {
   } = props;
 
   const Container = <Styled.Container isWithoutMargin={isWithoutMargin}>{children}</Styled.Container>;
+
   const ScreenLayout = (
     <>
       {topBottomColors && <Styled.SafeAreaViewHeader topColor={topBottomColors[0]} />}
