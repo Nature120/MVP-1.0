@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { AppState } from 'react-native';
+import { AppState, AppStateStatus } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTimer } from 'react-use-precision-timer';
 import { millisecondsToSeconds } from 'date-fns';
@@ -49,21 +49,7 @@ export const useTimerProgressBar = ({ seconds, setSeconds, isOpenAskModal }: IPr
   ///Listner if app in background mode or no///
 
   useEffect(() => {
-    const subscription = AppState.addEventListener('change', nextAppState => {
-      if (appState.current.match(/inactive|background/) && nextAppState === 'active') {
-        setSeconds(() => {
-          if (!startDate) {
-            return secondsTimer;
-          }
-          const result = millisecondsToSeconds(Date.now() - startDate) + secondsTimer;
-          return result;
-        });
-        return;
-      }
-      appState.current = nextAppState;
-      dispatch(action.startDate(Date.now()));
-      dispatch(action.seconds(seconds));
-    });
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
     return () => {
       subscription.remove();
     };
@@ -103,6 +89,22 @@ export const useTimerProgressBar = ({ seconds, setSeconds, isOpenAskModal }: IPr
   const startTimer = () => {
     !startDate && dispatch(action.startDate(Date.now()));
     timer.start();
+  };
+
+  const handleAppStateChange = (nextAppState: AppStateStatus) => {
+    if (appState.current.match(/inactive|background/) && nextAppState === 'active') {
+      setSeconds(() => {
+        if (!startDate) {
+          return secondsTimer;
+        }
+        const result = millisecondsToSeconds(Date.now() - startDate) + secondsTimer;
+        return result;
+      });
+      return;
+    }
+    appState.current = nextAppState;
+    dispatch(action.startDate(Date.now()));
+    dispatch(action.seconds(seconds));
   };
 
   const formattedTime = (sec: number) => {
