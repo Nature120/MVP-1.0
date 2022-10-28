@@ -13,7 +13,6 @@ export const SignInScreenStyles = {
     flex-grow: 1;
   `,
   Wrapper: styled.ScrollView`
-    padding-top: ${moderateScale(50)}px;
     padding-horizontal: 24px;
     flex-grow: 1;
     background-color: ${COLOR.background.beigeLight};
