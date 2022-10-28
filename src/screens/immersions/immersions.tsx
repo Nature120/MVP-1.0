@@ -41,7 +41,7 @@ export const Immersions: React.FC = () => {
             <TogglerDoNotDisturb marginBottom={48} />
           </Styled.Immersions>
 
-          {whatBrings && <PracticeLibrariesPagination title="Suggestions" documentId={whatBrings} />}
+          {whatBrings && <PracticeLibrariesPagination title="Most Popular" documentId={whatBrings} />}
 
           <Spacer gap={20} />
 

@@ -6,7 +6,8 @@ import { getWeek } from 'date-fns';
 
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch } from '@services/hooks/redux';
-import { setCommentBeforeImmersion } from '@services/store/app';
+import { notificationsAPI } from '@services/notifications.api';
+import { setCommentBeforeImmersion, setNotificationsList } from '@services/store/app';
 import { filterExpiredPractices, isFirstLaunch } from '@services/store/auth/auth.actions';
 import { getFirstLaunch, getFisishedPractices, getUserInfo } from '@services/store/auth/auth.selectors';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
@@ -15,7 +16,7 @@ import * as selector from '@services/store/timer/timer.selectors';
 import { APP_ROUTES } from '@constants/routes';
 
 export const useHome = () => {
-  const { navigate } = useNavigation();
+  const { navigate, openDrawer } = useNavigation() as any;
   const user = useSelector(getUserInfo);
   const { weeklyGoal } = useGoal();
   const [isOpen, setIsOpen] = useState(false);
@@ -43,6 +44,16 @@ export const useHome = () => {
     dispatch(isFirstLaunch(false));
   }, []);
 
+  // sync notifications
+  useEffect(() => {
+    const getNotifications = async () => {
+      const notificationsList = await notificationsAPI.getAll();
+      dispatch(setNotificationsList(notificationsList));
+    };
+
+    getNotifications();
+  }, []);
+
   ////If we have startDate or Seconds redirect to timer///
 
   useEffect(() => {
@@ -63,9 +74,7 @@ export const useHome = () => {
 
   const navigateToImmersions = () => {
     closeModal();
-    setTimeout(() => {
-      navigate(APP_ROUTES.immersions as never);
-    }, 500);
+    navigate(APP_ROUTES.immersions as never);
   };
 
   const removeLastWeekPractices = () => {
@@ -96,10 +105,13 @@ export const useHome = () => {
     dispatch(filterExpiredPractices(filteredPractices));
   };
 
+  const onPressDrawer = () => openDrawer();
+
   return {
     user,
     weeklyGoal,
     isOpen,
+    onPressDrawer,
     closeModal,
     onToggleOpen,
     saveResponse,

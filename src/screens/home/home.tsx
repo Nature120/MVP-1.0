@@ -21,16 +21,10 @@ import { COLOR } from '@theme/colors';
 const hitSlop = { top: 10, bottom: 10, left: 10, right: 10 };
 
 export const Home: React.FC = () => {
-  const { user, weeklyGoal, isOpen, onToggleOpen, closeModal, saveResponse, navigateToImmersions } = useHome();
-  const navigation = useNavigation();
+  const { user, weeklyGoal, isOpen, onPressDrawer, onToggleOpen, closeModal, saveResponse, navigateToImmersions } =
+    useHome();
 
   const goal = user.goal || 0;
-
-  const onPressDrawer = () => {
-    //eslint-disable-next-line
-    //@ts-ignore
-    navigation.openDrawer();
-  };
 
   return (
     <>

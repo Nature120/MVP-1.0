@@ -9,7 +9,7 @@ import { LayoutOnboarding } from '@components/organisms/layout-onboarding';
 import { TimePicker } from '@components/organisms/time-picker';
 import { TPeriod } from '@components/organisms/time-picker/time-picker.typings';
 
-import { useReminder } from '@services/hooks/reminder';
+import { useReminder } from '@services/hooks/reminder/reminder';
 
 import { timeForImmersionVariants } from '../onboarding.constants';
 
