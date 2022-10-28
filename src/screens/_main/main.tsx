@@ -21,14 +21,19 @@ export const Main = () => {
   const persistor = persistStore(store);
 
   useEffect(() => {
-    SplashScreen.hide();
     LogBox.ignoreLogs(['Looks', 'Require']);
   }, []);
+
+  const handleHideSpashScreen = () => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 3500);
+  };
 
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <NavigationContainer>
+        <NavigationContainer onReady={handleHideSpashScreen}>
           <SafeAreaProvider>
             <RootNavigator />
           </SafeAreaProvider>
