@@ -11,6 +11,7 @@ import facebook from '@assets/icons/facebook.svg';
 import google from '@assets/icons/google.svg';
 import home from '@assets/icons/home.svg';
 import human from '@assets/icons/human.svg';
+import logout from '@assets/icons/logout.svg';
 import menu from '@assets/icons/menu.svg';
 import mute from '@assets/icons/mute.svg';
 import notifications from '@assets/icons/notifications.svg';
@@ -39,6 +40,7 @@ export const ICONS = {
   human,
   notifications,
   menu,
+  logout,
   tip,
   checkbox,
   onBoardingMoon,

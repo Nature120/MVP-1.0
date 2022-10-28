@@ -2,17 +2,9 @@ import React from 'react';
 
 import { Icon } from '@components/atoms/icon';
 
-import { IBottomTabRoutes } from '../bottom-tab/bottom-tab.typings';
-
-interface IDrawerIcon {
-  color: string;
-  size: number;
-  focused: boolean;
-}
-
-type TIcon = Pick<IBottomTabRoutes, 'icon'>;
+import { IDrawerIcon, TDrawerIcon } from './drawer-icon.typings';
 
 export const drawerIcon =
-  ({ icon }: TIcon) =>
+  ({ icon }: TDrawerIcon) =>
   ({ focused }: IDrawerIcon) =>
     <Icon type={icon.type} colorIcon={focused ? 'green' : 'cloudyGreen'} width={icon.width} height={icon.height} />;
