@@ -18,7 +18,7 @@ export const useImmersions = () => {
 
   const { defaultTimer } = useSetDefaultTimer('startTimer');
 
-  const { recentPractices } = useSelector(getUserInfo);
+  const { recentPractices, whatBrings } = useSelector(getUserInfo);
   const recentLibrariesTitles = useMemo(() => getRecentLibraries(recentPractices), [recentPractices]);
   const [recentLibraries, setRecentLibraries] = useState<IPracticeLibrary[]>([]);
   const { navigate } = useNavigation();
@@ -57,5 +57,6 @@ export const useImmersions = () => {
     recentLibraries,
     onStartTimer,
     isLoading,
+    whatBrings,
   };
 };
