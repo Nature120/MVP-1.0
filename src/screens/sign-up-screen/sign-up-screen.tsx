@@ -34,7 +34,6 @@ export const SignUpScreen = () => {
               </Styled.LogInBtn>
             </Styled.LogInWrapper>
           </View>
-
           <SocialButtonGroup
             onGoogleButtonPress={onGoogleButtonPress}
             onFacebookButtonPress={onFacebookButtonPress}

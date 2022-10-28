@@ -33,13 +33,11 @@ export const SignInScreen = () => {
             </Styled.LogInBtn>
           </Styled.LogInWrapper>
         </View>
-        <Styled.SocialButtonGroupWrapper>
-          <SocialButtonGroup
-            onGoogleButtonPress={onGoogleButtonPress}
-            onFacebookButtonPress={onFacebookButtonPress}
-            onAppleButtonPress={onAppleButtonPress} ///Fix
-          />
-        </Styled.SocialButtonGroupWrapper>
+        <SocialButtonGroup
+          onGoogleButtonPress={onGoogleButtonPress}
+          onFacebookButtonPress={onFacebookButtonPress}
+          onAppleButtonPress={onAppleButtonPress} ///Fix
+        />
       </Styled.InnerWrapper>
     </Styled.Wrapper>
   );

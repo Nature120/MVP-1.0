@@ -36,9 +36,6 @@ export const SignInScreenStyles = {
     justify-content: center;
     margin-bottom: 50px;
   `,
-  SocialButtonGroupWrapper: styled.View`
-    margin-bottom: ${moderateScale(80)}px;
-  `,
   LogInBtn: styled.TouchableOpacity`
     width: ${scale(60)}px;
   `,
