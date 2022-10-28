@@ -7,6 +7,7 @@ import { BackButton } from '@components/molecules/back-button';
 import { Layout } from '@components/molecules/layout';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
 import { PracticeLibraries } from '@components/organisms/practice-libraries';
+import { PracticeLibrariesPagination } from '@components/organisms/practice-libraries/practice-libraries-pagination';
 import { useImmersions } from './immersions.state';
 
 import { StyledImmersions as Styled } from './immersions.styles';
@@ -14,7 +15,7 @@ import { StyledImmersions as Styled } from './immersions.styles';
 import { COLOR } from '@theme/colors';
 
 export const Immersions: React.FC = () => {
-  const { recentLibraries, onStartTimer, isLoading } = useImmersions();
+  const { recentLibraries, onStartTimer, isLoading, whatBrings } = useImmersions();
 
   return (
     <Styled.Wrapper>
@@ -39,6 +40,10 @@ export const Immersions: React.FC = () => {
 
             <TogglerDoNotDisturb marginBottom={48} />
           </Styled.Immersions>
+
+          {whatBrings && <PracticeLibrariesPagination title="Suggestions" documentId={whatBrings} />}
+
+          <Spacer gap={20} />
 
           {!!recentLibraries.length && (
             <PracticeLibraries title={'Recent Immersions'} libraries={recentLibraries} isWithoutAskModal />
