@@ -22,5 +22,6 @@ export const SocialAuthButtonStyles = {
     font-weight: ${FONTS.weight.medium};
     line-height: ${moderateScale(20)}px;
     color: ${COLOR.font.black};
+    margin-top: 3px;
   `,
 };

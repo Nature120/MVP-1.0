@@ -32,6 +32,7 @@ export const StyledButton = {
     font-size: ${FONTS.size.xMedium}px;
     line-height: 20px;
     letter-spacing: 4.25px;
+    margin-top: 3px;
     ${props => props.textStyles}
   `,
 };
