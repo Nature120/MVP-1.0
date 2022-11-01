@@ -61,6 +61,7 @@ export const StyledImmersionsDaily = {
     font-weight: ${FONTS.weight.medium};
     font-size: ${FONTS.size.xlSmall}px;
     line-height: 18px;
+    margin-top: 3px;
     color: ${({ isCurrentDay }) => (isCurrentDay ? COLOR.font.white : COLOR.font.darkBlue)};
   `,
 };

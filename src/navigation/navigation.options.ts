@@ -8,6 +8,10 @@ export const noHeaderOptions: TScreenOptions & BottomTabNavigationOptions = {
   headerShown: false,
 };
 
+export const disabledGestures: TScreenOptions & BottomTabNavigationOptions = {
+  gestureEnabled: false,
+};
+
 export const screenOptions: TScreenOptions = {
   ...noHeaderOptions,
   cardStyle: {

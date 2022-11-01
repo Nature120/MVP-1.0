@@ -25,7 +25,7 @@ export const TimerProgressBar: React.FC<IProp> = ({ seconds, setSeconds, isOpenA
 
       <Styled.TimerWrapper>
         <Styled.TimerTitleText>Time Elapsed</Styled.TimerTitleText>
-        <Styled.TextNumber>{time}</Styled.TextNumber>
+        <Styled.TextNumber style={{ fontVariant: ['tabular-nums'] }}>{time}</Styled.TextNumber>
         <TouchableOpacity onPress={toggle}>
           <Styled.IconWrapper>
             {isActive ? (

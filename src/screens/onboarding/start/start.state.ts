@@ -28,7 +28,10 @@ export const useStart = () => {
       await updateUser(uid, defaultProperties, dispatch);
     };
 
-    uid && setDefaultUserProperties();
+    uid &&
+      setTimeout(() => {
+        setDefaultUserProperties();
+      }, 1000);
   }, [uid]);
 
   useEffect(() => {

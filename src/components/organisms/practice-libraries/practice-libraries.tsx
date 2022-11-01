@@ -49,6 +49,7 @@ export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
         showsHorizontalScrollIndicator={false}
         numColumns={1}
         horizontal
+        style={{ minHeight: 171 }}
         onEndReachedThreshold={0.1}
         onMomentumScrollBegin={onMomentumScrollBegin}
         onEndReached={onEndReached}

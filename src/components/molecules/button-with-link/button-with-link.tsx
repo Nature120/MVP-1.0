@@ -38,7 +38,7 @@ export const ButtonWithLink: React.FC<IButtonWithLinkProps> = props => {
       <Styled.SubButton>
         {bottomText && <Styled.SubButtonText>{bottomText}</Styled.SubButtonText>}
 
-        <TouchableOpacity onPress={onPressBottomButton()}>
+        <TouchableOpacity onPress={onPressBottomButton()} hitSlop={{ top: 10, bottom: 10, left: 15, right: 15 }}>
           <Styled.TouchableText isBottomText={!!bottomText}>{routeText}</Styled.TouchableText>
         </TouchableOpacity>
       </Styled.SubButton>

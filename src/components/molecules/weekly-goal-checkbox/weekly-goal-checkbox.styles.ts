@@ -49,6 +49,7 @@ export const StyledWeeklyGoalCheckbox = {
     line-height: 20px;
     letter-spacing: 3px;
     max-width: 181px;
+    margin-top: 3px;
     color: ${props => getCheckedColor(props.isChecked)};
   `,
 };
