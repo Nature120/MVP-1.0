@@ -21,14 +21,9 @@ export const AgreeTermsOfServices: React.FC = () => {
   const [isFirstLaunchApp, setIsFirstLaunchApp] = useState(!isDefaultValueExists);
   const [isAllowRenderPage, setIsAllowRenderPage] = useState(!isDefaultValueExists);
 
-  console.log('🛑 ~ isFirstLaunchApp INITIAL', isFirstLaunchApp);
-  console.log('🛑 ~ isDefaultValueExists', isDefaultValueExists);
-
   useEffect(() => {
     setTimeout(() => {
-      console.log('🛑 ~ CONDITION', isDefaultValueExists && !isFirstLaunchApp);
       if (isDefaultValueExists && !isFirstLaunchApp) {
-        console.log('🛑 NAVIGATE');
         return navigate(APP_ROUTES.dashboard as never);
       }
       setIsAllowRenderPage(true);

@@ -4,6 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { getWeek } from 'date-fns';
 
+import { getUser, updateUser } from '@services/api.service';
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch } from '@services/hooks/redux';
 import { notificationsAPI } from '@services/notifications.api';
@@ -23,7 +24,7 @@ export const useHome = () => {
   const dispatch = useAppDispatch();
   const firstLaunch = useSelector(getFirstLaunch);
   const finishedPractices = useSelector(getFisishedPractices);
-  const getCurrentWeek = getWeek(new Date());
+  const currentWeek = getWeek(new Date());
 
   const startDate = useSelector(selector.getStartDate);
   const secondsTimer = useSelector(selector.getSeconds);
@@ -36,6 +37,26 @@ export const useHome = () => {
     dispatch(setCommentBeforeImmersion(response));
     navigateToImmersions();
   };
+
+  useEffect(() => {
+    const clearUserProgress = async () => {
+      const userInfo = await getUser(user.uid);
+      const lastEnterAt = userInfo?.lastEnterAt as unknown as { seconds: number };
+      if (!lastEnterAt) {
+        return;
+      }
+
+      const normalizeDate = new Date(lastEnterAt.seconds * 1000);
+      const lastEnterAtWeek = getWeek(normalizeDate);
+
+      if (lastEnterAtWeek !== currentWeek) {
+        await updateUser(user.uid, { goal: 0 }, dispatch);
+      }
+      await updateUser(user.uid, { lastEnterAt: new Date() });
+    };
+
+    clearUserProgress();
+  }, []);
 
   useEffect(() => {
     if (!firstLaunch) {
@@ -78,9 +99,9 @@ export const useHome = () => {
   };
 
   const removeLastWeekPractices = () => {
-    const isfinishedPracticesEmpty = finishedPractices?.length === 0;
+    const isFinishedPracticesEmpty = finishedPractices?.length === 0;
 
-    if (!finishedPractices || isfinishedPracticesEmpty) {
+    if (!finishedPractices || isFinishedPracticesEmpty) {
       return;
     }
 
@@ -89,7 +110,7 @@ export const useHome = () => {
       const normalizeDate = new Date(validNumberDate);
       const fireBaseDate = firestore.Timestamp.fromDate(normalizeDate);
       const getPracticeWeek = getWeek(normalizeDate);
-      const isValidPractice = getCurrentWeek === getPracticeWeek;
+      const isValidPractice = currentWeek === getPracticeWeek;
       if (isValidPractice) {
         return [...prevPractices, { title: practice.title, created_at: fireBaseDate }];
       }

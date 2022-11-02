@@ -26,6 +26,7 @@ export interface IUser {
   finishedPractices: Array<IFinishedPractices>;
   goal?: number;
   timeForImmersion?: Date;
+  lastEnterAt?: Date;
   tipOfTheDay?: IUserTipOfTheDay;
   recentPractices: Array<IFinishedPractices>;
 }
