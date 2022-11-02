@@ -1,20 +1,15 @@
 import React from 'react';
+import { View } from 'react-native';
 
 import { Image } from '@components/atoms/image';
-
-import { DEVICE_HEIGHT, DEVICE_WIDTH } from '@services/helpers/device-utils';
-
-import { StyledTimerStats as Styled } from './timer-stats.styles';
+import { Layout } from '@components/molecules/layout';
 
 export const TimerStats: React.FC = () => {
   return (
-    <Styled.TimerStats>
-      <Image
-        source={{ uri: 'https://i.postimg.cc/Kzpx6Qby/Splash-Screen-00.png' }}
-        height={DEVICE_HEIGHT}
-        width={DEVICE_WIDTH}
-        styles={{ top: -50 }}
-      />
-    </Styled.TimerStats>
+    <Layout isWithGradient ellipseColor="light-green">
+      <View style={{ justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+        <Image source={{ uri: 'https://i.postimg.cc/x1rTwsw4/Group-138.png' }} height={273} width={239} />
+      </View>
+    </Layout>
   );
 };
