@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
 import PushNotification from 'react-native-push-notification';
 import { useSelector } from 'react-redux';
-import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import { useNavigation } from '@react-navigation/native';
 
 import { ITextCheckBox } from '@components/molecules/text-checkbox/text-checkbox.typings';
 import { TPeriod } from '@components/organisms/time-picker/time-picker.typings';
 
-import { setNotificationConfig } from './reminder.utils';
 import { updateUser } from '@services/api.service';
 import { isIOS } from '@services/helpers/device-utils';
 import { getMinMaxDate } from '@services/helpers/utils';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
-import { notificationsAPI } from '@services/notifications.api';
+import { notificationsAPI } from '@services/notifications/notifications.api';
 import { setNotificationsList } from '@services/store/app';
 import { getUid } from '@services/store/auth/auth.selectors';
 
@@ -20,14 +18,19 @@ import { CHANNEL_CONFIG } from '@constants/notifications';
 import { APP_ROUTES } from '@constants/routes';
 import { timeForImmersionVariants } from '@screens/onboarding/onboarding.constants';
 
-export const useReminder = () => {
+interface IUseReminderProps {
+  isOnboarding: boolean;
+}
+
+export const useReminder = ({ isOnboarding }: IUseReminderProps) => {
   const { navigate } = useNavigation();
+
   const [selectedPeriod, setSelectedPeriod] = useState<string>('');
   const [selectedCheckbox, setSelectedCheckbox] = useState<ITextCheckBox>();
   const [isChannelCreated, setIsChannelCreated] = useState(false);
   const [timeForImmersion, setTimeForImmersion] = useState<Date>();
   const uid = useSelector(getUid);
-  const { notificationsList } = useAppSelector(s => s.app);
+  const { notificationsList } = useAppSelector(store => store.app);
   const dispatch = useAppDispatch();
 
   // get notifications
@@ -37,7 +40,9 @@ export const useReminder = () => {
       dispatch(setNotificationsList(notifications));
     };
 
-    getNotifications();
+    if (!notificationsList.length) {
+      getNotifications();
+    }
   }, []);
 
   useEffect(() => {
@@ -63,21 +68,13 @@ export const useReminder = () => {
     await updateUser(uid, { timeForImmersion }, dispatch);
 
     if (isIOS) {
-      await PushNotificationIOS.requestPermissions({
-        alert: true,
-        badge: true,
-        sound: true,
-        lockScreen: true,
-      });
+      await notificationsAPI.requestPermissionsIOS();
     }
 
     !isChannelCreated && createNotificationsChannel();
-    PushNotification.cancelAllLocalNotifications();
-
-    const config = setNotificationConfig(timeForImmersion!, notificationsList);
-    PushNotification.localNotificationSchedule(config);
-
-    navigate(APP_ROUTES.dashboard as never);
+    notificationsAPI.applyNotifications(timeForImmersion!, notificationsList);
+    navigate(isOnboarding ? (APP_ROUTES.drawer as never) : (APP_ROUTES.dashboard as never));
+    !isOnboarding && clearState();
   };
 
   const onChangeTime = (newTime: string) => {

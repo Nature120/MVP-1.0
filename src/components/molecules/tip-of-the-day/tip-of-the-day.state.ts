@@ -10,18 +10,20 @@ import { ITipOfTheDay } from '@typings/common';
 
 export const useTipOfTheDay = (userTipOfTheDay?: IUserTipOfTheDay) => {
   const [tipOfTheDayState, setTipOfTheDayState] = useState<ITipOfTheDay>();
+
   const { uid } = useSelector(getUserInfo);
 
   const getTipFromDatabase = async (tipIndex: number) => {
     const response = await databaseRef('Other text').doc('Tip of the day').get();
     const allTips = response.data()!.data as ITipOfTheDay[];
-    const tip = allTips[tipIndex];
+    const currentTipIndex = tipIndex >= allTips.length ? 0 : tipIndex;
+    const tip = allTips[currentTipIndex];
     setTipOfTheDayState(tip);
 
     const tipOfTheDay = {
       timestamp: new Date(new Date().setHours(0, 0, 0, 0)).getTime(),
       tip,
-      tipIndex,
+      tipIndex: currentTipIndex,
     };
 
     await updateUser(uid, { tipOfTheDay });

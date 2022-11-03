@@ -25,9 +25,7 @@ export const Main = () => {
   }, []);
 
   const handleHideSpashScreen = () => {
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 1000);
+    SplashScreen.hide();
   };
 
   return (

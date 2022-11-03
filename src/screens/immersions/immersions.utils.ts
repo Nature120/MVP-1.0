@@ -1,4 +1,4 @@
-import { getUniqueArray } from '@services/helpers/get-unique-array';
+import { getUniqueArray } from '@services/helpers/array.utils';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
 
 import { IPracticeLibrary } from '@typings/common';
