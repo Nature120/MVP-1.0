@@ -7,8 +7,8 @@ import { getWeek } from 'date-fns';
 import { getUser, updateUser } from '@services/api.service';
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
-import { notificationsAPI } from '@services/notifications.api';
-import { setCommentBeforeImmersion, setIsFirstLaunchApp, setNotificationsList } from '@services/store/app';
+import { notificationsAPI } from '@services/notifications/notifications.api';
+import { setCommentBeforeImmersion, setIsFirstLaunchApp } from '@services/store/app';
 import { filterExpiredPractices } from '@services/store/auth/auth.actions';
 import { getFisishedPractices, getUserInfo } from '@services/store/auth/auth.selectors';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
@@ -22,7 +22,7 @@ export const useHome = () => {
   const { weeklyGoal } = useGoal();
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const { isFirstLaunchApp } = useAppSelector(store => store.app);
+  const { isFirstLaunchApp, notificationsList } = useAppSelector(store => store.app);
   const finishedPractices = useSelector(getFisishedPractices);
   const currentWeek = getWeek(new Date());
 
@@ -67,12 +67,14 @@ export const useHome = () => {
 
   // sync notifications
   useEffect(() => {
-    const getNotifications = async () => {
-      const notificationsList = await notificationsAPI.getAll();
-      dispatch(setNotificationsList(notificationsList));
+    const syncNotifications = async () => {
+      await notificationsAPI.syncNotifications(user.uid, notificationsList, user.timeForImmersion!, dispatch);
     };
 
-    getNotifications();
+    if (!user.timeForImmersion) {
+      return;
+    }
+    syncNotifications();
   }, []);
 
   ////If we have startDate or Seconds redirect to timer///

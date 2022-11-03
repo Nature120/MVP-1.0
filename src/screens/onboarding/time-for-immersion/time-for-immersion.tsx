@@ -17,7 +17,7 @@ import { StyledTimeForImmersion as Styled } from './time-for-immersion.styles';
 
 export const TimeForImmersion: React.FC = () => {
   const { selectedCheckbox, onPress, selectedPeriod, timeForImmersion, setTimeForImmersion, onChangeTime } =
-    useReminder();
+    useReminder({ isOnboarding: true });
 
   return (
     <Layout ellipseColor="green" isWithGradient isWithScroll>

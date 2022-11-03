@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { isToday } from 'date-fns';
 
 import { databaseRef, updateUser } from '@services/api.service';
-import { getUniqueArray } from '@services/helpers/get-unique-array';
+import { getUniqueArray } from '@services/helpers/array.utils';
 import { useGoal } from '@services/hooks/goal';
 import { useParam } from '@services/hooks/param';
 import { useAppDispatch } from '@services/hooks/redux';

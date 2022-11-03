@@ -25,7 +25,7 @@ export const Notifications: React.FC = () => {
     setTimeForImmersion,
     onChangeTime,
     onPressGoBack,
-  } = useReminder();
+  } = useReminder({ isOnboarding: false });
 
   return (
     <Layout>

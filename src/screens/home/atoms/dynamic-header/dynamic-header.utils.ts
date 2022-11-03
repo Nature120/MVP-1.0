@@ -14,14 +14,14 @@ export const getHeader = (goal: number, weeklyGoal: number) => {
 
   const currentWeekDay = format(new Date(), 'EEEE');
   switch (currentWeekDay) {
+    case 'Thursday':
+      return DYNAMIC_HEADER_TEXTS[goalPercent < 50 ? 'thursdayAndLessThan50' : 'thursdayAndMoreThan50'];
+
     case 'Friday':
       return DYNAMIC_HEADER_TEXTS[goalPercent < 50 ? 'fridayAndLessThan50' : 'fridayAndMoreThan50'];
 
     case 'Saturday':
       return DYNAMIC_HEADER_TEXTS[goalPercent < 50 ? 'saturdayAndLessThan50' : 'saturdayAndMoreThan50'];
-
-    case 'Sunday':
-      return DYNAMIC_HEADER_TEXTS[goalPercent < 50 ? 'sundayAndLessThan50' : 'sundayAndMoreThan50'];
 
     default:
       return DYNAMIC_HEADER_TEXTS.default;
