@@ -4,7 +4,6 @@ import { IFinishedPractices, IUser } from './auth.typings';
 import { IPracticeLibrary } from '@typings/common';
 
 export const signIn = createAction<IUser>('auth/signIn');
-export const isFirstLaunch = createAction<boolean>('auth/isFirstLaunch');
 export const partialUpdateUser = createAction<Partial<IUser>>('auth/partialUpdateUser');
 export const isAuthenticated = createAction<boolean>('auth/isAuthenticated');
 export const signOut = createAction<null>('auth/signOut');

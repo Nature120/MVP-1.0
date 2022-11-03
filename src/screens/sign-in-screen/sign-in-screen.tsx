@@ -5,14 +5,14 @@ import { Loader } from '@components/atoms/loader/loader';
 import { BackButton } from '@components/molecules/back-button';
 import { SignInForm } from '@components/organisms/sign-in-form/sign-in-form';
 import { SocialButtonGroup } from '@components/organisms/social-button-group/social-button-group';
-import { useSigninState } from './sign-in-screen.state';
+import { useSignInState } from './sign-in-screen.state';
 
 import { isIOS } from '@services/helpers/device-utils';
 
 import { SignInScreenStyles as Styled } from './sign-in-screen.styles';
 
 export const SignInScreen = () => {
-  const { onPressSignUp, onGoogleButtonPress, onFacebookButtonPress, isLoading, onAppleButtonPress } = useSigninState();
+  const { onPressSignUp, onGoogleButtonPress, onFacebookButtonPress, isLoading, onAppleButtonPress } = useSignInState();
 
   const screenLayout = () => (
     <Styled.Wrapper showsVerticalScrollIndicator={false}>
@@ -36,7 +36,7 @@ export const SignInScreen = () => {
         <SocialButtonGroup
           onGoogleButtonPress={onGoogleButtonPress}
           onFacebookButtonPress={onFacebookButtonPress}
-          onAppleButtonPress={onAppleButtonPress} ///Fix
+          onAppleButtonPress={onAppleButtonPress}
         />
       </Styled.InnerWrapper>
     </Styled.Wrapper>

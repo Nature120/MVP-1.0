@@ -17,15 +17,15 @@ export const SocialButtonGroup: React.FC<IProp> = ({
 }) => {
   return (
     <>
+      <Styled.AppleButtonWrapper>
+        <SocialAuthButton icon="apple" labelText="Apple" handleAuth={onAppleButtonPress} fill={'darkBlue'} />
+      </Styled.AppleButtonWrapper>
       <Styled.GoogleButtonWrapper>
         <SocialAuthButton icon="google" labelText="Google" handleAuth={onGoogleButtonPress} />
       </Styled.GoogleButtonWrapper>
       <Styled.FaceBookButtonWrapper>
         <SocialAuthButton icon="facebook" labelText="Facebook" handleAuth={onFacebookButtonPress} />
       </Styled.FaceBookButtonWrapper>
-      <Styled.AppleButtonWrapper>
-        <SocialAuthButton icon="apple" labelText="Apple" handleAuth={onAppleButtonPress} fill={'darkBlue'} />
-      </Styled.AppleButtonWrapper>
     </>
   );
 };

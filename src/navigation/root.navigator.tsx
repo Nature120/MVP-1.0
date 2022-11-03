@@ -17,39 +17,37 @@ import { useNavigationSate } from './navigation.state';
 import { ON_BOARD_ROUTES } from './navigation.constants';
 import { APP_ROUTES } from '@constants/routes';
 
+import { TScreenOptions } from '@typings/common';
+
 const StartStack = createStackNavigator();
 
 export const RootNavigator = () => {
-  const { isFirstLaunch, isAuth, isInitializing } = useNavigationSate();
+  const { isFirstLaunchApp, isAuth, isInitializing } = useNavigationSate();
 
-  const mainRoutes = () =>
-    isFirstLaunch ? (
-      <>
-        <StartStack.Screen
-          name={APP_ROUTES.agreeTermsOfServices}
-          options={disabledGestures}
-          component={AgreeTermsOfServices}
-        />
-        <StartStack.Screen name={APP_ROUTES.TermsOfServices} component={TermsOfServices} />
-        {ON_BOARD_ROUTES.map(({ component, name }) => (
-          <StartStack.Screen key={name} name={name} component={component} />
-        ))}
-        <StartStack.Screen name={APP_ROUTES.dashboard} component={BottomTabNavigator} options={disabledGestures} />
-        <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} options={disabledGestures} />
-        <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
-        <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />
-      </>
-    ) : (
-      <>
-        <StartStack.Screen name={APP_ROUTES.drawer} component={DrawerNavigator} options={noHeaderOptions} />
-        <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} options={disabledGestures} />
-        <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
-        <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />
-      </>
-    );
+  const mainRoutes = () => (
+    <>
+      <StartStack.Screen
+        name={APP_ROUTES.agreeTermsOfServices}
+        options={disabledGestures}
+        component={AgreeTermsOfServices}
+      />
+      <StartStack.Screen name={APP_ROUTES.TermsOfServices} component={TermsOfServices} />
+      {ON_BOARD_ROUTES.map(({ component, name }) => (
+        <StartStack.Screen key={name} name={name} component={component} />
+      ))}
+      <StartStack.Screen
+        name={APP_ROUTES.drawer}
+        component={DrawerNavigator}
+        options={{ ...noHeaderOptions, ...disabledGestures } as TScreenOptions}
+      />
+      <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} options={disabledGestures} />
+      <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
+      <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />
+    </>
+  );
 
   const initialRoutes = () =>
-    isFirstLaunch ? (
+    isFirstLaunchApp ? (
       <>
         <StartStack.Screen name={APP_ROUTES.start.splash} component={Splash} />
         <StartStack.Screen name={APP_ROUTES.start.signIn} component={SignInScreen} />

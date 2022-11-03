@@ -1,47 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 
 import { OnboardingText } from '@components/atoms/onboarding-text/onboarding-text';
 import { ButtonOnboarding } from '@components/molecules/button-onboarding';
 import { Layout } from '@components/molecules/layout';
+import { useAgreeTermsOfServices } from './agree-terms-of-services.state';
 import { CheckBox } from './molecules/check-box';
-
-import { getUserInfo } from '@services/store/auth/auth.selectors';
-
-import { APP_ROUTES } from '@constants/routes';
 
 import { StyledAgreeTermsOfServices as Styled } from './agree-terms-of-services.styles';
 
 export const AgreeTermsOfServices: React.FC = () => {
-  const { navigate } = useNavigation();
-  const [isCheckBoxActive, setIsCheckBoxActive] = useState(false);
-
-  const isDefaultValueExists = !!useSelector(getUserInfo).dailyGoal;
-  const [isFirstLaunchApp, setIsFirstLaunchApp] = useState(!isDefaultValueExists);
-  const [isAllowRenderPage, setIsAllowRenderPage] = useState(!isDefaultValueExists);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (isDefaultValueExists && !isFirstLaunchApp) {
-        return navigate(APP_ROUTES.dashboard as never);
-      }
-      setIsAllowRenderPage(true);
-    }, 0);
-  }, [isDefaultValueExists, navigate, isFirstLaunchApp]);
-
-  const navigateToTermsOfServices = () => {
-    navigate(APP_ROUTES.TermsOfServices as never);
-  };
-
-  const toggleCheckBox = () => {
-    setIsCheckBoxActive(!isCheckBoxActive);
-  };
-
-  const navigateToOnboarging = () => {
-    setIsFirstLaunchApp(true);
-    navigate(APP_ROUTES.start.onBoard as never);
-  };
+  const { isAllowRenderPage, isCheckBoxActive, toggleCheckBox, navigateToTermsOfServices, navigateToOnboarding } =
+    useAgreeTermsOfServices();
 
   if (!isAllowRenderPage) {
     return null;
@@ -63,7 +32,7 @@ export const AgreeTermsOfServices: React.FC = () => {
           </Styled.OnboardingCard>
         </Styled.Card>
       </Styled.Wrapper>
-      <ButtonOnboarding buttonText="continue" onPress={navigateToOnboarging} isDisabled={!isCheckBoxActive} />
+      <ButtonOnboarding buttonText="continue" onPress={navigateToOnboarding} isDisabled={!isCheckBoxActive} />
     </Layout>
   );
 };

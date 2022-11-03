@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import auth from '@react-native-firebase/auth';
 
 import { getUser } from '@services/api.service';
+import { useAppSelector } from '@services/hooks/redux';
 import { isAuthenticated, loading, signIn } from '@services/store/auth/auth.actions';
-import { getAuthentication, getFirstLaunch } from '@services/store/auth/auth.selectors';
+import { getAuthentication } from '@services/store/auth/auth.selectors';
 
 import { TFirebaseUser } from '@typings/common';
 
 export const useNavigationSate = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(getAuthentication);
-  const isFirstLaunch = useSelector(getFirstLaunch);
+  const { isFirstLaunchApp } = useAppSelector(store => store.app);
   const [isInitializing, setIsInitializing] = useState(true);
 
   useEffect(() => {
@@ -54,5 +55,5 @@ export const useNavigationSate = () => {
     dispatch(loading(false));
   };
 
-  return { isFirstLaunch, isAuth, isInitializing };
+  return { isFirstLaunchApp, isAuth, isInitializing };
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import { DynamicHeader } from '@screens/home/atoms/dynamic-header';
 import { Button } from '@components/atoms/button';
