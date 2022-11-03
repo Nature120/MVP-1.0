@@ -30,10 +30,6 @@ const isAuthenticated = createReducer(false, {
   [action.signOut.type]: () => false,
 });
 
-const isFirstLaunchApp = createReducer(true, {
-  [action.isFirstLaunch.type]: (_, { payload }) => payload,
-});
-
 const isLoading = createReducer(false, {
   [action.loading.type]: (_, { payload }) => payload,
 });
@@ -46,7 +42,6 @@ export default combineReducers({
   user,
   latestLibrary,
   isAuthenticated,
-  isFirstLaunchApp,
   isLoading,
   isDisturb,
 });

@@ -8,7 +8,6 @@ export interface IButtonWithLinkProps extends IButtonProps, IStyledButtonWithLin
   onTextPressNavigateTo?: string;
   onButtonPressNavigateTo?: string;
   onTextPress?: (event: GestureResponderEvent) => void;
-  isFirstLaunch?: boolean;
 }
 
 export interface IStyledButtonWithLinkProps {

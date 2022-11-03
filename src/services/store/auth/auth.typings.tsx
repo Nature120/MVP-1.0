@@ -12,7 +12,6 @@ interface IAuth {
   latestLibrary: IPracticeLibrary;
   error: string | null;
   isAuthenticated: boolean;
-  isFirstLaunchApp: boolean;
   isLoading: boolean;
   isDisturb: boolean;
 }

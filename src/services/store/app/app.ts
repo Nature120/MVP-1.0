@@ -11,9 +11,12 @@ export const appSlice = createSlice({
     setNotificationsList: (state, action: PayloadAction<string[]>) => {
       state.notificationsList = action.payload;
     },
+    setIsFirstLaunchApp: (state, action: PayloadAction<boolean>) => {
+      state.isFirstLaunchApp = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = appSlice;
-export const { setCommentBeforeImmersion, setNotificationsList } = actions;
+export const { setCommentBeforeImmersion, setNotificationsList, setIsFirstLaunchApp } = actions;
 export { reducer as appReducer };

@@ -14,6 +14,7 @@ import { SignUpScreenStyles as Styled } from './sign-up-screen.styles';
 
 export const SignUpScreen = () => {
   const { onPressLogIn, onGoogleButtonPress, onFacebookButtonPress, onAppleButtonPress, isLoading } = useSignUpState();
+
   const screenLayout = () => (
     <Layout bgColor="beigeLight" isWithScroll={isIOS}>
       <Styled.Wrapper>
@@ -34,10 +35,11 @@ export const SignUpScreen = () => {
               </Styled.LogInBtn>
             </Styled.LogInWrapper>
           </View>
+
           <SocialButtonGroup
             onGoogleButtonPress={onGoogleButtonPress}
             onFacebookButtonPress={onFacebookButtonPress}
-            onAppleButtonPress={onAppleButtonPress} ///Fix
+            onAppleButtonPress={onAppleButtonPress}
           />
         </Styled.InnerWrapper>
       </Styled.Wrapper>

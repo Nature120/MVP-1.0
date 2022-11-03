@@ -10,12 +10,12 @@ interface IStoreDB {
   response: TFirebaseUserCredentials | void;
 }
 
+type TData = { email: string | null; first_name?: string };
+
 interface ISaveInDB {
   data: TData;
   uid: string;
 }
-
-type TData = { email: string | null; first_name?: string };
 
 export const storeInDB = async ({ response, first_name: registerFirstName }: IStoreDB) => {
   if (response === undefined) {
@@ -23,8 +23,7 @@ export const storeInDB = async ({ response, first_name: registerFirstName }: ISt
   }
   const { displayName, email, uid } = response.user;
   const user = await firestore().collection('Users').doc(uid).get();
-  const isExistUser = user.exists === true;
-  if (isExistUser) {
+  if (user.exists) {
     await AsyncStorage.setItem('isFirstLaunchNature120', 'false');
     return;
   }

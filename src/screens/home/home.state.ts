@@ -6,11 +6,11 @@ import { getWeek } from 'date-fns';
 
 import { getUser, updateUser } from '@services/api.service';
 import { useGoal } from '@services/hooks/goal';
-import { useAppDispatch } from '@services/hooks/redux';
+import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { notificationsAPI } from '@services/notifications.api';
-import { setCommentBeforeImmersion, setNotificationsList } from '@services/store/app';
-import { filterExpiredPractices, isFirstLaunch } from '@services/store/auth/auth.actions';
-import { getFirstLaunch, getFisishedPractices, getUserInfo } from '@services/store/auth/auth.selectors';
+import { setCommentBeforeImmersion, setIsFirstLaunchApp, setNotificationsList } from '@services/store/app';
+import { filterExpiredPractices } from '@services/store/auth/auth.actions';
+import { getFisishedPractices, getUserInfo } from '@services/store/auth/auth.selectors';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
 import * as selector from '@services/store/timer/timer.selectors';
 
@@ -22,7 +22,7 @@ export const useHome = () => {
   const { weeklyGoal } = useGoal();
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const firstLaunch = useSelector(getFirstLaunch);
+  const { isFirstLaunchApp } = useAppSelector(store => store.app);
   const finishedPractices = useSelector(getFisishedPractices);
   const currentWeek = getWeek(new Date());
 
@@ -59,10 +59,10 @@ export const useHome = () => {
   }, []);
 
   useEffect(() => {
-    if (!firstLaunch) {
+    if (!isFirstLaunchApp) {
       return;
     }
-    dispatch(isFirstLaunch(false));
+    dispatch(setIsFirstLaunchApp(false));
   }, []);
 
   // sync notifications

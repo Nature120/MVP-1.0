@@ -11,7 +11,7 @@ export const SocialAuthButton: React.FC<IProp> = ({ labelText, icon, handleAuth,
   return (
     <Styled.ButtonWrapper onPress={handleAuth}>
       <Icon type={icon} width={scale(30)} height={verticalScale(25)} styles={Styled.Icon} colorIcon={fill} />
-      <Styled.Text>Continue with {labelText}</Styled.Text>
+      <Styled.Text>{labelText === 'Apple' ? 'Sign In With Apple' : `Continue with ${labelText}`}</Styled.Text>
     </Styled.ButtonWrapper>
   );
 };

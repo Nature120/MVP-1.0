@@ -1,11 +1,8 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
 
 import LoginFunctions from '@services/helpers/auth-social';
 import { storeInDB } from '@services/helpers/firebase-store';
-import { isFirstLaunch } from '@services/store/auth/auth.actions';
 
 import { IRegister, IValue } from './sign-up-form.typings';
 import { IError } from '@typings/common';
@@ -13,7 +10,6 @@ import { IError } from '@typings/common';
 export const useSignUpState = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
-  const dispatch = useDispatch();
 
   const onSubmit = async (values: IValue): Promise<void> => {
     const { email, password, first_name } = values;
@@ -23,7 +19,6 @@ export const useSignUpState = () => {
       return;
     }
     await handleRegister({ email, password, first_name });
-    await isFirstLaunchCheck();
   };
 
   const handleRegister = async ({ email, password, first_name }: IRegister): Promise<void> => {
@@ -45,15 +40,6 @@ export const useSignUpState = () => {
 
   const changeVisiblePassword = (): void => {
     setPasswordVisible(!passwordVisible);
-  };
-
-  const isFirstLaunchCheck = async () => {
-    const value = await AsyncStorage.getItem('isFirstLaunchNature120');
-    const isFirstTime = value === 'true';
-    if (isFirstTime) {
-      return dispatch(isFirstLaunch(true));
-    }
-    dispatch(isFirstLaunch(false));
   };
 
   ////Errors

@@ -7,6 +7,7 @@ import { TFirebaseAuthCredentials } from '@typings/common';
 
 interface ISignInOrLink extends ISaveCredential {
   email: string | unknown;
+  iosGivenName?: string;
 }
 
 interface ISaveCredential {
@@ -15,7 +16,7 @@ interface ISaveCredential {
 }
 
 const LoginFunctions = {
-  signInOrLink: async function ({ provider, credential, email }: ISignInOrLink) {
+  signInOrLink: async function ({ provider, credential, email, iosGivenName }: ISignInOrLink) {
     this.saveCredential({ provider, credential });
     const response = await auth()
       .signInWithCredential(credential)
@@ -32,8 +33,9 @@ const LoginFunctions = {
           throw err;
         }
       });
+
     ///Store user in Database///
-    await storeInDB({ response });
+    await storeInDB({ response, first_name: iosGivenName });
   },
 
   getCredential: async function (provider: string) {
@@ -63,6 +65,8 @@ const LoginFunctions = {
         return auth.GoogleAuthProvider;
       case auth.FacebookAuthProvider.PROVIDER_ID:
         return auth.FacebookAuthProvider;
+      case auth.AppleAuthProvider.PROVIDER_ID:
+        return auth.AppleAuthProvider;
       case auth.EmailAuthProvider.PROVIDER_ID:
         return auth.EmailAuthProvider;
       default:

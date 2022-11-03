@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* Nature120Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* Nature120Tests.m */; };
-		111B845A28F86BD7007EA560 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B845928F86BD7007EA560 /* AppDelegate.swift */; };
-		111B84CD28F86EC2007EA560 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B84CC28F86EC2007EA560 /* SceneDelegate.swift */; };
 		118F35B928CB4BB700624F6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 118F35B828CB4BB600624F6E /* GoogleService-Info.plist */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -19,6 +17,7 @@
 		4AA0DCA608C8468881CC848F /* AcuminPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BEFDA97511D24E108932A9C4 /* AcuminPro-Semibold.otf */; };
 		5283FCC1990E4F2692CD7CBA /* NewOrder-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F8AD43EDDD945A386FF16E5 /* NewOrder-Regular.otf */; };
 		7B46030B5D8040328F1E155C /* Boreal-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E09CD002A1B04AF1BA573F91 /* Boreal-LightItalic.otf */; };
+		80A1ECF1291290E000892575 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A1ECF0291290DF00892575 /* File.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8347B9E1B3A641DDA500BE5F /* AcuminPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6ED1939B1E9D490883126DF5 /* AcuminPro-Bold.otf */; };
 		87E15D09CB751836F2487841 /* Pods_Nature120.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B3923750B81EE25FCF861C /* Pods_Nature120.framework */; };
@@ -43,10 +42,6 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* Nature120Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Nature120Tests.m; sourceTree = "<group>"; };
 		112F007D28FD8DDD00B91FC6 /* Nature120.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Nature120.entitlements; path = Nature120/Nature120.entitlements; sourceTree = "<group>"; };
-		111B845828F86BD6007EA560 /* Nature120-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nature120-Bridging-Header.h"; sourceTree = "<group>"; };
-		111B845928F86BD7007EA560 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		111B84CC28F86EC2007EA560 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		112FFF9A28FD78D800B91FC6 /* Nature120-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nature120-Bridging-Header.h"; sourceTree = "<group>"; };
 		118F35B828CB4BB600624F6E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Nature120.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nature120.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Nature120/AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +55,8 @@
 		5B7EB9410499542E8C5724F5 /* Pods-Nature120-Nature120Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nature120-Nature120Tests.debug.xcconfig"; path = "Target Support Files/Pods-Nature120-Nature120Tests/Pods-Nature120-Nature120Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6599152968724B23BF646C96 /* AcuminPro-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AcuminPro-Medium.otf"; path = "../src/assets/fonts/AcuminPro-Medium.otf"; sourceTree = "<group>"; };
 		6ED1939B1E9D490883126DF5 /* AcuminPro-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AcuminPro-Bold.otf"; path = "../src/assets/fonts/AcuminPro-Bold.otf"; sourceTree = "<group>"; };
+		80A1ECF0291290DF00892575 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = File.swift; path = ../src/File.swift; sourceTree = "<group>"; };
+		80A1ECF22912A1ED00892575 /* Nature120-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nature120-Bridging-Header.h"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Nature120/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Nature120-Nature120Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nature120-Nature120Tests.release.xcconfig"; path = "Target Support Files/Pods-Nature120-Nature120Tests/Pods-Nature120-Nature120Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9A503208CBC78BE7E75C5AD4 /* Pods-Nature120Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nature120Tests.release.xcconfig"; path = "Target Support Files/Pods-Nature120Tests/Pods-Nature120Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +112,7 @@
 		13B07FAE1A68108700A75B9A /* Nature120 */ = {
 			isa = PBXGroup;
 			children = (
+				80A1ECF0291290DF00892575 /* File.swift */,
 				112F007D28FD8DDD00B91FC6 /* Nature120.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -122,9 +120,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				111B845928F86BD7007EA560 /* AppDelegate.swift */,
-				111B84CC28F86EC2007EA560 /* SceneDelegate.swift */,
-				112FFF9A28FD78D800B91FC6 /* Nature120-Bridging-Header.h */,
+				80A1ECF22912A1ED00892575 /* Nature120-Bridging-Header.h */,
 			);
 			name = Nature120;
 			sourceTree = "<group>";
@@ -489,10 +485,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				111B845A28F86BD7007EA560 /* AppDelegate.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				80A1ECF1291290E000892575 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				111B84CD28F86EC2007EA560 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
