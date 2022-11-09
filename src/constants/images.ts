@@ -1,5 +1,6 @@
 import { Source } from 'react-native-fast-image';
 
+import chartLine from '@assets/images/chart-line.png';
 import ellipseGreen from '@assets/images/ellipse-green.png';
 import ellipseLightGreen from '@assets/images/ellipse-light-green.png';
 import closedEye from '@assets/images/icon/closed-eye.png';
@@ -16,6 +17,7 @@ import wave from '@assets/images/wave.png';
 export const IMAGES = {
   flowers,
   tip,
+  chartLine,
   wave,
   mask,
   lotus,

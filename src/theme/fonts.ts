@@ -8,6 +8,7 @@ export const FONTS = {
   },
   size: {
     small: 10,
+    mediumSmall: 13,
     xSmall: 14,
     xlSmall: 15,
     medium: 16,

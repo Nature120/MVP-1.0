@@ -9,6 +9,7 @@ import { Line } from '@components/atoms/line';
 import { AskModal } from '@components/molecules/ask-modal';
 import { Layout } from '@components/molecules/layout';
 import { TipOfTheDay } from '@components/molecules/tip-of-the-day';
+import { MoodSummary } from '@components/organisms/mood-summary';
 import { PracticeLibrariesPagination } from '@components/organisms/practice-libraries/practice-libraries-pagination';
 import { Rings } from '@components/organisms/rings';
 import { useHome } from './home.state';
@@ -52,7 +53,7 @@ export const Home: React.FC = () => {
           <CenterContainer>{!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={goal} />}</CenterContainer>
 
           <Styled.ButtonWrapper>
-            <Button height={50} buttonText="LET’S GO OUTSIDE" onPress={onToggleOpen} />
+            <Button isWithShadow height={50} buttonText="LET’S GO OUTSIDE" onPress={onToggleOpen} />
           </Styled.ButtonWrapper>
         </Styled.MainSection>
 
@@ -60,8 +61,9 @@ export const Home: React.FC = () => {
           {user.whatBrings && <PracticeLibrariesPagination title="Picked For You" documentId={user.whatBrings} />}
 
           <Styled.InfoSection>
-            <Line marginTop={12} />
+            <MoodSummary />
 
+            <Line marginTop={22} />
             <TipOfTheDay userTipOfTheDay={user.tipOfTheDay} />
           </Styled.InfoSection>
         </Styled.InfoSectionWrapper>

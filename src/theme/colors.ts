@@ -22,6 +22,10 @@ export const COLOR = {
     green: '#6BA184',
     blue: '#9BB5F8',
   },
+  moon: {
+    before: '#9D8BD6',
+    after: '#71D6D6',
+  },
   font: {
     white,
     black,

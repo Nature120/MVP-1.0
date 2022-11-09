@@ -21,6 +21,12 @@ export const StyledButton = {
         background-color: ${props.buttonColor && COLOR.secondary[props.buttonColor]};
       `}
 
+    ${props =>
+      props.isWithShadow &&
+      css`
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+      `}
+
     ${props => props.styles}
   `,
 
