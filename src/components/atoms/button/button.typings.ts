@@ -12,6 +12,7 @@ export interface IButtonProps extends IStyledButtonTextProps {
   activeOpacity?: number;
   styles?: TStyles;
   buttonText?: string;
+  isWithShadow?: boolean;
 }
 
 export interface IStyledButtonTextProps {

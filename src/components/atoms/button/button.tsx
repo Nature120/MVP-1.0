@@ -16,9 +16,11 @@ export const Button: React.FC<IButtonProps> = props => {
     isNotUpper,
     buttonText,
     textStyles,
+    isWithShadow,
   } = props;
   return (
     <Styled.Button
+      isWithShadow={isWithShadow}
       onPress={onPress}
       disabled={isDisabled}
       activeOpacity={activeOpacity}

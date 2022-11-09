@@ -1,3 +1,5 @@
+import { TIconNames } from './icon.typings';
+
 import apple from '@assets/icons/apple_logo.svg';
 import arrowDown from '@assets/icons/arrow-down.svg';
 import arrowLeft from '@assets/icons/arrow-left.svg';
@@ -13,6 +15,11 @@ import home from '@assets/icons/home.svg';
 import human from '@assets/icons/human.svg';
 import logout from '@assets/icons/logout.svg';
 import menu from '@assets/icons/menu.svg';
+import fullMoon from '@assets/icons/moon-phases/full-moon.svg';
+import halfMoon from '@assets/icons/moon-phases/half-moon.svg';
+import newMoon from '@assets/icons/moon-phases/new-moon.svg';
+import waningGibbosMoon from '@assets/icons/moon-phases/waning-gibbos-moon.svg';
+import waxingGibbosMoon from '@assets/icons/moon-phases/waxing-gibbos-moon.svg';
 import mute from '@assets/icons/mute.svg';
 import notifications from '@assets/icons/notifications.svg';
 import onBoardingApple from '@assets/icons/on-boarding-apple.svg';
@@ -56,4 +63,11 @@ export const ICONS = {
   play,
   pause,
   brandIcon,
+  fullMoon,
+  halfMoon,
+  newMoon,
+  waxingGibbosMoon,
+  waningGibbosMoon,
 };
+
+export const MOON_ICONS: TIconNames[] = ['fullMoon', 'waningGibbosMoon', 'halfMoon', 'waxingGibbosMoon', 'newMoon'];
