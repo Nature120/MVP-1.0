@@ -29,6 +29,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     saveResponse,
     navigateToTimer,
     openModalAsk,
+    onConfirmPress,
   } = usePracticeLibraryModal(props);
 
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
@@ -45,6 +46,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           onClose={closeModalAsk}
           onButtonPress={saveResponse}
           onTextPress={navigateToTimer}
+          onConfirmPress={onConfirmPress}
         />
       )}
 

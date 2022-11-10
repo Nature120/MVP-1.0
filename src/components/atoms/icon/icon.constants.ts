@@ -70,4 +70,5 @@ export const ICONS = {
   waningGibbosMoon,
 };
 
-export const MOON_ICONS: TIconNames[] = ['fullMoon', 'waningGibbosMoon', 'halfMoon', 'waxingGibbosMoon', 'newMoon'];
+export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];
+// export const MOON_ICONS: TIconNames[] = ['fullMoon', 'waningGibbosMoon', 'halfMoon', 'waxingGibbosMoon', 'newMoon']; // normal //FIXME

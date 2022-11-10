@@ -8,6 +8,9 @@ export const appSlice = createSlice({
     setCommentBeforeImmersion: (state, action: PayloadAction<string>) => {
       state.commentBeforeImmersion = action.payload;
     },
+    setGradeBeforeImmersion: (state, action: PayloadAction<number | null>) => {
+      state.gradeBeforeImmersion = action.payload;
+    },
     setNotificationsList: (state, action: PayloadAction<string[]>) => {
       state.notificationsList = action.payload;
     },
@@ -18,5 +21,6 @@ export const appSlice = createSlice({
 });
 
 const { actions, reducer } = appSlice;
-export const { setCommentBeforeImmersion, setNotificationsList, setIsFirstLaunchApp } = actions;
+export const { setCommentBeforeImmersion, setNotificationsList, setIsFirstLaunchApp, setGradeBeforeImmersion } =
+  actions;
 export { reducer as appReducer };

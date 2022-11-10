@@ -9,11 +9,9 @@ import { useMoodSummary } from './mood-summary.state';
 
 import { MAX_PAGES_COUNT } from './moods-summary.constants';
 
-import { IMoodSummaryProps } from './mood-summary.typings';
-
 import { StyledMoodSummary as Styled } from './mood-summary.styles';
 
-export const MoodSummary: React.FC<IMoodSummaryProps> = props => {
+export const MoodSummary: React.FC = () => {
   const { moons, getPrevWeek, getNextWeek, currentPage, currentWeekRange } = useMoodSummary();
 
   return (
