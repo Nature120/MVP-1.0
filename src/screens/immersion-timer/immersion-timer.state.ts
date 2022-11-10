@@ -4,14 +4,13 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { secondsToMinutes } from 'date-fns';
 
-import { getLatestLibrary } from './../../services/store/auth/auth.selectors';
-
 import { clearRecentPractices } from './immersion-timer.utils';
 import { databaseRef, updateUser } from '@services/api.service';
 import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
-import { setCommentBeforeImmersion } from '@services/store/app';
+import { setCommentBeforeImmersion, setGradeBeforeImmersion } from '@services/store/app';
 import { addFinishedPractic, addRecentPractice } from '@services/store/auth/auth.actions';
+import { getLatestLibrary } from '@services/store/auth/auth.selectors';
 import { getUserInfo } from '@services/store/auth/auth.selectors';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
 
@@ -22,10 +21,20 @@ export const useImmersionTimer = () => {
   const [seconds, setSeconds] = useState<number>(0);
   const { isOpen: isOpenAskModal, onClose: closeAskModal, onToggle: toggleOpenAskModal } = useOpenCloseModal();
   const { uid } = useSelector(getUserInfo);
-  const { commentBeforeImmersion } = useAppSelector(store => store.app);
+  const { commentBeforeImmersion, gradeBeforeImmersion } = useAppSelector(store => store.app);
   const dispatch = useAppDispatch();
   const library = useSelector(getLatestLibrary);
   const { title } = library;
+
+  const onTextPress = (commentAfterImmersion: string, gradeAfterImmersion: number | null) => {
+    const isAnyValueExists =
+      commentBeforeImmersion || commentAfterImmersion || gradeBeforeImmersion || gradeAfterImmersion;
+
+    if (isAnyValueExists) {
+      return saveResponse(commentAfterImmersion, gradeAfterImmersion);
+    }
+    onModalClose();
+  };
 
   const onModalClose = async () => {
     try {
@@ -43,17 +52,25 @@ export const useImmersionTimer = () => {
     goToNextRoute();
   };
 
-  const saveResponse = async (value: string) => {
-    const commentAfterImmersion = value.trim();
-
+  const saveResponse = async (comment: string, gradeAfterImmersion: number | null) => {
+    const commentAfterImmersion = comment?.trim();
+    const date = new Date().toString();
     const newComment = {
-      before: commentBeforeImmersion,
-      after: commentAfterImmersion,
+      before: {
+        comment: commentBeforeImmersion,
+        grade: gradeBeforeImmersion,
+      },
+      after: {
+        comment: commentAfterImmersion,
+        grade: gradeAfterImmersion,
+      },
       practiceTitle: title,
+      date: new Date().getTime(),
     };
 
-    await databaseRef('Users').doc(uid).collection('comments').doc(new Date().toString()).set(newComment);
+    await databaseRef('Users').doc(uid).collection('comments').doc(date).set(newComment);
     dispatch(setCommentBeforeImmersion(''));
+    dispatch(setGradeBeforeImmersion(null));
 
     await onModalClose();
   };
@@ -78,10 +95,10 @@ export const useImmersionTimer = () => {
   return {
     isOpenAskModal,
     saveResponse,
-    onModalClose,
     library,
     toggleOpenAskModal,
     seconds,
     setSeconds,
+    onTextPress,
   };
 };

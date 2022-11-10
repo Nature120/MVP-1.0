@@ -10,15 +10,16 @@ import { TimerProgressBar } from '@components/organisms/timer-progress-bar/timer
 import { useImmersionTimer } from './immersion-timer.state';
 
 export const ImmersionTimer: React.FC = () => {
-  const { isOpenAskModal, saveResponse, onModalClose, library, toggleOpenAskModal, seconds, setSeconds } =
+  const { isOpenAskModal, saveResponse, library, toggleOpenAskModal, seconds, setSeconds, onTextPress } =
     useImmersionTimer();
+
   return (
-    <Layout isWithGradient ellipseColor="light-green" isWithScroll={true}>
+    <Layout isWithGradient ellipseColor="light-green" isWithScroll>
       <AskModal
         isVisible={isOpenAskModal}
         onClose={toggleOpenAskModal}
         onButtonPress={saveResponse}
-        onTextPress={onModalClose}
+        onTextPress={onTextPress}
       />
 
       <PracticeLibraryCollapsed library={library} />

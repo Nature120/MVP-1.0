@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useAppDispatch } from '@services/hooks/redux';
 import { useSetDefaultTimer } from '@services/hooks/setDefaultTimer';
-import { setCommentBeforeImmersion } from '@services/store/app';
+import { setCommentBeforeImmersion, setGradeBeforeImmersion } from '@services/store/app';
 import * as action from '@services/store/auth/auth.actions';
 
 import { APP_ROUTES } from '@constants/routes';
@@ -21,6 +21,10 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
     const response = value.trim();
     dispatch(setCommentBeforeImmersion(response));
     navigateToTimer();
+  };
+
+  const onConfirmPress = (grade: number) => {
+    dispatch(setGradeBeforeImmersion(grade));
   };
 
   const navigateToTimer = () => {
@@ -48,5 +52,6 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
     saveResponse,
     navigateToTimer,
     openModalAsk,
+    onConfirmPress,
   };
 };

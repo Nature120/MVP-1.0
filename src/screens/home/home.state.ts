@@ -8,7 +8,7 @@ import { getUser, updateUser } from '@services/api.service';
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { notificationsAPI } from '@services/notifications/notifications.api';
-import { setCommentBeforeImmersion, setIsFirstLaunchApp } from '@services/store/app';
+import { setCommentBeforeImmersion, setGradeBeforeImmersion, setIsFirstLaunchApp } from '@services/store/app';
 import { filterExpiredPractices } from '@services/store/auth/auth.actions';
 import { getFisishedPractices, getUserInfo } from '@services/store/auth/auth.selectors';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
@@ -32,10 +32,19 @@ export const useHome = () => {
   const onToggleOpen = () => setIsOpen(prev => !prev);
   const closeModal = () => setIsOpen(false);
 
+  const navigateToImmersions = () => {
+    closeModal();
+    navigate(APP_ROUTES.immersions as never);
+  };
+
   const saveResponse = (value: string) => {
     const response = value.trim();
     dispatch(setCommentBeforeImmersion(response));
     navigateToImmersions();
+  };
+
+  const onConfirmPress = (grade: number) => {
+    dispatch(setGradeBeforeImmersion(grade));
   };
 
   useEffect(() => {
@@ -95,11 +104,6 @@ export const useHome = () => {
     saveFilteredPractices(filteredPractices);
   }, []);
 
-  const navigateToImmersions = () => {
-    closeModal();
-    navigate(APP_ROUTES.immersions as never);
-  };
-
   const removeLastWeekPractices = () => {
     const isFinishedPracticesEmpty = finishedPractices?.length === 0;
 
@@ -139,5 +143,6 @@ export const useHome = () => {
     onToggleOpen,
     saveResponse,
     navigateToImmersions,
+    onConfirmPress,
   };
 };

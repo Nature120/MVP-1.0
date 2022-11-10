@@ -1,53 +1,46 @@
 import { useEffect, useState } from 'react';
-import {
-  eachDayOfInterval,
-  getDay,
-  isSameWeek,
-  isSaturday,
-  isSunday,
-  nextSaturday,
-  previousSaturday,
-  previousSunday,
-} from 'date-fns';
+import { useSelector } from 'react-redux';
+import { nextSaturday, previousSaturday } from 'date-fns';
 
-import { getAverage, getFormattedDateRange } from './mood-summary.utils';
+import { getFormattedDateRange, getThisWeekMoons } from './mood-summary.utils';
+import { commentsAPI } from '@services/comments/comments.api';
+import { ICommentData } from '@services/comments/comments.typings';
+import { getUid } from '@services/store/auth/auth.selectors';
 
-import { INPUT_DATA, MAX_PAGES_COUNT } from './moods-summary.constants';
+import { MAX_PAGES_COUNT } from './moods-summary.constants';
 
-import { IMoonStat, IResponseMoon } from './mood-summary.typings';
+import { IMoonStat } from './mood-summary.typings';
 
 export const useMoodSummary = () => {
-  const [allMoons, setAllMoons] = useState<IResponseMoon[]>();
+  const [allComments, setAllComments] = useState<ICommentData[]>();
   const [moons, setMoons] = useState<IMoonStat[]>();
   const today = new Date();
   const [currentDate, setCurrentDate] = useState(today);
   const [currentPage, setCurrentPage] = useState(MAX_PAGES_COUNT);
   const [currentWeekRange, setCurrentWeekRange] = useState(getFormattedDateRange(today));
+  const uid = useSelector(getUid);
 
-  const getAllMoons = async () => {
-    //TODO request
-    setAllMoons(INPUT_DATA);
-  };
+  useEffect(() => {
+    const subscriber = commentsAPI.getRealTimeCommentsGroupedByDate({
+      uid,
+      weeksCount: MAX_PAGES_COUNT,
+      callback: commentsData => {
+        setAllComments(commentsData);
+      },
+    });
+
+    return () => subscriber();
+  }, []);
 
   const getMoons = (weekDate: Date) => {
-    if (!allMoons?.length) {
+    if (!allComments?.length) {
       return;
     }
 
-    const thisWeekMoons = allMoons.filter(moon => isSameWeek(weekDate, moon.date));
-
-    const result = eachDayOfInterval({
-      start: isSunday(weekDate) ? weekDate : previousSunday(weekDate),
-      end: isSaturday(weekDate) ? weekDate : nextSaturday(weekDate),
-    }).map(date => ({ date })) as IMoonStat[];
-
-    thisWeekMoons.forEach(({ date, ...values }) => {
-      const [before, after] = [getAverage(values?.before || []), getAverage(values?.after || [])];
-      result[getDay(date)] = { date, before, after };
-    });
+    const thisWeekMoons = getThisWeekMoons(allComments, weekDate);
 
     setCurrentDate(weekDate);
-    setMoons(result);
+    setMoons(thisWeekMoons);
   };
 
   const getPrevWeek = () => {
@@ -65,14 +58,10 @@ export const useMoodSummary = () => {
   };
 
   useEffect(() => {
-    getAllMoons();
-  }, []);
-
-  useEffect(() => {
-    if (allMoons?.length) {
+    if (allComments?.length) {
       getMoons(currentDate);
     }
-  }, [allMoons]);
+  }, [allComments]);
 
   return {
     moons,

@@ -8,7 +8,7 @@ import { PracticeLibrary } from './practice-library';
 import { IPracticeLibrariesProps } from './practice-libraries.typings';
 import { IPracticeLibrary } from '@typings/common';
 
-import { StyledPracticeLibraries as Styled } from './practice-libraries.styles';
+import { flatListStyle, StyledPracticeLibraries as Styled } from './practice-libraries.styles';
 
 export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
   const {
@@ -49,7 +49,7 @@ export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
         showsHorizontalScrollIndicator={false}
         numColumns={1}
         horizontal
-        style={{ minHeight: 171 }}
+        style={flatListStyle}
         onEndReachedThreshold={0.1}
         onMomentumScrollBegin={onMomentumScrollBegin}
         onEndReached={onEndReached}
