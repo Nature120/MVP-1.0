@@ -5,7 +5,7 @@ import { databaseRef } from '../api.service';
 import { TDispatch } from '../store';
 
 import { compareArrays } from '../helpers/array.utils';
-import { setNotificationConfigs } from './notifications.utils';
+import { extractTimeForImmersion, setNotificationConfigs } from './notifications.utils';
 import { updateUser } from '@services/api.service';
 import { setNotificationsList } from '@services/store/app';
 
@@ -41,15 +41,15 @@ export const notificationsAPI = {
     notificationsList: string[],
     timeForImmersion: Date,
     dispatch: TDispatch,
+    isWithoutCheck?: boolean,
   ) {
     const allNotifications = await this.getAll();
-    const isWithoutChanges = compareArrays(allNotifications, notificationsList);
+    const isWithoutChanges = isWithoutCheck ? false : compareArrays(allNotifications, notificationsList);
     if (isWithoutChanges) {
       return;
     }
 
-    const reminderDate = timeForImmersion as unknown as { seconds: number };
-    const reminderNormalizedDate = new Date(reminderDate.seconds * 1000);
+    const reminderNormalizedDate = extractTimeForImmersion(timeForImmersion);
 
     const [reminderHours, reminderMinutes] = [reminderNormalizedDate.getHours(), reminderNormalizedDate.getMinutes()];
 

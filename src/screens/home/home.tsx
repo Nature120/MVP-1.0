@@ -14,6 +14,8 @@ import { PracticeLibrariesPagination } from '@components/organisms/practice-libr
 import { Rings } from '@components/organisms/rings';
 import { useHome } from './home.state';
 
+import { getFormattedDateRange } from '@services/helpers/utils';
+
 import { BURGER_MENU_WIDTH, StyledHome as Styled } from './home.styles';
 
 import { COLOR } from '@theme/colors';
@@ -34,6 +36,7 @@ export const Home: React.FC = () => {
   } = useHome();
 
   const goal = user.goal || 0;
+  const thisWeekRange = getFormattedDateRange(new Date(), 'd MMM').toUpperCase();
 
   return (
     <>
@@ -60,7 +63,11 @@ export const Home: React.FC = () => {
           </Styled.Header>
           <DynamicHeader goal={goal} weeklyGoal={weeklyGoal} />
 
-          <CenterContainer>{!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={goal} />}</CenterContainer>
+          <CenterContainer>
+            {!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={goal} />}
+            {/* FIXME */}
+            {/* <Styled.WeekRange>{thisWeekRange}</Styled.WeekRange> */}
+          </CenterContainer>
 
           <Styled.ButtonWrapper>
             <Button isWithShadow height={50} buttonText="LET’S GO OUTSIDE" onPress={onToggleOpen} />

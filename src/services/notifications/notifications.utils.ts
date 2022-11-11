@@ -2,17 +2,17 @@ import { PushNotificationScheduleObject } from 'react-native-push-notification';
 
 import { NOTIFICATION_CHANNEL_ID } from '@constants/notifications';
 
-const COUNT = 60;
+export const NOTIFICATIONS_COUNT = 60;
 
 export const setNotificationConfigs = (date: Date, notificationsList: string[]) => {
-  const schedulingDates = [...Array(COUNT)].map((_, index) => {
+  const schedulingDates = [...Array(NOTIFICATIONS_COUNT)].map((_, index) => {
     if (index === 0) {
       return new Date(date.setDate(date.getDate()));
     }
     return new Date(date.setDate(date.getDate() + 1));
   });
 
-  const configs = [...Array(COUNT)].map((_, index): PushNotificationScheduleObject => {
+  const configs = [...Array(NOTIFICATIONS_COUNT)].map((_, index): PushNotificationScheduleObject => {
     const randomNotificationIndex = Math.floor(Math.random() * notificationsList.length);
     const randomNotification = notificationsList[randomNotificationIndex];
 
@@ -25,4 +25,10 @@ export const setNotificationConfigs = (date: Date, notificationsList: string[]) 
   });
 
   return configs;
+};
+
+export const extractTimeForImmersion = (timeForImmersion: Date) => {
+  const reminderDate = timeForImmersion as unknown as { seconds: number };
+  const reminderNormalizedDate = new Date(reminderDate.seconds * 1000);
+  return reminderNormalizedDate;
 };

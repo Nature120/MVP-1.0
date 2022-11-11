@@ -33,6 +33,18 @@ export const StyledHome = {
     margin: 36px 0;
   `,
 
+  WeekRange: styled.Text`
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    font-family: ${FONTS.family.mediumBoreal};
+    font-weight: ${FONTS.weight.medium};
+    font-size: ${FONTS.size.xSmall}px;
+    text-align: center;
+    color: ${COLOR.subheading};
+  `,
+
   InfoSectionWrapper: styled.View`
     padding-top: 36px;
     padding-bottom: ${isIOS ? 56 + PAGE_PADDING : 71 + PAGE_PADDING}px;

@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { nextSaturday, previousSaturday } from 'date-fns';
 
-import { getFormattedDateRange, getThisWeekMoons } from './mood-summary.utils';
+import { getThisWeekMoons } from './mood-summary.utils';
 import { commentsAPI } from '@services/comments/comments.api';
 import { ICommentData } from '@services/comments/comments.typings';
+import { getFormattedDateRange } from '@services/helpers/utils';
 import { getUid } from '@services/store/auth/auth.selectors';
 
 import { MAX_PAGES_COUNT } from './moods-summary.constants';
@@ -33,13 +34,14 @@ export const useMoodSummary = () => {
   }, []);
 
   const getMoons = (weekDate: Date) => {
+    setCurrentDate(weekDate);
+
     if (!allComments?.length) {
       return;
     }
 
     const thisWeekMoons = getThisWeekMoons(allComments, weekDate);
 
-    setCurrentDate(weekDate);
     setMoons(thisWeekMoons);
   };
 

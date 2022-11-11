@@ -8,6 +8,7 @@ import { getUser, updateUser } from '@services/api.service';
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { notificationsAPI } from '@services/notifications/notifications.api';
+import { NOTIFICATIONS_COUNT } from '@services/notifications/notifications.utils';
 import { setCommentBeforeImmersion, setGradeBeforeImmersion, setIsFirstLaunchApp } from '@services/store/app';
 import { filterExpiredPractices } from '@services/store/auth/auth.actions';
 import { getFisishedPractices, getUserInfo } from '@services/store/auth/auth.selectors';
@@ -77,6 +78,21 @@ export const useHome = () => {
   // sync notifications
   useEffect(() => {
     const syncNotifications = async () => {
+      const maximumDate = new Date();
+      maximumDate.setDate(maximumDate.getDate() + (NOTIFICATIONS_COUNT - 10));
+
+      const today = new Date().getTime();
+      if (today >= maximumDate.getTime()) {
+        // notifications expired
+        return await notificationsAPI.syncNotifications(
+          user.uid,
+          notificationsList,
+          user.timeForImmersion!,
+          dispatch,
+          true,
+        );
+      }
+      //notifications list was changed
       await notificationsAPI.syncNotifications(user.uid, notificationsList, user.timeForImmersion!, dispatch);
     };
 
