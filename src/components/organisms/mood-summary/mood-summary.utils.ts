@@ -1,28 +1,10 @@
-import {
-  eachDayOfInterval,
-  endOfWeek,
-  format,
-  getDay,
-  isSameWeek,
-  isSaturday,
-  isSunday,
-  nextSaturday,
-  previousSunday,
-  startOfWeek,
-} from 'date-fns';
+import { eachDayOfInterval, getDay, isSameWeek, isSaturday, isSunday, nextSaturday, previousSunday } from 'date-fns';
 
 import { ICommentData } from '@services/comments/comments.typings';
 
 import { IMoonStat } from './mood-summary.typings';
 
 export const getAverage = (array: number[]) => Math.round(array.reduce((a, b) => a + b, 0) / array.length);
-
-export const getFormattedDateRange = (weekDate: Date) => {
-  const start = format(startOfWeek(weekDate), 'dd/MM');
-  const end = format(endOfWeek(weekDate), 'dd/MM');
-
-  return `${start} - ${end}`;
-};
 
 export const getThisWeekMoons = (allComments: ICommentData[], weekDate: Date) => {
   const thisWeekMoons = allComments.filter(moon => isSameWeek(weekDate, moon.date));
