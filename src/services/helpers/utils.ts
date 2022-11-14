@@ -15,7 +15,7 @@ export const getMinMaxDate = (period: TPeriod) => {
   };
 };
 
-export const getFormattedDateRange = (weekDate: Date, dateFormat = 'dd/MM') => {
+export const getFormattedDateRange = (weekDate: Date, dateFormat = 'MMM d') => {
   const start = format(startOfWeek(weekDate), dateFormat);
   const end = format(endOfWeek(weekDate), dateFormat);
 

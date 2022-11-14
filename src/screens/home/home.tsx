@@ -36,7 +36,7 @@ export const Home: React.FC = () => {
   } = useHome();
 
   const goal = user.goal || 0;
-  const thisWeekRange = getFormattedDateRange(new Date(), 'd MMM').toUpperCase();
+  const thisWeekRange = getFormattedDateRange(new Date());
 
   return (
     <>
@@ -61,13 +61,10 @@ export const Home: React.FC = () => {
               <Icon width={BURGER_MENU_WIDTH} height={25} type="menu" colorIcon="cloudyGreen" />
             </TouchableOpacity>
           </Styled.Header>
+          <Styled.WeekRange>{thisWeekRange}</Styled.WeekRange>
           <DynamicHeader goal={goal} weeklyGoal={weeklyGoal} />
 
-          <CenterContainer>
-            {!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={goal} />}
-            {/* FIXME */}
-            {/* <Styled.WeekRange>{thisWeekRange}</Styled.WeekRange> */}
-          </CenterContainer>
+          <CenterContainer>{!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={goal} />}</CenterContainer>
 
           <Styled.ButtonWrapper>
             <Button isWithShadow height={50} buttonText="LET’S GO OUTSIDE" onPress={onToggleOpen} />
