@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { format } from 'date-fns';
 
 import { DynamicHeader } from '@screens/home/atoms/dynamic-header';
 import { Button } from '@components/atoms/button';
@@ -13,8 +14,6 @@ import { MoodSummary } from '@components/organisms/mood-summary';
 import { PracticeLibrariesPagination } from '@components/organisms/practice-libraries/practice-libraries-pagination';
 import { Rings } from '@components/organisms/rings';
 import { useHome } from './home.state';
-
-import { getFormattedDateRange } from '@services/helpers/utils';
 
 import { BURGER_MENU_WIDTH, StyledHome as Styled } from './home.styles';
 
@@ -36,7 +35,7 @@ export const Home: React.FC = () => {
   } = useHome();
 
   const goal = user.goal || 0;
-  const thisWeekRange = getFormattedDateRange(new Date());
+  const today = format(new Date(), 'MMM d');
 
   return (
     <>
@@ -61,7 +60,7 @@ export const Home: React.FC = () => {
               <Icon width={BURGER_MENU_WIDTH} height={25} type="menu" colorIcon="cloudyGreen" />
             </TouchableOpacity>
           </Styled.Header>
-          <Styled.WeekRange>{thisWeekRange}</Styled.WeekRange>
+          <Styled.WeekRange>{today}</Styled.WeekRange>
           <DynamicHeader goal={goal} weeklyGoal={weeklyGoal} />
 
           <CenterContainer>{!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={goal} />}</CenterContainer>
