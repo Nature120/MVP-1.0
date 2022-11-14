@@ -25,13 +25,14 @@ export const StyledBottomTabBar = {
       shadow-offset: {width: 0, height: 13};
       shadow-opacity: 0.24;
       shadow-radius: 14.86px;
-      elevation: 18;
     `}
   `,
 
   BottomTabBar: styled.View`
     flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
     width: 100%;
   `,
 

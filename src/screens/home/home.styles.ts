@@ -34,15 +34,11 @@ export const StyledHome = {
   `,
 
   WeekRange: styled.Text`
-    position: absolute;
-    right: 0;
-    bottom: 0;
-
     font-family: ${FONTS.family.mediumBoreal};
     font-weight: ${FONTS.weight.medium};
     font-size: ${FONTS.size.xSmall}px;
-    text-align: center;
     color: ${COLOR.subheading};
+    margin-bottom: 16px;
   `,
 
   InfoSectionWrapper: styled.View`

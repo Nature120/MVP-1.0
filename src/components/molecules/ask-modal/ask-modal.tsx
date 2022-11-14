@@ -54,7 +54,6 @@ export const AskModal: React.FC<IAskModalProps> = props => {
         <Styled.TextInput
           value={text}
           onChangeText={setText}
-          autoCorrect={false}
           autoCapitalize="sentences"
           multiline
           placeholder="Add a note..."

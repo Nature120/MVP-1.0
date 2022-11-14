@@ -30,7 +30,6 @@ import pause from '@assets/icons/pause.svg';
 import pencil from '@assets/icons/pencil.svg';
 import play from '@assets/icons/play.svg';
 import practices from '@assets/icons/practices.svg';
-import stats from '@assets/icons/stats.svg';
 import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
 import tip from '@assets/icons/tip.svg';
 
@@ -54,7 +53,6 @@ export const ICONS = {
   home,
   practices,
   community,
-  stats,
   mute,
   cross,
   swipeToEndArrow,
