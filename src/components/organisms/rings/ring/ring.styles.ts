@@ -31,7 +31,6 @@ export const StyledRing = {
     },
   ],
 
-  //TODO refactor after shadow approve
   ShadowEndProgress: (radius: number, theta: TAnimatedNumber): TAnimatedViewProps => [
     commonStyles,
     {
