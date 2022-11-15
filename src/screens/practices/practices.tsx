@@ -16,7 +16,7 @@ export const Practices: React.FC = () => {
 
   return (
     <>
-      {/* isLoading &&  */ <Loader />}
+      {isLoading && <Loader />}
       <Layout
         isWithoutMargin
         isWithScroll
