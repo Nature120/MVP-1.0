@@ -15,6 +15,8 @@ import { PracticeLibrariesPagination } from '@components/organisms/practice-libr
 import { Rings } from '@components/organisms/rings';
 import { useHome } from './home.state';
 
+import { getFormattedDateRange } from '@services/helpers/utils';
+
 import { BURGER_MENU_WIDTH, StyledHome as Styled } from './home.styles';
 
 import { COLOR } from '@theme/colors';
@@ -35,7 +37,7 @@ export const Home: React.FC = () => {
   } = useHome();
 
   const goal = user.goal || 0;
-  const today = format(new Date(), 'MMM d');
+  const weekDateRange = getFormattedDateRange(new Date());
 
   return (
     <>
@@ -60,7 +62,7 @@ export const Home: React.FC = () => {
               <Icon width={BURGER_MENU_WIDTH} height={25} type="menu" colorIcon="cloudyGreen" />
             </TouchableOpacity>
           </Styled.Header>
-          <Styled.WeekRange>{today}</Styled.WeekRange>
+          <Styled.WeekRange>{weekDateRange}</Styled.WeekRange>
           <DynamicHeader goal={goal} weeklyGoal={weeklyGoal} />
 
           <CenterContainer>{!!weeklyGoal && <Rings maxMinutes={weeklyGoal} minutes={goal} />}</CenterContainer>
