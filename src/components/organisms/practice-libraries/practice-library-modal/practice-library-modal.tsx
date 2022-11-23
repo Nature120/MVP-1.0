@@ -22,7 +22,6 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     isOpen,
     isWithoutActions,
     isWithoutAskModal,
-    navigateToHomePage,
     closeModal,
     isOpenAsk,
     closeModalAsk,
@@ -55,17 +54,14 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           <Image source={{ uri: image }} width={DEVICE_WIDTH} height={275} />
 
           <Styled.ImageHeader top={insets.top} isWithoutActions={isWithoutActions}>
-            {!isWithoutActions && (
-              <ButtonIcon
-                isWithBg
-                type="arrowLeft"
-                iconIndent={7}
-                size={36}
-                colorIcon="cloudyGreen"
-                onPress={navigateToHomePage}
-              />
-            )}
-            <ButtonIcon isWithBg type="cross" iconIndent={9} size={36} colorIcon="cloudyGreen" onPress={closeModal} />
+            <ButtonIcon
+              isWithBg
+              type="arrowLeft"
+              iconIndent={7}
+              size={36}
+              colorIcon="cloudyGreen"
+              onPress={closeModal}
+            />
           </Styled.ImageHeader>
 
           {userGoals[0] && (

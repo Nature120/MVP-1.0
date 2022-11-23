@@ -36,16 +36,10 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
     navigate(APP_ROUTES.immersionTimer as never);
   };
 
-  const navigateToHomePage = () => {
-    closeModal();
-    navigate(APP_ROUTES.main.home as never);
-  };
-
   return {
     isOpen,
     isWithoutActions,
     isWithoutAskModal,
-    navigateToHomePage,
     closeModal,
     isOpenAsk,
     closeModalAsk,
