@@ -60,7 +60,10 @@ export interface IPracticeLibrary {
     to: number;
   };
   userGoals: string[];
+  access?: TAccess;
 }
+
+type TAccess = 'free' | 'premium';
 
 export type TScreenOptions =
   | StackNavigationOptions

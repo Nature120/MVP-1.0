@@ -14,6 +14,7 @@ interface IAuth {
   isAuthenticated: boolean;
   isLoading: boolean;
   isDisturb: boolean;
+  subscriptionProducts: any;
 }
 
 export interface IUser {
@@ -28,7 +29,10 @@ export interface IUser {
   lastEnterAt?: Date;
   tipOfTheDay?: IUserTipOfTheDay;
   recentPractices: Array<IFinishedPractices>;
+  subscription?: TSubsctiption;
 }
+
+type TSubsctiption = 'free' | 'monthly' | 'annually';
 
 export interface IFinishedPractices {
   title: string;

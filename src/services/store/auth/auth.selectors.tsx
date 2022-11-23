@@ -9,3 +9,5 @@ export const getLoading = (state: IState) => state.auth.isLoading;
 export const getFisishedPractices = (state: IState) => state.auth.user.finishedPractices;
 export const getIsDisturb = (state: IState) => state.auth.isDisturb;
 export const getLatestLibrary = (state: IState) => state.auth.latestLibrary;
+export const getSubscribtion = (state: IState) => state.auth.user.subscription;
+export const getSubscribeProducts = (state: IState) => state.auth.subscriptionProducts;

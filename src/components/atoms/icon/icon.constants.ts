@@ -13,6 +13,7 @@ import facebook from '@assets/icons/facebook.svg';
 import google from '@assets/icons/google.svg';
 import home from '@assets/icons/home.svg';
 import human from '@assets/icons/human.svg';
+import lock from '@assets/icons/lock.svg';
 import logout from '@assets/icons/logout.svg';
 import menu from '@assets/icons/menu.svg';
 import fullMoon from '@assets/icons/moon-phases/full-moon.svg';
@@ -66,6 +67,7 @@ export const ICONS = {
   newMoon,
   waxingGibbosMoon,
   waningGibbosMoon,
+  lock,
 };
 
 export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];

@@ -24,6 +24,10 @@ const latestLibrary = createReducer([], {
   [action.clearLatestLibrary.type]: () => [],
 });
 
+const subscriptionProducts = createReducer([], {
+  [action.addSubscriptionProducts.type]: (_, { payload }) => payload,
+});
+
 const isAuthenticated = createReducer(false, {
   [action.signIn.type]: () => true,
   [action.isAuthenticated.type]: (_, { payload }) => payload,
@@ -44,4 +48,5 @@ export default combineReducers({
   isAuthenticated,
   isLoading,
   isDisturb,
+  subscriptionProducts,
 });

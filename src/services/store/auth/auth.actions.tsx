@@ -14,3 +14,4 @@ export const filterExpiredPractices = createAction<IFinishedPractices[] | undefi
 export const isDisturb = createAction<boolean>('auth/isDisturb');
 export const addLatestLibrary = createAction<IPracticeLibrary>('auth/addLatestLibrary');
 export const clearLatestLibrary = createAction('auth/clearLatestLibrary');
+export const addSubscriptionProducts = createAction<any>('auth/addSubscriptionProducts');

@@ -293,6 +293,8 @@ dependencies {
 
     implementation project(':react-native-background-timer')
 
+    implementation 'com.revenuecat.purchases:purchases:5.4.0'
+
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
     }
