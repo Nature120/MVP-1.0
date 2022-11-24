@@ -1,17 +1,20 @@
 import React from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
 
 import { Image } from '@components/atoms/image';
 import { Layout } from '@components/molecules/layout';
 
-const style: StyleProp<ViewStyle> = { justifyContent: 'center', alignItems: 'center', height: '100%' };
+import { StyledCommunity as Styled } from './community.styles';
 
 export const Community: React.FC = () => {
   return (
     <Layout isWithGradient ellipseColor="light-green">
-      <View style={style}>
-        <Image source={{ uri: 'https://i.postimg.cc/x1rTwsw4/Group-138.png' }} height={273} width={239} />
-      </View>
+      <Styled.Container>
+        <Image source={{ uri: 'https://i.imgur.com/VGolXJ3.png' }} height={150} width={150} />
+        <Styled.Title>Coming Soon!</Styled.Title>
+        <Styled.Text>
+          We are growing the worlds first {'\n'} truly diverse, global group of nature {'\n'} therapy experts.
+        </Styled.Text>
+      </Styled.Container>
     </Layout>
   );
 };
