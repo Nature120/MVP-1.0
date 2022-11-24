@@ -9,17 +9,18 @@ export const SignInScreenStyles = {
   Container: styled.KeyboardAvoidingView`
     flex: 1;
   `,
-  KeyboardAwareScrollView: styled(KeyboardAwareScrollView)`
+  ScrollView: styled(KeyboardAwareScrollView)`
     flex-grow: 1;
-  `,
-  Wrapper: styled.ScrollView`
     padding-horizontal: 24px;
+    background-color: ${COLOR.background.beigeLight};
+  `,
+  ScrollViewIOS: styled.ScrollView`
     flex-grow: 1;
+    padding-horizontal: 24px;
     background-color: ${COLOR.background.beigeLight};
   `,
   InnerWrapper: styled.View`
     flex: 1;
-    justify-content: space-between;
   `,
   BackButtonWrapper: styled.View`
     width: ${scale(32)}px;
@@ -27,7 +28,6 @@ export const SignInScreenStyles = {
     margin-bottom: ${moderateScale(18)}px;
   `,
   FormWrapper: styled.View`
-    flex: 1;
     margin-bottom: ${moderateScale(16)}px;
   `,
   LogInWrapper: styled.View`

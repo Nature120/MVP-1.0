@@ -6,7 +6,6 @@ import { FONTS } from '@theme/fonts';
 
 export const SocialAuthButtonStyles = {
   ButtonWrapper: styled.TouchableOpacity`
-    flex: 1;
     padding: ${moderateScale(12)}px ${moderateScale(28)}px;
     flex-direction: row;
     align-items: center;

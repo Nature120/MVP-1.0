@@ -9,15 +9,18 @@ export const SignUpScreenStyles = {
   Container: styled.KeyboardAvoidingView`
     flex: 1;
   `,
-  KeyboardAwareScrollView: styled(KeyboardAwareScrollView)`
+  ScrollView: styled(KeyboardAwareScrollView)`
     flex-grow: 1;
+    padding-horizontal: 24px;
+    background-color: ${COLOR.background.beigeLight};
   `,
-  Wrapper: styled.View`
-    flex: 1;
+  ScrollViewIOS: styled.ScrollView`
+    flex-grow: 1;
+    padding-horizontal: 24px;
+    background-color: ${COLOR.background.beigeLight};
   `,
   InnerWrapper: styled.View`
     flex: 1;
-    justify-content: space-between;
   `,
   BackButtonWrapper: styled.View`
     width: ${scale(32)}px;

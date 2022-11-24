@@ -1,6 +1,9 @@
 import React from 'react';
+import { View } from 'react-native';
 
 import { SocialAuthButton } from '@components/molecules/social-auth-button/social-auth-button';
+
+import { isIOS } from '@services/helpers/device-utils';
 
 import { SocialButtonGroupStyles as Styled } from './social-button-group.styles';
 
@@ -16,16 +19,18 @@ export const SocialButtonGroup: React.FC<IProp> = ({
   onAppleButtonPress,
 }) => {
   return (
-    <>
-      <Styled.AppleButtonWrapper>
-        <SocialAuthButton icon="apple" labelText="Apple" handleAuth={onAppleButtonPress} fill={'darkBlue'} />
-      </Styled.AppleButtonWrapper>
+    <View>
+      {isIOS && (
+        <Styled.AppleButtonWrapper>
+          <SocialAuthButton icon="apple" labelText="Apple" handleAuth={onAppleButtonPress} fill={'darkBlue'} />
+        </Styled.AppleButtonWrapper>
+      )}
       <Styled.GoogleButtonWrapper>
         <SocialAuthButton icon="google" labelText="Google" handleAuth={onGoogleButtonPress} />
       </Styled.GoogleButtonWrapper>
       <Styled.FaceBookButtonWrapper>
         <SocialAuthButton icon="facebook" labelText="Facebook" handleAuth={onFacebookButtonPress} />
       </Styled.FaceBookButtonWrapper>
-    </>
+    </View>
   );
 };

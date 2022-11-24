@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { StyleProp, ViewStyle } from 'react-native';
 
 import { Loader } from '@components/atoms/loader/loader';
 import { BackButton } from '@components/molecules/back-button';
@@ -14,32 +14,32 @@ import { SignInScreenStyles as Styled } from './sign-in-screen.styles';
 export const SignInScreen = () => {
   const { onPressSignUp, onGoogleButtonPress, onFacebookButtonPress, isLoading, onAppleButtonPress } = useSignInState();
 
+  const containerWrapper: StyleProp<ViewStyle> = { flexGrow: 1, justifyContent: 'space-between' };
+
   const screenLayout = () => (
-    <Styled.Wrapper showsVerticalScrollIndicator={false}>
+    <>
       <Styled.InnerWrapper>
-        <View>
-          <Styled.BackButtonWrapper>
-            <BackButton width={32} height={32} color={'darkBlue'} />
-          </Styled.BackButtonWrapper>
-          <Styled.Title>Sign in account</Styled.Title>
-          <Styled.Text>Sign in for free to start your journey to wholeness</Styled.Text>
-          <Styled.FormWrapper>
-            <SignInForm />
-          </Styled.FormWrapper>
-          <Styled.LogInWrapper>
-            <Styled.LoginText>Have no account yet?</Styled.LoginText>
-            <Styled.LogInBtn onPress={onPressSignUp}>
-              <Styled.LoginLabelText>Register</Styled.LoginLabelText>
-            </Styled.LogInBtn>
-          </Styled.LogInWrapper>
-        </View>
-        <SocialButtonGroup
-          onGoogleButtonPress={onGoogleButtonPress}
-          onFacebookButtonPress={onFacebookButtonPress}
-          onAppleButtonPress={onAppleButtonPress}
-        />
+        <Styled.BackButtonWrapper>
+          <BackButton width={32} height={32} color={'darkBlue'} />
+        </Styled.BackButtonWrapper>
+        <Styled.Title>Sign in account</Styled.Title>
+        <Styled.Text>Sign in for free to start your journey to wholeness</Styled.Text>
+        <Styled.FormWrapper>
+          <SignInForm />
+        </Styled.FormWrapper>
+        <Styled.LogInWrapper>
+          <Styled.LoginText>Have no account yet?</Styled.LoginText>
+          <Styled.LogInBtn onPress={onPressSignUp}>
+            <Styled.LoginLabelText>Register</Styled.LoginLabelText>
+          </Styled.LogInBtn>
+        </Styled.LogInWrapper>
       </Styled.InnerWrapper>
-    </Styled.Wrapper>
+      <SocialButtonGroup
+        onGoogleButtonPress={onGoogleButtonPress}
+        onFacebookButtonPress={onFacebookButtonPress}
+        onAppleButtonPress={onAppleButtonPress}
+      />
+    </>
   );
 
   return (
@@ -47,13 +47,11 @@ export const SignInScreen = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <Styled.Container behavior="height">
+        <Styled.Container behavior={isIOS ? 'padding' : 'height'}>
           {isIOS ? (
-            screenLayout()
+            <Styled.ScrollViewIOS>{screenLayout()}</Styled.ScrollViewIOS>
           ) : (
-            <Styled.KeyboardAwareScrollView keyboardShouldPersistTaps="handled">
-              {screenLayout()}
-            </Styled.KeyboardAwareScrollView>
+            <Styled.ScrollView contentContainerStyle={containerWrapper}>{screenLayout()}</Styled.ScrollView>
           )}
         </Styled.Container>
       )}
