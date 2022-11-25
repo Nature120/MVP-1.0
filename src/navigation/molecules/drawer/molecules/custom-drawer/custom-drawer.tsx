@@ -18,7 +18,7 @@ export const customDrawer = (signOut: () => void) => (props: DrawerContentCompon
   };
 
   const onPressInstagram = () => {
-    Linking.openURL('https://www.instagram.com/natureonetwenty');
+    Linking.openURL('https://www.instagram.com/nature120.app/');
   };
 
   return (

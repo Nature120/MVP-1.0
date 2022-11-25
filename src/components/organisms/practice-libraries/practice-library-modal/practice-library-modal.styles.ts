@@ -26,8 +26,6 @@ export const StyledPracticeLibraryModal = {
     width: ${DEVICE_WIDTH - 24 * 2}px;
     top: ${({ top }) => top + 8}px;
     left: 24px;
-    flex-direction: row;
-    justify-content: ${props => (props.isWithoutActions ? 'flex-end' : 'space-between')};
   `,
 
   TypeContainer: styled.View`
