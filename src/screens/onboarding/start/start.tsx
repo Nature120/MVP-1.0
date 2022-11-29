@@ -11,12 +11,16 @@ import { IMAGES } from '@constants/images';
 import { imageStyle } from './start.styles';
 
 export const Start: React.FC = () => {
-  useStart();
+  const { onPressContinue, isAllowRenderPage } = useStart();
+
+  if (!isAllowRenderPage) {
+    return null;
+  }
 
   return (
     <ImageBackground source={IMAGES.onBoardStart} style={imageStyle}>
       <Layout>
-        <LayoutOnboarding buttonText="CONTINUE">
+        <LayoutOnboarding buttonText="CONTINUE" onPress={onPressContinue}>
           <Card />
         </LayoutOnboarding>
       </Layout>

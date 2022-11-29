@@ -5,7 +5,7 @@ import arrowDown from '@assets/icons/arrow-down.svg';
 import arrowLeft from '@assets/icons/arrow-left.svg';
 import arrowRight from '@assets/icons/arrow-right.svg';
 import brandIcon from '@assets/icons/brand_icon.svg';
-import checkbox from '@assets/icons/checkbox.svg';
+import checked from '@assets/icons/checked.svg';
 import clock from '@assets/icons/clock.svg';
 import community from '@assets/icons/community.svg';
 import cross from '@assets/icons/cross.svg';
@@ -32,6 +32,7 @@ import play from '@assets/icons/play.svg';
 import practices from '@assets/icons/practices.svg';
 import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
 import tip from '@assets/icons/tip.svg';
+import unchecked from '@assets/icons/unchecked.svg';
 
 export const ICONS = {
   arrowDown,
@@ -48,7 +49,6 @@ export const ICONS = {
   menu,
   logout,
   tip,
-  checkbox,
   onBoardingMoon,
   home,
   practices,
@@ -66,6 +66,8 @@ export const ICONS = {
   newMoon,
   waxingGibbosMoon,
   waningGibbosMoon,
+  checked,
+  unchecked,
 };
 
 export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];

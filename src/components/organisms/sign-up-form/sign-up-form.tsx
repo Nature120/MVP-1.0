@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
 import { Input } from '@components/atoms/input/input';
+import { ButtonConfirmation } from './button-confirmation/button-confirmation';
 import { useSignUpState } from './sign-up-form.state';
 
 import { REGISTER_VALIDATION_SCHEMA } from './sign-up-form.constants';
@@ -16,7 +17,18 @@ import { REACT_NATIVE_PAPER_INPUT_THEME } from '@theme/styles';
 import { COLOR } from '@theme/colors';
 
 export const SignUpForm = () => {
-  const { passwordVisible, onSubmit, resetError, changeVisiblePassword, errorMessage } = useSignUpState();
+  const {
+    passwordVisible,
+    onSubmit,
+    resetError,
+    changeVisiblePassword,
+    errorMessage,
+    isCheckedPrivacy,
+    isCheckedTerms,
+    setIsCheckedPrivacy,
+    setIsCheckedTerms,
+    isBoxesChecked,
+  } = useSignUpState();
 
   const handleChangeIcon = (): JSX.Element => {
     return passwordVisible ? (
@@ -70,7 +82,14 @@ export const SignUpForm = () => {
                 right={<TextInput.Icon onPress={changeVisiblePassword} name={handleChangeIcon} />}
               />
               <Styled.ErrorText>{errors.password ? errors.password : '' || errorMessage}</Styled.ErrorText>
-              <Button buttonText="CREATE ACCOUNT" buttonColor="blue" onPress={handleSubmit} />
+              <ButtonConfirmation title="terms" isChecked={isCheckedTerms} setIsChecked={setIsCheckedTerms} />
+              <ButtonConfirmation title="privacy" isChecked={isCheckedPrivacy} setIsChecked={setIsCheckedPrivacy} />
+              <Button
+                buttonText="CREATE ACCOUNT"
+                buttonColor="blue"
+                onPress={handleSubmit}
+                isDisabled={!isBoxesChecked}
+              />
             </>
           );
         }}
