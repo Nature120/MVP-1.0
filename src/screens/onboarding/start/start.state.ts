@@ -1,40 +1,42 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import FastImage from 'react-native-fast-image';
 import { useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
-import { updateUser } from '@services/api.service';
 import { useAppDispatch } from '@services/hooks/redux';
-import { getUid } from '@services/store/auth/auth.selectors';
-import { IUser } from '@services/store/auth/auth.typings';
+import { setIsFirstLaunchApp } from '@services/store/app';
+import { getUserInfo } from '@services/store/auth/auth.selectors';
 
 import { IMAGES_TO_PRELOAD } from '@constants/images';
-import { ONBOARDING_GOAL_HASH_MAP } from '@screens/onboarding/onboarding.constants';
-
-import { TDailyGoal } from '@typings/common';
-
-const WHAT_BRINGS_DEFAULT = 'Mental Well-being';
+import { APP_ROUTES } from '@constants/routes';
 
 export const useStart = () => {
-  const uid = useSelector(getUid);
+  const isDefaultValueExists = !!useSelector(getUserInfo).dailyGoal;
+  const { navigate } = useNavigation();
+  const [isFirstLaunch, setIsFirstLaunch] = useState(!isDefaultValueExists);
+  const [isAllowRenderPage, setIsAllowRenderPage] = useState(!isDefaultValueExists);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const setDefaultUserProperties = async () => {
-      const defaultProperties: Partial<IUser> = {
-        dailyGoal: +Object.keys(ONBOARDING_GOAL_HASH_MAP)[0] as TDailyGoal,
-        goal: 0,
-        whatBrings: [WHAT_BRINGS_DEFAULT],
-      };
-      await updateUser(uid, defaultProperties, dispatch);
-    };
-
-    uid &&
-      setTimeout(() => {
-        setDefaultUserProperties();
-      }, 1000);
-  }, [uid]);
+    setTimeout(() => {
+      if (isDefaultValueExists && !isFirstLaunch) {
+        dispatch(setIsFirstLaunchApp(false));
+        return navigate(APP_ROUTES.drawer as never);
+      }
+      setIsAllowRenderPage(true);
+    }, 0);
+  }, [isDefaultValueExists, navigate]);
 
   useEffect(() => {
     FastImage.preload(IMAGES_TO_PRELOAD);
   }, []);
+
+  const onPressContinue = () => {
+    setIsFirstLaunch(true);
+  };
+
+  return {
+    onPressContinue,
+    isAllowRenderPage,
+  };
 };

@@ -51,7 +51,9 @@ export const SignUpScreen = () => {
           {isIOS ? (
             <Styled.ScrollViewIOS>{screenLayout()}</Styled.ScrollViewIOS>
           ) : (
-            <Styled.ScrollView contentContainerStyle={containerWrapper}>{screenLayout()}</Styled.ScrollView>
+            <Styled.ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={containerWrapper}>
+              {screenLayout()}
+            </Styled.ScrollView>
           )}
         </Styled.Container>
       )}

@@ -26,6 +26,7 @@ export const StyledCustomDrawer = {
     flex-direction: row;
     align-items: center;
     margin-top: 15px;
+    margin-bottom: 30px;
     padding-horizontal: 20px;
   `,
   InstagramText: styled.Text`
@@ -37,12 +38,10 @@ export const StyledCustomDrawer = {
     height: 24px;
     margin-right: 10px;
   `,
-  AdditinallyInfoWrapper: styled.View`
-    padding: 0 20px;
-    justify-content: space-between;
-    flex-direction: row;
+  AdditinallyInfoBtn: styled.TouchableOpacity<{ title?: string }>`
+    margin-bottom: ${({ title }) => (title ? 30 : 0)}px;
+    padding-left: 54px;
   `,
-  AdditinallyInfoBtn: styled.TouchableOpacity``,
   AdditinallyInfoText: styled.Text`
     color: ${COLOR.subheading};
     font-weight: ${FONTS.weight.medium};
