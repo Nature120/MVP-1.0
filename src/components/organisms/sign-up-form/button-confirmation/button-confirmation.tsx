@@ -5,11 +5,16 @@ import { Checkbox } from './checkbox/checkbox';
 
 import { PRIVACY, TERMS } from '@constants/social-url';
 
-import { IProp } from '../sign-up-form.typings';
+import { IPropButtonConfirm } from '../sign-up-form.typings';
 
 import { ButtonConfirmationStyled as Styled } from './button-confirmation.styles';
 
-export const ButtonConfirmation: React.FC<IProp> = ({ isChecked, setIsChecked, title }) => {
+export const ButtonConfirmation: React.FC<IPropButtonConfirm> = ({
+  isChecked,
+  setIsChecked,
+  title,
+  isWarningCheckBoxBorder,
+}) => {
   const navigationLink = title === 'terms' ? TERMS : PRIVACY;
 
   const onToggle = () => {
@@ -29,7 +34,7 @@ export const ButtonConfirmation: React.FC<IProp> = ({ isChecked, setIsChecked, t
     <Styled.Container title={title}>
       <Styled.Btn onPress={onToggle}>
         <Styled.BtnWrapper>
-          <Checkbox isChecked={isChecked} />
+          <Checkbox isChecked={isChecked} isWarningCheckBoxBorder={isWarningCheckBoxBorder} />
           <Styled.TitleWrapper>
             <Styled.TitleText>I Accept </Styled.TitleText>
             <Styled.TitleBtnLink onPress={onPressConfirmLink}>

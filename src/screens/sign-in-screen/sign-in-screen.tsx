@@ -9,19 +9,24 @@ import { useSignInState } from './sign-in-screen.state';
 
 import { isIOS } from '@services/helpers/device-utils';
 
+import { TViewProps } from '@typings/common';
+
 import { SignInScreenStyles as Styled } from './sign-in-screen.styles';
 
 export const SignInScreen = () => {
-  const { onPressSignUp, onGoogleButtonPress, onFacebookButtonPress, isLoading, onAppleButtonPress } = useSignInState();
+  const { onPressSignUp, onGoogleButtonPress, onFacebookButtonPress, isLoading, onAppleButtonPress, isFirstLaunchApp } =
+    useSignInState();
 
-  const containerWrapper: StyleProp<ViewStyle> = { flexGrow: 1, justifyContent: 'space-between' };
+  const containerWrapper: TViewProps = { flexGrow: 1, justifyContent: 'space-between' };
 
   const screenLayout = () => (
     <>
       <Styled.InnerWrapper>
-        <Styled.BackButtonWrapper>
-          <BackButton width={32} height={32} color={'darkBlue'} />
-        </Styled.BackButtonWrapper>
+        {isFirstLaunchApp && (
+          <Styled.BackButtonWrapper>
+            <BackButton width={32} height={32} color={'darkBlue'} />
+          </Styled.BackButtonWrapper>
+        )}
         <Styled.Title>Sign in account</Styled.Title>
         <Styled.Text>Sign in for free to start your journey to wholeness</Styled.Text>
         <Styled.FormWrapper>
@@ -49,9 +54,12 @@ export const SignInScreen = () => {
       ) : (
         <Styled.Container behavior={isIOS ? 'padding' : 'height'}>
           {isIOS ? (
-            <Styled.ScrollViewIOS>{screenLayout()}</Styled.ScrollViewIOS>
+            <Styled.ScrollViewIOS isFirstLaunchApp={isFirstLaunchApp}>{screenLayout()}</Styled.ScrollViewIOS>
           ) : (
-            <Styled.ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={containerWrapper}>
+            <Styled.ScrollView
+              isFirstLaunchApp={isFirstLaunchApp}
+              keyboardShouldPersistTaps="handled"
+              contentContainerStyle={containerWrapper}>
               {screenLayout()}
             </Styled.ScrollView>
           )}

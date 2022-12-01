@@ -5,6 +5,7 @@ const cloudyBlue = '#5A7082';
 const white = '#fff';
 const blue = '#376CF1';
 const black = '#000';
+const red = '#FF0000';
 
 export const COLOR = {
   primary: {
@@ -32,12 +33,13 @@ export const COLOR = {
     cloudyBlue,
     darkBlue,
     lightGrey: '#8498A8',
-    red: '#FF0000',
+    red,
   },
   icon: {
     blue,
     white,
     green,
+    red,
     darkBlue,
     lightGreen,
     cloudyBlue,
@@ -58,6 +60,7 @@ export const COLOR = {
     grayWeekDayCircle: '#E9EAEC',
     lightBlueWeekDayCircle: '#6990F4',
     blueWeekDayCicrcle: '#376CF1',
+    greyBookMark: '#E7EEEEBF',
   },
   shadow: { black },
   title: darkBlue,

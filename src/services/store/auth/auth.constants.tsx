@@ -8,5 +8,6 @@ export const initialState = {
   dailyGoadl: null,
   finishedPractices: [],
   recentPractices: [],
+  bookmarks: [],
   isLoading: false,
 };

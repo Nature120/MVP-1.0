@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Linking } from 'react-native';
+import { Alert, Linking, TouchableOpacity } from 'react-native';
 import { DrawerContentComponentProps, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 
 import { Icon } from '@components/atoms/icon';
@@ -27,17 +27,19 @@ export const customDrawer = (signOut: () => void) => (props: DrawerContentCompon
           <Styled.InstagramImage source={IMAGES.instagram} />
           <Styled.InstagramText>Instagram</Styled.InstagramText>
         </Styled.InstagramBtn>
-        <Styled.AdditinallyInfoBtn onPress={() => onPressLink(TERMS)} title="terms">
-          <Styled.AdditinallyInfoText>Terms</Styled.AdditinallyInfoText>
-        </Styled.AdditinallyInfoBtn>
-        <Styled.AdditinallyInfoBtn onPress={() => onPressLink(PRIVACY)}>
-          <Styled.AdditinallyInfoText>Privacy</Styled.AdditinallyInfoText>
-        </Styled.AdditinallyInfoBtn>
       </DrawerContentScrollView>
       <Styled.Logout onPress={signOut}>
         <Icon type="logout" size={24} />
         <Styled.LogoutText>Log Out</Styled.LogoutText>
       </Styled.Logout>
+      <Styled.AdditinallyInfoWrapper>
+        <TouchableOpacity onPress={() => onPressLink(TERMS)}>
+          <Styled.AdditinallyInfoText>Terms</Styled.AdditinallyInfoText>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onPressLink(PRIVACY)}>
+          <Styled.AdditinallyInfoText>Privacy</Styled.AdditinallyInfoText>
+        </TouchableOpacity>
+      </Styled.AdditinallyInfoWrapper>
     </Styled.Wrapper>
   );
 };

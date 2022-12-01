@@ -1,12 +1,12 @@
 import React from 'react';
-import { FlatList, ListRenderItem } from 'react-native';
+import { FlatList } from 'react-native';
 
 import { Icon } from '@components/atoms/icon';
 import { Spacer } from '@components/atoms/spacer';
 import { PracticeLibrary } from './practice-library';
 
 import { IPracticeLibrariesProps } from './practice-libraries.typings';
-import { IPracticeLibrary } from '@typings/common';
+import { TItemRender } from '@typings/common';
 
 import { flatListStyle, StyledPracticeLibraries as Styled } from './practice-libraries.styles';
 
@@ -21,7 +21,7 @@ export const PracticeLibraries: React.FC<IPracticeLibrariesProps> = props => {
     onMomentumScrollBegin,
   } = props;
 
-  const renderItem: ListRenderItem<IPracticeLibrary> = ({ item, index }) => (
+  const renderItem: TItemRender = ({ item, index }) => (
     <Spacer
       key={item.title}
       gap={16}
