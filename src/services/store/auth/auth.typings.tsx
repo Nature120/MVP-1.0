@@ -7,7 +7,7 @@ export interface IState {
   timer: ITimer;
 }
 
-interface IAuth {
+export interface IAuth {
   user: IUser;
   latestLibrary: IPracticeLibrary;
   error: string | null;
@@ -23,11 +23,16 @@ export interface IUser {
   whatBrings?: string[];
   dailyGoal?: number;
   finishedPractices: Array<IFinishedPractices>;
+  bookmarks: Array<IBookmarks>;
   goal?: number;
   timeForImmersion?: Date;
   lastEnterAt?: Date;
   tipOfTheDay?: IUserTipOfTheDay;
   recentPractices: Array<IFinishedPractices>;
+}
+
+export interface IBookmarks extends IPracticeLibrary {
+  created_at: FirebaseFirestoreTypes.Timestamp;
 }
 
 export interface IFinishedPractices {

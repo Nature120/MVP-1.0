@@ -10,10 +10,6 @@ import { IError } from '@typings/common';
 export const useSignUpState = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
-  const [isCheckedTerms, setIsCheckedTerms] = useState<boolean>(false);
-  const [isCheckedPrivacy, setIsCheckedPrivacy] = useState<boolean>(false);
-
-  const isBoxesChecked = isCheckedTerms === true && isCheckedPrivacy === true;
 
   const onSubmit = async (values: IValue): Promise<void> => {
     const { email, password, first_name } = values;
@@ -72,10 +68,5 @@ export const useSignUpState = () => {
     resetError,
     changeVisiblePassword,
     errorMessage,
-    isCheckedTerms,
-    setIsCheckedPrivacy,
-    isCheckedPrivacy,
-    setIsCheckedTerms,
-    isBoxesChecked,
   };
 };

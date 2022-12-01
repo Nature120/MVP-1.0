@@ -38,9 +38,10 @@ export const StyledCustomDrawer = {
     height: 24px;
     margin-right: 10px;
   `,
-  AdditinallyInfoBtn: styled.TouchableOpacity<{ title?: string }>`
-    margin-bottom: ${({ title }) => (title ? 30 : 0)}px;
-    padding-left: 54px;
+  AdditinallyInfoWrapper: styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    padding-horizontal: 20px;
   `,
   AdditinallyInfoText: styled.Text`
     color: ${COLOR.subheading};

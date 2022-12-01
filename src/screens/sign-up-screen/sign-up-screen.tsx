@@ -9,12 +9,26 @@ import { useSignUpState } from './sign-up-screen.state';
 
 import { isIOS } from '@services/helpers/device-utils';
 
+import { TViewProps } from '@typings/common';
+
 import { SignUpScreenStyles as Styled } from './sign-up-screen.styles';
 
 export const SignUpScreen = () => {
-  const { onPressLogIn, onGoogleButtonPress, onFacebookButtonPress, onAppleButtonPress, isLoading } = useSignUpState();
+  const {
+    onPressLogIn,
+    onGoogleButtonPress,
+    onFacebookButtonPress,
+    onAppleButtonPress,
+    isLoading,
+    isCheckedTerms,
+    isCheckedPrivacy,
+    setIsCheckedTerms,
+    setIsCheckedPrivacy,
+    isBoxesChecked,
+    isWarningCheckBoxBorder,
+  } = useSignUpState();
 
-  const containerWrapper: StyleProp<ViewStyle> = { flexGrow: 1, justifyContent: 'space-between' };
+  const containerWrapper: TViewProps = { flexGrow: 1, justifyContent: 'space-between' };
 
   const screenLayout = () => (
     <>
@@ -25,7 +39,14 @@ export const SignUpScreen = () => {
         <Styled.Title>Create an account</Styled.Title>
         <Styled.Text>Sign up for free to start your journey to wholeness</Styled.Text>
         <Styled.FormWrapper>
-          <SignUpForm />
+          <SignUpForm
+            isCheckedTerms={isCheckedTerms}
+            isCheckedPrivacy={isCheckedPrivacy}
+            setIsCheckedTerms={setIsCheckedTerms}
+            setIsCheckedPrivacy={setIsCheckedPrivacy}
+            isBoxesChecked={isBoxesChecked}
+            isWarningCheckBoxBorder={isWarningCheckBoxBorder}
+          />
         </Styled.FormWrapper>
         <Styled.LogInWrapper>
           <Styled.LoginText>Already have an account?</Styled.LoginText>

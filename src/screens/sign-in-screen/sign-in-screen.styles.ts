@@ -9,13 +9,15 @@ export const SignInScreenStyles = {
   Container: styled.KeyboardAvoidingView`
     flex: 1;
   `,
-  ScrollView: styled(KeyboardAwareScrollView)`
+  ScrollView: styled(KeyboardAwareScrollView)<{ isFirstLaunchApp: boolean }>`
     flex-grow: 1;
+    padding-top: ${({ isFirstLaunchApp }) => (isFirstLaunchApp ? '0' : '100')}px;
     padding-horizontal: 24px;
     background-color: ${COLOR.background.beigeLight};
   `,
-  ScrollViewIOS: styled.ScrollView`
+  ScrollViewIOS: styled.ScrollView<{ isFirstLaunchApp: boolean }>`
     flex-grow: 1;
+    padding-top: ${({ isFirstLaunchApp }) => (isFirstLaunchApp ? '0' : '100')}px;
     padding-horizontal: 24px;
     background-color: ${COLOR.background.beigeLight};
   `,

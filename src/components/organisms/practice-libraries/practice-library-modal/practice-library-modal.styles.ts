@@ -1,3 +1,4 @@
+import { Text } from 'react-native';
 import styled from 'styled-components/native';
 
 import { TextComponent } from '@components/atoms/text-component';
@@ -65,12 +66,13 @@ export const StyledPracticeLibraryModal = {
     margin: 36px 0 26px;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   `,
 
   Title: styled(Title)`
     max-width: 100%;
+    flex-direction: row;
   `,
-
   // TimeWrapper: styled.View`
   //   flex-direction: row;
   //   align-items: center;
@@ -110,5 +112,10 @@ export const StyledPracticeLibraryModal = {
 
   ButtonWrapper: styled.View`
     padding: 24px 0 9px;
+  `,
+  BookmarkBtn: styled.TouchableOpacity`
+    margin-top: 20px;
+    margin-bottom: 15px;
+    align-items: flex-end;
   `,
 };

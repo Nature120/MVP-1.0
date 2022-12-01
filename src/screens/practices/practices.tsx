@@ -25,7 +25,7 @@ export const Practices: React.FC = () => {
         elasticScrollPosition="bottom">
         <Styled.LayoutContent>
           <Styled.BackButtonWrapper>
-            <BackButton height={22} width={22} color="cloudyGreen" />
+            <BackButton height={32} width={32} color="cloudyGreen" />
           </Styled.BackButtonWrapper>
 
           <Styled.Practices>

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Modal, View } from 'react-native';
+import { Modal, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@components/atoms/button';
+import { Icon } from '@components/atoms/icon';
 import { Image } from '@components/atoms/image';
 import { Spacer } from '@components/atoms/spacer';
 import { AskModal } from '@components/molecules/ask-modal';
@@ -29,6 +30,8 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     navigateToTimer,
     openModalAsk,
     onConfirmPress,
+    onToggleBookMark,
+    toggleBookMark,
   } = usePracticeLibraryModal(props);
 
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
@@ -73,15 +76,16 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
         <Styled.ContentWrapper>
           <Styled.Content>
             <View>
-              <Styled.Header>
-                <Styled.Title>{title}</Styled.Title>
-                {/* <Styled.TimeWrapper>
+              <Styled.BookmarkBtn onPress={onToggleBookMark}>
+                <Icon type={toggleBookMark ? 'checked_leaf' : 'unchecked_leaf'} width={35} height={35} />
+              </Styled.BookmarkBtn>
+              <Styled.Title numberOfLines={1}>{title}</Styled.Title>
+              {/* <Styled.TimeWrapper>
                   <Icon type="clock" colorIcon="cloudyBlue" size={18} />
                   <Styled.Time>
                     {duration.from}-{duration.to} min
                   </Styled.Time>
                 </Styled.TimeWrapper> */}
-              </Styled.Header>
 
               <Styled.Description isFirst>{description}</Styled.Description>
 

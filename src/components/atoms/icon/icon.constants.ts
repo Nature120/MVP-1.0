@@ -6,6 +6,7 @@ import arrowLeft from '@assets/icons/arrow-left.svg';
 import arrowRight from '@assets/icons/arrow-right.svg';
 import brandIcon from '@assets/icons/brand_icon.svg';
 import checked from '@assets/icons/checked.svg';
+import checked_leaf from '@assets/icons/checked_leaf.svg';
 import clock from '@assets/icons/clock.svg';
 import community from '@assets/icons/community.svg';
 import cross from '@assets/icons/cross.svg';
@@ -13,6 +14,7 @@ import facebook from '@assets/icons/facebook.svg';
 import google from '@assets/icons/google.svg';
 import home from '@assets/icons/home.svg';
 import human from '@assets/icons/human.svg';
+import leaf from '@assets/icons/leaf.svg';
 import logout from '@assets/icons/logout.svg';
 import menu from '@assets/icons/menu.svg';
 import fullMoon from '@assets/icons/moon-phases/full-moon.svg';
@@ -33,6 +35,7 @@ import practices from '@assets/icons/practices.svg';
 import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
 import tip from '@assets/icons/tip.svg';
 import unchecked from '@assets/icons/unchecked.svg';
+import unchecked_leaf from '@assets/icons/unchecked_leaf.svg';
 
 export const ICONS = {
   arrowDown,
@@ -68,6 +71,9 @@ export const ICONS = {
   waningGibbosMoon,
   checked,
   unchecked,
+  checked_leaf,
+  unchecked_leaf,
+  leaf,
 };
 
 export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];

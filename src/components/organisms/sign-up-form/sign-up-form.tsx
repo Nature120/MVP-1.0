@@ -11,24 +11,22 @@ import { useSignUpState } from './sign-up-form.state';
 import { REGISTER_VALIDATION_SCHEMA } from './sign-up-form.constants';
 import { IMAGES } from '@constants/images';
 
+import { IProp } from './sign-up-form.typings';
+
 import { SignUpFormStyles as Styled } from './sign-up-form.styles';
 import { REACT_NATIVE_PAPER_INPUT_THEME } from '@theme/styles';
 
 import { COLOR } from '@theme/colors';
 
-export const SignUpForm = () => {
-  const {
-    passwordVisible,
-    onSubmit,
-    resetError,
-    changeVisiblePassword,
-    errorMessage,
-    isCheckedPrivacy,
-    isCheckedTerms,
-    setIsCheckedPrivacy,
-    setIsCheckedTerms,
-    isBoxesChecked,
-  } = useSignUpState();
+export const SignUpForm: React.FC<IProp> = ({
+  isCheckedTerms,
+  isCheckedPrivacy,
+  setIsCheckedTerms,
+  setIsCheckedPrivacy,
+  isBoxesChecked,
+  isWarningCheckBoxBorder,
+}) => {
+  const { passwordVisible, onSubmit, resetError, changeVisiblePassword, errorMessage } = useSignUpState();
 
   const handleChangeIcon = (): JSX.Element => {
     return passwordVisible ? (
@@ -82,8 +80,18 @@ export const SignUpForm = () => {
                 right={<TextInput.Icon onPress={changeVisiblePassword} name={handleChangeIcon} />}
               />
               <Styled.ErrorText>{errors.password ? errors.password : '' || errorMessage}</Styled.ErrorText>
-              <ButtonConfirmation title="terms" isChecked={isCheckedTerms} setIsChecked={setIsCheckedTerms} />
-              <ButtonConfirmation title="privacy" isChecked={isCheckedPrivacy} setIsChecked={setIsCheckedPrivacy} />
+              <ButtonConfirmation
+                title="terms"
+                isChecked={isCheckedTerms}
+                setIsChecked={setIsCheckedTerms}
+                isWarningCheckBoxBorder={isWarningCheckBoxBorder}
+              />
+              <ButtonConfirmation
+                title="privacy"
+                isChecked={isCheckedPrivacy}
+                isWarningCheckBoxBorder={isWarningCheckBoxBorder}
+                setIsChecked={setIsCheckedPrivacy}
+              />
               <Button
                 buttonText="CREATE ACCOUNT"
                 buttonColor="blue"

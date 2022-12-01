@@ -8,9 +8,9 @@ import { isIOS } from '@services/helpers/device-utils';
 import { SocialButtonGroupStyles as Styled } from './social-button-group.styles';
 
 interface IProp {
-  onGoogleButtonPress: () => Promise<void>;
-  onFacebookButtonPress: () => Promise<void>;
-  onAppleButtonPress: () => Promise<void>;
+  onGoogleButtonPress: () => void;
+  onFacebookButtonPress: () => void;
+  onAppleButtonPress: () => void;
 }
 
 export const SocialButtonGroup: React.FC<IProp> = ({
