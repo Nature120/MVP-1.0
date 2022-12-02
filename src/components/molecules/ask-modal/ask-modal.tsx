@@ -68,7 +68,7 @@ export const AskModal: React.FC<IAskModalProps> = props => {
   return (
     <ModalBottom isVisible={isVisible} onClose={onClose} onModalHide={resetState}>
       <Styled.ModalText marginTop={12} marginBottom={46}>
-        How are you feeling today?
+        How are you feeling now?
       </Styled.ModalText>
 
       <MoonsList iconsSize={MOON_SIZE} onPressIcon={onPressIcon} selectedIcon={selectedIcon} />
