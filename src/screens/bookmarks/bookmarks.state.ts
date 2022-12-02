@@ -10,6 +10,6 @@ export const useStateBookMarks = () => {
     (firstBookmark, secondBookmark) => Number(secondBookmark.created_at) - Number(firstBookmark.created_at),
   );
   const columnWrapperStyles: TViewProps = { paddingHorizontal: 15, justifyContent: 'space-between' };
-
-  return { sortedBookmarks, columnWrapperStyles };
+  const isSortedBookmarks = sortedBookmarks.length === 0;
+  return { sortedBookmarks, columnWrapperStyles, isSortedBookmarks };
 };

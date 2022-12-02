@@ -63,7 +63,7 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
 
   const bookMarkOperations = async () => {
     const fireBaseDate = firestore.Timestamp.fromDate(new Date());
-    const bookmark: any = { ...normalLibrary, created_at: fireBaseDate };
+    const bookmark: IBookmarks = { ...normalLibrary, created_at: fireBaseDate };
     ///toggleBookMark is change on true after one toggle in this function
     if (!toggleBookMark) {
       dispatch(action.addBookmarks(bookmark));

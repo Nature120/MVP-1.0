@@ -79,7 +79,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
               <Styled.BookmarkBtn onPress={onToggleBookMark}>
                 <Icon type={toggleBookMark ? 'checked_leaf' : 'unchecked_leaf'} width={35} height={35} />
               </Styled.BookmarkBtn>
-              <Styled.Title numberOfLines={1}>{title}</Styled.Title>
+              <Styled.Title numberOfLines={2}>{title}</Styled.Title>
               {/* <Styled.TimeWrapper>
                   <Icon type="clock" colorIcon="cloudyBlue" size={18} />
                   <Styled.Time>

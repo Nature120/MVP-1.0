@@ -14,5 +14,5 @@ export const filterExpiredPractices = createAction<IFinishedPractices[] | undefi
 export const isDisturb = createAction<boolean>('auth/isDisturb');
 export const addLatestLibrary = createAction<IPracticeLibrary>('auth/addLatestLibrary');
 export const clearLatestLibrary = createAction('auth/clearLatestLibrary');
-export const addBookmarks = createAction<Array<IBookmarks>>('auth/addBookmarks');
+export const addBookmarks = createAction<IBookmarks>('auth/addBookmarks');
 export const removeBookmarks = createAction<string>('auth/removeBookmarks');

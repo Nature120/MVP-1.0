@@ -10,7 +10,7 @@ import { TItemRender } from '@typings/common';
 import { BookMarksStyled as Styled } from './bookmarks.styles';
 
 export const Bookmarks = () => {
-  const { sortedBookmarks, columnWrapperStyles } = useStateBookMarks();
+  const { sortedBookmarks, columnWrapperStyles, isSortedBookmarks } = useStateBookMarks();
 
   const renderItem: TItemRender = ({ item }) => {
     return (
@@ -22,15 +22,22 @@ export const Bookmarks = () => {
 
   return (
     <Styled.MainContainer>
-      <BackButton width={32} height={32} cssButton={Styled.BackButtonStyle} />
-      <FlatList
-        data={sortedBookmarks}
-        renderItem={renderItem}
-        numColumns={2}
-        columnWrapperStyle={columnWrapperStyles}
-        keyExtractor={item => item.title}
-        showsHorizontalScrollIndicator={false}
-      />
+      <Styled.Header>
+        <BackButton width={32} height={32} />
+        <Styled.Title>Bookmarks</Styled.Title>
+      </Styled.Header>
+      {isSortedBookmarks ? (
+        <Styled.WarningText>You have no bookmarks yet</Styled.WarningText>
+      ) : (
+        <FlatList
+          data={sortedBookmarks}
+          renderItem={renderItem}
+          numColumns={2}
+          columnWrapperStyle={columnWrapperStyles}
+          keyExtractor={item => item.title}
+          showsHorizontalScrollIndicator={false}
+        />
+      )}
     </Styled.MainContainer>
   );
 };
