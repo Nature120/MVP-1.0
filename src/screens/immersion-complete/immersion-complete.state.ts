@@ -13,7 +13,7 @@ import { getUserInfo } from '@services/store/auth/auth.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
 
-import { IAddedTime, IPracticeLibrary } from '@typings/common';
+import { IAddedTime } from '@typings/common';
 
 export const useImmersionComplete = () => {
   const { params } = useParam<IAddedTime>();
@@ -21,11 +21,13 @@ export const useImmersionComplete = () => {
   const user = useSelector(getUserInfo);
   const dispatch = useAppDispatch();
   const { weeklyGoal } = useGoal();
-  const [todayImmersions, setTodayImmersions] = useState<IPracticeLibrary[]>([]);
+  const [todayImmersions, setTodayImmersions] = useState<any>([]);
 
   const { defaultTimer } = useSetDefaultTimer('done');
 
   const getTodayImmersions = async () => {
+    const batches = [];
+
     const uniqueLibraries = getUniqueArray(user.finishedPractices, 'title');
     const todayLibraries = uniqueLibraries.filter(practice => isToday(practice.created_at.toDate()));
 
@@ -33,11 +35,28 @@ export const useImmersionComplete = () => {
       .sort((a, b) => b.created_at.toDate().getTime() - a.created_at.toDate().getTime())
       .map(practice => practice.title);
 
-    const allLibraries = await databaseRef('Practise library').where('title', 'in', todayLibrariesTitles).get();
-    const librariesData = allLibraries.docs.map(lib => lib.data() as IPracticeLibrary);
-    const sortedLibraries = todayLibrariesTitles.map(title => librariesData.find(lib => lib.title === title)!);
+    const arrayTodayLibrariesTitles = [...todayLibrariesTitles];
 
-    setTodayImmersions(sortedLibraries);
+    while (arrayTodayLibrariesTitles.length) {
+      // firestore limits batches to 10
+      const batch = arrayTodayLibrariesTitles.splice(0, 10);
+
+      // add the batch request to to a queue
+      batches.push(
+        databaseRef('Practise library')
+          .where('title', 'in', batch)
+          .get()
+          .then(libs => libs.docs.map(result => result.data())),
+      );
+    }
+    try {
+      const data = await Promise.all(batches);
+      const flatData = data.flat();
+      const sortedLibraries = todayLibrariesTitles.map(title => flatData.find(lib => lib.title === title)!);
+      setTodayImmersions(sortedLibraries);
+    } catch (error) {
+      console.log('error', error);
+    }
   };
 
   useEffect(() => {
