@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, TouchableOpacity, View } from 'react-native';
+import { Modal, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@components/atoms/button';
