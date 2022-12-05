@@ -2,6 +2,7 @@ export interface IAskModalProps extends IUseAskModalProps {
   isVisible: boolean;
   onClose: () => void;
   modalText?: string;
+  titleText: 'now' | 'today';
 }
 
 export interface IUseAskModalProps {
