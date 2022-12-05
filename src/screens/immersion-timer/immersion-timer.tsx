@@ -20,6 +20,7 @@ export const ImmersionTimer: React.FC = () => {
         onClose={toggleOpenAskModal}
         onButtonPress={saveResponse}
         onTextPress={onTextPress}
+        titleText={'now'}
       />
 
       <PracticeLibraryCollapsed library={library} />

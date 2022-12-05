@@ -49,6 +49,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           onButtonPress={saveResponse}
           onTextPress={navigateToTimer}
           onConfirmPress={onConfirmPress}
+          titleText={'today'}
         />
       )}
 
