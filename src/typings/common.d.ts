@@ -53,7 +53,7 @@ export interface IAddedTime {
 export interface IPracticeLibrary {
   image: string;
   title: string;
-  season: string;
+  season: Array<string>;
   description: string;
   topCategory: string;
   duration: {
@@ -61,6 +61,8 @@ export interface IPracticeLibrary {
     to: number;
   };
   userGoals: string[];
+  audioFile?: string;
+  subscribtion?: string;
 }
 
 export type TScreenOptions =

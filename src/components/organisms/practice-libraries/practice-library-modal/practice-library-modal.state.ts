@@ -26,6 +26,7 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   const uid = useSelector(getUid);
   const bookmarks = useSelector(getBookmarks);
   const { title, description, duration, image, season, topCategory, userGoals } = library;
+  ///Somehow we have isWithoutActions and isWithoutAskModal in object library//
   const normalLibrary = { description, title, duration, image, season, topCategory, userGoals };
 
   useEffect(() => {

@@ -46,6 +46,7 @@ export const Home: React.FC = () => {
         onButtonPress={saveResponse}
         onTextPress={navigateToImmersions}
         onConfirmPress={onConfirmPress}
+        titleText={'today'}
       />
 
       <Layout
