@@ -28,9 +28,9 @@ export const storeInDB = async ({ response, first_name: registerFirstName }: ISt
     return;
   }
   const name = getFirstName(displayName);
-  let data = { first_name: name, email, finishedPractices: [], recentPractices: [] };
+  let data = { first_name: name, email, finishedPractices: [], recentPractices: [], bookmarks: [] };
   if (displayName === null) {
-    data = { first_name: registerFirstName, email, finishedPractices: [], recentPractices: [] };
+    data = { first_name: registerFirstName, email, finishedPractices: [], recentPractices: [], bookmarks: [] };
   }
 
   await AsyncStorage.setItem('isFirstLaunchNature120', 'true');

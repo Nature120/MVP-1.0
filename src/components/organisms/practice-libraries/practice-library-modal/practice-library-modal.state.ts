@@ -34,6 +34,9 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   }, []);
 
   const changeToggleInitState = () => {
+    if (!bookmarks) {
+      return;
+    }
     const isBookMark = bookmarks.find(item => item.title === title);
     isBookMark && setToggleBookMark(true);
   };
