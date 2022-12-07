@@ -10,14 +10,14 @@ export const BookMarksStyled = {
     background-color: ${COLOR.background.white};
   `,
   Header: styled.View`
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     padding-top: 24px;
     padding-horizontal: 15px;
-    flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
   `,
   Title: styled.Text`
     margin-left: 15px;
+    margin-bottom: 24px;
     font-family: ${FONTS.family.regularBoreal};
     font-size: ${FONTS.size.large}px;
     font-weight: ${FONTS.weight.medium};

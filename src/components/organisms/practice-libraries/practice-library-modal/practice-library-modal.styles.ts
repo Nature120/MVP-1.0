@@ -71,6 +71,7 @@ export const StyledPracticeLibraryModal = {
 
   Title: styled(Title)`
     max-width: 100%;
+    margin-bottom: 20px;
   `,
   // TimeWrapper: styled.View`
   //   flex-direction: row;

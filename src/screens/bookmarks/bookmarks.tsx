@@ -24,8 +24,8 @@ export const Bookmarks = () => {
     <Styled.MainContainer>
       <Styled.Header>
         <BackButton width={32} height={32} />
-        <Styled.Title>Bookmarks</Styled.Title>
       </Styled.Header>
+      <Styled.Title>Bookmarks</Styled.Title>
       {isSortedBookmarks ? (
         <Styled.WarningText>You have no bookmarks yet</Styled.WarningText>
       ) : (
