@@ -39,6 +39,7 @@ export const StyledCustomDrawer = {
     margin-right: 10px;
   `,
   AdditinallyInfoWrapper: styled.View`
+    margin-bottom: 40px;
     flex-direction: row;
     justify-content: space-between;
     padding-horizontal: 20px;
@@ -47,4 +48,9 @@ export const StyledCustomDrawer = {
     color: ${COLOR.subheading};
     font-weight: ${FONTS.weight.medium};
   `,
+  UserDeleteBtn: styled.TouchableOpacity`
+    margin-horizontal: 40px;
+    align-items: center;
+  `,
+  DeleteUserText: styled.Text``,
 };

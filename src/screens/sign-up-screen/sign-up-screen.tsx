@@ -1,15 +1,11 @@
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
 
 import { Loader } from '@components/atoms/loader/loader';
 import { BackButton } from '@components/molecules/back-button';
+import { ContainerWithForm } from '@components/organisms/container-with-form/container-with-form';
 import { SignUpForm } from '@components/organisms/sign-up-form/sign-up-form';
 import { SocialButtonGroup } from '@components/organisms/social-button-group/social-button-group';
 import { useSignUpState } from './sign-up-screen.state';
-
-import { isIOS } from '@services/helpers/device-utils';
-
-import { TViewProps } from '@typings/common';
 
 import { SignUpScreenStyles as Styled } from './sign-up-screen.styles';
 
@@ -27,8 +23,6 @@ export const SignUpScreen = () => {
     isBoxesChecked,
     isWarningCheckBoxBorder,
   } = useSignUpState();
-
-  const containerWrapper: TViewProps = { flexGrow: 1, justifyContent: 'space-between' };
 
   const screenLayout = () => (
     <>
@@ -64,20 +58,6 @@ export const SignUpScreen = () => {
   );
 
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Styled.Container behavior={isIOS ? 'padding' : 'height'}>
-          {isIOS ? (
-            <Styled.ScrollViewIOS>{screenLayout()}</Styled.ScrollViewIOS>
-          ) : (
-            <Styled.ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={containerWrapper}>
-              {screenLayout()}
-            </Styled.ScrollView>
-          )}
-        </Styled.Container>
-      )}
-    </>
+    <>{isLoading ? <Loader /> : <ContainerWithForm layout={screenLayout} cssPropContainer={Styled.Container} />}</>
   );
 };

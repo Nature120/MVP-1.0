@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import auth from '@react-native-firebase/auth';
 
-import { ERROR_CODES } from './sign-in-form.constants';
+import { ERROR_CODES } from '@constants/error-codes';
 
-import { IERROR_CODES, IHandleSignIn, IValue } from './sign-in-form.typings';
+import { IHandleSignIn, IValue } from './sign-in-form.typings';
+import { IERROR_CODES } from '@typings/error-codes-typings';
 
 export const useSignInState = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(true);

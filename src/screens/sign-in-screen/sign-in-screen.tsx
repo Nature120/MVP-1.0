@@ -1,15 +1,11 @@
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
 
 import { Loader } from '@components/atoms/loader/loader';
 import { BackButton } from '@components/molecules/back-button';
+import { ContainerWithForm } from '@components/organisms/container-with-form/container-with-form';
 import { SignInForm } from '@components/organisms/sign-in-form/sign-in-form';
 import { SocialButtonGroup } from '@components/organisms/social-button-group/social-button-group';
 import { useSignInState } from './sign-in-screen.state';
-
-import { isIOS } from '@services/helpers/device-utils';
-
-import { TViewProps } from '@typings/common';
 
 import { SignInScreenStyles as Styled } from './sign-in-screen.styles';
 
@@ -17,11 +13,9 @@ export const SignInScreen = () => {
   const { onPressSignUp, onGoogleButtonPress, onFacebookButtonPress, isLoading, onAppleButtonPress, isFirstLaunchApp } =
     useSignInState();
 
-  const containerWrapper: TViewProps = { flexGrow: 1, justifyContent: 'space-between' };
-
   const screenLayout = () => (
     <>
-      <Styled.InnerWrapper>
+      <Styled.InnerWrapper isFirstLaunchApp={isFirstLaunchApp}>
         {isFirstLaunchApp && (
           <Styled.BackButtonWrapper>
             <BackButton width={32} height={32} color={'darkBlue'} />
@@ -48,23 +42,6 @@ export const SignInScreen = () => {
   );
 
   return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Styled.Container behavior={isIOS ? 'padding' : 'height'}>
-          {isIOS ? (
-            <Styled.ScrollViewIOS isFirstLaunchApp={isFirstLaunchApp}>{screenLayout()}</Styled.ScrollViewIOS>
-          ) : (
-            <Styled.ScrollView
-              isFirstLaunchApp={isFirstLaunchApp}
-              keyboardShouldPersistTaps="handled"
-              contentContainerStyle={containerWrapper}>
-              {screenLayout()}
-            </Styled.ScrollView>
-          )}
-        </Styled.Container>
-      )}
-    </>
+    <>{isLoading ? <Loader /> : <ContainerWithForm layout={screenLayout} cssPropContainer={Styled.Container} />}</>
   );
 };
