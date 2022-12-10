@@ -39,6 +39,7 @@ export const StyledCustomDrawer = {
     margin-right: 10px;
   `,
   AdditinallyInfoWrapper: styled.View`
+    margin-bottom: 40px;
     flex-direction: row;
     justify-content: space-between;
     padding-horizontal: 20px;

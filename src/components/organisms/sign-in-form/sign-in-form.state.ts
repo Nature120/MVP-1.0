@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import auth from '@react-native-firebase/auth';
 
-import { ERROR_CODES } from './sign-in-form.constants';
+import { useErrorHandler } from '@services/hooks/errorHandler';
 
-import { IERROR_CODES, IHandleSignIn, IValue } from './sign-in-form.typings';
+import { IHandleSignIn, IValue } from './sign-in-form.typings';
 
 export const useSignInState = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(true);
-  const [errorMessage, setErrorMessage] = useState<null | string>(null);
+  const { handleError, resetError, errorMessage } = useErrorHandler();
 
   const onSubmit = (values: IValue): void => {
     const { email, password } = values;
@@ -28,16 +28,8 @@ export const useSignInState = () => {
       });
   };
 
-  const handleError = (code: string) => {
-    setErrorMessage(ERROR_CODES[code as keyof IERROR_CODES]);
-  };
-
   const changeVisiblePassword = (): void => {
     setPasswordVisible(!passwordVisible);
-  };
-
-  const resetError = (): void => {
-    setErrorMessage(null);
   };
 
   return { passwordVisible, onSubmit, resetError, changeVisiblePassword, errorMessage };
