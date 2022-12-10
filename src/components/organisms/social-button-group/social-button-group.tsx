@@ -11,25 +11,43 @@ interface IProp {
   onGoogleButtonPress: () => void;
   onFacebookButtonPress: () => void;
   onAppleButtonPress: () => void;
+  nameOfScreen: 'authorization' | 'settings';
 }
 
 export const SocialButtonGroup: React.FC<IProp> = ({
   onGoogleButtonPress,
   onFacebookButtonPress,
   onAppleButtonPress,
+  nameOfScreen,
 }) => {
   return (
     <View>
       {isIOS && (
         <Styled.AppleButtonWrapper>
-          <SocialAuthButton icon="apple" labelText="Apple" handleAuth={onAppleButtonPress} fill={'darkBlue'} />
+          <SocialAuthButton
+            icon="apple"
+            labelText="Apple"
+            nameOfScreen={nameOfScreen}
+            handleAuth={onAppleButtonPress}
+            fill={'darkBlue'}
+          />
         </Styled.AppleButtonWrapper>
       )}
       <Styled.GoogleButtonWrapper>
-        <SocialAuthButton icon="google" labelText="Google" handleAuth={onGoogleButtonPress} />
+        <SocialAuthButton
+          icon="google"
+          nameOfScreen={nameOfScreen}
+          labelText="Google"
+          handleAuth={onGoogleButtonPress}
+        />
       </Styled.GoogleButtonWrapper>
       <Styled.FaceBookButtonWrapper>
-        <SocialAuthButton icon="facebook" labelText="Facebook" handleAuth={onFacebookButtonPress} />
+        <SocialAuthButton
+          icon="facebook"
+          nameOfScreen={nameOfScreen}
+          labelText="Facebook"
+          handleAuth={onFacebookButtonPress}
+        />
       </Styled.FaceBookButtonWrapper>
     </View>
   );

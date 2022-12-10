@@ -48,9 +48,4 @@ export const StyledCustomDrawer = {
     color: ${COLOR.subheading};
     font-weight: ${FONTS.weight.medium};
   `,
-  UserDeleteBtn: styled.TouchableOpacity`
-    margin-horizontal: 40px;
-    align-items: center;
-  `,
-  DeleteUserText: styled.Text``,
 };

@@ -1,10 +1,9 @@
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { FlattenSimpleInterpolation } from 'styled-components';
 import styled from 'styled-components/native';
 
-import { COLOR } from '@theme/colors';
-
-export const ContainerWithFormStyled = {
-  Container: styled.KeyboardAvoidingView<{ cssPropContainer: any }>`
+export const LayoutWithFormStyled = {
+  Container: styled.KeyboardAvoidingView<{ cssPropContainer: FlattenSimpleInterpolation }>`
     ${({ cssPropContainer }) => cssPropContainer};
   `,
   ScrollView: styled(KeyboardAwareScrollView)`

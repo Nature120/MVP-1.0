@@ -32,6 +32,7 @@ import pause from '@assets/icons/pause.svg';
 import pencil from '@assets/icons/pencil.svg';
 import play from '@assets/icons/play.svg';
 import practices from '@assets/icons/practices.svg';
+import settings from '@assets/icons/settings.svg';
 import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
 import tip from '@assets/icons/tip.svg';
 import unchecked from '@assets/icons/unchecked.svg';
@@ -74,6 +75,7 @@ export const ICONS = {
   checked_leaf,
   unchecked_leaf,
   leaf,
+  settings,
 };
 
 export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];

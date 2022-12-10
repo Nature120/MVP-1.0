@@ -1,7 +1,6 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import { DeleteAccount } from '@screens/delete-account/delete-account';
 import { customDrawer } from './molecules/custom-drawer';
 import { drawerIcon } from './molecules/drawer-icon';
 
@@ -31,11 +30,6 @@ export const DrawerNavigator = () => {
           }}
         />
       ))}
-      <Drawer.Screen
-        name="Delete Account"
-        component={DeleteAccount}
-        options={{ drawerItemStyle: { display: 'none' } }}
-      />
     </Drawer.Navigator>
   );
 };

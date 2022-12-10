@@ -4,7 +4,6 @@ import { Formik } from 'formik';
 
 import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
-import { CONFIRM_VALIDATION_SCHEMA } from './delete-confirm-form.constats';
 import { useStateDeleteConfirmForm } from './delete-confirm-form.state';
 
 import { IMAGES } from '@constants/images';
@@ -14,8 +13,18 @@ import { REACT_NATIVE_PAPER_INPUT_THEME } from '@theme/styles';
 
 import { COLOR } from '@theme/colors';
 
-export const DeleteConfirmForm = () => {
-  const { passwordVisible, resetError, changeVisiblePassword, errorMessage, onSubmit } = useStateDeleteConfirmForm();
+interface IProp {
+  resetError: () => void;
+  errorMessage: string | null;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  onPressSocialBtn: () => Promise<void>;
+}
+
+export const DeleteConfirmForm: React.FC<IProp> = ({ resetError, errorMessage, setPassword, onPressSocialBtn }) => {
+  const { passwordVisible, changeVisiblePassword, onSubmit } = useStateDeleteConfirmForm({
+    setPassword,
+    onPressSocialBtn,
+  });
 
   const handleChangeIcon = (): JSX.Element => {
     return passwordVisible ? (
@@ -26,8 +35,8 @@ export const DeleteConfirmForm = () => {
   };
 
   return (
-    <>
-      <Formik validationSchema={CONFIRM_VALIDATION_SCHEMA} initialValues={{ password: '' }} onSubmit={onSubmit}>
+    <Styled.Container>
+      <Formik initialValues={{ password: '' }} onSubmit={onSubmit}>
         {({ handleChange, handleBlur, values, errors, handleSubmit }) => {
           return (
             <>
@@ -47,11 +56,11 @@ export const DeleteConfirmForm = () => {
                 right={<TextInput.Icon onPress={changeVisiblePassword} name={handleChangeIcon} />}
               />
               <Styled.ErrorText>{errors.password ? errors.password : '' || errorMessage}</Styled.ErrorText>
-              <Button buttonText="Confirm" buttonColor="blue" onPress={handleSubmit} />
+              <Button buttonText="Delete account" buttonColor="blue" onPress={handleSubmit} />
             </>
           );
         }}
       </Formik>
-    </>
+    </Styled.Container>
   );
 };

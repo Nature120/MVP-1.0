@@ -6,6 +6,9 @@ import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 export const DeleteConfirmFormStyled = {
+  Container: styled.View`
+    margin-bottom: 50px;
+  `,
   InputPassword: styled(TextInput)`
     height: ${verticalScale(56)}px;
     width: 100%;
