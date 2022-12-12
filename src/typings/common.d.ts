@@ -60,10 +60,10 @@ export interface IPracticeLibrary {
     to: number;
   };
   userGoals: string[];
-  access?: TAccess;
+  subscription?: TAccess;
 }
 
-type TAccess = 'free' | 'premium';
+type TAccess = 'Free' | 'Subscription';
 
 export type TScreenOptions =
   | StackNavigationOptions

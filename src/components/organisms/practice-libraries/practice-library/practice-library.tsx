@@ -19,10 +19,10 @@ import { StyledImage, StyledPracticeLibrary as Styled } from './practice-library
 const WIDTH = (DEVICE_WIDTH * 42) / 100;
 
 export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
-  const { title, image, description, userGoals, isWithoutActions, isWithoutAskModal, access } = props;
+  const { title, image, description, userGoals, isWithoutActions, isWithoutAskModal, subscription } = props;
   const { isOpen, onToggle } = useOpenCloseModal();
-  const subscirbtion = useSelector(getSubscribtion);
-  const isLockPractice = subscirbtion === 'free' && access === 'premium';
+  const userSubStatus = useSelector(getSubscribtion);
+  const isLockPractice = userSubStatus === 'free' && subscription === 'Subscription';
 
   return (
     <>
