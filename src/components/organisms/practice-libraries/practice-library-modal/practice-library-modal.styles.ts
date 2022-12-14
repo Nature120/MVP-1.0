@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream
 import styled from 'styled-components/native';
+=======
+import { Text } from 'react-native';
+import styled, { css } from 'styled-components/native';
+>>>>>>> Stashed changes
 
 import { TextComponent } from '@components/atoms/text-component';
 import { Title } from '@components/atoms/title';
@@ -14,13 +19,13 @@ export const contentContainerStyle = { flexGrow: 1 };
 
 export const StyledPracticeLibraryModal = {
   PracticeLibraryModal: styled.ScrollView`
+    flex: 1;
     background-color: ${COLOR.background.extraLightMint};
   `,
 
   SafeAreaView: styled.SafeAreaView`
-    background-color: ${COLOR.background.extraLightMint};
+    flex: 1;
   `,
-
   ImageHeader: styled.View<{ top: number; isWithoutActions?: boolean }>`
     position: absolute;
     width: ${DEVICE_WIDTH - 24 * 2}px;
@@ -51,19 +56,19 @@ export const StyledPracticeLibraryModal = {
 
   ContentWrapper: styled.View`
     flex: 1;
-    top: -${imageIndent}px;
     background-color: ${COLOR.background.extraLightMint};
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
   `,
 
   Content: styled.View`
-    margin-horizontal: 24px;
     flex: 1;
+    margin-horizontal: 24px;
     justify-content: space-between;
   `,
 
   Header: styled.View`
+<<<<<<< Updated upstream
     margin: 36px 0 26px;
     flex-direction: row;
     justify-content: space-between;
@@ -92,6 +97,15 @@ export const StyledPracticeLibraryModal = {
     color: ${COLOR.subheading};
   `,
 
+=======
+    width: 100%;
+    height: 310px;
+  `,
+  Image: css`
+    position: absolute;
+    width: 100%;
+  `,
+>>>>>>> Stashed changes
   Tags: styled.View`
     margin: 32px 0 28px;
     flex-direction: row;

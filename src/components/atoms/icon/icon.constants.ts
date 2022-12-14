@@ -5,7 +5,10 @@ import arrowDown from '@assets/icons/arrow-down.svg';
 import arrowLeft from '@assets/icons/arrow-left.svg';
 import arrowRight from '@assets/icons/arrow-right.svg';
 import brandIcon from '@assets/icons/brand_icon.svg';
+import check_mark from '@assets/icons/check_mark.svg';
 import checkbox from '@assets/icons/checkbox.svg';
+import checked from '@assets/icons/checked.svg';
+import checked_leaf from '@assets/icons/checked_leaf.svg';
 import clock from '@assets/icons/clock.svg';
 import community from '@assets/icons/community.svg';
 import cross from '@assets/icons/cross.svg';
@@ -68,6 +71,7 @@ export const ICONS = {
   waxingGibbosMoon,
   waningGibbosMoon,
   lock,
+  check_mark,
 };
 
 export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];

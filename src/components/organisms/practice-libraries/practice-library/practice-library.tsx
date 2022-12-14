@@ -19,25 +19,21 @@ import { StyledImage, StyledPracticeLibrary as Styled } from './practice-library
 const WIDTH = (DEVICE_WIDTH * 42) / 100;
 
 export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
-  const { title, image, description, userGoals, isWithoutActions, isWithoutAskModal, subscription } = props;
+  const { title, image, description, userGoals, isWithoutActions, isWithoutAskModal, subscription: librarySub } = props;
   const { isOpen, onToggle } = useOpenCloseModal();
   const userSubStatus = useSelector(getSubscribtion);
-  const isLockPractice = userSubStatus === 'free' && subscription === 'Subscription';
+  const isLockPractice = userSubStatus === 'free' && librarySub === 'Subscription';
 
   return (
     <>
-      {isLockPractice && isOpen ? (
-        <ModalSubscribe isOpen={isOpen} closeModal={onToggle} />
-      ) : (
-        <PracticeLibraryModal
-          isOpen={isOpen}
-          library={props}
-          closeModal={onToggle}
-          isWithoutActions={isWithoutActions}
-          isWithoutAskModal={isWithoutAskModal}
-        />
-      )}
-
+      <PracticeLibraryModal
+        isOpen={isOpen}
+        library={props}
+        closeModal={onToggle}
+        isWithoutActions={isWithoutActions}
+        isWithoutAskModal={isWithoutAskModal}
+        isLockPractice={isLockPractice}
+      />
       <Styled.PracticeLibrary activeOpacity={0.9} onPress={onToggle} width={WIDTH}>
         <View>
           <Image source={{ uri: image }} width={WIDTH} height={moderateScale(103)} styles={StyledImage} />

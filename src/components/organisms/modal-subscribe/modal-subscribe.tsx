@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from 'react-native';
+import Purchases from 'react-native-purchases';
 import { useSelector } from 'react-redux';
 
 import { Button } from '@components/atoms/button';
 import { ButtonIcon } from '@components/molecules/button-icon';
+import { OffersList } from './offer-list/offer-list';
 
 import { getSubscribeProducts } from '@services/store/auth/auth.selectors';
 
@@ -15,7 +17,12 @@ interface IProp {
 }
 
 export const ModalSubscribe: React.FC<IProp> = ({ isOpen, closeModal }) => {
+  const [offers, setOffers] = useState<any>(null);
   const subscriptions = useSelector(getSubscribeProducts);
+
+  useEffect(() => {
+    fetchOfferings();
+  }, []);
 
   const onPressAnnuallySub = () => {
     ///smth
@@ -23,6 +30,18 @@ export const ModalSubscribe: React.FC<IProp> = ({ isOpen, closeModal }) => {
 
   const onPressMonthlySub = () => {
     //smth
+  };
+
+  const fetchOfferings = async () => {
+    try {
+      const offerings = await Purchases.getOfferings();
+
+      offerings.current !== null && setOffers(offerings.current);
+
+      console.log('offerings', offerings);
+    } catch (error) {
+      console.log('error', error);
+    }
   };
 
   return (
@@ -35,24 +54,7 @@ export const ModalSubscribe: React.FC<IProp> = ({ isOpen, closeModal }) => {
           <Styled.TitleText>Dummy Title</Styled.TitleText>
         </Styled.HeaderWrapper>
         <Styled.MainContainer>
-          <Styled.SubscribeWrapper>
-            <Styled.SubscribeBox marginRight={20}>
-              <Styled.SubscribeTitle>Annually Subscribe</Styled.SubscribeTitle>
-              <Styled.SubscribePrice>Price: $19.99</Styled.SubscribePrice>
-              <Styled.SubscribeText>Lorem ipsum dolor.</Styled.SubscribeText>
-              <Styled.SubscribeText>Lorem ipsum.</Styled.SubscribeText>
-              <Styled.SubscribeText>Lorem ipsum.</Styled.SubscribeText>
-              <Button height={50} styles={Styled.SubBtn} buttonText={'Try Free'} onPress={onPressAnnuallySub} />
-            </Styled.SubscribeBox>
-            <Styled.SubscribeBox>
-              <Styled.SubscribeTitle>Monthly Subscribe</Styled.SubscribeTitle>
-              <Styled.SubscribePrice>Price: $1.99</Styled.SubscribePrice>
-              <Styled.SubscribeText>Lorem ipsum dolor.</Styled.SubscribeText>
-              <Styled.SubscribeText>Lorem ipsum.</Styled.SubscribeText>
-              <Styled.SubscribeText>Lorem ipsum.</Styled.SubscribeText>
-              <Button height={50} styles={Styled.SubBtn} buttonText={'Try Free'} onPress={onPressMonthlySub} />
-            </Styled.SubscribeBox>
-          </Styled.SubscribeWrapper>
+          <OffersList offers={offers} />
           <Styled.SubscribeText>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi bibendum, ex eu commodo semper, libero massa
             blandit enim, id tincidunt sapien tortor et elit. Aliquam erat volutpat. Pellentesque auctor leo dolor, ac

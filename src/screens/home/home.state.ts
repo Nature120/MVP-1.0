@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
+import Config from 'react-native-config';
+import Purchases from 'react-native-purchases';
 import { useSelector } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { getWeek } from 'date-fns';
 
 import { getUser, updateUser } from '@services/api.service';
+import { isIOS } from '@services/helpers/device-utils';
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { notificationsAPI } from '@services/notifications/notifications.api';
@@ -15,6 +18,7 @@ import { getFisishedPractices, getUserInfo } from '@services/store/auth/auth.sel
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
 import * as selector from '@services/store/timer/timer.selectors';
 
+import { CONFIG } from '@constants/config';
 import { APP_ROUTES } from '@constants/routes';
 
 export const useHome = () => {
@@ -73,6 +77,14 @@ export const useHome = () => {
       return;
     }
     dispatch(setIsFirstLaunchApp(false));
+  }, []);
+
+  ///Billing sub
+  useEffect(() => {
+    Purchases.setDebugLogsEnabled(true);
+    isIOS
+      ? Purchases.configure({ apiKey: CONFIG.revenueCatApiKeyApple as string })
+      : Purchases.configure({ apiKey: CONFIG.revenueCatApiKeyGoogle as string });
   }, []);
 
   // sync notifications

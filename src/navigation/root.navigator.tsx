@@ -8,6 +8,7 @@ import { Immersions } from '@screens/immersions';
 import { SignInScreen } from '@screens/sign-in-screen/sign-in-screen';
 import { SignUpScreen } from '@screens/sign-up-screen/sign-up-screen';
 import { Splash } from '@screens/splash';
+import { SubscribeScreen } from '@screens/subscribe/subscribe';
 import { TermsOfServices } from '@screens/terms-of-services';
 import { DrawerNavigator } from './molecules/drawer/drawer.navigator';
 import { disabledGestures, noHeaderOptions, screenOptions } from './navigation.options';
@@ -42,6 +43,7 @@ export const RootNavigator = () => {
       <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} options={disabledGestures} />
       <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
       <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />
+      <StartStack.Screen name={APP_ROUTES.subscribe} component={SubscribeScreen} />
     </>
   );
 

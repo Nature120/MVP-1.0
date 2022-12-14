@@ -31,13 +31,6 @@ export const ModalSubscribeStyles = {
     flex: 1;
     margin-horizontal: 25px;
   `,
-  SubscribeWrapper: styled.View`
-    flex: 1;
-    padding-top: 50px;
-    margin-bottom: 20px;
-    flex-direction: row;
-    justify-content: center;
-  `,
   SubscribeBox: styled.View<{ marginRight?: number }>`
     width: 160px;
     height: 200px;
