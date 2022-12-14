@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
-import styled from 'styled-components/native';
-=======
-import { Text } from 'react-native';
 import styled, { css } from 'styled-components/native';
->>>>>>> Stashed changes
 
 import { TextComponent } from '@components/atoms/text-component';
 import { Title } from '@components/atoms/title';
@@ -31,8 +26,6 @@ export const StyledPracticeLibraryModal = {
     width: ${DEVICE_WIDTH - 24 * 2}px;
     top: ${({ top }) => top + 8}px;
     left: 24px;
-    flex-direction: row;
-    justify-content: ${props => (props.isWithoutActions ? 'flex-end' : 'space-between')};
   `,
 
   TypeContainer: styled.View`
@@ -68,16 +61,16 @@ export const StyledPracticeLibraryModal = {
   `,
 
   Header: styled.View`
-<<<<<<< Updated upstream
     margin: 36px 0 26px;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   `,
 
   Title: styled(Title)`
     max-width: 100%;
+    margin-bottom: 20px;
   `,
-
   // TimeWrapper: styled.View`
   //   flex-direction: row;
   //   align-items: center;
@@ -95,23 +88,18 @@ export const StyledPracticeLibraryModal = {
     font-size: ${FONTS.size.xlSmall}px;
     line-height: 26px;
     color: ${COLOR.subheading};
-  `,
-
-=======
     width: 100%;
     height: 310px;
   `,
-  Image: css`
-    position: absolute;
-    width: 100%;
-  `,
->>>>>>> Stashed changes
   Tags: styled.View`
     margin: 32px 0 28px;
     flex-direction: row;
     flex-wrap: wrap;
   `,
-
+  Image: css`
+    position: absolute;
+    width: 100%;
+  `,
   Tag: styled.View`
     border: 1px solid ${COLOR.primary.dark};
     border-radius: 100px;
@@ -126,5 +114,10 @@ export const StyledPracticeLibraryModal = {
 
   ButtonWrapper: styled.View`
     padding: 24px 0 9px;
+  `,
+  BookmarkBtn: styled.TouchableOpacity`
+    margin-top: 20px;
+    margin-bottom: 15px;
+    align-items: flex-end;
   `,
 };

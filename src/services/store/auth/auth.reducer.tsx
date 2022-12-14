@@ -4,6 +4,8 @@ import * as action from './auth.actions';
 
 import { initialState } from './auth.constants';
 
+import { IBookmarks } from './auth.typings';
+
 const user = createReducer(initialState, {
   [action.signIn.type]: (_, { payload }) => payload,
   [action.partialUpdateUser.type]: (userInfo, { payload }) => ({ ...userInfo, ...payload }),
@@ -15,6 +17,11 @@ const user = createReducer(initialState, {
   [action.addRecentPractice.type]: (state, { payload }) => ({
     ...state,
     recentPractices: [...state.recentPractices, payload],
+  }),
+  [action.addBookmarks.type]: (state, { payload }) => ({ ...state, bookmarks: [...state.bookmarks, payload] }),
+  [action.removeBookmarks.type]: (state, { payload }) => ({
+    ...state,
+    bookmarks: state.bookmarks.filter((bookMark: IBookmarks) => bookMark.title !== payload),
   }),
   [action.signOut.type]: () => initialState,
 });

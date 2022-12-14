@@ -15,7 +15,7 @@ import { StyledAskModal as Styled } from './ask-modal.styles';
 const MOON_SIZE = 44;
 
 export const AskModal: React.FC<IAskModalProps> = props => {
-  const { isVisible, onClose, modalText, ...handlers } = props;
+  const { isVisible, onClose, modalText, titleText, ...handlers } = props;
   const {
     selectedIcon,
     isConfirmed,
@@ -68,7 +68,7 @@ export const AskModal: React.FC<IAskModalProps> = props => {
   return (
     <ModalBottom isVisible={isVisible} onClose={onClose} onModalHide={resetState}>
       <Styled.ModalText marginTop={12} marginBottom={46}>
-        How are you feeling today?
+        How are you feeling {titleText}?
       </Styled.ModalText>
 
       <MoonsList iconsSize={MOON_SIZE} onPressIcon={onPressIcon} selectedIcon={selectedIcon} />

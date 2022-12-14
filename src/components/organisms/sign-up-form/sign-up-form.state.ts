@@ -62,5 +62,11 @@ export const useSignUpState = () => {
     setErrorMessage(null);
   };
 
-  return { passwordVisible, onSubmit, resetError, changeVisiblePassword, errorMessage };
+  return {
+    passwordVisible,
+    onSubmit,
+    resetError,
+    changeVisiblePassword,
+    errorMessage,
+  };
 };

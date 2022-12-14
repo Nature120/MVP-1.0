@@ -7,4 +7,5 @@ export interface IProp {
   fill?: TColorIcon;
   icon: TIconNames;
   handleAuth?: () => void;
+  nameOfScreen?: string;
 }

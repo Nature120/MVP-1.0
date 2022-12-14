@@ -1,7 +1,1 @@
-<svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' opacity='0'/>
-
-
-<g transform="matrix(0.87 0 0 0.87 12 12)" >
-<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill-rule: nonzero; opacity: 1;" transform=" translate(-15.5, -14.5)" d="M 23 3 C 20.790861000676827 3 19 4.790861000676826 19 7 C 19 9.209138999323173 20.790861000676827 11 23 11 C 25.209138999323173 11 27 9.209138999323173 27 7 C 27 4.790861000676826 25.209138999323173 3 23 3 z M 6 4 C 4.895 4 4 4.895 4 6 L 4 24 C 4 25.105 4.895 26 6 26 L 24 26 C 25.105 26 26 25.105 26 24 L 26 12.191406 C 25.117 12.702406 24.094 13 23 13 C 19.686 13 17 10.314 17 7 C 17 5.906 17.297594 4.883 17.808594 4 L 6 4 z" stroke-linecap="round" />
-</g>
-</svg>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 675.74 400.94"><defs><style>.cls-1{fill:#1a6237;}</style></defs><path class="cls-1" d="M623.94,340.12c0-149.28-121-270.29-270.3-270.29s-270.3,121-270.3,270.29Z"/></svg>

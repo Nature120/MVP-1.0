@@ -5,17 +5,27 @@ import { Formik } from 'formik';
 import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
 import { Input } from '@components/atoms/input/input';
+import { ButtonConfirmation } from './button-confirmation/button-confirmation';
 import { useSignUpState } from './sign-up-form.state';
 
 import { REGISTER_VALIDATION_SCHEMA } from './sign-up-form.constants';
 import { IMAGES } from '@constants/images';
+
+import { IProp } from './sign-up-form.typings';
 
 import { SignUpFormStyles as Styled } from './sign-up-form.styles';
 import { REACT_NATIVE_PAPER_INPUT_THEME } from '@theme/styles';
 
 import { COLOR } from '@theme/colors';
 
-export const SignUpForm = () => {
+export const SignUpForm: React.FC<IProp> = ({
+  isCheckedTerms,
+  isCheckedPrivacy,
+  setIsCheckedTerms,
+  setIsCheckedPrivacy,
+  isBoxesChecked,
+  isWarningCheckBoxBorder,
+}) => {
   const { passwordVisible, onSubmit, resetError, changeVisiblePassword, errorMessage } = useSignUpState();
 
   const handleChangeIcon = (): JSX.Element => {
@@ -70,7 +80,24 @@ export const SignUpForm = () => {
                 right={<TextInput.Icon onPress={changeVisiblePassword} name={handleChangeIcon} />}
               />
               <Styled.ErrorText>{errors.password ? errors.password : '' || errorMessage}</Styled.ErrorText>
-              <Button buttonText="CREATE ACCOUNT" buttonColor="blue" onPress={handleSubmit} />
+              <ButtonConfirmation
+                title="terms"
+                isChecked={isCheckedTerms}
+                setIsChecked={setIsCheckedTerms}
+                isWarningCheckBoxBorder={isWarningCheckBoxBorder}
+              />
+              <ButtonConfirmation
+                title="privacy"
+                isChecked={isCheckedPrivacy}
+                isWarningCheckBoxBorder={isWarningCheckBoxBorder}
+                setIsChecked={setIsCheckedPrivacy}
+              />
+              <Button
+                buttonText="CREATE ACCOUNT"
+                buttonColor="blue"
+                onPress={handleSubmit}
+                isDisabled={!isBoxesChecked}
+              />
             </>
           );
         }}

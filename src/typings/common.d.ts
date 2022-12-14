@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from 'react-native';
+import { ListRenderItem, StyleProp, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
@@ -12,6 +12,7 @@ export type TStyles = SimpleInterpolation;
 export type TViewProps = StyleProp<ViewStyle>;
 export type TAnimatedViewProps = StyleProp<Animated.AnimateStyle<ViewStyle>>;
 export type TAnimatedNumber = Animated.Node<number>;
+export type TItemRender = ListRenderItem<IPracticeLibrary>;
 
 export type TDailyGoal = keyof typeof ONBOARDING_GOAL_HASH_MAP;
 
@@ -52,7 +53,7 @@ export interface IAddedTime {
 export interface IPracticeLibrary {
   image: string;
   title: string;
-  season: string;
+  season: Array<string>;
   description: string;
   topCategory: string;
   duration: {
@@ -60,6 +61,7 @@ export interface IPracticeLibrary {
     to: number;
   };
   userGoals: string[];
+  audioFile?: string;
   subscription?: TAccess;
 }
 

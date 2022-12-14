@@ -16,6 +16,7 @@ import facebook from '@assets/icons/facebook.svg';
 import google from '@assets/icons/google.svg';
 import home from '@assets/icons/home.svg';
 import human from '@assets/icons/human.svg';
+import leaf from '@assets/icons/leaf.svg';
 import lock from '@assets/icons/lock.svg';
 import logout from '@assets/icons/logout.svg';
 import menu from '@assets/icons/menu.svg';
@@ -34,8 +35,11 @@ import pause from '@assets/icons/pause.svg';
 import pencil from '@assets/icons/pencil.svg';
 import play from '@assets/icons/play.svg';
 import practices from '@assets/icons/practices.svg';
+import settings from '@assets/icons/settings.svg';
 import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
 import tip from '@assets/icons/tip.svg';
+import unchecked from '@assets/icons/unchecked.svg';
+import unchecked_leaf from '@assets/icons/unchecked_leaf.svg';
 
 export const ICONS = {
   arrowDown,
@@ -52,7 +56,6 @@ export const ICONS = {
   menu,
   logout,
   tip,
-  checkbox,
   onBoardingMoon,
   home,
   practices,
@@ -72,6 +75,12 @@ export const ICONS = {
   waningGibbosMoon,
   lock,
   check_mark,
+  checked,
+  unchecked,
+  checked_leaf,
+  unchecked_leaf,
+  leaf,
+  settings,
 };
 
 export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];

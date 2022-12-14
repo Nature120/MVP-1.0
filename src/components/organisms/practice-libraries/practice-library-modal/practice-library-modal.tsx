@@ -3,6 +3,7 @@ import { Modal, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@components/atoms/button';
+import { Icon } from '@components/atoms/icon';
 import { Image } from '@components/atoms/image';
 import { Spacer } from '@components/atoms/spacer';
 import { AskModal } from '@components/molecules/ask-modal';
@@ -24,7 +25,6 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     isOpen,
     isWithoutActions,
     isWithoutAskModal,
-    navigateToHomePage,
     closeModal,
     isOpenAsk,
     closeModalAsk,
@@ -32,6 +32,8 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     navigateToTimer,
     openModalAsk,
     onConfirmPress,
+    onToggleBookMark,
+    toggleBookMark,
   } = usePracticeLibraryModal(props);
 
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
@@ -52,6 +54,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           onButtonPress={saveResponse}
           onTextPress={navigateToTimer}
           onConfirmPress={onConfirmPress}
+          titleText={'today'}
         />
       )}
 
@@ -59,17 +62,14 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
         <Styled.Header>
           <Image source={{ uri: image }} width={DEVICE_WIDTH} height={340} styles={Styled.Image} />
           <Styled.ImageHeader top={insets.top} isWithoutActions={isWithoutActions}>
-            {!isWithoutActions && (
-              <ButtonIcon
-                isWithBg
-                type="arrowLeft"
-                iconIndent={7}
-                size={36}
-                colorIcon="cloudyGreen"
-                onPress={navigateToHomePage}
-              />
-            )}
-            <ButtonIcon isWithBg type="cross" iconIndent={9} size={36} colorIcon="cloudyGreen" onPress={closeModal} />
+            <ButtonIcon
+              isWithBg
+              type="arrowLeft"
+              iconIndent={7}
+              size={36}
+              colorIcon="cloudyGreen"
+              onPress={closeModal}
+            />
           </Styled.ImageHeader>
           {userGoals[0] && (
             <Styled.TypeContainer>
@@ -81,15 +81,16 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
         <Styled.ContentWrapper>
           <Styled.Content>
             <View>
-              <Styled.Header>
-                <Styled.Title>{title}</Styled.Title>
-                {/* <Styled.TimeWrapper>
+              <Styled.BookmarkBtn onPress={onToggleBookMark}>
+                <Icon type={toggleBookMark ? 'checked_leaf' : 'unchecked_leaf'} width={35} height={35} />
+              </Styled.BookmarkBtn>
+              <Styled.Title numberOfLines={2}>{title}</Styled.Title>
+              {/* <Styled.TimeWrapper>
                   <Icon type="clock" colorIcon="cloudyBlue" size={18} />
                   <Styled.Time>
                     {duration.from}-{duration.to} min
                   </Styled.Time>
                 </Styled.TimeWrapper> */}
-              </Styled.Header>
 
               <Styled.Description isFirst>{description}</Styled.Description>
 

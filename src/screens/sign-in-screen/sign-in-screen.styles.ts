@@ -1,33 +1,23 @@
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { moderateScale, scale } from 'react-native-size-matters';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 export const SignInScreenStyles = {
-  Container: styled.KeyboardAvoidingView`
+  Container: css`
     flex: 1;
-  `,
-  KeyboardAwareScrollView: styled(KeyboardAwareScrollView)`
-    flex-grow: 1;
-  `,
-  Wrapper: styled.ScrollView`
-    padding-horizontal: 24px;
-    flex-grow: 1;
     background-color: ${COLOR.background.beigeLight};
   `,
-  InnerWrapper: styled.View`
+  InnerWrapper: styled.View<{ isFirstLaunchApp: boolean }>`
     flex: 1;
-    justify-content: space-between;
+    padding-top: ${({ isFirstLaunchApp }) => (isFirstLaunchApp ? '0' : '140')}px;
   `,
   BackButtonWrapper: styled.View`
     width: ${scale(32)}px;
-    margin-top: ${moderateScale(50)}px;
     margin-bottom: ${moderateScale(18)}px;
   `,
   FormWrapper: styled.View`
-    flex: 1;
     margin-bottom: ${moderateScale(16)}px;
   `,
   LogInWrapper: styled.View`

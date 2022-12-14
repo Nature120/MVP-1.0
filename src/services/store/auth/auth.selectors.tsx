@@ -11,3 +11,4 @@ export const getIsDisturb = (state: IState) => state.auth.isDisturb;
 export const getLatestLibrary = (state: IState) => state.auth.latestLibrary;
 export const getSubscribtion = (state: IState) => state.auth.user.subscription;
 export const getSubscribeProducts = (state: IState) => state.auth.subscriptionProducts;
+export const getBookmarks = (state: IState) => state.auth.user.bookmarks;
