@@ -1,3 +1,4 @@
+import { moderateScale } from 'react-native-size-matters';
 import styled, { css } from 'styled-components/native';
 
 import { TextComponent } from '@components/atoms/text-component';
@@ -8,15 +9,16 @@ import { FONTS } from '@theme/fonts';
 
 export const MainInfoSectionStyled = {
   BookmarkBtn: styled.TouchableOpacity`
+    width: 35px;
     margin-top: 20px;
     margin-bottom: 15px;
-    align-items: flex-end;
+    align-self: flex-end;
   `,
   TitleWrapper: styled.View`
     flex-direction: row;
   `,
   Title: styled(Title)`
-    max-width: 300px;
+    max-width: ${moderateScale(260)}px;
     margin-bottom: 20px;
   `,
   Description: styled(TextComponent)<{ isFirst: boolean }>`

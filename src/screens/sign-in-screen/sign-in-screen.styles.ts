@@ -11,7 +11,7 @@ export const SignInScreenStyles = {
   `,
   InnerWrapper: styled.View<{ isFirstLaunchApp: boolean }>`
     flex: 1;
-    padding-top: ${({ isFirstLaunchApp }) => (isFirstLaunchApp ? '0' : '140')}px;
+    padding-top: ${({ isFirstLaunchApp }) => (isFirstLaunchApp ? '80' : '140')}px;
   `,
   BackButtonWrapper: styled.View`
     width: ${scale(32)}px;

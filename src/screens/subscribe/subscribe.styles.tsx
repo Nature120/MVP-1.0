@@ -1,3 +1,4 @@
+import { moderateVerticalScale } from 'react-native-size-matters';
 import styled from 'styled-components/native';
 
 import { COLOR } from '@theme/colors';
@@ -6,10 +7,10 @@ import { FONTS } from '@theme/fonts';
 export const SubscribeStyled = {
   ImageBackground: styled.ImageBackground`
     flex: 1;
-    padding-top: 8px;
+    margin-top: ${moderateVerticalScale(5)}px;
   `,
   Container: styled.View`
-    margin-top: 50px;
+    margin-top: ${moderateVerticalScale(45)}px;
     flex: 1;
   `,
   Header: styled.View`

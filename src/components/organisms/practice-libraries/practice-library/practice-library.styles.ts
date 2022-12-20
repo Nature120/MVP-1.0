@@ -42,6 +42,7 @@ export const StyledPracticeLibrary = {
   `,
   Title: styled.Text`
     margin: 8px 0 4px;
+    width: ${moderateScale(110)}px;
     font-family: ${FONTS.family.semiBoldAcumin};
     font-weight: ${FONTS.weight.semiBold};
     font-size: ${FONTS.size.xlSmall}px;

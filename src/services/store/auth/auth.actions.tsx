@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 
-import { IBookmarks, IFinishedPractices, IUser } from './auth.typings';
+import { IBookmarks, IFinishedPractices, IUser, TOfferNames } from './auth.typings';
 import { IPracticeLibrary } from '@typings/common';
 
 export const signIn = createAction<IUser>('auth/signIn');
@@ -14,6 +14,6 @@ export const filterExpiredPractices = createAction<IFinishedPractices[] | undefi
 export const isDisturb = createAction<boolean>('auth/isDisturb');
 export const addLatestLibrary = createAction<IPracticeLibrary>('auth/addLatestLibrary');
 export const clearLatestLibrary = createAction('auth/clearLatestLibrary');
-export const addSubscriptionProducts = createAction<any>('auth/addSubscriptionProducts');
 export const addBookmarks = createAction<IBookmarks>('auth/addBookmarks');
 export const removeBookmarks = createAction<string>('auth/removeBookmarks');
+export const updateSubscription = createAction<TOfferNames | null>('auth/updateSubscription');

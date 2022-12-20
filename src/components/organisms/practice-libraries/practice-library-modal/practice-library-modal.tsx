@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { moderateVerticalScale } from 'react-native-size-matters';
 
 import { Button } from '@components/atoms/button';
-import { Icon } from '@components/atoms/icon';
 import { Image } from '@components/atoms/image';
 import { Spacer } from '@components/atoms/spacer';
 import { AskModal } from '@components/molecules/ask-modal';
@@ -57,10 +57,14 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           titleText={'today'}
         />
       )}
-
       <Styled.PracticeLibraryModal contentContainerStyle={contentContainerStyle} showsVerticalScrollIndicator={false}>
         <Styled.Header>
-          <Image source={{ uri: image }} width={DEVICE_WIDTH} height={340} styles={Styled.Image} />
+          <Image
+            source={{ uri: image }}
+            width={DEVICE_WIDTH}
+            height={moderateVerticalScale(280)}
+            styles={Styled.Image}
+          />
           <Styled.ImageHeader top={insets.top} isWithoutActions={isWithoutActions}>
             <ButtonIcon
               isWithBg
@@ -76,46 +80,6 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
               <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
             </Styled.TypeContainer>
           )}
-<<<<<<< Updated upstream
-        </View>
-        <Styled.ContentWrapper>
-          <Styled.Content>
-            <View>
-              <Styled.BookmarkBtn onPress={onToggleBookMark}>
-                <Icon type={toggleBookMark ? 'checked_leaf' : 'unchecked_leaf'} width={35} height={35} />
-              </Styled.BookmarkBtn>
-              <Styled.Title numberOfLines={2}>{title}</Styled.Title>
-              {/* <Styled.TimeWrapper>
-                  <Icon type="clock" colorIcon="cloudyBlue" size={18} />
-                  <Styled.Time>
-                    {duration.from}-{duration.to} min
-                  </Styled.Time>
-                </Styled.TimeWrapper> */}
-
-              <Styled.Description isFirst>{description}</Styled.Description>
-
-              <Styled.Tags>
-                {userGoals.map((userGoal, index, arr) => (
-                  <Spacer isHorizontal key={userGoal + index} gap={8} isLastItem={index === arr.length - 1}>
-                    <Spacer gap={8}>
-                      <Styled.Tag>
-                        <Styled.TagText>{userGoal}</Styled.TagText>
-                      </Styled.Tag>
-                    </Spacer>
-                  </Spacer>
-                ))}
-              </Styled.Tags>
-
-              {!isWithoutActions && <TogglerDoNotDisturb isWithPadding />}
-            </View>
-
-            {!isWithoutActions && (
-              <Styled.ButtonWrapper>
-                <Button
-                  buttonText="START TIMER"
-                  height={50}
-                  onPress={isWithoutAskModal || commentBeforeImmersion ? navigateToTimer : openModalAsk}
-=======
         </Styled.Header>
         {isLockPractice ? (
           <Styled.ContentWrapper>
@@ -141,7 +105,6 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                   onToggleBookMark={onToggleBookMark}
                   toggleBookMark={toggleBookMark}
                   isSubscriptionPractice={isSubscriptionPractice}
->>>>>>> Stashed changes
                 />
                 <Styled.Tags>
                   {userGoals.map((userGoal, index, arr) => (

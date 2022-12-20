@@ -1,54 +1,93 @@
-import React, { useEffect, useState } from 'react';
-import Purchases from 'react-native-purchases';
+import React, { useCallback, useEffect, useState } from 'react';
+import { View } from 'react-native';
+import Purchases, { PACKAGE_TYPE, PurchasesOffering, PurchasesPackage } from 'react-native-purchases';
+import { useNavigation } from '@react-navigation/native';
 
+import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
+import { Footer } from './footer/footer';
 import { OfferItem } from './offer-item/offer-item';
+
+import { useStoreSubscription } from '@services/hooks/subscription-store';
 
 import { arrayBenefits } from './main-section.constants';
 
 import { MainSectionStyled as Styled } from './main-section.styles';
 
 export const MainSection = () => {
-  const [offers, setOffers] = useState<any>(null);
+  const [offers, setOffers] = useState<PurchasesOffering | null>(null);
+  const [offer, setOffer] = useState<PurchasesPackage | null>(null);
+  const [checkedButton, setCheckedButton] = useState<boolean>(false);
+  const [checkedOfferName, setCheckedOfferName] = useState<PACKAGE_TYPE | null>(null);
+  const { goBack } = useNavigation();
+  const { storeSubscription } = useStoreSubscription();
 
   useEffect(() => {
     fetchOfferings();
   }, []);
 
-  const onPressAnnuallySub = () => {
-    ///smth
+  const buyPackage = async () => {
+    if (!offer) {
+      return;
+    }
+
+    try {
+      const { customerInfo } = await Purchases.purchasePackage(offer);
+      const { premium } = customerInfo.entitlements.active;
+      if (typeof premium !== 'undefined') {
+        await storeSubscription(premium.productIdentifier);
+        goBack();
+      }
+    } catch (e: any) {
+      if (!e.userCancelled) {
+        console.log('error', e);
+      }
+    }
   };
 
-  const onPressMonthlySub = () => {
-    //smth
-  };
+  const onPressOffer = useCallback(
+    (pack: PurchasesPackage) => {
+      const { packageType } = pack;
+      !checkedButton && setCheckedButton(true);
+      setCheckedOfferName(packageType);
+      setOffer(pack);
+    },
+    [offer, checkedOfferName, setCheckedButton],
+  );
 
   const fetchOfferings = async () => {
     try {
-      const offerings = await Purchases.getOfferings();
-
-      offerings.current !== null && setOffers(offerings.current);
-
-      console.log('offerings', offerings);
+      const { current } = await Purchases.getOfferings();
+      current !== null && setOffers(current);
     } catch (error) {
       console.log('error', error);
     }
   };
+
   return (
     <Styled.Container>
-      {arrayBenefits.map((benefit, index) => (
-        <Styled.BenefitWrapper key={index}>
-          <Icon type="check_mark" width={18} height={18} />
-          <Styled.BenefitText index={index}>{benefit}</Styled.BenefitText>
-        </Styled.BenefitWrapper>
-      ))}
-      <Styled.OfferingsWrapper>
-        {offers?.availablePackages.map(offer => (
-          <>
-            <OfferItem offer={offer} />
-          </>
+      <View>
+        {arrayBenefits.map((benefit, index) => (
+          <Styled.BenefitWrapper key={index}>
+            <Icon type="check_mark" width={18} height={18} />
+            <Styled.BenefitText index={index}>{benefit}</Styled.BenefitText>
+          </Styled.BenefitWrapper>
         ))}
-      </Styled.OfferingsWrapper>
+        <Styled.OfferingsWrapper>
+          {offers?.availablePackages.map((pack: PurchasesPackage) => (
+            <View key={pack.identifier}>
+              <OfferItem offer={pack} onPressOffer={onPressOffer} checkedOfferName={checkedOfferName} />
+            </View>
+          ))}
+        </Styled.OfferingsWrapper>
+      </View>
+      <Button
+        buttonText="Try for free"
+        isDisabled={!checkedButton}
+        styles={Styled.TryForFreeBtn}
+        onPress={buyPackage}
+      />
+      <Footer />
     </Styled.Container>
   );
 };

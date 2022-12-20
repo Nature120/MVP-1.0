@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Config from 'react-native-config';
 import Purchases from 'react-native-purchases';
 import { useSelector } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
@@ -10,11 +9,12 @@ import { getUser, updateUser } from '@services/api.service';
 import { isIOS } from '@services/helpers/device-utils';
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
+import { useStoreSubscription } from '@services/hooks/subscription-store';
 import { notificationsAPI } from '@services/notifications/notifications.api';
 import { NOTIFICATIONS_COUNT } from '@services/notifications/notifications.utils';
 import { setCommentBeforeImmersion, setGradeBeforeImmersion, setIsFirstLaunchApp } from '@services/store/app';
 import { filterExpiredPractices } from '@services/store/auth/auth.actions';
-import { getFisishedPractices, getUserInfo } from '@services/store/auth/auth.selectors';
+import { getFisishedPractices, getSubscription, getUserInfo } from '@services/store/auth/auth.selectors';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
 import * as selector from '@services/store/timer/timer.selectors';
 
@@ -28,11 +28,14 @@ export const useHome = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
   const { isFirstLaunchApp, notificationsList } = useAppSelector(store => store.app);
+  const { storeSubscription } = useStoreSubscription();
   const finishedPractices = useSelector(getFisishedPractices);
   const currentWeek = getWeek(new Date());
 
   const startDate = useSelector(selector.getStartDate);
   const secondsTimer = useSelector(selector.getSeconds);
+
+  const subscription = useSelector(getSubscription);
 
   const onToggleOpen = () => setIsOpen(prev => !prev);
   const closeModal = () => setIsOpen(false);
@@ -79,12 +82,20 @@ export const useHome = () => {
     dispatch(setIsFirstLaunchApp(false));
   }, []);
 
+  ////Check on premium acc
+  useEffect(() => {
+    Purchases.addCustomerInfoUpdateListener(info => {
+      // handle any changes to customerInfo
+      checkUserPremiumInfo();
+    });
+  }, []);
+
   ///Billing sub
   useEffect(() => {
     Purchases.setDebugLogsEnabled(true);
     isIOS
-      ? Purchases.configure({ apiKey: CONFIG.revenueCatApiKeyApple as string })
-      : Purchases.configure({ apiKey: CONFIG.revenueCatApiKeyGoogle as string });
+      ? Purchases.configure({ apiKey: CONFIG.revenueCatApiKeyApple as string, appUserID: user.uid })
+      : Purchases.configure({ apiKey: CONFIG.revenueCatApiKeyGoogle as string, appUserID: user.uid });
   }, []);
 
   // sync notifications
@@ -158,6 +169,32 @@ export const useHome = () => {
     });
 
     dispatch(filterExpiredPractices(filteredPractices));
+  };
+
+  const checkUserPremiumInfo = async () => {
+    try {
+      const customerInfo = await Purchases.getCustomerInfo();
+      const { premium } = customerInfo.entitlements.active;
+      const isSubscription = subscription === 'ANNUAL' || subscription === 'MONTHLY';
+
+      if (typeof premium !== 'undefined') {
+        if (isSubscription) {
+          return;
+        }
+
+        storeSubscription(premium.productIdentifier);
+        return;
+      }
+
+      if (subscription === 'FREE') {
+        return;
+      }
+
+      storeSubscription('FREE');
+    } catch (e) {
+      // Error fetching customer info
+      console.log('erorr', e);
+    }
   };
 
   const onPressDrawer = () => openDrawer();

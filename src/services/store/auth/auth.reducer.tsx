@@ -13,6 +13,7 @@ const user = createReducer(initialState, {
     ...state,
     finishedPractices: [...state.finishedPractices, payload],
   }),
+  [action.updateSubscription.type]: (state, { payload }) => ({ ...state, subscription: payload }),
   [action.filterExpiredPractices.type]: (state, { payload }) => ({ ...state, finishedPractices: [...payload] }),
   [action.addRecentPractice.type]: (state, { payload }) => ({
     ...state,
@@ -29,10 +30,6 @@ const user = createReducer(initialState, {
 const latestLibrary = createReducer([], {
   [action.addLatestLibrary.type]: (_, { payload }) => payload,
   [action.clearLatestLibrary.type]: () => [],
-});
-
-const subscriptionProducts = createReducer([], {
-  [action.addSubscriptionProducts.type]: (_, { payload }) => payload,
 });
 
 const isAuthenticated = createReducer(false, {
@@ -55,5 +52,4 @@ export default combineReducers({
   isAuthenticated,
   isLoading,
   isDisturb,
-  subscriptionProducts,
 });

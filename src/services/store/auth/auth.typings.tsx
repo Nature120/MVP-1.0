@@ -14,7 +14,6 @@ export interface IAuth {
   isAuthenticated: boolean;
   isLoading: boolean;
   isDisturb: boolean;
-  subscriptionProducts: any;
 }
 
 export interface IUser {
@@ -33,7 +32,7 @@ export interface IUser {
   subscription?: TSubsctiption;
 }
 
-type TSubsctiption = 'free' | 'monthly' | 'annually';
+type TSubsctiption = 'FREE' | 'MONTHLY' | 'ANNUAL';
 
 export interface IBookmarks extends IPracticeLibrary {
   created_at: FirebaseFirestoreTypes.Timestamp;
@@ -49,3 +48,5 @@ export interface ITimer {
   seconds: number;
   isActiveTimer: boolean;
 }
+
+export type TOfferNames = 'ANNUAL' | 'MONTHLY' | 'FREE';

@@ -5,12 +5,11 @@ import { useSelector } from 'react-redux';
 
 import { Icon } from '@components/atoms/icon';
 import { Image } from '@components/atoms/image';
-import { ModalSubscribe } from '@components/organisms/modal-subscribe/modal-subscribe';
 import { PracticeLibraryModal } from '../practice-library-modal';
 
 import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 import { useOpenCloseModal } from '@services/hooks/open-close';
-import { getSubscribtion } from '@services/store/auth/auth.selectors';
+import { getSubscription } from '@services/store/auth/auth.selectors';
 
 import { IPracticeLibraryProps } from './practice-library.typings';
 
@@ -21,8 +20,8 @@ const WIDTH = (DEVICE_WIDTH * 42) / 100;
 export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
   const { title, image, description, userGoals, isWithoutActions, isWithoutAskModal, subscription: librarySub } = props;
   const { isOpen, onToggle } = useOpenCloseModal();
-  const userSubStatus = useSelector(getSubscribtion);
-  const isLockPractice = userSubStatus === 'free' && librarySub === 'Subscription';
+  const userSubStatus = useSelector(getSubscription);
+  const isLockPractice = userSubStatus === 'FREE' && librarySub === 'Subscription';
 
   return (
     <>

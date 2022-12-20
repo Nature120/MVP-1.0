@@ -3,6 +3,8 @@ import firestore from '@react-native-firebase/firestore';
 
 import { getFirstName } from './get-firstName';
 
+import { IBookmarks, IFinishedPractices } from '@services/store/auth/auth.typings';
+
 import { TFirebaseUserCredentials } from '@typings/common';
 
 interface IStoreDB {
@@ -10,7 +12,14 @@ interface IStoreDB {
   response: TFirebaseUserCredentials | void;
 }
 
-type TData = { email: string | null; first_name?: string };
+type TData = {
+  email: string | null;
+  first_name?: string;
+  finishedPractices: IFinishedPractices[];
+  recentPractices: IFinishedPractices[];
+  bookmarks: IBookmarks[];
+  subscription: string;
+};
 
 interface ISaveInDB {
   data: TData;
@@ -28,9 +37,23 @@ export const storeInDB = async ({ response, first_name: registerFirstName }: ISt
     return;
   }
   const name = getFirstName(displayName);
-  let data = { first_name: name, email, finishedPractices: [], recentPractices: [], bookmarks: [] };
+  let data = {
+    first_name: name,
+    email,
+    finishedPractices: [],
+    recentPractices: [],
+    bookmarks: [],
+    subscription: 'FREE',
+  };
   if (displayName === null) {
-    data = { first_name: registerFirstName, email, finishedPractices: [], recentPractices: [], bookmarks: [] };
+    data = {
+      first_name: registerFirstName,
+      email,
+      finishedPractices: [],
+      recentPractices: [],
+      bookmarks: [],
+      subscription: 'FREE',
+    };
   }
 
   await AsyncStorage.setItem('isFirstLaunchNature120', 'true');

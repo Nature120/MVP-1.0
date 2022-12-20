@@ -1,3 +1,4 @@
+import Purchases from 'react-native-purchases';
 import auth from '@react-native-firebase/auth';
 
 import { useAppDispatch } from '@services/hooks/redux';
@@ -9,6 +10,7 @@ export const useSignOut = () => {
   const onSignOut = async () => {
     try {
       await auth().signOut();
+      await Purchases.logOut();
       dispatch(signOut(null));
     } catch (error) {
       console.log('error', error);
