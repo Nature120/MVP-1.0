@@ -6,4 +6,5 @@ export interface IPracticeLibraryModalProps {
   library: IPracticeLibrary;
   isWithoutActions?: boolean;
   isWithoutAskModal?: boolean;
+  isLockPractice?: boolean;
 }

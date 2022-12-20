@@ -33,6 +33,7 @@ export const COLOR = {
     cloudyBlue,
     darkBlue,
     lightGrey: '#8498A8',
+    footer: '#353C36',
     red,
   },
   icon: {
@@ -61,6 +62,7 @@ export const COLOR = {
     lightBlueWeekDayCircle: '#6990F4',
     blueWeekDayCicrcle: '#376CF1',
     greyBookMark: '#E7EEEEBF',
+    dullGreen: '#F2F7F4',
   },
   shadow: { black },
   title: darkBlue,

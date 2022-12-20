@@ -62,8 +62,10 @@ export interface IPracticeLibrary {
   };
   userGoals: string[];
   audioFile?: string;
-  subscribtion?: string;
+  subscription?: TAccess;
 }
+
+type TAccess = 'Free' | 'Subscription';
 
 export type TScreenOptions =
   | StackNavigationOptions

@@ -1,5 +1,4 @@
-import { Text } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 import { TextComponent } from '@components/atoms/text-component';
 import { Title } from '@components/atoms/title';
@@ -15,20 +14,17 @@ export const contentContainerStyle = { flexGrow: 1 };
 
 export const StyledPracticeLibraryModal = {
   PracticeLibraryModal: styled.ScrollView`
+    flex: 1;
     background-color: ${COLOR.background.extraLightMint};
   `,
-
-  SafeAreaView: styled.SafeAreaView`
-    background-color: ${COLOR.background.extraLightMint};
-  `,
-
   ImageHeader: styled.View<{ top: number; isWithoutActions?: boolean }>`
     position: absolute;
     width: ${DEVICE_WIDTH - 24 * 2}px;
     top: ${({ top }) => top + 8}px;
     left: 24px;
+    flex-direction: row;
+    justify-content: ${props => (props.isWithoutActions ? 'flex-end' : 'space-between')};
   `,
-
   TypeContainer: styled.View`
     padding: 8px 12px;
     border-radius: 100px;
@@ -50,54 +46,40 @@ export const StyledPracticeLibraryModal = {
 
   ContentWrapper: styled.View`
     flex: 1;
-    top: -${imageIndent}px;
     background-color: ${COLOR.background.extraLightMint};
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
   `,
 
   Content: styled.View`
-    margin-horizontal: 24px;
     flex: 1;
+    margin-horizontal: 24px;
     justify-content: space-between;
   `,
 
   Header: styled.View`
-    margin: 36px 0 26px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    height: 270px;
   `,
 
   Title: styled(Title)`
     max-width: 100%;
     margin-bottom: 20px;
   `,
-  // TimeWrapper: styled.View`
-  //   flex-direction: row;
-  //   align-items: center;
-  // `,
-
-  // Time: styled(TextComponent)`
-  //   margin-left: 8px;
-  //   font-size: ${FONTS.size.xlSmall}px;
-  //   line-height: 19px;
-  //   color: ${COLOR.font.cloudyBlue};
-  // `,
-
   Description: styled(TextComponent)<{ isFirst: boolean }>`
     margin-top: ${props => (props.isFirst ? 0 : 20)}px;
     font-size: ${FONTS.size.xlSmall}px;
     line-height: 26px;
     color: ${COLOR.subheading};
   `,
-
   Tags: styled.View`
     margin: 32px 0 28px;
     flex-direction: row;
     flex-wrap: wrap;
   `,
-
+  Image: css`
+    position: absolute;
+    height: 290px;
+  `,
   Tag: styled.View`
     border: 1px solid ${COLOR.primary.dark};
     border-radius: 100px;

@@ -1,12 +1,15 @@
 import React from 'react';
 import { View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
+import { useSelector } from 'react-redux';
 
+import { Icon } from '@components/atoms/icon';
 import { Image } from '@components/atoms/image';
 import { PracticeLibraryModal } from '../practice-library-modal';
 
 import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 import { useOpenCloseModal } from '@services/hooks/open-close';
+import { getSubscription } from '@services/store/auth/auth.selectors';
 
 import { IPracticeLibraryProps } from './practice-library.typings';
 
@@ -15,21 +18,21 @@ import { StyledImage, StyledPracticeLibrary as Styled } from './practice-library
 const WIDTH = (DEVICE_WIDTH * 42) / 100;
 
 export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
-  const { title, image, description, userGoals, isWithoutActions, isWithoutAskModal } = props;
+  const { title, image, description, userGoals, isWithoutActions, isWithoutAskModal, subscription: librarySub } = props;
   const { isOpen, onToggle } = useOpenCloseModal();
+  const userSubStatus = useSelector(getSubscription);
+  const isLockPractice = userSubStatus === 'FREE' && librarySub === 'Subscription';
 
   return (
     <>
-      {isOpen && (
-        <PracticeLibraryModal
-          isOpen={isOpen}
-          library={props}
-          closeModal={onToggle}
-          isWithoutActions={isWithoutActions}
-          isWithoutAskModal={isWithoutAskModal}
-        />
-      )}
-
+      <PracticeLibraryModal
+        isOpen={isOpen}
+        library={props}
+        closeModal={onToggle}
+        isWithoutActions={isWithoutActions}
+        isWithoutAskModal={isWithoutAskModal}
+        isLockPractice={isLockPractice}
+      />
       <Styled.PracticeLibrary activeOpacity={0.9} onPress={onToggle} width={WIDTH}>
         <View>
           <Image source={{ uri: image }} width={WIDTH} height={moderateScale(103)} styles={StyledImage} />
@@ -40,8 +43,10 @@ export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
             </Styled.TypeContainer>
           )}
         </View>
-
-        <Styled.Title numberOfLines={1}>{title}</Styled.Title>
+        <Styled.TitleWrapper isLockPractice={isLockPractice} width={WIDTH}>
+          {isLockPractice && <Icon type="lock" size={18} styles={Styled.LockSvg} />}
+          <Styled.Title numberOfLines={1}>{title}</Styled.Title>
+        </Styled.TitleWrapper>
 
         <Styled.Description numberOfLines={2}>{description}</Styled.Description>
       </Styled.PracticeLibrary>

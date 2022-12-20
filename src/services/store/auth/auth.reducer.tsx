@@ -13,6 +13,7 @@ const user = createReducer(initialState, {
     ...state,
     finishedPractices: [...state.finishedPractices, payload],
   }),
+  [action.updateSubscription.type]: (state, { payload }) => ({ ...state, subscription: payload }),
   [action.filterExpiredPractices.type]: (state, { payload }) => ({ ...state, finishedPractices: [...payload] }),
   [action.addRecentPractice.type]: (state, { payload }) => ({
     ...state,

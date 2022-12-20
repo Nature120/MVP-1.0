@@ -29,7 +29,10 @@ export interface IUser {
   lastEnterAt?: Date;
   tipOfTheDay?: IUserTipOfTheDay;
   recentPractices: Array<IFinishedPractices>;
+  subscription?: TSubsctiption;
 }
+
+type TSubsctiption = 'FREE' | 'MONTHLY' | 'ANNUAL';
 
 export interface IBookmarks extends IPracticeLibrary {
   created_at: FirebaseFirestoreTypes.Timestamp;
@@ -45,3 +48,5 @@ export interface ITimer {
   seconds: number;
   isActiveTimer: boolean;
 }
+
+export type TOfferNames = 'ANNUAL' | 'MONTHLY' | 'FREE';

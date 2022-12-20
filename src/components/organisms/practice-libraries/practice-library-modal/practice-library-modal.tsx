@@ -1,15 +1,17 @@
 import React from 'react';
 import { Modal, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { moderateVerticalScale } from 'react-native-size-matters';
 
 import { Button } from '@components/atoms/button';
-import { Icon } from '@components/atoms/icon';
 import { Image } from '@components/atoms/image';
 import { Spacer } from '@components/atoms/spacer';
 import { AskModal } from '@components/molecules/ask-modal';
 import { ButtonIcon } from '@components/molecules/button-icon';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
+import { MainInfoSection } from './main-info-section/main-info-section';
 import { usePracticeLibraryModal } from './practice-library-modal.state';
+import { SubscribeSection } from './subscribe-section/subscribe-section';
 
 import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 import { useAppSelector } from '@services/hooks/redux';
@@ -36,9 +38,12 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
 
-  const { title, image, description, userGoals } = props.library;
+  const { title, image, description, userGoals, subscription } = props.library;
+  const { isLockPractice } = props;
 
   const insets = useSafeAreaInsets();
+
+  const isSubscriptionPractice = subscription === 'Subscription';
 
   return (
     <Modal transparent={false} visible={isOpen} animationType="slide">
@@ -52,11 +57,14 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           titleText={'today'}
         />
       )}
-
       <Styled.PracticeLibraryModal contentContainerStyle={contentContainerStyle} showsVerticalScrollIndicator={false}>
-        <View>
-          <Image source={{ uri: image }} width={DEVICE_WIDTH} height={275} />
-
+        <Styled.Header>
+          <Image
+            source={{ uri: image }}
+            width={DEVICE_WIDTH}
+            height={moderateVerticalScale(280)}
+            styles={Styled.Image}
+          />
           <Styled.ImageHeader top={insets.top} isWithoutActions={isWithoutActions}>
             <ButtonIcon
               isWithBg
@@ -67,57 +75,64 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
               onPress={closeModal}
             />
           </Styled.ImageHeader>
-
           {userGoals[0] && (
             <Styled.TypeContainer>
               <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
             </Styled.TypeContainer>
           )}
-        </View>
-        <Styled.ContentWrapper>
-          <Styled.Content>
-            <View>
-              <Styled.BookmarkBtn onPress={onToggleBookMark}>
-                <Icon type={toggleBookMark ? 'checked_leaf' : 'unchecked_leaf'} width={35} height={35} />
-              </Styled.BookmarkBtn>
-              <Styled.Title numberOfLines={2}>{title}</Styled.Title>
-              {/* <Styled.TimeWrapper>
-                  <Icon type="clock" colorIcon="cloudyBlue" size={18} />
-                  <Styled.Time>
-                    {duration.from}-{duration.to} min
-                  </Styled.Time>
-                </Styled.TimeWrapper> */}
-
-              <Styled.Description isFirst>{description}</Styled.Description>
-
-              <Styled.Tags>
-                {userGoals.map((userGoal, index, arr) => (
-                  <Spacer isHorizontal key={userGoal + index} gap={8} isLastItem={index === arr.length - 1}>
-                    <Spacer gap={8}>
-                      <Styled.Tag>
-                        <Styled.TagText>{userGoal}</Styled.TagText>
-                      </Styled.Tag>
-                    </Spacer>
-                  </Spacer>
-                ))}
-              </Styled.Tags>
-
-              {!isWithoutActions && <TogglerDoNotDisturb isWithPadding />}
-            </View>
-
-            {!isWithoutActions && (
-              <Styled.ButtonWrapper>
-                <Button
-                  buttonText="START TIMER"
-                  height={50}
-                  onPress={isWithoutAskModal || commentBeforeImmersion ? navigateToTimer : openModalAsk}
+        </Styled.Header>
+        {isLockPractice ? (
+          <Styled.ContentWrapper>
+            <Styled.Content>
+              <MainInfoSection
+                title={title}
+                description={description}
+                onToggleBookMark={onToggleBookMark}
+                toggleBookMark={toggleBookMark}
+                isSubscriptionPractice={isSubscriptionPractice}
+                isLockPractice={isLockPractice}
+              />
+            </Styled.Content>
+            <SubscribeSection closeModal={closeModal} />
+          </Styled.ContentWrapper>
+        ) : (
+          <Styled.ContentWrapper>
+            <Styled.Content>
+              <View>
+                <MainInfoSection
+                  title={title}
+                  description={description}
+                  onToggleBookMark={onToggleBookMark}
+                  toggleBookMark={toggleBookMark}
+                  isSubscriptionPractice={isSubscriptionPractice}
                 />
-              </Styled.ButtonWrapper>
-            )}
-          </Styled.Content>
-        </Styled.ContentWrapper>
+                <Styled.Tags>
+                  {userGoals.map((userGoal, index, arr) => (
+                    <Spacer isHorizontal key={userGoal + index} gap={8} isLastItem={index === arr.length - 1}>
+                      <Spacer gap={8}>
+                        <Styled.Tag>
+                          <Styled.TagText>{userGoal}</Styled.TagText>
+                        </Styled.Tag>
+                      </Spacer>
+                    </Spacer>
+                  ))}
+                </Styled.Tags>
+
+                {!isWithoutActions && <TogglerDoNotDisturb isWithPadding />}
+              </View>
+              {!isWithoutActions && (
+                <Styled.ButtonWrapper>
+                  <Button
+                    buttonText="START TIMER"
+                    height={50}
+                    onPress={isWithoutAskModal || commentBeforeImmersion ? navigateToTimer : openModalAsk}
+                  />
+                </Styled.ButtonWrapper>
+              )}
+            </Styled.Content>
+          </Styled.ContentWrapper>
+        )}
       </Styled.PracticeLibraryModal>
-      <Styled.SafeAreaView />
     </Modal>
   );
 };

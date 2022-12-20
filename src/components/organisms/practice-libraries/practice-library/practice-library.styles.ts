@@ -1,4 +1,5 @@
-import styled from 'styled-components/native';
+import { moderateScale } from 'react-native-size-matters';
+import styled, { css } from 'styled-components/native';
 
 import { TextComponent } from '@components/atoms/text-component';
 
@@ -34,9 +35,14 @@ export const StyledPracticeLibrary = {
     line-height: 12px;
     color: ${COLOR.font.white};
   `,
-
+  TitleWrapper: styled.View<{ isLockPractice: boolean; width: number }>`
+    flex-direction: row;
+    align-items: center;
+    width: ${({ width, isLockPractice }) => (isLockPractice ? width - moderateScale(25) : width)}px;
+  `,
   Title: styled.Text`
     margin: 8px 0 4px;
+    width: ${moderateScale(110)}px;
     font-family: ${FONTS.family.semiBoldAcumin};
     font-weight: ${FONTS.weight.semiBold};
     font-size: ${FONTS.size.xlSmall}px;
@@ -48,5 +54,8 @@ export const StyledPracticeLibrary = {
     font-size: 13px;
     line-height: 16px;
     color: ${COLOR.subheading};
+  `,
+  LockSvg: css`
+    margin-right: 8px;
   `,
 };

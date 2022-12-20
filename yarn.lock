@@ -7300,6 +7300,11 @@ react-native-pdf@^6.6.2:
     crypto-js "^3.2.0"
     deprecated-react-native-prop-types "^2.3.0"
 
+react-native-purchases@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-purchases/-/react-native-purchases-5.2.2.tgz#a80b56814599dd884e942bdd55e4e12d11b77cf7"
+  integrity sha512-09sMXfgmKVFkXGX1ip5KrOpBJKJVHdLLS6ePdsoANzqTpB0mL0DR21WrdbVdKKbmRh+yjqXGRYMatSB62NinIQ==
+
 react-native-push-notification@^8.1.1:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/react-native-push-notification/-/react-native-push-notification-8.1.1.tgz#a41d20c70ea5a7709417e96261b225461f8dc73a"

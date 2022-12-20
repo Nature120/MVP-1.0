@@ -5,6 +5,8 @@ import arrowDown from '@assets/icons/arrow-down.svg';
 import arrowLeft from '@assets/icons/arrow-left.svg';
 import arrowRight from '@assets/icons/arrow-right.svg';
 import brandIcon from '@assets/icons/brand_icon.svg';
+import check_mark from '@assets/icons/check_mark.svg';
+import checkbox from '@assets/icons/checkbox.svg';
 import checked from '@assets/icons/checked.svg';
 import checked_leaf from '@assets/icons/checked_leaf.svg';
 import clock from '@assets/icons/clock.svg';
@@ -15,6 +17,7 @@ import google from '@assets/icons/google.svg';
 import home from '@assets/icons/home.svg';
 import human from '@assets/icons/human.svg';
 import leaf from '@assets/icons/leaf.svg';
+import lock from '@assets/icons/lock.svg';
 import logout from '@assets/icons/logout.svg';
 import menu from '@assets/icons/menu.svg';
 import fullMoon from '@assets/icons/moon-phases/full-moon.svg';
@@ -70,6 +73,8 @@ export const ICONS = {
   newMoon,
   waxingGibbosMoon,
   waningGibbosMoon,
+  lock,
+  check_mark,
   checked,
   unchecked,
   checked_leaf,
