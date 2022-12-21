@@ -1,9 +1,11 @@
 import React from 'react';
 import { Alert, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Purchases from 'react-native-purchases';
+import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import { useStoreSubscription } from '@services/hooks/subscription-store';
+import { loading } from '@services/store/auth/auth.actions';
 
 import { PRIVACY, TERMS } from '@constants/social-url';
 
@@ -13,6 +15,7 @@ import { FONTS } from '@theme/fonts';
 export const Footer = () => {
   const { goBack } = useNavigation();
   const { storeSubscription } = useStoreSubscription();
+  const dispatch = useDispatch();
 
   const onPressLink = async (url: string) => {
     const supported = await Linking.canOpenURL(url);
@@ -26,7 +29,14 @@ export const Footer = () => {
   const onPressRestorePurchases = async () => {
     try {
       const { entitlements } = await Purchases.restorePurchases();
+
+      //Loading Screen start
+      dispatch(loading(true));
+
       await storeSubscription(entitlements.active.premium.productIdentifier);
+
+      //Loading Screen end
+      dispatch(loading(false));
       goBack();
     } catch (e) {
       console.log('error', e);

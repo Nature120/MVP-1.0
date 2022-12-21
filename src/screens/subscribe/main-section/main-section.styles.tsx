@@ -7,14 +7,6 @@ import { FONTS } from '@theme/fonts';
 export const MainSectionStyled = {
   Container: styled.View`
     flex: 1;
-    width: 100%;
-    justify-content: space-between;
-    padding-horizontal: 24px;
-    padding-top: 24px;
-    padding-bottom: 25px;
-    background-color: ${COLOR.background.white};
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
   `,
   BenefitWrapper: styled.View`
     flex-direction: row;

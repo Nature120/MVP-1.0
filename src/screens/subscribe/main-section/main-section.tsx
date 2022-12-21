@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import Purchases, { PACKAGE_TYPE, PurchasesOffering, PurchasesPackage } from 'react-native-purchases';
+import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@components/atoms/button';
 import { Icon } from '@components/atoms/icon';
-import { Footer } from './footer/footer';
 import { OfferItem } from './offer-item/offer-item';
 
 import { useStoreSubscription } from '@services/hooks/subscription-store';
+import { loading } from '@services/store/auth/auth.actions';
 
 import { arrayBenefits } from './main-section.constants';
 
@@ -20,6 +21,7 @@ export const MainSection = () => {
   const [checkedButton, setCheckedButton] = useState<boolean>(false);
   const [checkedOfferName, setCheckedOfferName] = useState<PACKAGE_TYPE | null>(null);
   const { goBack } = useNavigation();
+  const dispatch = useDispatch();
   const { storeSubscription } = useStoreSubscription();
 
   useEffect(() => {
@@ -33,9 +35,16 @@ export const MainSection = () => {
 
     try {
       const { customerInfo } = await Purchases.purchasePackage(offer);
+
+      //Start loading screen
+      dispatch(loading(true));
+
       const { premium } = customerInfo.entitlements.active;
       if (typeof premium !== 'undefined') {
         await storeSubscription(premium.productIdentifier);
+
+        //End loaging screen
+        dispatch(loading(false));
         goBack();
       }
     } catch (e: any) {
@@ -66,28 +75,25 @@ export const MainSection = () => {
 
   return (
     <Styled.Container>
-      <View>
-        {arrayBenefits.map((benefit, index) => (
-          <Styled.BenefitWrapper key={index}>
-            <Icon type="check_mark" width={18} height={18} />
-            <Styled.BenefitText index={index}>{benefit}</Styled.BenefitText>
-          </Styled.BenefitWrapper>
+      {arrayBenefits.map((benefit, index) => (
+        <Styled.BenefitWrapper key={index}>
+          <Icon type="check_mark" width={18} height={18} />
+          <Styled.BenefitText index={index}>{benefit}</Styled.BenefitText>
+        </Styled.BenefitWrapper>
+      ))}
+      <Styled.OfferingsWrapper>
+        {offers?.availablePackages.map((pack: PurchasesPackage) => (
+          <View key={pack.identifier}>
+            <OfferItem offer={pack} onPressOffer={onPressOffer} checkedOfferName={checkedOfferName} />
+          </View>
         ))}
-        <Styled.OfferingsWrapper>
-          {offers?.availablePackages.map((pack: PurchasesPackage) => (
-            <View key={pack.identifier}>
-              <OfferItem offer={pack} onPressOffer={onPressOffer} checkedOfferName={checkedOfferName} />
-            </View>
-          ))}
-        </Styled.OfferingsWrapper>
-      </View>
+      </Styled.OfferingsWrapper>
       <Button
         buttonText="Try for free"
         isDisabled={!checkedButton}
         styles={Styled.TryForFreeBtn}
         onPress={buyPackage}
       />
-      <Footer />
     </Styled.Container>
   );
 };

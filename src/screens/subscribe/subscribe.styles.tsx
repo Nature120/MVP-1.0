@@ -13,6 +13,17 @@ export const SubscribeStyled = {
     margin-top: ${moderateVerticalScale(45)}px;
     flex: 1;
   `,
+  MainWrapper: styled.View`
+    flex: 1;
+    width: 100%;
+    justify-content: space-between;
+    padding-horizontal: 24px;
+    padding-top: 24px;
+    padding-bottom: 25px;
+    background-color: ${COLOR.background.white};
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+  `,
   Header: styled.View`
     margin-bottom: 16px;
     align-items: flex-end;
