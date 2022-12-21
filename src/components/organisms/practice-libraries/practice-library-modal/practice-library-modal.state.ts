@@ -25,9 +25,7 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   const { isWithoutActions, isWithoutAskModal, isOpen, closeModal, library } = props;
   const uid = useSelector(getUid);
   const bookmarks = useSelector(getBookmarks);
-  const { title, description, duration, image, season, topCategory, userGoals } = library;
-  ///Somehow we have isWithoutActions and isWithoutAskModal in object library//
-  const normalLibrary = { description, title, duration, image, season, topCategory, userGoals };
+  const { title } = library;
 
   useEffect(() => {
     changeToggleInitState();
@@ -67,7 +65,7 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
 
   const bookMarkOperations = async () => {
     const fireBaseDate = firestore.Timestamp.fromDate(new Date());
-    const bookmark: IBookmarks = { ...normalLibrary, created_at: fireBaseDate };
+    const bookmark: IBookmarks = { ...library, created_at: fireBaseDate };
     ///toggleBookMark is change on true after one toggle in this function
     if (!toggleBookMark) {
       dispatch(action.addBookmarks(bookmark));
