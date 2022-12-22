@@ -16,23 +16,25 @@ import subscribeBackground from '@assets/images/subscrebe/subscribe_bg.jpg';
 export const SubscribeScreen = () => {
   const isloading = useSelector(getLoading);
   return (
-    <ScrollView>
+    <>
       {isloading ? (
         <Loader />
       ) : (
-        <Styled.ImageBackground source={subscribeBackground}>
-          <Styled.Container>
-            <Styled.Header>
-              <CloseButton />
-            </Styled.Header>
-            <Styled.Title>Try Nature 120 Free</Styled.Title>
-            <Styled.MainWrapper>
-              <MainSection />
-              <Footer />
-            </Styled.MainWrapper>
-          </Styled.Container>
-        </Styled.ImageBackground>
+        <ScrollView>
+          <Styled.ImageBackground source={subscribeBackground}>
+            <Styled.Container>
+              <Styled.Header>
+                <CloseButton />
+              </Styled.Header>
+              <Styled.Title>Try Nature 120 Free</Styled.Title>
+              <Styled.MainWrapper>
+                <MainSection />
+                <Footer />
+              </Styled.MainWrapper>
+            </Styled.Container>
+          </Styled.ImageBackground>
+        </ScrollView>
       )}
-    </ScrollView>
+    </>
   );
 };

@@ -90,7 +90,7 @@ export const useHome = () => {
     });
   }, []);
 
-  ///Billing sub
+  ///Connected to billing sub
   useEffect(() => {
     Purchases.setDebugLogsEnabled(true);
     isIOS
