@@ -46,7 +46,10 @@ export const MainSection = () => {
         //End loaging screen
         dispatch(loading(false));
         goBack();
+        return;
       }
+      //End loaging screen
+      dispatch(loading(false));
     } catch (e: any) {
       if (!e.userCancelled) {
         console.log('error', e);
