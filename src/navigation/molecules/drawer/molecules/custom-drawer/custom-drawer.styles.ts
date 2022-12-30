@@ -6,7 +6,6 @@ import { FONTS } from '@theme/fonts';
 export const StyledCustomDrawer = {
   Wrapper: styled.View`
     flex: 1;
-    padding-bottom: 60px;
   `,
 
   Logout: styled.TouchableOpacity`
@@ -25,18 +24,14 @@ export const StyledCustomDrawer = {
   InstagramBtn: styled.TouchableOpacity`
     flex-direction: row;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 12px;
     margin-bottom: 30px;
-    padding-horizontal: 20px;
+    padding-horizontal: 17px;
   `,
   InstagramText: styled.Text`
+    margin-left: 6px;
     color: ${COLOR.subheading};
     font-weight: ${FONTS.weight.medium};
-  `,
-  InstagramImage: styled.Image`
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
   `,
   AdditinallyInfoWrapper: styled.View`
     margin-bottom: 40px;

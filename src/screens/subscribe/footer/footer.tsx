@@ -30,13 +30,8 @@ export const Footer = () => {
     try {
       const { entitlements } = await Purchases.restorePurchases();
 
-      //Loading Screen start
-      dispatch(loading(true));
-
       await storeSubscription(entitlements.active.premium.productIdentifier);
 
-      //Loading Screen end
-      dispatch(loading(false));
       goBack();
     } catch (e) {
       console.log('error', e);

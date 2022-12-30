@@ -40,9 +40,10 @@ export const StyledPracticeLibrary = {
     align-items: center;
     width: ${({ width, isLockPractice }) => (isLockPractice ? width - moderateScale(25) : width)}px;
   `,
-  Title: styled.Text`
+  Title: styled.Text<{ isLockPractice: boolean }>`
     margin: 8px 0 4px;
-    width: ${moderateScale(110)}px;
+    // width: ${moderateScale(110)}px;
+    width: ${({ isLockPractice }) => (isLockPractice ? moderateScale(110) : moderateScale(150))}px;
     font-family: ${FONTS.family.semiBoldAcumin};
     font-weight: ${FONTS.weight.semiBold};
     font-size: ${FONTS.size.xlSmall}px;

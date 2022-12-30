@@ -4,7 +4,6 @@ import chartLine from '@assets/images/chart-line.png';
 import ellipseGreen from '@assets/images/ellipse-green.png';
 import ellipseLightGreen from '@assets/images/ellipse-light-green.png';
 import closedEye from '@assets/images/icon/closed-eye.png';
-import instagram from '@assets/images/instagram.png';
 import loader from '@assets/images/loader/loader.png';
 import logo from '@assets/images/logo.png';
 import mask from '@assets/images/mask.png';
@@ -30,7 +29,6 @@ export const IMAGES = {
   closedEye,
   ['ellipse-green']: ellipseGreen,
   ['ellipse-light-green']: ellipseLightGreen,
-  instagram,
   loader,
 };
 

@@ -15,6 +15,7 @@ import facebook from '@assets/icons/facebook.svg';
 import google from '@assets/icons/google.svg';
 import home from '@assets/icons/home.svg';
 import human from '@assets/icons/human.svg';
+import instagram from '@assets/icons/instagram.svg';
 import leaf from '@assets/icons/leaf.svg';
 import lock from '@assets/icons/lock.svg';
 import logout from '@assets/icons/logout.svg';
@@ -88,6 +89,7 @@ export const ICONS = {
   play_player,
   rewind_player,
   stop_player,
+  instagram,
 };
 
 export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];

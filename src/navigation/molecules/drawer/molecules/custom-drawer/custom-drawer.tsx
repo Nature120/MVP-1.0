@@ -4,7 +4,6 @@ import { DrawerContentComponentProps, DrawerContentScrollView, DrawerItemList } 
 
 import { Icon } from '@components/atoms/icon';
 
-import { IMAGES } from '@constants/images';
 import { INSTAGRAM, PRIVACY, TERMS } from '@constants/social-url';
 
 import { StyledCustomDrawer as Styled } from './custom-drawer.styles';
@@ -24,12 +23,12 @@ export const customDrawer = (signOut: () => void) => (props: DrawerContentCompon
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
         <Styled.InstagramBtn onPress={() => onPressLink(INSTAGRAM)}>
-          <Styled.InstagramImage source={IMAGES.instagram} />
+          <Icon type="instagram" size={28} colorIcon="green" />
           <Styled.InstagramText>Instagram</Styled.InstagramText>
         </Styled.InstagramBtn>
       </DrawerContentScrollView>
       <Styled.Logout onPress={signOut}>
-        <Icon type="logout" size={24} />
+        <Icon type="logout" size={24} colorIcon="green" />
         <Styled.LogoutText>Log Out</Styled.LogoutText>
       </Styled.Logout>
       <Styled.AdditinallyInfoWrapper>

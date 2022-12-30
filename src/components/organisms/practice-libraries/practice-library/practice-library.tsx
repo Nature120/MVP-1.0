@@ -46,7 +46,9 @@ export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
         </View>
         <Styled.TitleWrapper isLockPractice={isLockPractice} width={WIDTH}>
           {isLockPractice && <Icon type="lock" size={18} styles={Styled.LockSvg} />}
-          <Styled.Title numberOfLines={1}>{title}</Styled.Title>
+          <Styled.Title isLockPractice={isLockPractice} numberOfLines={1}>
+            {title}
+          </Styled.Title>
         </Styled.TitleWrapper>
 
         <Styled.Description numberOfLines={2}>{description}</Styled.Description>

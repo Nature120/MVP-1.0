@@ -36,15 +36,10 @@ export const MainSection = () => {
     try {
       const { customerInfo } = await Purchases.purchasePackage(offer);
 
-      //Start loading screen
-      dispatch(loading(true));
-
       const { premium } = customerInfo.entitlements.active;
       if (typeof premium !== 'undefined') {
         await storeSubscription(premium.productIdentifier);
 
-        //End loaging screen
-        dispatch(loading(false));
         goBack();
         return;
       }
