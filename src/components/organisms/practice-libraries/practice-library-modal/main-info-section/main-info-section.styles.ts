@@ -18,7 +18,7 @@ export const MainInfoSectionStyled = {
     flex-direction: row;
   `,
   Title: styled(Title)`
-    max-width: ${moderateScale(260)}px;
+    max-width: ${moderateScale(335)}px;
     margin-bottom: 20px;
   `,
   Description: styled(TextComponent)<{ isFirst: boolean }>`

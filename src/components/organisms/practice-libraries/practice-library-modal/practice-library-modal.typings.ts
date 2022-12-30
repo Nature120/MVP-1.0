@@ -7,4 +7,5 @@ export interface IPracticeLibraryModalProps {
   isWithoutActions?: boolean;
   isWithoutAskModal?: boolean;
   isLockPractice?: boolean;
+  isImmersionTimerModal?: boolean;
 }
