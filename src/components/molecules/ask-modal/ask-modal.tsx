@@ -26,7 +26,7 @@ export const AskModal: React.FC<IAskModalProps> = props => {
     setText,
     handleDone,
     handleTextPress,
-  } = useAskModal(handlers);
+  } = useAskModal({ handlers, titleText });
 
   const button = (buttonText: string, onPress: () => void, isDisabled?: boolean) => (
     <ButtonWithLink

@@ -6,7 +6,6 @@ import arrowLeft from '@assets/icons/arrow-left.svg';
 import arrowRight from '@assets/icons/arrow-right.svg';
 import brandIcon from '@assets/icons/brand_icon.svg';
 import check_mark from '@assets/icons/check_mark.svg';
-import checkbox from '@assets/icons/checkbox.svg';
 import checked from '@assets/icons/checked.svg';
 import checked_leaf from '@assets/icons/checked_leaf.svg';
 import clock from '@assets/icons/clock.svg';
@@ -32,10 +31,14 @@ import onBoardingMoon from '@assets/icons/on-boarding-moon.svg';
 import onBoardingSun from '@assets/icons/on-boarding-sun.svg';
 import openEye from '@assets/icons/open-eye.svg';
 import pause from '@assets/icons/pause.svg';
+import pause_player from '@assets/icons/pause-player.svg';
 import pencil from '@assets/icons/pencil.svg';
 import play from '@assets/icons/play.svg';
+import play_player from '@assets/icons/play-player.svg';
 import practices from '@assets/icons/practices.svg';
+import rewind_player from '@assets/icons/rewind-player.svg';
 import settings from '@assets/icons/settings.svg';
+import stop_player from '@assets/icons/stop-player.svg';
 import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
 import tip from '@assets/icons/tip.svg';
 import unchecked from '@assets/icons/unchecked.svg';
@@ -81,6 +84,10 @@ export const ICONS = {
   unchecked_leaf,
   leaf,
   settings,
+  pause_player,
+  play_player,
+  rewind_player,
+  stop_player,
 };
 
 export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];

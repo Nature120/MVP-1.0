@@ -18,25 +18,28 @@ import { IPracticeLibraryModalProps } from './practice-library-modal.typings';
 
 export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   const [toggleBookMark, setToggleBookMark] = useState<boolean>(false);
+  const [toggleInfo, seTtoggleInfo] = useState(false);
+
   const { navigate } = useNavigation();
   const dispatch = useAppDispatch();
   const { isOpen: isOpenAsk, onClose: closeModalAsk, onOpen: openModalAsk } = useOpenCloseModal();
   const { defaultTimer } = useSetDefaultTimer('startTimer');
-  const { isWithoutActions, isWithoutAskModal, isOpen, closeModal, library } = props;
   const uid = useSelector(getUid);
   const bookmarks = useSelector(getBookmarks);
+
+  const { isWithoutActions, isWithoutAskModal, isOpen, closeModal, library } = props;
   const { title } = library;
 
   useEffect(() => {
     changeToggleInitState();
-  }, []);
+  }, [bookmarks]);
 
   const changeToggleInitState = () => {
     if (!bookmarks) {
       return;
     }
     const isBookMark = bookmarks.find(item => item.title === title);
-    isBookMark && setToggleBookMark(true);
+    isBookMark ? setToggleBookMark(true) : setToggleBookMark(false);
   };
 
   const saveResponse = (value: string) => {
@@ -61,6 +64,10 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   const onToggleBookMark = () => {
     setToggleBookMark(!toggleBookMark);
     bookMarkOperations();
+  };
+
+  const onToggleInfo = () => {
+    seTtoggleInfo(!toggleInfo);
   };
 
   const bookMarkOperations = async () => {
@@ -92,5 +99,7 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
     onConfirmPress,
     onToggleBookMark,
     toggleBookMark,
+    onToggleInfo,
+    toggleInfo,
   };
 };

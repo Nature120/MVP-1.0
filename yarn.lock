@@ -1428,6 +1428,11 @@
   dependencies:
     invariant "^2.2.4"
 
+"@react-native-community/slider@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.4.0.tgz#06c6ad76fa1bcc1c5d4188d1969c226eb26e3255"
+  integrity sha512-Pvj6NI65tq7KQxvuFenJHgQ0pdm2OXdVYQg9Sx4PCsifHbsDF/BBT4hoV8RjQhaDfil9Kbu/HRI/uXG9QUfXtw==
+
 "@react-native-firebase/app@^16.4.4":
   version "16.4.4"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-16.4.4.tgz#d149d9f7e853c32e2cbd26068ebca11f7d85cadb"
@@ -7376,6 +7381,11 @@ react-native-switch@^1.5.1:
   integrity sha512-nfuPrrPKzeZL1mQH0u1rlEGv9W1+okU/xOcNNaDNz/LhSdzWOZ04ogJ4iEj7Sth3hkBxv4XwFQZTgCc07we+cg==
   dependencies:
     prop-types "^15.6.0"
+
+react-native-track-player@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-track-player/-/react-native-track-player-3.2.0.tgz#c7b7a53eaf4c248af2ac876ef349feaee2ef774a"
+  integrity sha512-svv6TOgU/quFV1aajG5PskVhgFG0wHQtO+aYs6cIH0D27ckzN8WVoC3jI94m1CVaSgLMw48P911csYuD2fIcqA==
 
 react-native-volume-manager@^1.2.1:
   version "1.2.1"

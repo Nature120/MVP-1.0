@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import TrackPlayer from 'react-native-track-player';
 import { useSelector } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
@@ -8,6 +9,7 @@ import { clearRecentPractices } from './immersion-timer.utils';
 import { databaseRef, updateUser } from '@services/api.service';
 import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
+import { SetupPlayerService } from '@services/player/player-setup';
 import { setCommentBeforeImmersion, setGradeBeforeImmersion } from '@services/store/app';
 import { addFinishedPractic, addRecentPractice } from '@services/store/auth/auth.actions';
 import { getLatestLibrary } from '@services/store/auth/auth.selectors';
@@ -17,14 +19,45 @@ import { IFinishedPractices } from '@services/store/auth/auth.typings';
 import { APP_ROUTES } from '@constants/routes';
 
 export const useImmersionTimer = () => {
-  const { navigate } = useNavigation();
+  const [isPlayerReady, setIsPlayerReady] = useState<boolean>(false);
   const [seconds, setSeconds] = useState<number>(0);
+
+  const { navigate } = useNavigation();
   const { isOpen: isOpenAskModal, onClose: closeAskModal, onToggle: toggleOpenAskModal } = useOpenCloseModal();
   const { uid } = useSelector(getUserInfo);
   const { commentBeforeImmersion, gradeBeforeImmersion } = useAppSelector(store => store.app);
   const dispatch = useAppDispatch();
   const library = useSelector(getLatestLibrary);
-  const { title } = library;
+  const { title, audioFile } = library;
+
+  const isAudioFile = audioFile !== undefined;
+
+  useEffect(() => {
+    setUpPlayer();
+  }, []);
+
+  const setUpPlayer = async () => {
+    if (!audioFile) {
+      return;
+    }
+
+    const { audio, author, duration } = audioFile;
+
+    const isSetup = await SetupPlayerService();
+    setIsPlayerReady(isSetup);
+
+    const queue = await TrackPlayer.getQueue();
+
+    if (isSetup && queue.length <= 0) {
+      await TrackPlayer.add({
+        url: audio,
+        title,
+        artist: author,
+        artwork: 'https://cdn.pixabay.com/photo/2022/07/15/14/14/mount-cook-7323246_1280.jpg',
+        duration,
+      });
+    }
+  };
 
   const onTextPress = (commentAfterImmersion: string, gradeAfterImmersion: number | null) => {
     const isAnyValueExists =
@@ -100,5 +133,7 @@ export const useImmersionTimer = () => {
     seconds,
     setSeconds,
     onTextPress,
+    isPlayerReady,
+    isAudioFile,
   };
 };

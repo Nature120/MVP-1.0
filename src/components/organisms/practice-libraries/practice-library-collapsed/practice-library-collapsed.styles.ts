@@ -40,7 +40,7 @@ export const StyledPracticeLibraryCollapsed = {
     color: ${COLOR.font.white};
   `,
 
-  CollapsedLibrary: styled.TouchableOpacity`
+  CollapsedLibrary: styled.View`
     width: 100%;
     height: ${COLLAPSED_HEIGHT}px;
     margin: ${moderateScale(40)}px 0 ${moderateScale(60)}px;
@@ -59,7 +59,7 @@ export const StyledPracticeLibraryCollapsed = {
     `}
   `,
 
-  Left: styled.View`
+  Left: styled.TouchableOpacity`
     padding: 22px 16px;
     width: 56%;
   `,
@@ -77,7 +77,12 @@ export const StyledPracticeLibraryCollapsed = {
     color: ${COLOR.subheading};
   `,
 
-  Right: styled.View`
+  Right: styled.Pressable`
     width: ${rightWidthPercent}%;
+  `,
+  PlayerWrapper: styled.View`
+    position: absolute;
+    top: 25px;
+    right: 30px;
   `,
 };

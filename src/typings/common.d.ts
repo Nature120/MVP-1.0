@@ -61,11 +61,18 @@ export interface IPracticeLibrary {
     to: number;
   };
   userGoals: string[];
-  audioFile?: string;
+  audioFile?: IAudioFile;
   subscription?: TAccess;
 }
 
 type TAccess = 'Free' | 'Subscription';
+
+export interface IAudioFile {
+  author: string;
+  audio: string;
+  avatar: string;
+  duration: number;
+}
 
 export type TScreenOptions =
   | StackNavigationOptions

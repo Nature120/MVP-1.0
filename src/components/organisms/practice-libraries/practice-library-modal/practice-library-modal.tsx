@@ -9,6 +9,7 @@ import { Spacer } from '@components/atoms/spacer';
 import { AskModal } from '@components/molecules/ask-modal';
 import { ButtonIcon } from '@components/molecules/button-icon';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
+import { HeaderInfo } from './header-info/header-info';
 import { MainInfoSection } from './main-info-section/main-info-section';
 import { usePracticeLibraryModal } from './practice-library-modal.state';
 import { SubscribeSection } from './subscribe-section/subscribe-section';
@@ -21,6 +22,7 @@ import { IPracticeLibraryModalProps } from './practice-library-modal.typings';
 import { contentContainerStyle, StyledPracticeLibraryModal as Styled } from './practice-library-modal.styles';
 
 export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props => {
+  const { isImmersionTimerModal } = props;
   const {
     isOpen,
     isWithoutActions,
@@ -34,16 +36,19 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     onConfirmPress,
     onToggleBookMark,
     toggleBookMark,
+    onToggleInfo,
+    toggleInfo,
   } = usePracticeLibraryModal(props);
 
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
 
-  const { title, image, description, userGoals, subscription } = props.library;
+  const { title, image, description, userGoals, subscription, audioFile } = props.library;
   const { isLockPractice } = props;
 
   const insets = useSafeAreaInsets();
 
   const isSubscriptionPractice = subscription === 'Subscription';
+  const isAudioFile = audioFile !== undefined;
 
   return (
     <Modal transparent={false} visible={isOpen} animationType="slide">
@@ -65,7 +70,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
             height={moderateVerticalScale(280)}
             styles={Styled.Image}
           />
-          <Styled.ImageHeader top={insets.top} isWithoutActions={isWithoutActions}>
+          <Styled.ImageHeader top={insets.top}>
             <ButtonIcon
               isWithBg
               type="arrowLeft"
@@ -75,11 +80,13 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
               onPress={closeModal}
             />
           </Styled.ImageHeader>
-          {userGoals[0] && (
-            <Styled.TypeContainer>
-              <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
-            </Styled.TypeContainer>
-          )}
+          <HeaderInfo
+            userGoals={userGoals}
+            isAudioFile={isAudioFile}
+            isImmersionTimerModal={isImmersionTimerModal}
+            onToggleInfo={onToggleInfo}
+            toggleInfo={toggleInfo}
+          />
         </Styled.Header>
         {isLockPractice ? (
           <Styled.ContentWrapper>
@@ -105,6 +112,8 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                   onToggleBookMark={onToggleBookMark}
                   toggleBookMark={toggleBookMark}
                   isSubscriptionPractice={isSubscriptionPractice}
+                  toggleInfo={toggleInfo}
+                  audioFile={audioFile}
                 />
                 <Styled.Tags>
                   {userGoals.map((userGoal, index, arr) => (
