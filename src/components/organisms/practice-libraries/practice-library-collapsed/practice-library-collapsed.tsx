@@ -23,9 +23,17 @@ export const PracticeLibraryCollapsed: React.FC<IPracticeLibraryCollapsedProps> 
 
   const state = usePlaybackState();
   const onTogglePlayback = useOnTogglePlayback();
-  const isPlaying = state === State.Playing;
 
   const { isAudioFile } = usePlayer();
+
+  const handleAudioStatus = () => {
+    if (state === State.None) {
+      return;
+    }
+    return state === State.Playing;
+  };
+
+  const isPlaying = handleAudioStatus();
 
   return (
     <>
