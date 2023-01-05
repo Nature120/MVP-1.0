@@ -18,11 +18,10 @@ export const MainInfoSectionStyled = {
     flex-direction: row;
   `,
   Title: styled(Title)`
-    max-width: ${moderateScale(335)}px;
+    width: ${moderateScale(280)}px;
     margin-bottom: 20px;
   `,
-  Description: styled(TextComponent)<{ isFirst: boolean }>`
-    margin-top: ${props => (props.isFirst ? 0 : 20)}px;
+  Description: styled(TextComponent)`
     font-size: ${FONTS.size.xlSmall}px;
     line-height: 26px;
     color: ${COLOR.subheading};

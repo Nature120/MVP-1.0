@@ -41,9 +41,7 @@ export const MainInfoSection: React.FC<IProp> = ({
       {isToogleInfo ? (
         <MediaPlayer audioFile={audioFile} />
       ) : (
-        <Styled.Description numberOfLines={isLockPractice ? 3 : 0} isFirst>
-          {description}
-        </Styled.Description>
+        <Styled.Description numberOfLines={isLockPractice ? 3 : 0}>{description}</Styled.Description>
       )}
     </>
   );
