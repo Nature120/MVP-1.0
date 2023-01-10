@@ -16,19 +16,21 @@ export const MainSection = () => {
 
   return (
     <Styled.Container>
-      {arrayBenefits.map((benefit, index) => (
-        <Styled.BenefitWrapper key={index}>
-          <Icon type="check_mark" width={18} height={18} />
-          <Styled.BenefitText index={index}>{benefit}</Styled.BenefitText>
-        </Styled.BenefitWrapper>
-      ))}
-      <Styled.OfferingsWrapper>
-        {offers?.availablePackages.map((pack: PurchasesPackage) => (
-          <View key={pack.identifier}>
-            <OfferItem offer={pack} onPressOffer={onPressOffer} checkedOfferName={checkedOfferName} />
-          </View>
+      <View>
+        {arrayBenefits.map((benefit, index) => (
+          <Styled.BenefitWrapper key={index}>
+            <Icon type="check_mark" width={18} height={18} />
+            <Styled.BenefitText index={index}>{benefit}</Styled.BenefitText>
+          </Styled.BenefitWrapper>
         ))}
-      </Styled.OfferingsWrapper>
+        <Styled.OfferingsWrapper>
+          {offers?.availablePackages.map((pack: PurchasesPackage) => (
+            <View key={pack.identifier}>
+              <OfferItem offer={pack} onPressOffer={onPressOffer} checkedOfferName={checkedOfferName} />
+            </View>
+          ))}
+        </Styled.OfferingsWrapper>
+      </View>
       <Button
         buttonText="Try for free"
         isDisabled={!checkedButton}

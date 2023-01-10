@@ -67,7 +67,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           <Image
             source={{ uri: image }}
             width={DEVICE_WIDTH}
-            height={moderateVerticalScale(280)}
+            height={moderateVerticalScale(350)}
             styles={Styled.Image}
           />
           <Styled.ImageHeader top={insets.top}>

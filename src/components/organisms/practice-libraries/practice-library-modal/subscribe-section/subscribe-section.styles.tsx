@@ -13,6 +13,7 @@ export const SubscribeSectionStyled = {
     padding-bottom: 48px;
     padding-horizontal: 24px;
     align-items: center;
+    justify-content: center;
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
     background-color: ${COLOR.background.white};

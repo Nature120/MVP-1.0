@@ -7,6 +7,7 @@ import { FONTS } from '@theme/fonts';
 export const MainSectionStyled = {
   Container: styled.View`
     flex: 1;
+    justify-content: space-between;
   `,
   BenefitWrapper: styled.View`
     flex-direction: row;

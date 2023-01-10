@@ -11,16 +11,15 @@ export const SubscribeStyled = {
     flex: 1;
   `,
   Container: styled.View`
-    margin-top: ${isIOS ? moderateVerticalScale(45) : moderateVerticalScale(10)}px;
+    margin-top: ${isIOS ? moderateVerticalScale(45) : moderateVerticalScale(50)}px;
     flex: 1;
   `,
   MainWrapper: styled.View`
     flex: 1;
     width: 100%;
-    justify-content: space-between;
     padding-horizontal: 24px;
     padding-top: 24px;
-    padding-bottom: 25px;
+    padding-bottom: 40px;
     background-color: ${COLOR.background.white};
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;

@@ -56,7 +56,6 @@ export const StyledPracticeLibraryModal = {
   `,
   Image: css`
     position: absolute;
-    height: 290px;
   `,
   Tag: styled.View`
     border: 1px solid ${COLOR.primary.dark};

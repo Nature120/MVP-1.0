@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, ViewStyle } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { Loader } from '@components/atoms/loader/loader';
@@ -15,13 +15,14 @@ import subscribeBackground from '@assets/images/subscrebe/subscribe_bg.jpg';
 
 export const SubscribeScreen = () => {
   const isloading = useSelector(getLoading);
+  const scrollViewStyls: ViewStyle = { flexGrow: 1, justifyContent: 'center' };
   return (
     <>
       {isloading ? (
         <Loader />
       ) : (
-        <ScrollView>
-          <Styled.ImageBackground source={subscribeBackground}>
+        <Styled.ImageBackground source={subscribeBackground} resizeMode="cover">
+          <ScrollView contentContainerStyle={scrollViewStyls as ViewStyle}>
             <Styled.Container>
               <Styled.Header>
                 <CloseButton />
@@ -32,8 +33,8 @@ export const SubscribeScreen = () => {
                 <Footer />
               </Styled.MainWrapper>
             </Styled.Container>
-          </Styled.ImageBackground>
-        </ScrollView>
+          </ScrollView>
+        </Styled.ImageBackground>
       )}
     </>
   );
