@@ -1,22 +1,15 @@
 import React from 'react';
 
+import { Icon } from '@components/atoms/icon';
+
 import { HeaderInfoStyled as Styled } from './header-info.styles';
 
 interface IProp {
   userGoals: string[];
-  isImmersionTimerModal?: boolean;
-  onToggleInfo: () => void;
-  toggleInfo: boolean;
-  isAudioFile?: boolean;
+  isAudioFile: boolean;
 }
 
-export const HeaderInfo: React.FC<IProp> = ({
-  userGoals,
-  isImmersionTimerModal,
-  onToggleInfo,
-  toggleInfo,
-  isAudioFile,
-}) => {
+export const HeaderInfo: React.FC<IProp> = ({ userGoals, isAudioFile }) => {
   return (
     <>
       {userGoals[0] && (
@@ -24,17 +17,11 @@ export const HeaderInfo: React.FC<IProp> = ({
           <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
         </Styled.TypeContainer>
       )}
-      {!isImmersionTimerModal
-        ? isAudioFile && (
-            <Styled.AudioLabel>
-              <Styled.AudioLabelText>Audio</Styled.AudioLabelText>
-            </Styled.AudioLabel>
-          )
-        : isAudioFile && (
-            <Styled.AudioBtn onPress={onToggleInfo}>
-              <Styled.AudioLabelText>{toggleInfo ? 'Text' : 'Audio'}</Styled.AudioLabelText>
-            </Styled.AudioBtn>
-          )}
+      {isAudioFile && (
+        <Styled.AudioLabel>
+          <Icon type="speaker_high" size={20} />
+        </Styled.AudioLabel>
+      )}
     </>
   );
 };

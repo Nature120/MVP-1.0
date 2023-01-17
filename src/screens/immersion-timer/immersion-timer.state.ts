@@ -28,7 +28,7 @@ export const useImmersionTimer = () => {
   const { commentBeforeImmersion, gradeBeforeImmersion } = useAppSelector(store => store.app);
   const dispatch = useAppDispatch();
   const library = useSelector(getLatestLibrary);
-  const { title, audioFile } = library;
+  const { title, audioFile, image } = library;
 
   const isAudioFile = audioFile !== undefined;
 
@@ -53,7 +53,7 @@ export const useImmersionTimer = () => {
         url: audio,
         title,
         artist: author,
-        artwork: 'https://cdn.pixabay.com/photo/2022/07/15/14/14/mount-cook-7323246_1280.jpg',
+        artwork: image,
         duration,
       });
     }

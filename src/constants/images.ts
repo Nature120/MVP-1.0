@@ -8,6 +8,7 @@ import loader from '@assets/images/loader/loader.png';
 import logo from '@assets/images/logo.png';
 import mask from '@assets/images/mask.png';
 import onBoardStart from '@assets/images/on-board/on-board-start.jpg';
+import sun_palyer from '@assets/images/player/sun.png';
 import clouds from '@assets/images/splash/clouds.png';
 import ellipses from '@assets/images/splash/ellipses.png';
 import flowers from '@assets/images/splash/flowers.png';
@@ -30,6 +31,7 @@ export const IMAGES = {
   ['ellipse-green']: ellipseGreen,
   ['ellipse-light-green']: ellipseLightGreen,
   loader,
+  sun_palyer,
 };
 
 export const URI = {

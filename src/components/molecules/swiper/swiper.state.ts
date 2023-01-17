@@ -55,7 +55,7 @@ export const useSwiperState = ({ marginW, toggleOpenAskModal }: ISwipeState) => 
     [transX],
   );
 
-  const onGestureHnadle = useMemo(() => {
+  const onGestureHandle = useMemo(() => {
     return event([
       {
         nativeEvent: ({ translationX: x, state }: any) =>
@@ -71,5 +71,5 @@ export const useSwiperState = ({ marginW, toggleOpenAskModal }: ISwipeState) => 
     ]);
   }, [transX, offsetX]);
 
-  return { textAnimatedStyles, arrowAnimatedStyles, onGestureHnadle };
+  return { textAnimatedStyles, arrowAnimatedStyles, onGestureHandle };
 };

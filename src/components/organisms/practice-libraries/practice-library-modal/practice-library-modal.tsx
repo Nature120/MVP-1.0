@@ -22,7 +22,6 @@ import { IPracticeLibraryModalProps } from './practice-library-modal.typings';
 import { contentContainerStyle, StyledPracticeLibraryModal as Styled } from './practice-library-modal.styles';
 
 export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props => {
-  const { isImmersionTimerModal } = props;
   const {
     isOpen,
     isWithoutActions,
@@ -36,19 +35,16 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     onConfirmPress,
     onToggleBookMark,
     toggleBookMark,
-    onToggleInfo,
-    toggleInfo,
+    isSubscriptionPractice,
+    isAudioFile,
   } = usePracticeLibraryModal(props);
 
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
 
-  const { title, image, description, userGoals, subscription, audioFile } = props.library;
+  const { title, image, description, userGoals } = props.library;
   const { isLockPractice } = props;
 
   const insets = useSafeAreaInsets();
-
-  const isSubscriptionPractice = subscription === 'Subscription';
-  const isAudioFile = audioFile !== undefined;
 
   return (
     <Modal transparent={false} visible={isOpen} animationType="slide">
@@ -80,13 +76,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
               onPress={closeModal}
             />
           </Styled.ImageHeader>
-          <HeaderInfo
-            userGoals={userGoals}
-            isAudioFile={isAudioFile}
-            isImmersionTimerModal={isImmersionTimerModal}
-            onToggleInfo={onToggleInfo}
-            toggleInfo={toggleInfo}
-          />
+          <HeaderInfo userGoals={userGoals} isAudioFile={isAudioFile} />
         </Styled.Header>
         {isLockPractice ? (
           <Styled.ContentWrapper>
@@ -112,8 +102,6 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                   onToggleBookMark={onToggleBookMark}
                   toggleBookMark={toggleBookMark}
                   isSubscriptionPractice={isSubscriptionPractice}
-                  toggleInfo={toggleInfo}
-                  audioFile={audioFile}
                 />
                 <Styled.Tags>
                   {userGoals.map((userGoal, index, arr) => (
@@ -126,7 +114,6 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                     </Spacer>
                   ))}
                 </Styled.Tags>
-
                 {!isWithoutActions && <TogglerDoNotDisturb isWithPadding />}
               </View>
               {!isWithoutActions && (

@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react';
 import TrackPlayer, {
   Event,
   State,
@@ -11,15 +12,17 @@ import { usePlayer } from '@screens/immersion-timer';
 import { IAudioFile } from '@typings/common';
 
 export const useMediaPlayerState = (audioFile: IAudioFile | undefined) => {
+  const [repeatCounter, setRepeatCounter] = useState<number>(1);
+  const [repeatMode, setRepeatMode] = useState<boolean>(false);
+
   const { isPlayerReady } = usePlayer();
-
-  const { author, avatar } = audioFile as IAudioFile;
   const playerState = usePlaybackState();
-  const isPlaying = playerState === State.Playing;
-
   const { position, duration } = useProgress();
 
-  const events = [Event.PlaybackError, Event.PlaybackProgressUpdated];
+  const { author, avatar } = audioFile as IAudioFile;
+  const isPlaying = playerState === State.Playing;
+
+  const events = [Event.PlaybackError, Event.PlaybackProgressUpdated, Event.PlaybackQueueEnded];
 
   useTrackPlayerEvents(events, event => {
     switch (event.type) {
@@ -28,13 +31,10 @@ export const useMediaPlayerState = (audioFile: IAudioFile | undefined) => {
         break;
 
       case Event.PlaybackProgressUpdated:
-        const normilizeEventDuration = normalizeTime(event.duration);
-        const normilizeEventPosition = normalizeTime(event.position);
-        if (normilizeEventDuration === normilizeEventPosition) {
+        if (event.duration === event.position) {
           resetQueueOnEnd();
         }
         break;
-
       default:
         break;
     }
@@ -45,16 +45,20 @@ export const useMediaPlayerState = (audioFile: IAudioFile | undefined) => {
   };
 
   const resetQueueOnEnd = async () => {
+    if (repeatMode && repeatCounter < 2) {
+      await TrackPlayer.seekTo(0);
+      await TrackPlayer.play();
+      setRepeatCounter(repeatCounter + 1);
+      return;
+    }
+
     await TrackPlayer.pause();
     await TrackPlayer.seekTo(0);
+    repeatCounter !== 1 && setRepeatCounter(1);
   };
 
-  const onPressPlay = async () => {
-    await TrackPlayer.play();
-  };
-
-  const onPressPause = async () => {
-    isPlaying && (await TrackPlayer.pause());
+  const onPressPlayPause = async () => {
+    isPlaying ? TrackPlayer.pause() : TrackPlayer.play();
   };
 
   const onPressStop = async () => {
@@ -70,8 +74,12 @@ export const useMediaPlayerState = (audioFile: IAudioFile | undefined) => {
     await TrackPlayer.seekTo(position - 15);
   };
 
-  const normalizePosition = normalizeTime(position);
-  const normalizeDuration = normalizeTime(duration);
+  const onPressRepeat = async () => {
+    setRepeatMode(!repeatMode);
+  };
+
+  const normalizePosition = useMemo(() => normalizeTime(position), [position]);
+  const normalizeDuration = useMemo(() => normalizeTime(duration), [duration]);
 
   return {
     duration,
@@ -81,10 +89,12 @@ export const useMediaPlayerState = (audioFile: IAudioFile | undefined) => {
     avatar,
     normalizePosition,
     normalizeDuration,
-    onPressPlay,
-    onPressPause,
+    onPressPlayPause,
     onPressStop,
     onPressRewindForward,
     onPressRewindBack,
+    isPlaying,
+    onPressRepeat,
+    repeatMode,
   };
 };
