@@ -14,14 +14,14 @@ import { SwipeStyles as Styled } from './swiper.styles';
 const { View: AView } = Animated;
 
 export const Swiper: React.FC<IProp> = ({ toggleOpenAskModal, text, marginW, marginBottom, marginTop }) => {
-  const { textAnimatedStyles, arrowAnimatedStyles, onGestureHnadle } = useSwiperState({ marginW, toggleOpenAskModal });
+  const { textAnimatedStyles, arrowAnimatedStyles, onGestureHandle } = useSwiperState({ marginW, toggleOpenAskModal });
 
   return (
     <Styled.Container {...GRADIENT_CONFIG} marginBottom={marginBottom} marginTop={marginTop}>
       <AView style={textAnimatedStyles}>
         <Styled.Text>{text}</Styled.Text>
       </AView>
-      <PanGestureHandler onGestureEvent={onGestureHnadle} onHandlerStateChange={onGestureHnadle}>
+      <PanGestureHandler onGestureEvent={onGestureHandle} onHandlerStateChange={onGestureHandle}>
         <Styled.Arrow style={arrowAnimatedStyles}>
           <Icon type="swipeToEndArrow" width={33} height={28} colorIcon="white" />
         </Styled.Arrow>

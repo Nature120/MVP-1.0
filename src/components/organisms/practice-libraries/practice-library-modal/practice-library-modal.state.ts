@@ -18,7 +18,6 @@ import { IPracticeLibraryModalProps } from './practice-library-modal.typings';
 
 export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   const [toggleBookMark, setToggleBookMark] = useState<boolean>(false);
-  const [toggleInfo, seTtoggleInfo] = useState(false);
 
   const { navigate } = useNavigation();
   const dispatch = useAppDispatch();
@@ -28,7 +27,10 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   const bookmarks = useSelector(getBookmarks);
 
   const { isWithoutActions, isWithoutAskModal, isOpen, closeModal, library } = props;
-  const { title } = library;
+  const { title, subscription, audioFile } = library;
+
+  const isSubscriptionPractice = subscription === 'Subscription';
+  const isAudioFile = audioFile !== undefined;
 
   useEffect(() => {
     changeToggleInitState();
@@ -66,10 +68,6 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
     bookMarkOperations();
   };
 
-  const onToggleInfo = () => {
-    seTtoggleInfo(!toggleInfo);
-  };
-
   const bookMarkOperations = async () => {
     const fireBaseDate = firestore.Timestamp.fromDate(new Date());
     const bookmark: IBookmarks = { ...library, created_at: fireBaseDate };
@@ -99,7 +97,7 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
     onConfirmPress,
     onToggleBookMark,
     toggleBookMark,
-    onToggleInfo,
-    toggleInfo,
+    isSubscriptionPractice,
+    isAudioFile,
   };
 };

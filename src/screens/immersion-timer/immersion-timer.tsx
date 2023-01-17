@@ -9,11 +9,10 @@ import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-distur
 import { PracticeLibraryCollapsed } from '@components/organisms/practice-libraries/practice-library-collapsed';
 import { TimerProgressBar } from '@components/organisms/timer-progress-bar/timer-progress-bar';
 import { useImmersionTimer } from './immersion-timer.state';
+import { IPlayerContext } from './immersion-timer.types';
+import { MediaPlayerSheet } from './media-player-sheet/media-player-sheet';
 
-interface IPlayerContext {
-  isPlayerReady: boolean;
-  isAudioFile: boolean;
-}
+import { isIOS } from '@services/helpers/device-utils';
 
 const PlayerContext = createContext<IPlayerContext | Record<string, never>>({});
 export const usePlayer = () => useContext(PlayerContext);
@@ -31,9 +30,11 @@ export const ImmersionTimer: React.FC = () => {
     isAudioFile,
   } = useImmersionTimer();
 
+  const { audioFile, ...practiceInfo } = library;
+
   return (
     <PlayerContext.Provider value={{ isPlayerReady, isAudioFile }}>
-      <Layout isWithGradient ellipseColor="light-green" isWithScroll>
+      <Layout isWithGradient ellipseColor="light-green" isWithScroll isWithoutMargin>
         <AskModal
           isVisible={isOpenAskModal}
           onClose={toggleOpenAskModal}
@@ -41,21 +42,19 @@ export const ImmersionTimer: React.FC = () => {
           onTextPress={onTextPress}
           titleText={'now'}
         />
-        <View style={styles.Wrapper}>
-          <View>
-            <PracticeLibraryCollapsed library={library} />
-            <TimerProgressBar setSeconds={setSeconds} seconds={seconds} isOpenAskModal={isOpenAskModal} />
-          </View>
-          <View>
-            <TogglerDoNotDisturb isWithPadding isDark marginBottom={moderateScale(45)} />
-            <Swiper toggleOpenAskModal={toggleOpenAskModal} text="SWIPE TO END" marginW={62} marginBottom={48} />
-          </View>
+        <View style={{ ...styles.Wrapper, marginBottom: isAudioFile ? 35 : 0 }}>
+          <PracticeLibraryCollapsed library={library} />
+          <TimerProgressBar setSeconds={setSeconds} seconds={seconds} isOpenAskModal={isOpenAskModal} />
+          <TogglerDoNotDisturb isWithPadding isDark marginBottom={moderateScale(45)} />
+          <Swiper toggleOpenAskModal={toggleOpenAskModal} text="SWIPE TO END" marginW={62} marginBottom={48} />
         </View>
+        {isAudioFile && !isIOS && <MediaPlayerSheet audioFile={audioFile} practiceInfo={practiceInfo} />}
       </Layout>
+      {isAudioFile && isIOS && <MediaPlayerSheet audioFile={audioFile} practiceInfo={practiceInfo} />}
     </PlayerContext.Provider>
   );
 };
 
 const styles = StyleSheet.create({
-  Wrapper: { flex: 1, justifyContent: 'space-between' },
+  Wrapper: { flexGrow: 1, marginHorizontal: 24, justifyContent: 'space-between' },
 });

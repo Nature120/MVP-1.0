@@ -32,14 +32,18 @@ import onBoardingMoon from '@assets/icons/on-boarding-moon.svg';
 import onBoardingSun from '@assets/icons/on-boarding-sun.svg';
 import openEye from '@assets/icons/open-eye.svg';
 import pause from '@assets/icons/pause.svg';
-import pause_player from '@assets/icons/pause-player.svg';
 import pencil from '@assets/icons/pencil.svg';
 import play from '@assets/icons/play.svg';
-import play_player from '@assets/icons/play-player.svg';
+import player_expanded_pause from '@assets/icons/player-expanded-pause.svg';
+import player_expanded_play from '@assets/icons/player-expanded-play.svg';
+import player_pause from '@assets/icons/player-pause.svg';
+import player_play from '@assets/icons/player-play.svg';
+import player_repeat from '@assets/icons/player-repeat.svg';
+import player_repeat_once from '@assets/icons/player-repeat-once.svg';
+import player_rewind from '@assets/icons/player-rewind.svg';
 import practices from '@assets/icons/practices.svg';
-import rewind_player from '@assets/icons/rewind-player.svg';
 import settings from '@assets/icons/settings.svg';
-import stop_player from '@assets/icons/stop-player.svg';
+import speaker_high from '@assets/icons/speaker-high.svg';
 import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
 import tip from '@assets/icons/tip.svg';
 import unchecked from '@assets/icons/unchecked.svg';
@@ -85,11 +89,15 @@ export const ICONS = {
   unchecked_leaf,
   leaf,
   settings,
-  pause_player,
-  play_player,
-  rewind_player,
-  stop_player,
+  player_pause,
+  player_play,
+  player_rewind,
+  player_repeat,
   instagram,
+  speaker_high,
+  player_repeat_once,
+  player_expanded_play,
+  player_expanded_pause,
 };
 
 export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];
