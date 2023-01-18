@@ -124,11 +124,14 @@ export const useStateDeleteAccount = () => {
   const deleteUserFromFirebase = async (credential: FirebaseAuthTypes.AuthCredential) => {
     try {
       const isUser = await user?.reauthenticateWithCredential(credential);
-      if (!isUser) {
+      if (!isUser || !user) {
         return;
       }
-      await user?.delete();
-      await firestore().collection('Users').doc(user?.uid).delete();
+
+      await firestore().collection('Users').doc(user.uid).delete();
+
+      await user.delete();
+
       onSignOut();
     } catch (error) {
       const err = error as IError;

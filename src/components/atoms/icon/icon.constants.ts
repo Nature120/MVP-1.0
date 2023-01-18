@@ -1,5 +1,3 @@
-import { TIconNames } from './icon.typings';
-
 import apple from '@assets/icons/apple_logo.svg';
 import arrowDown from '@assets/icons/arrow-down.svg';
 import arrowLeft from '@assets/icons/arrow-left.svg';
@@ -99,5 +97,3 @@ export const ICONS = {
   player_expanded_play,
   player_expanded_pause,
 };
-
-export const MOON_ICONS: TIconNames[] = ['newMoon', 'waxingGibbosMoon', 'halfMoon', 'waningGibbosMoon', 'fullMoon'];
