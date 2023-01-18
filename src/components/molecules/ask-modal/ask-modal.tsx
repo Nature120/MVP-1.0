@@ -28,6 +28,8 @@ export const AskModal: React.FC<IAskModalProps> = props => {
     handleTextPress,
   } = useAskModal({ handlers, titleText });
 
+  const isBeforePracticeAskModal = titleText === 'today';
+
   const button = (buttonText: string, onPress: () => void, isDisabled?: boolean) => (
     <ButtonWithLink
       buttonText={buttonText}
@@ -74,7 +76,9 @@ export const AskModal: React.FC<IAskModalProps> = props => {
       <MoonsList iconsSize={MOON_SIZE} onPressIcon={onPressIcon} selectedIcon={selectedIcon} />
 
       <Styled.Description>
-        The full moon represents feeling good and the new moon represents feeling bad.
+        {isBeforePracticeAskModal
+          ? 'Before doing a nature immersion, we suggest mood tracking so you can see how spending time in nature affects how you feel.'
+          : 'After finishing a nature immersion, we suggest mood tracking again so you can see how spending time in nature affects how you feel.'}
       </Styled.Description>
 
       {button('CONFIRM', toggleConfirm, !selectedIcon)}
