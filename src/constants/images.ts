@@ -14,6 +14,7 @@ import ellipses from '@assets/images/splash/ellipses.png';
 import flowers from '@assets/images/splash/flowers.png';
 import lotus from '@assets/images/splash/lotus.png';
 import tip from '@assets/images/splash/tip.png';
+import subscribeBackground from '@assets/images/subscrebe/subscribe_bg.jpg';
 import wave from '@assets/images/wave.png';
 
 export const IMAGES = {
@@ -32,6 +33,7 @@ export const IMAGES = {
   ['ellipse-light-green']: ellipseLightGreen,
   loader,
   sun_palyer,
+  subscribeBackground,
 };
 
 export const URI = {

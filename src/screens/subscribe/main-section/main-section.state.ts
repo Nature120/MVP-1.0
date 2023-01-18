@@ -23,20 +23,24 @@ export const useMainSectionState = () => {
     if (!offer) {
       return;
     }
+    //Start loaging screen
+    dispatch(loading(true));
     try {
       const { customerInfo } = await Purchases.purchasePackage(offer);
+
       const { premium } = customerInfo.entitlements.active;
       if (typeof premium !== 'undefined') {
         await storeSubscription(premium.productIdentifier);
         goBack();
         return;
       }
-      //End loaging screen
-      dispatch(loading(false));
     } catch (e: any) {
       if (!e.userCancelled) {
         console.log('error', e);
       }
+    } finally {
+      //End loaging screen
+      dispatch(loading(false));
     }
   };
 

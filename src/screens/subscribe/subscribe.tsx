@@ -9,9 +9,9 @@ import { MainSection } from './main-section/main-section';
 
 import { getLoading } from '@services/store/auth/auth.selectors';
 
-import { SubscribeStyled as Styled } from './subscribe.styles';
+import { IMAGES } from '@constants/images';
 
-import subscribeBackground from '@assets/images/subscrebe/subscribe_bg.jpg';
+import { SubscribeStyled as Styled } from './subscribe.styles';
 
 export const SubscribeScreen = () => {
   const isloading = useSelector(getLoading);
@@ -21,7 +21,7 @@ export const SubscribeScreen = () => {
       {isloading ? (
         <Loader />
       ) : (
-        <Styled.ImageBackground source={subscribeBackground} resizeMode="cover">
+        <Styled.ImageBackground source={IMAGES.subscribeBackground} resizeMode="cover">
           <ScrollView contentContainerStyle={scrollViewStyls as ViewStyle}>
             <Styled.Container>
               <Styled.Header>
