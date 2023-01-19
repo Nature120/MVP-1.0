@@ -19,7 +19,6 @@ interface IAudioInfo {
   normalizePosition: string;
   normalizeDuration: string;
   onPressPlayPause: () => Promise<void>;
-  onPressStop: () => Promise<void>;
   onPressRewindForward: () => Promise<void>;
   onPressRewindBack: () => Promise<void>;
   onPressRepeat: () => Promise<void>;

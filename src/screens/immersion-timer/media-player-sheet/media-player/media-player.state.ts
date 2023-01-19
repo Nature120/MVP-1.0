@@ -30,10 +30,8 @@ export const useMediaPlayerState = (audioFile: IAudioFile | undefined) => {
         console.warn('An error occured while playing the current track.');
         break;
 
-      case Event.PlaybackProgressUpdated:
-        if (event.duration === event.position) {
-          resetQueueOnEnd();
-        }
+      case Event.PlaybackQueueEnded:
+        resetQueueOnEnd();
         break;
       default:
         break;
@@ -61,11 +59,6 @@ export const useMediaPlayerState = (audioFile: IAudioFile | undefined) => {
     isPlaying ? TrackPlayer.pause() : TrackPlayer.play();
   };
 
-  const onPressStop = async () => {
-    isPlaying && (await TrackPlayer.pause());
-    await TrackPlayer.seekTo(0);
-  };
-
   const onPressRewindForward = async () => {
     await TrackPlayer.seekTo(position + 15);
   };
@@ -90,7 +83,6 @@ export const useMediaPlayerState = (audioFile: IAudioFile | undefined) => {
     normalizePosition,
     normalizeDuration,
     onPressPlayPause,
-    onPressStop,
     onPressRewindForward,
     onPressRewindBack,
     isPlaying,
