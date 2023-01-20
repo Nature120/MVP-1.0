@@ -7,13 +7,14 @@ import { useNavigation } from '@react-navigation/native';
 import { useStoreSubscription } from '@services/hooks/subscription-store';
 import { loading } from '@services/store/auth/auth.actions';
 
+import { APP_ROUTES } from '@constants/routes';
 import { PRIVACY, TERMS } from '@constants/social-url';
 
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 export const Footer = () => {
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation();
   const { storeSubscription } = useStoreSubscription();
   const dispatch = useDispatch();
 
@@ -27,6 +28,8 @@ export const Footer = () => {
   };
 
   const onPressRestorePurchases = async () => {
+    dispatch(loading(true));
+
     try {
       const { entitlements } = await Purchases.restorePurchases();
 
@@ -35,7 +38,13 @@ export const Footer = () => {
       goBack();
     } catch (e) {
       console.log('error', e);
+    } finally {
+      dispatch(loading(false));
     }
+  };
+
+  const onPressPromoCode = () => {
+    navigate(APP_ROUTES.promoCode as never);
   };
 
   return (
@@ -46,8 +55,11 @@ export const Footer = () => {
       <TouchableOpacity onPress={() => onPressLink(TERMS)} style={styles.Button}>
         <Text style={styles.ButtonText}>Terms</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={onPressRestorePurchases}>
+      <TouchableOpacity onPress={onPressRestorePurchases} style={styles.Button}>
         <Text style={styles.ButtonText}>Restore Purchases</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onPressPromoCode}>
+        <Text style={styles.ButtonText}>Promo code</Text>
       </TouchableOpacity>
     </View>
   );

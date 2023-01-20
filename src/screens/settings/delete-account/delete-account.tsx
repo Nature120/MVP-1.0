@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { BackButton } from '@components/molecules/back-button';
-import { DeleteAskModal } from '@components/organisms/delete-account/delete-ask-modal/delete-ask-modal';
+import { DeleteAskModal } from '@screens/settings/delete-account/delete-ask-modal/delete-ask-modal';
 import { SocialButtonGroup } from '@components/organisms/social-button-group/social-button-group';
 import { useStateDeleteAccount } from './delete-account.state';
 import { DeleteConfirmForm } from './delete-confirm-form/delete-confirm-form';
@@ -15,9 +14,6 @@ export const DeleteAccount = () => {
     <>
       <DeleteAskModal isVisible={isVisibleModal} onCloseModal={onCloseModal} deleteUser={deleteUser} />
       <Styled.InnerWrapper>
-        <Styled.Header>
-          <BackButton width={32} height={32} />
-        </Styled.Header>
         <Styled.Title>Delete your account</Styled.Title>
         <Styled.TipsContainer>
           <Styled.Tip>Tip:</Styled.Tip>

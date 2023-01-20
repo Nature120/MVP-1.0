@@ -15,5 +15,6 @@ export const APP_ROUTES = {
 
   practices: 'Practices',
   subscribe: 'Subscribe',
+  promoCode: 'Promo Code',
   main: { home: 'Home' },
 };

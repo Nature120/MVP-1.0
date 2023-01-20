@@ -10,12 +10,8 @@ export const DeleteAccountStyled = {
   `,
   InnerWrapper: styled.View`
     flex: 1;
-    padding-top: 50px;
-  `,
-  Header: styled.View`
-    margin-bottom: 24px;
-    padding-top: 24px;
-    align-items: flex-start;
+    margin-top: 25px;
+    margin-bottom: 30px;
   `,
   TipsContainer: styled.View`
     width: 100%;

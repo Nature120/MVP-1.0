@@ -4,16 +4,19 @@ import { isIOS } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
 
-export const SettingsStyled = {
+export const PromoCodeScreenStyled = {
   Container: css`
     flex: 1;
-    background-color: ${COLOR.background.beigeLight};
+    background-color: ${COLOR.background.darkWhite};
   `,
   Wrapper: styled.View`
+    flex: 1;
     margin-top: ${isIOS ? '50' : '24'}px;
-    margin-bottom: 35px;
+    margin-bottom: 24px;
   `,
-  Header: styled.View`
-    align-items: flex-start;
+  LogoIcon: styled.Image`
+    width: 250px;
+    height: 250px;
+    align-self: center;
   `,
 };
