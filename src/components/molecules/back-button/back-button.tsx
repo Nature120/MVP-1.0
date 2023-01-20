@@ -9,7 +9,7 @@ import { IBackButtonProps } from './back-button.typings';
 import { BackButtonStyles as Styled } from './back-button.styles';
 
 export const BackButton: React.FC<IBackButtonProps> = props => {
-  const { width, height, color = 'cloudyGreen', cssButton, iconType, onPress } = props;
+  const { width = 24, height = 24, color = 'cloudyGreen', cssButton, iconType, onPress } = props;
   const { goBack, canGoBack } = useNavigation();
   const isGoback = canGoBack();
 

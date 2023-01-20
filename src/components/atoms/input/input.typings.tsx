@@ -9,7 +9,7 @@ export interface IProp {
   placeHolderTextColor?: TColorFont;
   value: string;
   keyboardType?: KeyboardType;
-  handleBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
+  handleBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   handleChange: (text: string) => void;
   onFocus?: () => void;
   cssInput?: TStyles;
