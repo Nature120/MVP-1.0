@@ -6,7 +6,7 @@ import { Input } from '@components/atoms/input/input';
 
 import { isIOS } from '@services/helpers/device-utils';
 
-import { APPLE_PROMO_CODE_URL, GOOGLE_PLAY_PROMO_CODE_URL } from '@constants/appliction-url';
+import { APPLE_PROMO_CODE_URL, GOOGLE_PLAY_PROMO_CODE_URL } from '@constants/promo-code-url';
 
 import { PromoCodeStyled as Styled } from './promo-code.styles';
 

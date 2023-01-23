@@ -29,7 +29,7 @@ export const OfferItem: React.FC<IProp> = ({ offer, onPressOffer, checkedOfferNa
         <Styled.OfferText>{isIOS ? priceString : `${currencyCode} ${price}`}</Styled.OfferText>
         <Styled.OfferText marginBottom={10}>per {isAnnual ? 'year' : 'month'}</Styled.OfferText>
         <Styled.OfferInfo marginBottom={4}>{isAnnual ? 'First 7 days free' : 'First 3 days free'}</Styled.OfferInfo>
-        <Styled.OfferInfo marginBottom={4}>{isAnnual ? 'Billed yearly' : 'Billed monthly'}</Styled.OfferInfo>
+        <Styled.OfferInfo marginBottom={4}>Billed {isAnnual ? 'yearly' : 'monthly'}</Styled.OfferInfo>
         <Styled.OfferInfo>Cancel anytime</Styled.OfferInfo>
       </Styled.OfferBtn>
     </>

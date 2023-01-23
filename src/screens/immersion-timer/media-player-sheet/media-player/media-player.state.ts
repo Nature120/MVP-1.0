@@ -7,7 +7,7 @@ import TrackPlayer, {
   useTrackPlayerEvents,
 } from 'react-native-track-player';
 
-import { usePlayer } from '@screens/immersion-timer';
+import { usePlayer } from '@screens/immersion-timer/immersion-timer.constants';
 
 import { IAudioFile } from '@typings/common';
 
