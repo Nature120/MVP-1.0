@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import TrackPlayer from 'react-native-track-player';
 
-import { usePlayer } from '@screens/immersion-timer';
 import { TIconNames } from '@components/atoms/icon/icon.typings';
+
+import { usePlayer } from '@screens/immersion-timer/immersion-timer.constants';
 
 import { TProp } from './ask-modal.typings';
 

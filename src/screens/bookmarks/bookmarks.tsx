@@ -10,7 +10,7 @@ import { TItemRender } from '@typings/common';
 import { BookMarksStyled as Styled } from './bookmarks.styles';
 
 export const Bookmarks = () => {
-  const { sortedBookmarks, columnWrapperStyles, isSortedBookmarks } = useStateBookMarks();
+  const { sortedBookmarks, columnWrapperStyles, isSortedBookmarksEmpty } = useStateBookMarks();
 
   const renderItem: TItemRender = ({ item }) => {
     return (
@@ -26,7 +26,7 @@ export const Bookmarks = () => {
         <BackButton width={32} height={32} />
       </Styled.Header>
       <Styled.Title>Bookmarks</Styled.Title>
-      {isSortedBookmarks ? (
+      {isSortedBookmarksEmpty ? (
         <Styled.WarningText>You have no bookmarks yet</Styled.WarningText>
       ) : (
         <FlatList
