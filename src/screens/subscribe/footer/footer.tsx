@@ -4,6 +4,7 @@ import Purchases from 'react-native-purchases';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
+import { isIOS } from '@services/helpers/device-utils';
 import { useStoreSubscription } from '@services/hooks/subscription-store';
 import { loading } from '@services/store/auth/auth.actions';
 
@@ -58,9 +59,11 @@ export const Footer = () => {
       <TouchableOpacity onPress={onPressRestorePurchases} style={styles.Button}>
         <Text style={styles.ButtonText}>Restore Purchases</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={onPressPromoCode}>
-        <Text style={styles.ButtonText}>Promo code</Text>
-      </TouchableOpacity>
+      {isIOS && (
+        <TouchableOpacity onPress={onPressPromoCode}>
+          <Text style={styles.ButtonText}>Promo code</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

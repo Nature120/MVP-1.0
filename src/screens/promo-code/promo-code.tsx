@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BackButton } from '@components/molecules/back-button';
 import { LayoutWithForm } from '@components/organisms/layout-with-form/layout-with-form';
-import { PromoCode } from '@components/organisms/promo-code/promo-code';
+import { PromoCode } from '@components/molecules/promo-code/promo-code';
 
 import { IMAGES } from '@constants/images';
 

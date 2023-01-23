@@ -21,6 +21,7 @@ export const PromoCode = () => {
     if (value === '') {
       return;
     }
+
     isIOS
       ? Linking.openURL(`${APPLE_PROMO_CODE_URL}${value}`)
       : Linking.openURL(`${GOOGLE_PLAY_PROMO_CODE_URL}${value}`);
