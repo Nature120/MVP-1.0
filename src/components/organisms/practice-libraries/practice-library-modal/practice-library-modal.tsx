@@ -9,6 +9,7 @@ import { Spacer } from '@components/atoms/spacer';
 import { AskModal } from '@components/molecules/ask-modal';
 import { ButtonIcon } from '@components/molecules/button-icon';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
+import { AdditionalInfo } from './additional-info/additional-info';
 import { HeaderInfo } from './header-info/header-info';
 import { MainInfoSection } from './main-info-section/main-info-section';
 import { usePracticeLibraryModal } from './practice-library-modal.state';
@@ -41,7 +42,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
 
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
 
-  const { title, image, description, userGoals } = props.library;
+  const { title, image, description, userGoals, season, indoorOutdoor } = props.library;
   const { isLockPractice } = props;
 
   const insets = useSafeAreaInsets();
@@ -82,7 +83,10 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           <Styled.ContentWrapper>
             <Styled.Content>
               <MainInfoSection
+                isAudioFile={isAudioFile}
                 title={title}
+                season={season}
+                indoorOutdoor={indoorOutdoor}
                 description={description}
                 onToggleBookMark={onToggleBookMark}
                 toggleBookMark={toggleBookMark}
@@ -97,12 +101,16 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
             <Styled.Content>
               <View>
                 <MainInfoSection
+                  isAudioFile={isAudioFile}
+                  season={season}
+                  indoorOutdoor={indoorOutdoor}
                   title={title}
                   description={description}
                   onToggleBookMark={onToggleBookMark}
                   toggleBookMark={toggleBookMark}
                   isSubscriptionPractice={isSubscriptionPractice}
                 />
+                <AdditionalInfo practice={props.library} isAudioFile={isAudioFile} />
                 <Styled.Tags>
                   {userGoals.map((userGoal, index, arr) => (
                     <Spacer isHorizontal key={userGoal + index} gap={8} isLastItem={index === arr.length - 1}>

@@ -8,6 +8,10 @@ import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 export const MainInfoSectionStyled = {
+  Container: styled.View<{ isLockPractice: boolean | undefined }>`
+    flex: 1;
+    margin-bottom: ${({ isLockPractice }) => (isLockPractice ? 0 : 24)}px;
+  `,
   BookmarkBtn: styled.TouchableOpacity`
     width: 35px;
     margin-top: 20px;
