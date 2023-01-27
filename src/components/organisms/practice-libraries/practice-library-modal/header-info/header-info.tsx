@@ -19,7 +19,7 @@ export const HeaderInfo: React.FC<IProp> = ({ userGoals, isAudioFile }) => {
       )}
       {isAudioFile && (
         <Styled.AudioLabel>
-          <Icon type="speaker_high" size={20} />
+          <Icon type="speaker_high" size={20} colorIcon="white" />
         </Styled.AudioLabel>
       )}
     </>

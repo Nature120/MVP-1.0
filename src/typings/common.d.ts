@@ -62,6 +62,7 @@ export interface IPracticeLibrary {
   };
   userGoals: string[];
   audioFile?: IAudioFile;
+  indoorOutdoor?: string;
   subscription?: TAccess;
 }
 
