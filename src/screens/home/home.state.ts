@@ -5,8 +5,12 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { getWeek } from 'date-fns';
 
+import { setWeeklyUserGoal } from './../../services/store/auth/auth.actions';
+
+import { removeLastWeekPractices, sumUserWeeklyGoal } from './home.utils';
 import { getUser, updateUser } from '@services/api.service';
 import { isIOS } from '@services/helpers/device-utils';
+import { areSameObjectArrays } from '@services/helpers/utils';
 import { useGoal } from '@services/hooks/goal';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { useStoreSubscription } from '@services/hooks/subscription-store';
@@ -18,6 +22,7 @@ import { getFisishedPractices, getSubscription, getUserInfo } from '@services/st
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
 import * as selector from '@services/store/timer/timer.selectors';
 
+import { CURRENT_WEEK } from './home.constants';
 import { CONFIG } from '@constants/config';
 import { APP_ROUTES } from '@constants/routes';
 
@@ -30,7 +35,6 @@ export const useHome = () => {
   const { isFirstLaunchApp, notificationsList } = useAppSelector(store => store.app);
   const { storeSubscription } = useStoreSubscription();
   const finishedPractices = useSelector(getFisishedPractices);
-  const currentWeek = getWeek(new Date());
 
   const startDate = useSelector(selector.getStartDate);
   const secondsTimer = useSelector(selector.getSeconds);
@@ -66,7 +70,7 @@ export const useHome = () => {
       const normalizeDate = new Date(lastEnterAt.seconds * 1000);
       const lastEnterAtWeek = getWeek(normalizeDate);
 
-      if (lastEnterAtWeek !== currentWeek) {
+      if (lastEnterAtWeek !== CURRENT_WEEK) {
         await updateUser(user.uid, { goal: 0 }, dispatch);
       }
       await updateUser(user.uid, { lastEnterAt: new Date() });
@@ -133,41 +137,33 @@ export const useHome = () => {
     }
   }, []);
 
-  /////Filtering practices if its a new week"
+  /////Filtering practices if it's a new week"
 
   useEffect(() => {
-    const filteredPractices = removeLastWeekPractices();
+    const filteredPractices = removeLastWeekPractices(finishedPractices);
     if (!filteredPractices) {
       return;
     }
+
     saveFilteredPractices(filteredPractices);
   }, []);
 
-  const removeLastWeekPractices = () => {
-    const isFinishedPracticesEmpty = finishedPractices?.length === 0;
+  const saveFilteredPractices = async (filteredPractices: IFinishedPractices[]) => {
+    const areSameObject = areSameObjectArrays(filteredPractices, finishedPractices);
 
-    if (!finishedPractices || isFinishedPracticesEmpty) {
+    if (!filteredPractices || areSameObject) {
       return;
     }
+    const elapsedTime = sumUserWeeklyGoal(filteredPractices);
 
-    return finishedPractices.reduce((prevPractices, practice): any => {
-      const validNumberDate = practice.created_at.seconds * 1000;
-      const normalizeDate = new Date(validNumberDate);
-      const fireBaseDate = firestore.Timestamp.fromDate(normalizeDate);
-      const getPracticeWeek = getWeek(normalizeDate);
-      const isValidPractice = currentWeek === getPracticeWeek;
-      if (isValidPractice) {
-        return [...prevPractices, { title: practice.title, created_at: fireBaseDate }];
-      }
-      return [...prevPractices];
-    }, []);
-  };
+    ///Save calculated new elapsed time
 
-  const saveFilteredPractices = async (filteredPractices: IFinishedPractices[]) => {
     await firestore().collection('Users').doc(user.uid).update({
       finishedPractices: filteredPractices,
+      goal: elapsedTime,
     });
 
+    dispatch(setWeeklyUserGoal(elapsedTime));
     dispatch(filterExpiredPractices(filteredPractices));
   };
 

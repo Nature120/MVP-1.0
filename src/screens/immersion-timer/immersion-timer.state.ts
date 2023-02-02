@@ -3,9 +3,8 @@ import TrackPlayer from 'react-native-track-player';
 import { useSelector } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
-import { secondsToMinutes } from 'date-fns';
 
-import { clearRecentPractices } from './immersion-timer.utils';
+import { clearRecentPractices, getRoundElapsedTime } from './immersion-timer.utils';
 import { databaseRef, updateUser } from '@services/api.service';
 import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
@@ -31,6 +30,7 @@ export const useImmersionTimer = () => {
   const { title, audioFile, image } = library;
 
   const isAudioFile = audioFile !== undefined;
+  const elapsedTime = getRoundElapsedTime(seconds);
 
   useEffect(() => {
     setUpPlayer();
@@ -110,7 +110,7 @@ export const useImmersionTimer = () => {
 
   const savePractices = async () => {
     const fireBaseDate = firestore.Timestamp.fromDate(new Date());
-    const finishedPractice: IFinishedPractices = { title, created_at: fireBaseDate };
+    const finishedPractice: IFinishedPractices = { title, created_at: fireBaseDate, elapsedTime };
 
     dispatch(addFinishedPractic(finishedPractice));
     dispatch(addRecentPractice(finishedPractice));
@@ -121,8 +121,7 @@ export const useImmersionTimer = () => {
 
   const goToNextRoute = () => {
     closeAskModal();
-    const addedTime = Math.round(secondsToMinutes(seconds));
-    navigate(APP_ROUTES.immersionComplete as never, { addedTime } as never);
+    navigate(APP_ROUTES.immersionComplete as never, { addedTime: elapsedTime } as never);
   };
 
   return {

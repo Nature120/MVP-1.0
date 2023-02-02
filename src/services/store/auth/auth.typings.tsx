@@ -41,6 +41,7 @@ export interface IBookmarks extends IPracticeLibrary {
 export interface IFinishedPractices {
   title: string;
   created_at: FirebaseFirestoreTypes.Timestamp;
+  elapsedTime: number;
 }
 
 export interface ITimer {

@@ -24,6 +24,7 @@ const user = createReducer(initialState, {
     ...state,
     bookmarks: state.bookmarks.filter((bookMark: IBookmarks) => bookMark.title !== payload),
   }),
+  [action.setWeeklyUserGoal.type]: (state, { payload }) => ({ ...state, goal: payload }),
   [action.signOut.type]: () => initialState,
 });
 
