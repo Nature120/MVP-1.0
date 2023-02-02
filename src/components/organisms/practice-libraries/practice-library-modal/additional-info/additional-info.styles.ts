@@ -5,19 +5,20 @@ import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 export const AdditionalInfoStyled = {
-  Container: styled.View`
+  Container: styled.View<{ isAudioFile: boolean }>`
     flex: 1;
-    padding-top: 32px;
+    padding-top: 26px;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content:${({ isAudioFile }) => (isAudioFile ? 'space-between' : 'flex-start')}
     border-top-width: 1px;
     border-top-color: ${COLOR.background.textInput};
     border-top-style: solid;
   `,
-  InfoWrapper: styled.View`
+  InfoWrapper: styled.View<{ isAudioFile?: boolean }>`
     flex-direction: column;
     align-items: center;
-    width: ${moderateScale(90)}px;
+    justify-content: center;
+    width: ${moderateScale(93)}px;
     height: ${verticalScale(40)}px;
   `,
   Text: styled.Text`

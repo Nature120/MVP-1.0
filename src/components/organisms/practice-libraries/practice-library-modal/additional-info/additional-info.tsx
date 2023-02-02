@@ -2,21 +2,19 @@ import React from 'react';
 
 import { Icon } from '@components/atoms/icon';
 
-import { IPracticeLibrary } from '@typings/common';
+import { IProp } from './additional-info.typings';
 
 import { AdditionalInfoStyled as Styled } from './additional-info.styles';
 
-interface IProp {
-  practice: TPractice;
-  isAudioFile: boolean;
-}
-
-type TPractice = Pick<IPracticeLibrary, 'season' | 'indoorOutdoor'>;
-
 export const AdditionalInfo: React.FC<IProp> = ({ practice, isAudioFile }) => {
   const { season, indoorOutdoor } = practice;
+  const isAllSeason = season.length > 1;
 
   const handleSeasonIcon = () => {
+    if (isAllSeason) {
+      return 'cloud_sun';
+    }
+
     switch (season[0]) {
       case 'Winter':
         return 'snow_flake';
@@ -52,10 +50,10 @@ export const AdditionalInfo: React.FC<IProp> = ({ practice, isAudioFile }) => {
   const iconIndoorOutDoorType = handleIconIndoorOutdoor();
 
   return (
-    <Styled.Container>
-      <Styled.InfoWrapper>
+    <Styled.Container isAudioFile={isAudioFile}>
+      <Styled.InfoWrapper isAudioFile={isAudioFile}>
         <Icon type={iconSeasonType} size={24} />
-        <Styled.Text numberOfLines={1}>{season[0] || 'All seasons'}</Styled.Text>
+        <Styled.Text numberOfLines={1}>{(isAllSeason ? 'All seasons' : season[0]) || 'All seasons'}</Styled.Text>
       </Styled.InfoWrapper>
       <Styled.InfoWrapper>
         <Icon type={iconIndoorOutDoorType} size={24} />
