@@ -1,4 +1,5 @@
 import { endOfWeek, format, startOfWeek } from 'date-fns';
+import isEqual from 'lodash/isEqual';
 
 import { TIME_HASH_MAP } from '@components/organisms/time-picker/time-picker.constants';
 import { TPeriod } from '@components/organisms/time-picker/time-picker.typings';
@@ -20,4 +21,12 @@ export const getFormattedDateRange = (weekDate: Date, dateFormat = 'MMM d') => {
   const end = format(endOfWeek(weekDate), dateFormat);
 
   return `${start} - ${end}`;
+};
+
+export const areSameObjectArrays = <T, S>(array1: T[], array2: S[]) => {
+  if (array1.length !== array2.length) {
+    console.log('qqsss');
+    return false;
+  }
+  return isEqual(array1, array2);
 };

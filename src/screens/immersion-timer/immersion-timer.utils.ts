@@ -1,4 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
+import { secondsToMinutes } from 'date-fns';
 
 import { MAX_RECENT_LIBRARIES_COUNT } from '@screens/immersions/immersions.utils';
 
@@ -45,4 +46,8 @@ export const clearRecentPractices = async (uid: string, practiceTitle: string) =
 
   await removeRestRecentPractices(uid, recentPractices);
   await removePracticeDublicate(uid, recentPractices, practiceTitle);
+};
+
+export const getRoundElapsedTime = (seconds: number) => {
+  return Math.round(secondsToMinutes(seconds));
 };
