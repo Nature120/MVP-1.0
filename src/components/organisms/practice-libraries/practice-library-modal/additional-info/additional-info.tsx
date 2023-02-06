@@ -51,19 +51,19 @@ export const AdditionalInfo: React.FC<IProp> = ({ practice, isAudioFile }) => {
 
   return (
     <Styled.Container isAudioFile={isAudioFile}>
-      <Styled.InfoWrapper isAudioFile={isAudioFile}>
+      <Styled.SeasonCardWrapper isAudioFile={isAudioFile}>
         <Icon type={iconSeasonType} size={24} />
         <Styled.Text numberOfLines={1}>{(isAllSeason ? 'All seasons' : season[0]) || 'All seasons'}</Styled.Text>
-      </Styled.InfoWrapper>
-      <Styled.InfoWrapper>
+      </Styled.SeasonCardWrapper>
+      <Styled.InfoCardWrapper>
         <Icon type={iconIndoorOutDoorType} size={24} />
         <Styled.Text numberOfLines={1}>{indoorOutdoor || 'Outdoor'}</Styled.Text>
-      </Styled.InfoWrapper>
+      </Styled.InfoCardWrapper>
       {isAudioFile && (
-        <Styled.InfoWrapper>
+        <Styled.InfoCardWrapper>
           <Icon type="speaker_high" size={24} colorIcon="cloudyBlue" />
           <Styled.Text numberOfLines={1}>Audio available</Styled.Text>
-        </Styled.InfoWrapper>
+        </Styled.InfoCardWrapper>
       )}
     </Styled.Container>
   );

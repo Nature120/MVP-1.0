@@ -1,25 +1,33 @@
-import { moderateScale, verticalScale } from 'react-native-size-matters';
-import styled from 'styled-components/native';
+import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
+import styled, { css } from 'styled-components/native';
 
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
+
+const infoWrapperShareStyles = css`
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: ${moderateScale(93)}px;
+  height: ${verticalScale(40)}px;
+`;
 
 export const AdditionalInfoStyled = {
   Container: styled.View<{ isAudioFile: boolean }>`
     flex: 1;
     padding-top: 26px;
     flex-direction: row;
-    justify-content:${({ isAudioFile }) => (isAudioFile ? 'space-between' : 'flex-start')}
+    justify-content: ${({ isAudioFile }) => (isAudioFile ? 'space-between' : 'flex-start')};
     border-top-width: 1px;
     border-top-color: ${COLOR.background.textInput};
     border-top-style: solid;
   `,
-  InfoWrapper: styled.View<{ isAudioFile?: boolean }>`
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: ${moderateScale(93)}px;
-    height: ${verticalScale(40)}px;
+  InfoCardWrapper: styled.View`
+    ${infoWrapperShareStyles}
+  `,
+  SeasonCardWrapper: styled.View<{ isAudioFile?: boolean }>`
+    ${infoWrapperShareStyles}
+    margin-right: ${({ isAudioFile }) => (isAudioFile ? scale(0) : scale(20))}px;
   `,
   Text: styled.Text`
     font-family: ${FONTS.family.mediumBoreal};
