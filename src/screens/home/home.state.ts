@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import Purchases from 'react-native-purchases';
 import { useSelector } from 'react-redux';
-import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { getWeek } from 'date-fns';
 
 import { setWeeklyUserGoal } from './../../services/store/auth/auth.actions';
 
-import { removeLastWeekPractices, sumUserWeeklyGoal } from './home.utils';
+import { checkUserPremiumInfo, removeLastWeekPractices, sumUserWeeklyGoal } from './home.utils';
 import { getUser, updateUser } from '@services/api.service';
 import { isIOS } from '@services/helpers/device-utils';
 import { areSameObjectArrays } from '@services/helpers/utils';
@@ -90,7 +89,7 @@ export const useHome = () => {
   useEffect(() => {
     Purchases.addCustomerInfoUpdateListener(info => {
       // handle any changes to customerInfo
-      checkUserPremiumInfo();
+      checkUserPremiumInfo({ subscription, storeSubscription });
     });
   }, []);
 
@@ -137,60 +136,43 @@ export const useHome = () => {
     }
   }, []);
 
-  /////Filtering practices if it's a new week"
+  /////Reset of user goal and finished practices"
 
   useEffect(() => {
     const filteredPractices = removeLastWeekPractices(finishedPractices);
     if (!filteredPractices) {
+      user.goal !== 0 && resetUserGoal();
       return;
     }
-
-    saveFilteredPractices(filteredPractices);
+    resetGoalsFinishedPractices(filteredPractices);
   }, []);
 
-  const saveFilteredPractices = async (filteredPractices: IFinishedPractices[]) => {
+  const resetGoalsFinishedPractices = async (filteredPractices: IFinishedPractices[]) => {
     const areSameObject = areSameObjectArrays(filteredPractices, finishedPractices);
-
-    if (!filteredPractices || areSameObject) {
-      return;
-    }
     const elapsedTime = sumUserWeeklyGoal(filteredPractices);
 
-    ///Save calculated new elapsed time
+    if (elapsedTime !== user.goal) {
+      setUserGoal(elapsedTime);
+    }
 
-    await firestore().collection('Users').doc(user.uid).update({
-      finishedPractices: filteredPractices,
-      goal: elapsedTime,
-    });
+    if (areSameObject) {
+      return;
+    }
 
-    dispatch(setWeeklyUserGoal(elapsedTime));
+    ///Save calculated practices
+
+    await updateUser(user.uid, { finishedPractices: filteredPractices });
     dispatch(filterExpiredPractices(filteredPractices));
   };
 
-  const checkUserPremiumInfo = async () => {
-    try {
-      const customerInfo = await Purchases.getCustomerInfo();
-      const { premium } = customerInfo.entitlements.active;
-      const isSubscription = subscription === 'ANNUAL' || subscription === 'MONTHLY';
+  const setUserGoal = async (elapsedTime: number) => {
+    await updateUser(user.uid, { goal: elapsedTime });
+    dispatch(setWeeklyUserGoal(elapsedTime));
+  };
 
-      if (typeof premium !== 'undefined') {
-        if (isSubscription) {
-          return;
-        }
-
-        storeSubscription(premium.productIdentifier);
-        return;
-      }
-
-      if (subscription === 'FREE') {
-        return;
-      }
-
-      storeSubscription('FREE');
-    } catch (e) {
-      // Error fetching customer info
-      console.log('erorr', e);
-    }
+  const resetUserGoal = async () => {
+    await updateUser(user.uid, { goal: 0 });
+    dispatch(setWeeklyUserGoal(0));
   };
 
   const onPressDrawer = () => openDrawer();

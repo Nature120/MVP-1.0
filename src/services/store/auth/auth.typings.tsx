@@ -32,7 +32,7 @@ export interface IUser {
   subscription?: TSubsctiption;
 }
 
-type TSubsctiption = 'FREE' | 'MONTHLY' | 'ANNUAL';
+export type TSubsctiption = 'FREE' | 'MONTHLY' | 'ANNUAL';
 
 export interface IBookmarks extends IPracticeLibrary {
   created_at: FirebaseFirestoreTypes.Timestamp;

@@ -1,9 +1,12 @@
+import Purchases from 'react-native-purchases';
 import firestore from '@react-native-firebase/firestore';
 import { getWeek } from 'date-fns';
 
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
 
 import { CURRENT_WEEK } from './home.constants';
+
+import { TUserPremiumInfo } from './home.typings';
 
 export const sumUserWeeklyGoal = (array: IFinishedPractices[]) => {
   return array.reduce((result, obj) => {
@@ -29,4 +32,30 @@ export const removeLastWeekPractices = (finishedPractices: IFinishedPractices[])
     }
     return [...prevPractices];
   }, []);
+};
+
+export const checkUserPremiumInfo = async ({ subscription, storeSubscription }: TUserPremiumInfo) => {
+  try {
+    const customerInfo = await Purchases.getCustomerInfo();
+    const { premium } = customerInfo.entitlements.active;
+    const isSubscription = subscription === 'ANNUAL' || subscription === 'MONTHLY';
+
+    if (typeof premium !== 'undefined') {
+      if (isSubscription) {
+        return;
+      }
+
+      storeSubscription(premium.productIdentifier);
+      return;
+    }
+
+    if (subscription === 'FREE') {
+      return;
+    }
+
+    storeSubscription('FREE');
+  } catch (e) {
+    // Error fetching customer info
+    console.log('erorr', e);
+  }
 };
