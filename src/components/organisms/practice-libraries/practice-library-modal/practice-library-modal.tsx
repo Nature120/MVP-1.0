@@ -9,7 +9,6 @@ import { Spacer } from '@components/atoms/spacer';
 import { AskModal } from '@components/molecules/ask-modal';
 import { ButtonIcon } from '@components/molecules/button-icon';
 import { TogglerDoNotDisturb } from '@components/molecules/toggler-do-not-disturb';
-import { AdditionalInfo } from './additional-info/additional-info';
 import { HeaderInfo } from './header-info/header-info';
 import { MainInfoSection } from './main-info-section/main-info-section';
 import { usePracticeLibraryModal } from './practice-library-modal.state';
@@ -38,6 +37,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     toggleBookMark,
     isSubscriptionPractice,
     isAudioFile,
+    teacher,
   } = usePracticeLibraryModal(props);
 
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
@@ -110,8 +110,8 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                   onToggleBookMark={onToggleBookMark}
                   toggleBookMark={toggleBookMark}
                   isSubscriptionPractice={isSubscriptionPractice}
+                  teacher={teacher}
                 />
-                <AdditionalInfo practice={props.library} isAudioFile={isAudioFile} />
                 <Styled.Tags>
                   {userGoals.map((userGoal, index, arr) => (
                     <Spacer isHorizontal key={userGoal + index} gap={8} isLastItem={index === arr.length - 1}>

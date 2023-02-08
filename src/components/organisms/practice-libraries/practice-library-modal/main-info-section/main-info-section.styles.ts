@@ -10,7 +10,7 @@ import { FONTS } from '@theme/fonts';
 export const MainInfoSectionStyled = {
   Container: styled.View<{ isLockPractice: boolean | undefined }>`
     flex: 1;
-    margin-bottom: ${({ isLockPractice }) => (isLockPractice ? 0 : 24)}px;
+    margin-bottom: ${({ isLockPractice }) => (isLockPractice ? 0 : 32)}px;
   `,
   BookmarkBtn: styled.TouchableOpacity`
     width: 35px;
@@ -26,6 +26,7 @@ export const MainInfoSectionStyled = {
     margin-bottom: 20px;
   `,
   Description: styled(TextComponent)`
+    margin-top: 40px;
     font-size: ${FONTS.size.xlSmall}px;
     line-height: 26px;
     color: ${COLOR.subheading};

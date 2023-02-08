@@ -18,7 +18,7 @@ export const useMediaPlayerState = (audioFile: IAudioFile) => {
   const { isPlayerReady } = usePlayer();
   const playerState = usePlaybackState();
   const { position, duration } = useProgress();
-  const { coach } = audioFile as IAudioFile;
+  const { teacher } = audioFile as IAudioFile;
 
   const isPlaying = playerState === State.Playing;
 
@@ -78,7 +78,7 @@ export const useMediaPlayerState = (audioFile: IAudioFile) => {
     duration,
     position,
     isPlayerReady,
-    coach,
+    teacher,
     normalizePosition,
     normalizeDuration,
     onPressPlayPause,

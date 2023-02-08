@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { isToday } from 'date-fns';
 
-import { databaseRef, updateUser } from '@services/api.service';
+import { databaseRef, getTeacher, updateUser } from '@services/api.service';
 import { getUniqueArray } from '@services/helpers/array.utils';
 import { useGoal } from '@services/hooks/goal';
 import { useParam } from '@services/hooks/param';
@@ -13,7 +13,7 @@ import { getUserInfo } from '@services/store/auth/auth.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
 
-import { IAddedTime } from '@typings/common';
+import { IAddedTime, IPracticeLibrary } from '@typings/common';
 
 export const useImmersionComplete = () => {
   const { params } = useParam<IAddedTime>();
@@ -46,7 +46,22 @@ export const useImmersionComplete = () => {
         databaseRef('Practise library')
           .where('title', 'in', batch)
           .get()
-          .then(libs => libs.docs.map(result => result.data())),
+          .then(async libs => {
+            return (await Promise.all(
+              libs.docs.map(async item => {
+                try {
+                  const data = item.data();
+                  if (data.teacher) {
+                    const teacher = await getTeacher(data.teacher);
+                    data.teacher = teacher;
+                  }
+                  return data;
+                } catch (error) {
+                  console.log('error', error);
+                }
+              }),
+            )) as IPracticeLibrary[];
+          }),
       );
     }
     try {

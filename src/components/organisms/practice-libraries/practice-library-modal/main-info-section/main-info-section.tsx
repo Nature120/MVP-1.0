@@ -1,7 +1,10 @@
 import React from 'react';
 
 import { Icon } from '@components/atoms/icon';
-import { AdditionalInfo } from '../additional-info/additional-info';
+import { AdditionalInfo } from './additional-info/additional-info';
+import { TeacherInfo } from './teacher-info/teacher-section-info';
+
+import { ITeacher } from '@typings/common';
 
 import { MainInfoSectionStyled as Styled } from './main-info-section.styles';
 
@@ -15,10 +18,11 @@ interface IProp {
   season: Array<string>;
   indoorOutdoor?: string;
   isAudioFile: boolean;
+  teacher?: ITeacher;
 }
 
 export const MainInfoSection: React.FC<IProp> = ({ onToggleBookMark, toggleBookMark, isLockPractice, ...practice }) => {
-  const { title, isAudioFile, description } = practice;
+  const { title, isAudioFile, description, teacher } = practice;
 
   return (
     <Styled.Container isLockPractice={isLockPractice}>
@@ -29,9 +33,9 @@ export const MainInfoSection: React.FC<IProp> = ({ onToggleBookMark, toggleBookM
         {isLockPractice && <Icon type="lock" size={35} styles={Styled.LockSvg} />}
         <Styled.Title numberOfLines={2}>{title}</Styled.Title>
       </Styled.TitleWrapper>
-      {isLockPractice && <AdditionalInfo practice={practice} isAudioFile={isAudioFile} />}
+      <AdditionalInfo practice={practice} isAudioFile={isAudioFile} />
       {!isLockPractice && <Styled.Description>{description}</Styled.Description>}
-      {/* <Styled.Description numberOfLines={isLockPractice ? 3 : 0}>{description}</Styled.Description> */}
+      {!isLockPractice && isAudioFile && <TeacherInfo teacher={teacher} />}
     </Styled.Container>
   );
 };

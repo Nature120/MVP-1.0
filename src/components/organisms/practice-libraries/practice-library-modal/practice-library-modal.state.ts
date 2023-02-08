@@ -27,7 +27,7 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
   const bookmarks = useSelector(getBookmarks);
 
   const { isWithoutActions, isWithoutAskModal, isOpen, closeModal, library } = props;
-  const { title, subscription, audioFile } = library;
+  const { title, subscription, audioFile, teacher } = library;
 
   const isSubscriptionPractice = subscription === 'Subscription';
   const isAudioFile = audioFile !== undefined;
@@ -99,5 +99,6 @@ export const usePracticeLibraryModal = (props: IPracticeLibraryModalProps) => {
     toggleBookMark,
     isSubscriptionPractice,
     isAudioFile,
+    teacher,
   };
 };
