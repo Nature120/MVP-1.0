@@ -52,7 +52,7 @@ export const StyledPracticeLibraryModal = {
     color: ${COLOR.subheading};
   `,
   Tags: styled.View`
-    margin: 32px 0 28px;
+    margin-bottom: 36px;
     flex-direction: row;
     flex-wrap: wrap;
   `,

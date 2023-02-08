@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { ITeacher } from './../../typings/common.d';
 
 import { clearRecentPractices, getRoundElapsedTime } from './immersion-timer.utils';
-import { databaseRef, getTeacher, updateUser } from '@services/api.service';
+import { databaseRef, updateUser } from '@services/api.service';
 import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { SetupPlayerService } from '@services/player/player-setup';
@@ -21,7 +21,6 @@ import { APP_ROUTES } from '@constants/routes';
 
 export const useImmersionTimer = () => {
   const [isPlayerReady, setIsPlayerReady] = useState<boolean>(false);
-  const [coach, setCoach] = useState<ITeacher | null>(null);
   const [seconds, setSeconds] = useState<number>(0);
 
   const { navigate } = useNavigation();
@@ -40,13 +39,11 @@ export const useImmersionTimer = () => {
   }, []);
 
   const setUpPlayer = async () => {
-    const fetchedData = await fetchTeacher();
-
-    if (!audioFile || !fetchedData) {
+    if (!audioFile || !teacher) {
       return;
     }
 
-    const { fullName } = fetchedData as ITeacher;
+    const { fullName } = teacher as ITeacher;
 
     const isSetup = await SetupPlayerService();
     setIsPlayerReady(isSetup);
@@ -129,15 +126,6 @@ export const useImmersionTimer = () => {
     navigate(APP_ROUTES.immersionComplete as never, { addedTime: elapsedTime } as never);
   };
 
-  const fetchTeacher = async () => {
-    if (!teacher) {
-      return;
-    }
-    const data = (await getTeacher(teacher)) as ITeacher;
-    setCoach(data);
-    return data;
-  };
-
   return {
     isOpenAskModal,
     saveResponse,
@@ -148,6 +136,6 @@ export const useImmersionTimer = () => {
     onTextPress,
     isPlayerReady,
     isAudioFile,
-    coach,
+    teacher,
   };
 };

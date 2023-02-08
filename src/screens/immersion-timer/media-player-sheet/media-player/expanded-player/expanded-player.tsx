@@ -16,7 +16,7 @@ import { COLOR } from '@theme/colors';
 
 export const ExpandedPlayer: React.FC<IPropInfo> = ({ audioInfo, practiceInfo }) => {
   const {
-    coach,
+    teacher,
     normalizePosition,
     position,
     duration,
@@ -30,7 +30,7 @@ export const ExpandedPlayer: React.FC<IPropInfo> = ({ audioInfo, practiceInfo })
   } = audioInfo;
 
   const { title, image } = practiceInfo;
-  const { fullName } = coach;
+  const { fullName } = teacher;
 
   const handleTrackPositionChange = (value: number | Array<number>) => {
     if (typeof value === 'number') {

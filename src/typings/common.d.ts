@@ -63,7 +63,7 @@ export interface IPracticeLibrary {
   userGoals: string[];
   audioDuration?: number;
   audioFile?: string;
-  teacher?: string;
+  teacher?: ITeacher;
   indoorOutdoor?: string;
   subscription?: TAccess;
 }
@@ -81,7 +81,7 @@ type TAccess = 'Free' | 'Subscription';
 export interface IAudioFile {
   audioDuration?: string;
   audioFile?: string;
-  coach: ITeacher;
+  teacher: ITeacher;
 }
 
 export type TScreenOptions =

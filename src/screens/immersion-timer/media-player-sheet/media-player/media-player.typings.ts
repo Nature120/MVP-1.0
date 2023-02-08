@@ -16,7 +16,7 @@ export interface IPropInfo {
 interface IAudioInfo {
   duration: number;
   position: number;
-  coach: ITeacher;
+  teacher: ITeacher;
   normalizePosition: string;
   normalizeDuration: string;
   onPressPlayPause: () => Promise<void>;

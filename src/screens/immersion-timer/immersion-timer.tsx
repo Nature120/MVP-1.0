@@ -29,11 +29,11 @@ export const ImmersionTimer: React.FC = () => {
     onTextPress,
     isPlayerReady,
     isAudioFile,
-    coach,
+    teacher,
   } = useImmersionTimer();
 
   const { audioFile, audioDuration, ...practiceInfo } = library;
-  const audioObjectInfo = { audioFile, coach, audioDuration } as IAudioFile;
+  const audioObjectInfo = { audioFile, teacher, audioDuration } as IAudioFile;
 
   return (
     <PlayerContext.Provider value={{ isPlayerReady, isAudioFile }}>
