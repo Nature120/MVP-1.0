@@ -1,7 +1,9 @@
+import { ITeacher } from './../../../../typings/common.d';
+
 import { IAudioFile, IPracticeLibrary } from '@typings/common';
 
 export interface IProp {
-  audioFile?: IAudioFile;
+  audioFile: IAudioFile;
   isCollapsed: boolean;
   practiceInfo: IPracticeLibrary;
 }
@@ -14,8 +16,7 @@ export interface IPropInfo {
 interface IAudioInfo {
   duration: number;
   position: number;
-  author: string;
-  avatar: string;
+  coach: ITeacher;
   normalizePosition: string;
   normalizeDuration: string;
   onPressPlayPause: () => Promise<void>;

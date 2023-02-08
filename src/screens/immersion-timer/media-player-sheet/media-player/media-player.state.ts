@@ -11,15 +11,15 @@ import { usePlayer } from '@screens/immersion-timer/immersion-timer.constants';
 
 import { IAudioFile } from '@typings/common';
 
-export const useMediaPlayerState = (audioFile: IAudioFile | undefined) => {
+export const useMediaPlayerState = (audioFile: IAudioFile) => {
   const [repeatCounter, setRepeatCounter] = useState<number>(1);
   const [repeatMode, setRepeatMode] = useState<boolean>(false);
 
   const { isPlayerReady } = usePlayer();
   const playerState = usePlaybackState();
   const { position, duration } = useProgress();
+  const { coach } = audioFile as IAudioFile;
 
-  const { author, avatar } = audioFile as IAudioFile;
   const isPlaying = playerState === State.Playing;
 
   const events = [Event.PlaybackError, Event.PlaybackProgressUpdated, Event.PlaybackQueueEnded];
@@ -78,8 +78,7 @@ export const useMediaPlayerState = (audioFile: IAudioFile | undefined) => {
     duration,
     position,
     isPlayerReady,
-    author,
-    avatar,
+    coach,
     normalizePosition,
     normalizeDuration,
     onPressPlayPause,

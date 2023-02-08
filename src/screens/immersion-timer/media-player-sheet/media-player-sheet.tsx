@@ -12,7 +12,7 @@ import { IAudioFile, IPracticeLibrary } from '@typings/common';
 import { MediaPlayerSheetStyled as Styled } from './media-player-sheet.styles';
 
 interface IProp {
-  audioFile?: IAudioFile;
+  audioFile: IAudioFile;
   practiceInfo: IPracticeLibrary;
 }
 

@@ -61,18 +61,27 @@ export interface IPracticeLibrary {
     to: number;
   };
   userGoals: string[];
-  audioFile?: IAudioFile;
+  audioDuration?: number;
+  audioFile?: string;
+  teacher?: string;
   indoorOutdoor?: string;
   subscription?: TAccess;
+}
+
+export interface ITeacher {
+  audioPractices: string[];
+  avatar: string;
+  fullName: string;
+  location: string;
+  teacherTitle: string;
 }
 
 type TAccess = 'Free' | 'Subscription';
 
 export interface IAudioFile {
-  author: string;
-  audio: string;
-  avatar: string;
-  duration: number;
+  audioDuration?: string;
+  audioFile?: string;
+  coach: ITeacher;
 }
 
 export type TScreenOptions =

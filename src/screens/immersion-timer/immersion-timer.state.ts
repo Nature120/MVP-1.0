@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 
+import { ITeacher } from './../../typings/common.d';
+
 import { clearRecentPractices, getRoundElapsedTime } from './immersion-timer.utils';
-import { databaseRef, updateUser } from '@services/api.service';
+import { databaseRef, getTeacher, updateUser } from '@services/api.service';
 import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { SetupPlayerService } from '@services/player/player-setup';
@@ -19,6 +21,7 @@ import { APP_ROUTES } from '@constants/routes';
 
 export const useImmersionTimer = () => {
   const [isPlayerReady, setIsPlayerReady] = useState<boolean>(false);
+  const [coach, setCoach] = useState<ITeacher | null>(null);
   const [seconds, setSeconds] = useState<number>(0);
 
   const { navigate } = useNavigation();
@@ -27,7 +30,7 @@ export const useImmersionTimer = () => {
   const { commentBeforeImmersion, gradeBeforeImmersion } = useAppSelector(store => store.app);
   const dispatch = useAppDispatch();
   const library = useSelector(getLatestLibrary);
-  const { title, audioFile, image } = library;
+  const { title, audioFile, image, audioDuration, teacher } = library;
 
   const isAudioFile = audioFile !== undefined;
   const elapsedTime = getRoundElapsedTime(seconds);
@@ -37,11 +40,13 @@ export const useImmersionTimer = () => {
   }, []);
 
   const setUpPlayer = async () => {
-    if (!audioFile) {
+    const fetchedData = await fetchTeacher();
+
+    if (!audioFile || !fetchedData) {
       return;
     }
 
-    const { audio, author, duration } = audioFile;
+    const { fullName } = fetchedData as ITeacher;
 
     const isSetup = await SetupPlayerService();
     setIsPlayerReady(isSetup);
@@ -50,11 +55,11 @@ export const useImmersionTimer = () => {
 
     if (isSetup && queue.length <= 0) {
       await TrackPlayer.add({
-        url: audio,
+        url: audioFile,
         title,
-        artist: author,
+        artist: fullName,
         artwork: image,
-        duration,
+        duration: audioDuration,
       });
     }
   };
@@ -124,6 +129,15 @@ export const useImmersionTimer = () => {
     navigate(APP_ROUTES.immersionComplete as never, { addedTime: elapsedTime } as never);
   };
 
+  const fetchTeacher = async () => {
+    if (!teacher) {
+      return;
+    }
+    const data = (await getTeacher(teacher)) as ITeacher;
+    setCoach(data);
+    return data;
+  };
+
   return {
     isOpenAskModal,
     saveResponse,
@@ -134,5 +148,6 @@ export const useImmersionTimer = () => {
     onTextPress,
     isPlayerReady,
     isAudioFile,
+    coach,
   };
 };

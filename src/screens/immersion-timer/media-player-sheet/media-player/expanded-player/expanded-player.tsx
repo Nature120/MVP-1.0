@@ -16,7 +16,7 @@ import { COLOR } from '@theme/colors';
 
 export const ExpandedPlayer: React.FC<IPropInfo> = ({ audioInfo, practiceInfo }) => {
   const {
-    author,
+    coach,
     normalizePosition,
     position,
     duration,
@@ -30,6 +30,7 @@ export const ExpandedPlayer: React.FC<IPropInfo> = ({ audioInfo, practiceInfo })
   } = audioInfo;
 
   const { title, image } = practiceInfo;
+  const { fullName } = coach;
 
   const handleTrackPositionChange = (value: number | Array<number>) => {
     if (typeof value === 'number') {
@@ -47,7 +48,7 @@ export const ExpandedPlayer: React.FC<IPropInfo> = ({ audioInfo, practiceInfo })
         <Styled.RightSideWrapper>
           <Styled.TitleInfo numberOfLines={2}>{title}</Styled.TitleInfo>
           <Styled.TextInfo>Narrated By</Styled.TextInfo>
-          <Styled.AuthorText>{author}</Styled.AuthorText>
+          <Styled.AuthorText>{fullName}</Styled.AuthorText>
         </Styled.RightSideWrapper>
       </Styled.WrapperTrackInfo>
       <Styled.RepeatBtn onPress={onPressRepeat}>

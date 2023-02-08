@@ -14,6 +14,8 @@ import { isIOS } from '@services/helpers/device-utils';
 
 import { PlayerContext } from './immersion-timer.constants';
 
+import { IAudioFile } from '@typings/common';
+
 import { ImmersionTimerStyled as Styled } from './immersion-timer.styles';
 
 export const ImmersionTimer: React.FC = () => {
@@ -27,9 +29,11 @@ export const ImmersionTimer: React.FC = () => {
     onTextPress,
     isPlayerReady,
     isAudioFile,
+    coach,
   } = useImmersionTimer();
 
-  const { audioFile, ...practiceInfo } = library;
+  const { audioFile, audioDuration, ...practiceInfo } = library;
+  const audioObjectInfo = { audioFile, coach, audioDuration } as IAudioFile;
 
   return (
     <PlayerContext.Provider value={{ isPlayerReady, isAudioFile }}>
@@ -47,9 +51,9 @@ export const ImmersionTimer: React.FC = () => {
           <TogglerDoNotDisturb isWithPadding isDark marginBottom={moderateScale(45)} />
           <Swiper toggleOpenAskModal={toggleOpenAskModal} text="SWIPE TO END" marginW={62} marginBottom={48} />
         </Styled.Wrapper>
-        {isAudioFile && !isIOS && <MediaPlayerSheet audioFile={audioFile} practiceInfo={practiceInfo} />}
+        {isAudioFile && !isIOS && <MediaPlayerSheet audioFile={audioObjectInfo} practiceInfo={practiceInfo} />}
       </Layout>
-      {isAudioFile && isIOS && <MediaPlayerSheet audioFile={audioFile} practiceInfo={practiceInfo} />}
+      {isAudioFile && isIOS && <MediaPlayerSheet audioFile={audioObjectInfo} practiceInfo={practiceInfo} />}
     </PlayerContext.Provider>
   );
 };
