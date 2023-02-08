@@ -17,9 +17,9 @@ export const MediaPlayer: React.FC<IProp> = ({ audioFile, isCollapsed, practiceI
 
   if (!isPlayerReady) {
     return (
-      <Styled.Container>
+      <Styled.NotReadyContainer>
         <Styled.WorningText>Please wait, we loading the audio track...</Styled.WorningText>
-      </Styled.Container>
+      </Styled.NotReadyContainer>
     );
   }
 

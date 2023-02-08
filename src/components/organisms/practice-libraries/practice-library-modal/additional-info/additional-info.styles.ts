@@ -1,4 +1,4 @@
-import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
+import { scale } from 'react-native-size-matters';
 import styled, { css } from 'styled-components/native';
 
 import { COLOR } from '@theme/colors';
@@ -8,8 +8,8 @@ const infoWrapperShareStyles = css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: ${moderateScale(93)}px;
-  height: ${verticalScale(40)}px;
+  width: ${scale(95)}px;
+  height: 40px;
 `;
 
 export const AdditionalInfoStyled = {
@@ -27,7 +27,7 @@ export const AdditionalInfoStyled = {
   `,
   SeasonCardWrapper: styled.View<{ isAudioFile?: boolean }>`
     ${infoWrapperShareStyles}
-    margin-right: ${({ isAudioFile }) => (isAudioFile ? scale(0) : scale(20))}px;
+    margin-right: ${({ isAudioFile }) => (isAudioFile ? scale(0) : scale(10))}px;
   `,
   Text: styled.Text`
     font-family: ${FONTS.family.mediumBoreal};

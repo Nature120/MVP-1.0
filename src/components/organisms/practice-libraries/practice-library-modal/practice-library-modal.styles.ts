@@ -1,8 +1,10 @@
+import { verticalScale } from 'react-native-size-matters';
 import styled, { css } from 'styled-components/native';
 
 import { TextComponent } from '@components/atoms/text-component';
 import { Title } from '@components/atoms/title';
 
+import { isIOS } from './../../../../services/helpers/device-utils';
 import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
@@ -36,7 +38,7 @@ export const StyledPracticeLibraryModal = {
   `,
 
   Header: styled.View`
-    height: 270px;
+    height: ${isIOS ? verticalScale(220) : verticalScale(240)}px;
   `,
 
   Title: styled(Title)`

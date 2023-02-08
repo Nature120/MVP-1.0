@@ -8,6 +8,12 @@ export const MediaPlayerStyled = {
     flex: 1;
     margin-horizontal: 24px;
   `,
+  NotReadyContainer: styled.View`
+    flex: 1;
+    padding-top: 15px;
+    margin-horizontal: 24px;
+    align-items: center;
+  `,
   WorningText: styled.Text`
     font-family: ${FONTS.family.lightBoreal};
     font-size: ${FONTS.size.medium}px;

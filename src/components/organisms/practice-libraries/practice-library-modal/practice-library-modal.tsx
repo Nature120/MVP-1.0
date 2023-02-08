@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { moderateVerticalScale } from 'react-native-size-matters';
+import { verticalScale } from 'react-native-size-matters';
 
 import { Button } from '@components/atoms/button';
 import { Image } from '@components/atoms/image';
@@ -15,7 +15,7 @@ import { MainInfoSection } from './main-info-section/main-info-section';
 import { usePracticeLibraryModal } from './practice-library-modal.state';
 import { SubscribeSection } from './subscribe-section/subscribe-section';
 
-import { DEVICE_WIDTH } from '@services/helpers/device-utils';
+import { DEVICE_WIDTH, isIOS } from '@services/helpers/device-utils';
 import { useAppSelector } from '@services/hooks/redux';
 
 import { IPracticeLibraryModalProps } from './practice-library-modal.typings';
@@ -64,8 +64,9 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           <Image
             source={{ uri: image }}
             width={DEVICE_WIDTH}
-            height={moderateVerticalScale(350)}
+            height={isIOS ? verticalScale(235) : verticalScale(260)}
             styles={Styled.Image}
+            resizeMode="cover"
           />
           <Styled.ImageHeader top={insets.top}>
             <ButtonIcon
