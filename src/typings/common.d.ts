@@ -79,7 +79,7 @@ export interface ITeacher {
 type TAccess = 'Free' | 'Subscription';
 
 export interface IAudioFile {
-  audioDuration?: string;
+  audioDuration?: number;
   audioFile?: string;
   teacher: ITeacher;
 }
