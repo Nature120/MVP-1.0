@@ -12,7 +12,8 @@ import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
 import { SetupPlayerService } from '@services/player/player-setup';
 import { setCommentBeforeImmersion, setGradeBeforeImmersion } from '@services/store/app';
-import { addFinishedPractic, addRecentPractice } from '@services/store/auth/auth.actions';
+import { addFinishedPractic, addRecentPractice, loading } from '@services/store/auth/auth.actions';
+import { getLoading } from '@services/store/auth/auth.selectors';
 import { getLatestLibrary } from '@services/store/auth/auth.selectors';
 import { getUserInfo } from '@services/store/auth/auth.selectors';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
@@ -28,6 +29,7 @@ export const useImmersionTimer = () => {
   const { uid } = useSelector(getUserInfo);
   const { commentBeforeImmersion, gradeBeforeImmersion } = useAppSelector(store => store.app);
   const dispatch = useAppDispatch();
+  const isLoading = useSelector(getLoading);
   const library = useSelector(getLatestLibrary);
   const { title, audioFile, image, audioDuration, teacher } = library;
 
@@ -72,18 +74,20 @@ export const useImmersionTimer = () => {
   };
 
   const onModalClose = async () => {
+    //Switch on loading screen on fetch
+    dispatch(loading(true));
     try {
       await clearRecentPractices(uid, title);
     } catch (e) {
       console.error('Cannot clear recent immersions:', e);
     }
-
     try {
       await savePractices();
     } catch (e) {
       console.error('Cannot save practices:', e);
     }
-
+    //Switch off loading screen on fetch
+    dispatch(loading(false));
     goToNextRoute();
   };
 
@@ -137,5 +141,6 @@ export const useImmersionTimer = () => {
     isPlayerReady,
     isAudioFile,
     teacher,
+    isLoading,
   };
 };
