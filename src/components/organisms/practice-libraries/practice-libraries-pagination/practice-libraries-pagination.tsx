@@ -6,7 +6,7 @@ import { usePracticeLibrariesPagination } from './practice-libraries-pagination.
 import { IPracticeLibrariesPaginationProps } from './practice-libraries-pagination.typings';
 
 export const PracticeLibrariesPagination: React.FC<IPracticeLibrariesPaginationProps> = props => {
-  const { title } = props;
+  const { title, isWithoutAskModal } = props;
   const { libraries, onEndReached, onMomentumScrollBegin } = usePracticeLibrariesPagination(props);
 
   return (
@@ -15,6 +15,7 @@ export const PracticeLibrariesPagination: React.FC<IPracticeLibrariesPaginationP
       libraries={libraries}
       onEndReached={onEndReached}
       onMomentumScrollBegin={onMomentumScrollBegin}
+      isWithoutAskModal={isWithoutAskModal}
     />
   );
 };

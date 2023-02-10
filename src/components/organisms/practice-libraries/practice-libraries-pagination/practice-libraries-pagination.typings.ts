@@ -2,6 +2,7 @@ import { IPracticeLibrary, TDocument } from '@typings/common';
 
 export interface IPracticeLibrariesPaginationProps extends IPracticeLibrariesPaginationStateProps {
   title: string;
+  isWithoutAskModal?: boolean;
 }
 
 export interface IPracticeLibrariesPaginationStateProps {
