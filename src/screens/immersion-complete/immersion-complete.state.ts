@@ -9,7 +9,8 @@ import { useGoal } from '@services/hooks/goal';
 import { useParam } from '@services/hooks/param';
 import { useAppDispatch } from '@services/hooks/redux';
 import { useSetDefaultTimer } from '@services/hooks/setDefaultTimer';
-import { getUserInfo } from '@services/store/auth/auth.selectors';
+import { loading } from '@services/store/auth/auth.actions';
+import { getLoading, getUserInfo } from '@services/store/auth/auth.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
 
@@ -19,6 +20,7 @@ export const useImmersionComplete = () => {
   const { params } = useParam<IAddedTime>();
   const { navigate } = useNavigation();
   const user = useSelector(getUserInfo);
+  const isLoading = useSelector(getLoading);
   const dispatch = useAppDispatch();
   const { weeklyGoal } = useGoal();
   const [todayImmersions, setTodayImmersions] = useState<any>([]);
@@ -79,10 +81,16 @@ export const useImmersionComplete = () => {
   }, []);
 
   const onDone = async () => {
+    //Turn on loading screen
+    dispatch(loading(true));
+
     defaultTimer();
 
     const goal = user.goal! + params.addedTime;
     await updateUser(user.uid, { goal }, dispatch);
+
+    //Turn off loading screen
+    dispatch(loading(false));
     navigate(APP_ROUTES.main.home as never);
   };
 
@@ -92,5 +100,6 @@ export const useImmersionComplete = () => {
     addedTime: params.addedTime,
     todayImmersions,
     onDone,
+    isLoading,
   };
 };
