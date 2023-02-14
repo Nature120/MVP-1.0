@@ -1,6 +1,13 @@
-// export const getErrorEmail = (state) => state.auth.error?.errors?.email;
-// export const getError = (state) => state.auth.error?.message;
-// export const getAuthentication = (state) => state.auth.isAuthenticated;
-// export const getToken = (state) => state.auth.user.accessToken;
-// export const getFirstLaunch = (state) => state.auth.isFirstLaunchApp;
-export {};
+import { IState } from './auth.typings';
+
+export const getAuthentication = (state: IState) => state.auth.isAuthenticated;
+export const getEmail = (state: IState) => state.auth.user.email;
+export const getFirstName = (state: IState) => state.auth.user.first_name;
+export const getUid = (state: IState) => state.auth.user.uid;
+export const getUserInfo = (state: IState) => state.auth.user;
+export const getLoading = (state: IState) => state.auth.isLoading;
+export const getFisishedPractices = (state: IState) => state.auth.user.finishedPractices;
+export const getIsDisturb = (state: IState) => state.auth.isDisturb;
+export const getLatestLibrary = (state: IState) => state.auth.latestLibrary;
+export const getSubscription = (state: IState) => state.auth.user.subscription;
+export const getBookmarks = (state: IState) => state.auth.user.bookmarks;

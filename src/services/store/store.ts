@@ -1,19 +1,42 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { configureStore } from '@reduxjs/toolkit';
+import { appReducer } from './app';
 import authReducer from './auth/auth.reducer';
+import timerReducer from './timer/timer.reducer';
+
+const config = {
+  key: 'root',
+  storage: AsyncStorage,
+  blacklist: ['auth'],
+};
 
 const authPersistConfig = {
   key: 'auth',
   storage: AsyncStorage,
-  // blacklist: ["error"],
+  blacklist: ['user', 'isAuthenticated'],
 };
 
-const persistedReducer = persistReducer(authPersistConfig, authReducer);
+const timerPersistConfig = {
+  key: 'timer',
+  storage: AsyncStorage,
+};
+
+const combinedReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authReducer),
+  app: appReducer,
+  timer: persistReducer(timerPersistConfig, timerReducer),
+});
+
+const reducer = (state: any, action: any) => {
+  return combinedReducer(state, action);
+};
+
+const persistedReducer = persistReducer(config, reducer);
 
 export const store = configureStore({
-  reducer: { auth: persistedReducer },
+  reducer: persistedReducer, //{ auth: persistedReducer },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,
@@ -21,5 +44,6 @@ export const store = configureStore({
 });
 
 const persistor = persistStore(store);
-
+export type TStore = ReturnType<typeof store.getState>;
+export type TDispatch = typeof store.dispatch;
 export default { store, persistor };
