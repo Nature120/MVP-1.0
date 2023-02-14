@@ -2,7 +2,7 @@ import { ListRenderItem, StyleProp, ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
-import { ParamListBase, RouteProp } from '@react-navigation/native';
+import { NavigationProp, ParamListBase, RouteProp } from '@react-navigation/native';
 import { StackNavigationOptions, StackNavigationProp } from '@react-navigation/stack';
 import { SimpleInterpolation } from 'styled-components';
 
@@ -50,6 +50,10 @@ export interface IAddedTime {
   addedTime: number;
 }
 
+export interface INavigation {
+  navigation: NavigationProp<any, any>;
+}
+
 export interface IPracticeLibrary {
   image: string;
   title: string;
@@ -63,7 +67,7 @@ export interface IPracticeLibrary {
   userGoals: string[];
   audioDuration?: number;
   audioFile?: string;
-  teacher?: ITeacher;
+  teacher?: string;
   indoorOutdoor?: string;
   subscription?: TAccess;
 }
@@ -74,6 +78,16 @@ export interface ITeacher {
   fullName: string;
   location: string;
   teacherTitle: string;
+  biography: string;
+  contactLinks: IContactLinks[];
+  languages: string[];
+  joinedDate: string;
+  featuredPractice: string;
+}
+
+interface IContactLinks {
+  name: string;
+  link: string;
 }
 
 type TAccess = 'Free' | 'Subscription';
@@ -94,3 +108,4 @@ export type TFirebaseUserCredentials = FirebaseAuthTypes.UserCredential;
 export type TFirebaseAuthCredentials = FirebaseAuthTypes.AuthCredential;
 
 export type TNavigation = StackNavigationProp<any, 'Sign In'>;
+export type TTeacherProfileNavigationProp = StackNavigationProp<any, 'Teacher Profile'>;

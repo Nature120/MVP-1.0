@@ -10,6 +10,7 @@ import { clearRecentPractices, getRoundElapsedTime } from './immersion-timer.uti
 import { databaseRef, updateUser } from '@services/api.service';
 import { useOpenCloseModal } from '@services/hooks/open-close';
 import { useAppDispatch, useAppSelector } from '@services/hooks/redux';
+import { useTeacherHook } from '@services/hooks/teacherHook';
 import { SetupPlayerService } from '@services/player/player-setup';
 import { setCommentBeforeImmersion, setGradeBeforeImmersion } from '@services/store/app';
 import { addFinishedPractic, addRecentPractice, loading } from '@services/store/auth/auth.actions';
@@ -31,7 +32,9 @@ export const useImmersionTimer = () => {
   const dispatch = useAppDispatch();
   const isLoading = useSelector(getLoading);
   const library = useSelector(getLatestLibrary);
-  const { title, audioFile, image, audioDuration, teacher } = library;
+  const { title, audioFile, image, audioDuration, teacher: teacherName } = library;
+
+  const { teacher } = useTeacherHook(teacherName);
 
   const isAudioFile = audioFile !== undefined;
   const elapsedTime = getRoundElapsedTime(seconds);

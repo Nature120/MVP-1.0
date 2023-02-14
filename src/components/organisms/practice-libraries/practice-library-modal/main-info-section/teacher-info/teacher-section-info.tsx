@@ -2,13 +2,17 @@ import React from 'react';
 
 import { Image } from '@components/atoms/image';
 
+import { useTeacherHook } from '@services/hooks/teacherHook';
+
 import { IProp } from './teacher-section-info.typings';
 import { ITeacher } from '@typings/common';
 
 import { TeacherInfoStyled as Styled } from './teacher-info.styles';
 
-export const TeacherInfo = ({ teacher }: IProp) => {
-  const { avatar, fullName, location, teacherTitle } = teacher as ITeacher;
+export const TeacherInfo = ({ teacherName }: IProp) => {
+  const { teacher } = useTeacherHook(teacherName);
+
+  const { avatar, fullName, teacherTitle, location } = teacher as ITeacher;
 
   return (
     <Styled.Container>

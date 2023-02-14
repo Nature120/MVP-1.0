@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import { getRecentLibraries, sortLibraries } from './immersions.utils';
-import { databaseRef, getTeacher } from '@services/api.service';
+import { databaseRef } from '@services/api.service';
 import { useSetDefaultTimer } from '@services/hooks/setDefaultTimer';
 import * as action from '@services/store/auth/auth.actions';
 import { getUserInfo } from '@services/store/auth/auth.selectors';
@@ -26,20 +26,7 @@ export const useImmersions = () => {
   const getRecentLibrariesFromDB = useCallback(async () => {
     setIsLoading(true);
     const allLibraries = await databaseRef('Practise library').where('title', 'in', recentLibrariesTitles).get();
-    const librariesData = (await Promise.all(
-      allLibraries.docs.map(async lib => {
-        try {
-          const data = lib.data();
-          if (data.teacher) {
-            const teacher = await getTeacher(data.teacher);
-            data.teacher = teacher;
-          }
-          return data;
-        } catch (error) {
-          console.log('error', error);
-        }
-      }),
-    )) as IPracticeLibrary[];
+    const librariesData = allLibraries.docs.map(lib => lib.data() as IPracticeLibrary);
 
     const sortedLibraries = sortLibraries(recentLibrariesTitles, librariesData);
 

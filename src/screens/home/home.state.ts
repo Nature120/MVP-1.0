@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import Purchases from 'react-native-purchases';
 import { useSelector } from 'react-redux';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
 import { useNavigation } from '@react-navigation/native';
 import { getWeek } from 'date-fns';
 
 import { setWeeklyUserGoal } from './../../services/store/auth/auth.actions';
 
-import { checkUserPremiumInfo, removeLastWeekPractices, sumUserWeeklyGoal } from './home.utils';
-import { getUser, updateUser } from '@services/api.service';
+import { checkUserPremiumInfo, handleDynamicLink, removeLastWeekPractices, sumUserWeeklyGoal } from './home.utils';
+import { fetchTeachers, getUser, updateUser } from '@services/api.service';
 import { isIOS } from '@services/helpers/device-utils';
 import { areSameObjectArrays } from '@services/helpers/utils';
 import { useGoal } from '@services/hooks/goal';
@@ -19,11 +20,14 @@ import { setCommentBeforeImmersion, setGradeBeforeImmersion, setIsFirstLaunchApp
 import { filterExpiredPractices } from '@services/store/auth/auth.actions';
 import { getFisishedPractices, getSubscription, getUserInfo } from '@services/store/auth/auth.selectors';
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
+import { setTeachers } from '@services/store/teachers/teacherSlice';
 import * as selector from '@services/store/timer/timer.selectors';
 
 import { CURRENT_WEEK } from './home.constants';
 import { CONFIG } from '@constants/config';
 import { APP_ROUTES } from '@constants/routes';
+
+import { ITeacher } from '@typings/common';
 
 export const useHome = () => {
   const { navigate, openDrawer } = useNavigation() as any;
@@ -78,6 +82,11 @@ export const useHome = () => {
     clearUserProgress();
   }, []);
 
+  //Teacher fetch
+  useEffect(() => {
+    getTeachers();
+  }, []);
+
   useEffect(() => {
     if (!isFirstLaunchApp) {
       return;
@@ -99,6 +108,20 @@ export const useHome = () => {
     isIOS
       ? Purchases.configure({ apiKey: CONFIG.revenueCatApiKeyApple as string, appUserID: user.uid })
       : Purchases.configure({ apiKey: CONFIG.revenueCatApiKeyGoogle as string, appUserID: user.uid });
+  }, []);
+
+  ///Deep link route changing
+
+  useEffect(() => {
+    const unsubscribe = dynamicLinks().onLink(link => handleDynamicLink({ link, navigate }));
+
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    dynamicLinks()
+      .getInitialLink()
+      .then(link => handleDynamicLink({ link, navigate }));
   }, []);
 
   // sync notifications
@@ -176,6 +199,15 @@ export const useHome = () => {
   };
 
   const onPressDrawer = () => openDrawer();
+
+  const getTeachers = async () => {
+    try {
+      const teachers = (await fetchTeachers()) as ITeacher[];
+      dispatch(setTeachers(teachers));
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
 
   return {
     user,

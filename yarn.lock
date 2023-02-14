@@ -1470,6 +1470,13 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-15.7.1.tgz#6bfc3be0f1bc3503382593a9c9dbd08b4e21e07e"
   integrity sha512-KtxVcoIpZX5aT0rNaHWo733dP8cCZUBNV90FboapyvasQ5qZdMu+xS2yYe8FdimUlMlzGhMmLyXTxghGmVIZjw==
 
+"@react-native-firebase/dynamic-links@^17.3.1":
+  version "17.3.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/dynamic-links/-/dynamic-links-17.3.1.tgz#0fbab673678501c5e76e335f19f8009f197cacc4"
+  integrity sha512-XJEElPnoBRDd0MRwRJX63qfYUMVfghZt7ghWF611JaAr/roKhZGlHneYSqA/83P7kSBdmqodw3/Lx1AjLkzdTw==
+  dependencies:
+    "@expo/config-plugins" "^5.0.4"
+
 "@react-native-firebase/firestore@^15.4.0":
   version "15.7.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-15.7.1.tgz#5ad80f89fb26d89dc12250542775c0b58d60a2c4"

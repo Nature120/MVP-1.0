@@ -33,18 +33,13 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
     navigateToTimer,
     openModalAsk,
     onConfirmPress,
-    onToggleBookMark,
-    toggleBookMark,
-    isSubscriptionPractice,
     isAudioFile,
-    teacher,
   } = usePracticeLibraryModal(props);
 
   const { commentBeforeImmersion } = useAppSelector(store => store.app);
 
-  const { title, image, description, userGoals, season, indoorOutdoor } = props.library;
-  const { isLockPractice } = props;
-
+  const { isLockPractice, library } = props;
+  const { image, userGoals } = library;
   const insets = useSafeAreaInsets();
 
   return (
@@ -83,17 +78,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
         {isLockPractice ? (
           <Styled.ContentWrapper>
             <Styled.Content>
-              <MainInfoSection
-                isAudioFile={isAudioFile}
-                title={title}
-                season={season}
-                indoorOutdoor={indoorOutdoor}
-                description={description}
-                onToggleBookMark={onToggleBookMark}
-                toggleBookMark={toggleBookMark}
-                isSubscriptionPractice={isSubscriptionPractice}
-                isLockPractice={isLockPractice}
-              />
+              <MainInfoSection isAudioFile={isAudioFile} library={library} isLockPractice={isLockPractice} />
             </Styled.Content>
             <SubscribeSection closeModal={closeModal} />
           </Styled.ContentWrapper>
@@ -101,19 +86,9 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           <Styled.ContentWrapper>
             <Styled.Content>
               <View>
-                <MainInfoSection
-                  isAudioFile={isAudioFile}
-                  season={season}
-                  indoorOutdoor={indoorOutdoor}
-                  title={title}
-                  description={description}
-                  onToggleBookMark={onToggleBookMark}
-                  toggleBookMark={toggleBookMark}
-                  isSubscriptionPractice={isSubscriptionPractice}
-                  teacher={teacher}
-                />
+                <MainInfoSection isAudioFile={isAudioFile} library={library} />
                 <Styled.Tags>
-                  {userGoals.map((userGoal, index, arr) => (
+                  {userGoals?.map((userGoal, index, arr) => (
                     <Spacer isHorizontal key={userGoal + index} gap={8} isLastItem={index === arr.length - 1}>
                       <Spacer gap={8}>
                         <Styled.Tag>

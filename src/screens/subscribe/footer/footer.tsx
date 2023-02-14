@@ -4,6 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useStateFooter } from './footer.state';
 
 import { isIOS } from '@services/helpers/device-utils';
+import { onPressLink } from '@services/helpers/utils';
 
 import { PRIVACY, TERMS } from '@constants/social-url';
 
@@ -11,7 +12,7 @@ import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 export const Footer = () => {
-  const { onPressLink, onPressRestorePurchases, onPressPromoCode } = useStateFooter();
+  const { onPressRestorePurchases, onPressPromoCode } = useStateFooter();
 
   return (
     <View style={styles.Wrapper}>
