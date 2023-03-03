@@ -13,9 +13,10 @@ interface IProp {
   library: IPracticeLibrary;
   isLockPractice?: boolean;
   isAudioFile: boolean;
+  closeModal?: () => void;
 }
 
-export const MainInfoSection: React.FC<IProp> = ({ isLockPractice, library, isAudioFile }) => {
+export const MainInfoSection: React.FC<IProp> = ({ isLockPractice, library, isAudioFile, closeModal }) => {
   const { title, description, teacher } = library;
 
   return (
@@ -27,7 +28,7 @@ export const MainInfoSection: React.FC<IProp> = ({ isLockPractice, library, isAu
       </Styled.TitleWrapper>
       <AdditionalInfo practice={library} isAudioFile={isAudioFile} />
       {!isLockPractice && <Styled.Description>{description}</Styled.Description>}
-      {!isLockPractice && isAudioFile && <TeacherInfo teacherName={teacher} />}
+      {!isLockPractice && isAudioFile && <TeacherInfo teacherName={teacher} closeModal={closeModal} />}
     </Styled.Container>
   );
 };

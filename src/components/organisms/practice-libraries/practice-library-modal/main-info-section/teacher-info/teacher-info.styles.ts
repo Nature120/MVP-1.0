@@ -4,7 +4,7 @@ import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 export const TeacherInfoStyled = {
-  Container: styled.View`
+  Container: styled.TouchableOpacity`
     flex: 1;
     margin-top: 20px;
     padding: 24px 0px;

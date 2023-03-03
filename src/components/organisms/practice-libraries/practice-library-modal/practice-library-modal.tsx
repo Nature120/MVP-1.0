@@ -86,7 +86,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
           <Styled.ContentWrapper>
             <Styled.Content>
               <View>
-                <MainInfoSection isAudioFile={isAudioFile} library={library} />
+                <MainInfoSection isAudioFile={isAudioFile} library={library} closeModal={closeModal} />
                 <Styled.Tags>
                   {userGoals?.map((userGoal, index, arr) => (
                     <Spacer isHorizontal key={userGoal + index} gap={8} isLastItem={index === arr.length - 1}>
