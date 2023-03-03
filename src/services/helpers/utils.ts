@@ -1,3 +1,4 @@
+import { Alert, Linking } from 'react-native';
 import { endOfWeek, format, startOfWeek } from 'date-fns';
 import isEqual from 'lodash/isEqual';
 
@@ -25,8 +26,24 @@ export const getFormattedDateRange = (weekDate: Date, dateFormat = 'MMM d') => {
 
 export const areSameObjectArrays = <T, S>(array1: T[], array2: S[]) => {
   if (array1.length !== array2.length) {
-    console.log('qqsss');
     return false;
   }
   return isEqual(array1, array2);
+};
+
+export const onPressLink = async (link: string) => {
+  let url: string;
+
+  if (!link.startsWith('http://') && !link.startsWith('https://')) {
+    url = 'https://' + link;
+  } else {
+    url = link;
+  }
+
+  const supported = await Linking.canOpenURL(url);
+  if (supported) {
+    await Linking.openURL(url);
+  } else {
+    Alert.alert(`Don't know how to open this URL ${url}`);
+  }
 };

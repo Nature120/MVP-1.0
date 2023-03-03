@@ -1,19 +1,10 @@
-import { moderateVerticalScale } from 'react-native-size-matters';
+import { scale } from 'react-native-size-matters';
 import styled from 'styled-components/native';
-
-import { isIOS } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
 export const SubscribeStyled = {
-  ImageBackground: styled.ImageBackground`
-    flex: 1;
-  `,
-  Container: styled.View`
-    margin-top: ${isIOS ? moderateVerticalScale(45) : moderateVerticalScale(50)}px;
-    flex: 1;
-  `,
   MainWrapper: styled.View`
     flex: 1;
     width: 100%;
@@ -25,6 +16,7 @@ export const SubscribeStyled = {
     border-top-right-radius: 18px;
   `,
   Header: styled.View`
+    margin-top: ${scale(8)}px;
     margin-bottom: 16px;
     align-items: flex-end;
     margin-horizontal: 24px;

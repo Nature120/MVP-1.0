@@ -1,4 +1,4 @@
-import { databaseRef, getTeacher } from '@services/api.service';
+import { databaseRef } from '@services/api.service';
 
 import { IGetPracticesByFilter } from './practice-libraries-pagination.typings';
 import { IPracticeLibrary } from '@typings/common';
@@ -17,20 +17,7 @@ export const getPracticesByFilter = async ({ searchedDocs, lastPracticeDoc, sear
   }
 
   const collection = await query?.limit(ITEMS_PER_PAGE).get();
-  const practiceList = (await Promise.all(
-    collection.docs.map(async item => {
-      try {
-        const data = item.data();
-        if (data.teacher) {
-          const teacher = await getTeacher(data.teacher);
-          data.teacher = teacher;
-        }
-        return data;
-      } catch (error) {
-        console.log('error', error);
-      }
-    }),
-  )) as IPracticeLibrary[];
+  const practiceList = collection.docs.map(item => item.data() as IPracticeLibrary);
   const nextLastPractice = collection.docs[collection.docs.length - 1];
   return { practiceList, nextLastPractice };
 };

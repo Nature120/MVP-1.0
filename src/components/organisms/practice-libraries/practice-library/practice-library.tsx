@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
-import { useSelector } from 'react-redux';
 
 import { Icon } from '@components/atoms/icon';
 import { Image } from '@components/atoms/image';
@@ -9,7 +8,7 @@ import { PracticeLibraryModal } from '../practice-library-modal';
 
 import { DEVICE_WIDTH } from '@services/helpers/device-utils';
 import { useOpenCloseModal } from '@services/hooks/open-close';
-import { getSubscription } from '@services/store/auth/auth.selectors';
+import { usePracticeLocked } from '@services/hooks/practiceLocked';
 
 import { IPracticeLibraryProps } from './practice-library.typings';
 
@@ -21,8 +20,7 @@ export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
   const { isWithoutActions, isWithoutAskModal, ...library } = props;
   const { subscription: libSubscription, image, userGoals, title, description } = library;
   const { isOpen, onToggle } = useOpenCloseModal();
-  const userSubStatus = useSelector(getSubscription);
-  const isLockPractice = userSubStatus === 'FREE' && libSubscription === 'Subscription';
+  const { isLockPractice } = usePracticeLocked(libSubscription as string);
 
   return (
     <>

@@ -42,7 +42,6 @@ export const StyledPracticeLibrary = {
   `,
   Title: styled.Text<{ isLockPractice: boolean }>`
     margin: 8px 0 4px;
-    // width: ${moderateScale(110)}px;
     width: ${({ isLockPractice }) => (isLockPractice ? moderateScale(110) : moderateScale(150))}px;
     font-family: ${FONTS.family.semiBoldAcumin};
     font-weight: ${FONTS.weight.semiBold};

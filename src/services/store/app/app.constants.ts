@@ -5,4 +5,5 @@ export const appInitialState: IAppInitialState = {
   gradeBeforeImmersion: null,
   notificationsList: [],
   isFirstLaunchApp: true,
+  isFirstLaunchCommunity: true,
 };

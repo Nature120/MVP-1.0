@@ -4,9 +4,10 @@ import { getWeek } from 'date-fns';
 
 import { IFinishedPractices } from '@services/store/auth/auth.typings';
 
-import { CURRENT_WEEK } from './home.constants';
+import { CURRENT_WEEK, TEACHER_DEEP_URL_LINK } from './home.constants';
+import { APP_ROUTES } from '@constants/routes';
 
-import { TUserPremiumInfo } from './home.typings';
+import { IHandleDynamicLinks, TUserPremiumInfo } from './home.typings';
 
 export const sumUserWeeklyGoal = (array: IFinishedPractices[]) => {
   return array.reduce((result, obj) => {
@@ -57,5 +58,21 @@ export const checkUserPremiumInfo = async ({ subscription, storeSubscription }: 
   } catch (e) {
     // Error fetching customer info
     console.log('erorr', e);
+  }
+};
+
+export const handleDynamicLink = ({ link, navigate }: IHandleDynamicLinks) => {
+  if (!link) {
+    return;
+  }
+
+  const { url } = link;
+  const [urlWithoutParams, params] = url.split('?');
+  const [, paramValue] = params.split('=');
+  const newStr = paramValue.replace(/([a-z])([A-Z])|([A-Z])([A-Z][a-z])/g, '$1$3 $2$4');
+
+  if (urlWithoutParams === TEACHER_DEEP_URL_LINK) {
+    navigate(APP_ROUTES.teacherProfile, { teacherName: newStr });
+    return;
   }
 };

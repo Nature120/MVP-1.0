@@ -12,8 +12,7 @@ export const MainInfoSectionStyled = {
     flex: 1;
     margin-bottom: ${({ isLockPractice }) => (isLockPractice ? 0 : 32)}px;
   `,
-  BookmarkBtn: styled.TouchableOpacity`
-    width: 35px;
+  BookmarkBtn: css`
     margin-top: 20px;
     margin-bottom: 15px;
     align-self: flex-end;
