@@ -11,7 +11,10 @@ export const CommunitySplashMain = () => {
   return (
     <Styled.Container>
       <Styled.Title>Welcome to the Nature 120 Community</Styled.Title>
-      <Styled.Text isMarginBottom={true}>Insert a tagline encouraging people to check it out. Yay!</Styled.Text>
+      <Styled.Text isMarginBottom={true}>
+        We are growing the world’s first truly diverse, global group of experts They are here to share their practices
+        and wisdom with you
+      </Styled.Text>
       <Styled.WrapperList>
         {INFO_LIST.map((item: TInfo_list) => (
           <Styled.WrapperItem key={item.subTitle}>
