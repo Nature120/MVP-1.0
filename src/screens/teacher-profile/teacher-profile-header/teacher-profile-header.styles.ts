@@ -17,7 +17,7 @@ export const TeacherProfileHeaderStyled = {
   Container: styled.View`
     flex-direction: row;
     margin-horizontal: 24px;
-    margin-top: ${isIOS ? moderateScale(0) : moderateScale(10)}px;
+    margin-top: ${isIOS ? moderateScale(9) : moderateScale(10)}px;
     margin-bottom: ${moderateScale(95)}px;
     justify-content: space-between;
     align-items: center;
