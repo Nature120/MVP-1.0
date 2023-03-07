@@ -10,7 +10,7 @@ import timerReducer from './timer/timer.reducer';
 const config = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['auth', 'teachers'],
+  blacklist: ['auth', 'teachers', 'app'],
 };
 
 const authPersistConfig = {
@@ -24,9 +24,11 @@ const timerPersistConfig = {
   storage: AsyncStorage,
 };
 
+const appPersistConfig = { key: 'app', storage: AsyncStorage, blacklist: ['isFirstLaunchCommunity'] };
+
 const combinedReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-  app: appReducer,
+  app: persistReducer(appPersistConfig, appReducer),
   timer: persistReducer(timerPersistConfig, timerReducer),
   teachers: teacherReducer,
 });
