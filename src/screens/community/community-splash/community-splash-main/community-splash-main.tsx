@@ -13,7 +13,7 @@ export const CommunitySplashMain = () => {
       <Styled.Title>Welcome to the Nature 120 Community</Styled.Title>
       <Styled.Text isMarginBottom={true}>
         We are growing the world’s first truly diverse, global group of experts. They are here to share their practices
-        and wisdom with you
+        and wisdom with you.
       </Styled.Text>
       <Styled.WrapperList>
         {INFO_LIST.map((item: TInfo_list) => (
