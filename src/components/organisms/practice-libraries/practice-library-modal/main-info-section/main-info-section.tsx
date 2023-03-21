@@ -28,7 +28,7 @@ export const MainInfoSection: React.FC<IProp> = ({ isLockPractice, library, isAu
       </Styled.TitleWrapper>
       <AdditionalInfo practice={library} isAudioFile={isAudioFile} />
       {!isLockPractice && <Styled.Description>{description}</Styled.Description>}
-      {!isLockPractice && isAudioFile && <TeacherInfo teacherName={teacher} closeModal={closeModal} />}
+      {!isLockPractice && teacher && <TeacherInfo teacherName={teacher} closeModal={closeModal} />}
     </Styled.Container>
   );
 };
