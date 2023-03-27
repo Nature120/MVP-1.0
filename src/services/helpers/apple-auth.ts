@@ -10,7 +10,7 @@ export const authApple = async () => {
     // Start the sign-in request
     const appleAuthRequestResponse = await appleAuth.performRequest({
       requestedOperation: appleAuth.Operation.LOGIN,
-      requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+      requestedScopes: [appleAuth.Scope.FULL_NAME, appleAuth.Scope.EMAIL],
     });
     const email = appleAuthRequestResponse.email;
 
@@ -26,8 +26,6 @@ export const authApple = async () => {
 
     const iosGivenName = fullName?.givenName as string | undefined;
     await LoginFunctions.signInOrLink({ provider, credential, email, iosGivenName });
-    // Sign the user in with the credential
-    return auth().signInWithCredential(credential);
   } catch (err) {
     const error = err as IError;
     console.log(error.message);

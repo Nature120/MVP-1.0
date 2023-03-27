@@ -3,4 +3,5 @@ export interface IAppInitialState {
   gradeBeforeImmersion: number | null;
   notificationsList: string[];
   isFirstLaunchApp: boolean;
+  isFirstLaunchCommunity: boolean;
 }

@@ -12,14 +12,17 @@ import community from '@assets/icons/community.svg';
 import cross from '@assets/icons/cross.svg';
 import facebook from '@assets/icons/facebook.svg';
 import flower_light from '@assets/icons/flower-light.svg';
+import globe from '@assets/icons/globe.svg';
 import google from '@assets/icons/google.svg';
 import home from '@assets/icons/home.svg';
 import house from '@assets/icons/house.svg';
 import human from '@assets/icons/human.svg';
 import instagram from '@assets/icons/instagram.svg';
 import leaf from '@assets/icons/leaf.svg';
+import link from '@assets/icons/link.svg';
 import lock from '@assets/icons/lock.svg';
 import logout from '@assets/icons/logout.svg';
+import map_pin from '@assets/icons/map-pin.svg';
 import menu from '@assets/icons/menu.svg';
 import fullMoon from '@assets/icons/moon-phases/full-moon.svg';
 import halfMoon from '@assets/icons/moon-phases/half-moon.svg';
@@ -47,12 +50,14 @@ import practices from '@assets/icons/practices.svg';
 import settings from '@assets/icons/settings.svg';
 import snow_flake from '@assets/icons/snowflake.svg';
 import speaker_high from '@assets/icons/speaker-high.svg';
+import student from '@assets/icons/student.svg';
 import sun from '@assets/icons/sun.svg';
 import swipeToEndArrow from '@assets/icons/swipe-to-end-arrow.svg';
 import tip from '@assets/icons/tip.svg';
 import tree from '@assets/icons/tree.svg';
 import unchecked from '@assets/icons/unchecked.svg';
 import unchecked_leaf from '@assets/icons/unchecked_leaf.svg';
+import upload_simple from '@assets/icons/upload-simple.svg';
 
 export const ICONS = {
   arrowDown,
@@ -110,4 +115,9 @@ export const ICONS = {
   sun,
   tree,
   flower_light,
+  upload_simple,
+  map_pin,
+  globe,
+  link,
+  student,
 };

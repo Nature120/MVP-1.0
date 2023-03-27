@@ -17,10 +17,18 @@ export const appSlice = createSlice({
     setIsFirstLaunchApp: (state, action: PayloadAction<boolean>) => {
       state.isFirstLaunchApp = action.payload;
     },
+    setIsFirstLaunchCommunity: (state, action: PayloadAction<boolean>) => {
+      state.isFirstLaunchCommunity = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = appSlice;
-export const { setCommentBeforeImmersion, setNotificationsList, setIsFirstLaunchApp, setGradeBeforeImmersion } =
-  actions;
+export const {
+  setCommentBeforeImmersion,
+  setNotificationsList,
+  setIsFirstLaunchApp,
+  setGradeBeforeImmersion,
+  setIsFirstLaunchCommunity,
+} = actions;
 export { reducer as appReducer };

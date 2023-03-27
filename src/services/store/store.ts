@@ -4,12 +4,13 @@ import { persistReducer, persistStore } from 'redux-persist';
 
 import { appReducer } from './app';
 import authReducer from './auth/auth.reducer';
+import { teacherReducer } from './teachers/teacherSlice';
 import timerReducer from './timer/timer.reducer';
 
 const config = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['auth'],
+  blacklist: ['auth', 'teachers', 'app'],
 };
 
 const authPersistConfig = {
@@ -23,10 +24,13 @@ const timerPersistConfig = {
   storage: AsyncStorage,
 };
 
+const appPersistConfig = { key: 'app', storage: AsyncStorage, blacklist: ['isFirstLaunchCommunity'] };
+
 const combinedReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-  app: appReducer,
+  app: persistReducer(appPersistConfig, appReducer),
   timer: persistReducer(timerPersistConfig, timerReducer),
+  teachers: teacherReducer,
 });
 
 const reducer = (state: any, action: any) => {

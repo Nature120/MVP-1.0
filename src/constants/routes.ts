@@ -14,6 +14,7 @@ export const APP_ROUTES = {
   immersionComplete: 'Immersion Complete',
 
   practices: 'Practices',
+  teacherProfile: 'Teacher Profile',
   subscribe: 'Subscribe',
   promoCode: 'Promo Code',
   main: { home: 'Home' },

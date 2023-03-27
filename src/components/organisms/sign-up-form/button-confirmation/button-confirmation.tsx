@@ -1,7 +1,8 @@
 import React from 'react';
-import { Alert, Linking } from 'react-native';
 
 import { Checkbox } from './checkbox/checkbox';
+
+import { onPressLink } from '@services/helpers/utils';
 
 import { PRIVACY, TERMS } from '@constants/social-url';
 
@@ -22,12 +23,7 @@ export const ButtonConfirmation: React.FC<IPropButtonConfirm> = ({
   };
 
   const onPressConfirmLink = async () => {
-    const supported = await Linking.canOpenURL(navigationLink);
-    if (supported) {
-      await Linking.openURL(navigationLink);
-    } else {
-      Alert.alert(`Don't know how to open ${navigationLink}`);
-    }
+    await onPressLink(navigationLink);
   };
 
   return (

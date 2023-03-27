@@ -3,22 +3,24 @@ import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { isToday } from 'date-fns';
 
-import { databaseRef, getTeacher, updateUser } from '@services/api.service';
+import { databaseRef, updateUser } from '@services/api.service';
 import { getUniqueArray } from '@services/helpers/array.utils';
 import { useGoal } from '@services/hooks/goal';
 import { useParam } from '@services/hooks/param';
 import { useAppDispatch } from '@services/hooks/redux';
 import { useSetDefaultTimer } from '@services/hooks/setDefaultTimer';
-import { getUserInfo } from '@services/store/auth/auth.selectors';
+import { loading } from '@services/store/auth/auth.actions';
+import { getLoading, getUserInfo } from '@services/store/auth/auth.selectors';
 
 import { APP_ROUTES } from '@constants/routes';
 
-import { IAddedTime, IPracticeLibrary } from '@typings/common';
+import { IAddedTime } from '@typings/common';
 
 export const useImmersionComplete = () => {
   const { params } = useParam<IAddedTime>();
   const { navigate } = useNavigation();
   const user = useSelector(getUserInfo);
+  const isLoading = useSelector(getLoading);
   const dispatch = useAppDispatch();
   const { weeklyGoal } = useGoal();
   const [todayImmersions, setTodayImmersions] = useState<any>([]);
@@ -46,22 +48,7 @@ export const useImmersionComplete = () => {
         databaseRef('Practise library')
           .where('title', 'in', batch)
           .get()
-          .then(async libs => {
-            return (await Promise.all(
-              libs.docs.map(async item => {
-                try {
-                  const data = item.data();
-                  if (data.teacher) {
-                    const teacher = await getTeacher(data.teacher);
-                    data.teacher = teacher;
-                  }
-                  return data;
-                } catch (error) {
-                  console.log('error', error);
-                }
-              }),
-            )) as IPracticeLibrary[];
-          }),
+          .then(libs => libs.docs.map(result => result.data())),
       );
     }
     try {
@@ -79,10 +66,16 @@ export const useImmersionComplete = () => {
   }, []);
 
   const onDone = async () => {
+    //Turn on loading screen
+    dispatch(loading(true));
+
     defaultTimer();
 
     const goal = user.goal! + params.addedTime;
     await updateUser(user.uid, { goal }, dispatch);
+
+    //Turn off loading screen
+    dispatch(loading(false));
     navigate(APP_ROUTES.main.home as never);
   };
 
@@ -92,5 +85,6 @@ export const useImmersionComplete = () => {
     addedTime: params.addedTime,
     todayImmersions,
     onDone,
+    isLoading,
   };
 };

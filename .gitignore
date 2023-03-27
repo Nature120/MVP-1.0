@@ -66,3 +66,6 @@ buck-out/
 /src/components/practices-data.json
 /src/components/TOTD-data.json
 .env
+
+# Keystore.properties for google sign 
+/android/keystore.properties
