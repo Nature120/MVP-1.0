@@ -151,7 +151,7 @@ android {
         applicationId "com.nature120"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 31
+        versionCode 32
         versionName "1.1"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
@@ -248,6 +248,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            crunchPngs false // or true
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
