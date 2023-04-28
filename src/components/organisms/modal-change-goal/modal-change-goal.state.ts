@@ -33,12 +33,5 @@ export const useModalChangeGoal = () => {
 
   const defaultIndex = useMemo(() => getIndexByGoal(selectedDailyGoal), [selectedDailyGoal]);
 
-  return {
-    isOpen,
-    onOpen,
-    onDone,
-    onGoalChange,
-    onClose,
-    defaultIndex,
-  };
+  return { isOpen, onDone, onOpen, onClose, onGoalChange, defaultIndex };
 };

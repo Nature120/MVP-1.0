@@ -20,8 +20,8 @@ export const Card: React.FC = () => {
   return (
     <Styled.Card>
       <OnboardingCard>
-        <OnboardingTitle>{TEXT.title}</OnboardingTitle>
-        <Styled.CardText>{getPartialBoldText(TEXT.description)}</Styled.CardText>
+        <OnboardingTitle allowFontScaling={false}>{TEXT.title}</OnboardingTitle>
+        <Styled.CardText allowFontScaling={false}>{getPartialBoldText(TEXT.description)}</Styled.CardText>
       </OnboardingCard>
     </Styled.Card>
   );

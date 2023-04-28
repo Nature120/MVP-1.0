@@ -10,4 +10,6 @@ export interface IDonutProps {
   maxMinutes: number;
   minutes: number;
   addedTime?: number;
+  isChangeImmersion?: boolean;
+  setImmersion?: React.Dispatch<React.SetStateAction<number>>;
 }

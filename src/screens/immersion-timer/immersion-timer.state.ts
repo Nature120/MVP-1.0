@@ -130,7 +130,7 @@ export const useImmersionTimer = () => {
 
   const goToNextRoute = () => {
     closeAskModal();
-    navigate(APP_ROUTES.immersionComplete as never, { addedTime: elapsedTime } as never);
+    navigate(APP_ROUTES.immersionChange as never, { addedTime: elapsedTime } as never);
   };
 
   return {

@@ -8,7 +8,7 @@ export interface IButtonProps extends IStyledButtonTextProps {
   onPress?: (event: GestureResponderEvent) => void;
   isDisabled?: boolean;
   height?: number;
-  buttonColor?: 'green' | 'blue';
+  buttonColor?: 'green' | 'blue' | 'red';
   activeOpacity?: number;
   styles?: TStyles;
   buttonText?: string;

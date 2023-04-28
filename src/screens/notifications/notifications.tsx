@@ -32,7 +32,7 @@ export const Notifications: React.FC = () => {
       <Styled.BtnWrapper onPress={onPressGoBack}>
         <Icon type={'arrowLeft'} width={32} height={32} colorIcon={'cloudyGreen'} />
       </Styled.BtnWrapper>
-      <OnboardingTitle>When is a good time for your daily nature immersion?</OnboardingTitle>
+      <OnboardingTitle allowFontScaling={false}>When is a good time for your daily nature immersion?</OnboardingTitle>
 
       <Styled.ContentWrapper>
         {selectedCheckbox?.text && timeForImmersion ? (

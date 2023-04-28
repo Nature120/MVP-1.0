@@ -17,8 +17,8 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <OnboardingTitle>{TEXT.title}</OnboardingTitle>
-      <OnboardingText>{getPartialBoldText(TEXT.description)}</OnboardingText>
+      <OnboardingTitle allowFontScaling={false}>{TEXT.title}</OnboardingTitle>
+      <OnboardingText allowFontScaling={false}>{getPartialBoldText(TEXT.description)}</OnboardingText>
     </>
   );
 };

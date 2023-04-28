@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 import { TViewProps } from '@typings/common';
 
-export const linerarGradient: TViewProps = {
+export const linearGradient: TViewProps = {
   ...StyleSheet.absoluteFillObject,
 };
 

@@ -28,7 +28,7 @@ export const TimeForImmersion: React.FC = () => {
         onPress={onPress}
         isWithoutRedirect
         isButtonDisabled={!selectedPeriod}>
-        <OnboardingTitle>When is a good time for your daily nature immersion?</OnboardingTitle>
+        <OnboardingTitle allowFontScaling={false}>When is a good time for your daily nature immersion?</OnboardingTitle>
 
         {selectedCheckbox?.text && timeForImmersion ? (
           <Styled.ReminderContainer>

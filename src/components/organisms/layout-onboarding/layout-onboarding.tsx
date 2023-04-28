@@ -17,16 +17,16 @@ export const LayoutOnboarding: React.FC<TLayoutOnboardingProps> = props => {
     bottomText,
     buttonText,
     routeText,
-    onPress,
-    onBackButtonPress,
     isButtonDisabled,
     isWithoutRedirect,
     onRoutePressNavigateTo,
-    onTextPress,
     routePayload,
+    onPress,
+    onTextPress,
+    onBackButtonPress,
   } = props;
 
-  const { progress, pressHandler, nextRoute } = useLayoutOnboarding(onPress, isWithoutRedirect, routePayload);
+  const { progress, nextRoute, pressHandler } = useLayoutOnboarding(onPress, isWithoutRedirect, routePayload);
 
   return (
     <>
