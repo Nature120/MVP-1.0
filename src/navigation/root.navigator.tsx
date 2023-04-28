@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { ImmersionChange } from '@screens/immersion-change';
 import { ImmersionComplete } from '@screens/immersion-complete';
 import { ImmersionTimer } from '@screens/immersion-timer';
 import { Immersions } from '@screens/immersions';
@@ -37,6 +38,7 @@ export const RootNavigator = () => {
       <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} options={disabledGestures} />
       <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
       <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />
+      <StartStack.Screen name={APP_ROUTES.immersionChange} component={ImmersionChange} />
       <StartStack.Screen name={APP_ROUTES.subscribe} component={SubscribeScreen} />
       <StartStack.Screen name={APP_ROUTES.promoCode} component={PromoCodeScreen} />
       <StartStack.Screen name={APP_ROUTES.teacherProfile} component={TeacherProfileScreen} />

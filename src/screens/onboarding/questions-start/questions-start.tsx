@@ -20,8 +20,10 @@ export const QuestionsStart: React.FC = () => {
         routePayload={whatBringsVariants}
         isButtonDisabled={!whatBringsVariants.length}
         onRoutePressNavigateTo={APP_ROUTES.drawer}>
-        <OnboardingTitle>Get Out and Come Home</OnboardingTitle>
-        <OnboardingText>Just a few quick questions so that we can best customize your experience</OnboardingText>
+        <OnboardingTitle allowFontScaling={false}>Get Out and Come Home</OnboardingTitle>
+        <OnboardingText allowFontScaling={false}>
+          Just a few quick questions so that we can best customize your experience
+        </OnboardingText>
       </LayoutOnboarding>
     </Layout>
   );

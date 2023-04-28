@@ -12,6 +12,7 @@ export const APP_ROUTES = {
   immersions: 'Immersions',
   immersionTimer: 'Immersion Timer',
   immersionComplete: 'Immersion Complete',
+  immersionChange: 'ImmersionChange',
 
   practices: 'Practices',
   teacherProfile: 'Teacher Profile',

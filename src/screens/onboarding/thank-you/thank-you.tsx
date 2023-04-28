@@ -13,8 +13,10 @@ export const ThankYou: React.FC = () => {
   return (
     <Layout ellipseColor="green" isWithGradient isWithScroll>
       <LayoutOnboarding buttonText="CONTINUE">
-        <OnboardingTitle isCentered>Thank you!</OnboardingTitle>
-        <OnboardingText isItalic isCentered fontSize={20}>
+        <OnboardingTitle isCentered allowFontScaling={false}>
+          Thank you!
+        </OnboardingTitle>
+        <OnboardingText allowFontScaling={false} isItalic isCentered fontSize={20}>
           Almost there. . .
         </OnboardingText>
 

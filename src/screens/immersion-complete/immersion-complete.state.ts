@@ -84,7 +84,7 @@ export const useImmersionComplete = () => {
     goal: user.goal,
     addedTime: params.addedTime,
     todayImmersions,
-    onDone,
     isLoading,
+    onDone,
   };
 };

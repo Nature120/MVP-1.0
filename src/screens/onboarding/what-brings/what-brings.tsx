@@ -24,8 +24,10 @@ export const WhatBrings: React.FC = () => {
         routeText="Skip for now"
         onPress={onPress}
         isButtonDisabled={!whatBrings.length}>
-        <OnboardingTitle>What brings you to Nature 120?</OnboardingTitle>
-        <OnboardingText>We’ll personalize recommendations based on your goals. Choose one or more.</OnboardingText>
+        <OnboardingTitle allowFontScaling={false}>What brings you to Nature 120?</OnboardingTitle>
+        <OnboardingText allowFontScaling={false}>
+          We’ll personalize recommendations based on your goals. Choose one or more.
+        </OnboardingText>
 
         <Styled.CheckboxGroup>
           <TextCheckboxGroup
