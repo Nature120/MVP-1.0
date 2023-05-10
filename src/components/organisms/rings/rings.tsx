@@ -1,10 +1,11 @@
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
+import { multiply } from 'react-native-reanimated';
 
-import { Circle } from '@components/molecules/circle/circle';
 import { ModalChangeGoal } from '@components/organisms/modal-change-goal';
 import { ModalChangeImmersion } from '../modal-change-immersion';
 import { GoalText } from './goal-text';
+import { Ring } from './ring/ring';
 import { useRings } from './rings.state';
 
 import { IDonutProps } from './rings.typings';
@@ -22,7 +23,9 @@ export const Rings: React.FC<IDonutProps> = memo(props => {
       {isChangeImmersion && setImmersion && <ModalChangeImmersion setImmersion={setImmersion} />}
 
       {rings.map((ring, i) => (
-        <Circle ring={ring} key={i} progress={progress} />
+        <Styled.Overlay key={i} style={{ ...StyleSheet.absoluteFillObject }}>
+          <Ring theta={multiply(ring.theta, progress)} ring={ring} />
+        </Styled.Overlay>
       ))}
 
       <GoalText inputRef={inputRef} maxMinutes={maxMinutes} minutes={minutes} addedTime={addedTime} />
