@@ -12,11 +12,12 @@ export const useModalChangeImmersion = (setImmersion: React.Dispatch<React.SetSt
   const onDone = () => {
     const immersionTime = hours * 60 + minutes;
     setImmersion(immersionTime);
+    onClose();
   };
 
   const pickers: IPickers[] = [
-    { title: 'Hours', data: [...new Array(25)], defaultIndex: hours, onChange: setHours },
     { title: 'Minutes', data: [...new Array(60)], defaultIndex: minutes, onChange: setMinutes },
+    { title: 'Hours', data: [...new Array(25)], defaultIndex: hours, onChange: setHours },
   ];
 
   return { pickers, modalChange: { isOpen, onOpen, onClose, onDone } };

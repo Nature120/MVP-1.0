@@ -32,6 +32,7 @@ import { ITeacher } from '@typings/common';
 export const useHome = () => {
   const { navigate, openDrawer } = useNavigation() as any;
   const user = useSelector(getUserInfo);
+
   const { weeklyGoal } = useGoal();
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
