@@ -37,7 +37,7 @@ export const ImmersionComplete: React.FC = () => {
                 {<Rings maxMinutes={weeklyGoal} minutes={goal || 0} addedTime={addedTime} />}
               </Styled.ProgressBar>
 
-              <Styled.Image source={IMAGES.wave} />
+              <Styled.Image source={IMAGES.wave} resizeMode={'cover'} />
             </Styled.MainSection>
 
             <Styled.InfoSectionWrapper>

@@ -37,5 +37,6 @@ export const TeacherInfoStyled = {
     font-size: ${FONTS.size.mediumSmall}px;
     line-height: 16.25px;
     color: ${COLOR.font.cloudyBlue};
+    max-width: 95%;
   `,
 };
