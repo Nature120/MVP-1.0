@@ -15,7 +15,7 @@ import { StyledAskModal as Styled } from './ask-modal.styles';
 const MOON_SIZE = 44;
 
 export const AskModal: React.FC<IAskModalProps> = props => {
-  const { isVisible, onClose, modalText, titleText, ...handlers } = props;
+  const { isVisible, onClose, modalText, titleText, isWithTrack, ...handlers } = props;
   const {
     selectedIcon,
     isConfirmed,
@@ -26,7 +26,7 @@ export const AskModal: React.FC<IAskModalProps> = props => {
     setText,
     handleDone,
     handleTextPress,
-  } = useAskModal({ handlers, titleText });
+  } = useAskModal({ handlers, titleText, isWithTrack });
 
   const isBeforePracticeAskModal = titleText === 'today';
 

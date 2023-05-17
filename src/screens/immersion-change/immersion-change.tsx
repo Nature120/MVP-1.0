@@ -38,6 +38,7 @@ export const ImmersionChange: React.FC = () => {
         onButtonPress={saveResponse}
         onTextPress={onTextPress}
         titleText={'now'}
+        isWithTrack
       />
 
       <Layout
@@ -48,13 +49,13 @@ export const ImmersionChange: React.FC = () => {
         elasticScrollPosition="bottom">
         <Styled.MainSection>
           <Styled.Title>Edit the immersion!</Styled.Title>
-          <Styled.Subtitle>You can edit the immersion information or delete it</Styled.Subtitle>
+          <Styled.Subtitle>You can edit the duration of your immersion by clicking the pencil icon</Styled.Subtitle>
 
           <Styled.ProgressBar>
             <Rings minutes={immersion || 0} maxMinutes={weeklyGoal} isChangeImmersion setImmersion={setImmersion} />
           </Styled.ProgressBar>
 
-          <Styled.Image source={IMAGES.wave} />
+          <Styled.Image source={IMAGES.wave} resizeMode="cover" />
         </Styled.MainSection>
       </Layout>
 

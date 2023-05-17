@@ -3,9 +3,10 @@ export interface IAskModalProps extends IUseAskModalProps {
   onClose: () => void;
   modalText?: string;
   titleText: 'now' | 'today';
+  isWithTrack?: boolean;
 }
 
-export type TProp = { handlers: IUseAskModalProps; titleText: string };
+export type TProp = { handlers: IUseAskModalProps; titleText: string; isWithTrack?: boolean };
 
 export interface IUseAskModalProps {
   onTextPress: (value: string, grade: number | null) => void | Promise<void>;

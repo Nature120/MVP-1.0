@@ -15,7 +15,7 @@ const ICON_GRADE_HASH_MAP = {
   newMoon: 1,
 };
 
-export const useAskModal = ({ handlers, titleText }: TProp) => {
+export const useAskModal = ({ handlers, titleText, isWithTrack }: TProp) => {
   const { onTextPress, onButtonPress, onConfirmPress } = handlers;
   const [text, setText] = useState('');
   const [selectedIcon, setSelectedIcon] = useState<TIconNames | ''>('');
@@ -23,7 +23,8 @@ export const useAskModal = ({ handlers, titleText }: TProp) => {
   const [grade, setGrade] = useState<number | null>(null);
 
   const { isAudioFile } = usePlayer();
-  const isImmersionTimerAskModalWithAudio = titleText === 'now' && isAudioFile;
+
+  const isImmersionTimerAskModalWithAudio = (titleText === 'now' && isAudioFile) || isWithTrack;
 
   const handleDone = () => {
     onButtonPress(text, grade);

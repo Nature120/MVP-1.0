@@ -4,6 +4,8 @@ import styled from 'styled-components/native';
 import { CenterContainer } from '@components/atoms/center-container';
 import { TextComponent } from '@components/atoms/text-component';
 
+import { DEVICE_WIDTH } from '../../services/helpers/device-utils';
+
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 import { Z_INDEX } from '@theme/z-index';
@@ -48,6 +50,7 @@ export const ImmersionChangeStyled = {
     position: absolute;
     left: -24px;
     bottom: -93px;
+    width: ${DEVICE_WIDTH}px;
   `,
 
   Title: styled(Title)`
