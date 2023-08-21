@@ -35,11 +35,16 @@ export const removeLastWeekPractices = (finishedPractices: IFinishedPractices[])
   }, []);
 };
 
-export const checkUserPremiumInfo = async ({ subscription, storeSubscription }: TUserPremiumInfo) => {
+export const checkUserPremiumInfo = async ({ subscription, storeSubscription, user }: TUserPremiumInfo) => {
   try {
     const customerInfo = await Purchases.getCustomerInfo();
     const { premium } = customerInfo.entitlements.active;
     const isSubscription = subscription === 'ANNUAL' || subscription === 'MONTHLY';
+
+    if (user.isFullAccess) {
+      storeSubscription('nt_1999_12');
+      return;
+    }
 
     if (typeof premium !== 'undefined') {
       if (isSubscription) {

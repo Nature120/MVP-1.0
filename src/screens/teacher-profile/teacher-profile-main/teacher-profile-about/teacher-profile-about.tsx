@@ -22,7 +22,7 @@ export const TeacherProfileAbout: React.FC<IProp> = ({ teacher }) => {
     <>
       {biography && (
         <Styled.BioWrapper>
-          <Styled.Text>{biography}</Styled.Text>
+          <Styled.Text>{biography?.replace(/\\n/g, '\n')}</Styled.Text>
         </Styled.BioWrapper>
       )}
       <Styled.Wrapper>

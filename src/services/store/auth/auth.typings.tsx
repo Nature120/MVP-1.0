@@ -30,6 +30,7 @@ export interface IUser {
   tipOfTheDay?: IUserTipOfTheDay;
   recentPractices: Array<IFinishedPractices>;
   subscription?: TSubsctiption;
+  isFullAccess: boolean;
 }
 
 export type TSubsctiption = 'FREE' | 'MONTHLY' | 'ANNUAL';

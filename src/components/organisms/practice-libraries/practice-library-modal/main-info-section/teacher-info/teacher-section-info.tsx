@@ -32,7 +32,7 @@ export const TeacherInfo = ({ teacherName, closeModal }: IProp) => {
       <Image source={{ uri: avatar }} width={60} height={60} styles={Styled.Image} />
       <Styled.WrapperTeacherInfo>
         <Styled.TextFullName>{fullName}</Styled.TextFullName>
-        <Styled.TextLocation>{teacherTitle}</Styled.TextLocation>
+        <Styled.TextLocation style={{ maxWidth: '90%' }}>{teacherTitle}</Styled.TextLocation>
         <Styled.TextLocation>{location}</Styled.TextLocation>
       </Styled.WrapperTeacherInfo>
     </Styled.Container>

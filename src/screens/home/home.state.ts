@@ -99,7 +99,7 @@ export const useHome = () => {
   useEffect(() => {
     Purchases.addCustomerInfoUpdateListener(info => {
       // handle any changes to customerInfo
-      checkUserPremiumInfo({ subscription, storeSubscription });
+      checkUserPremiumInfo({ subscription, storeSubscription, user });
     });
   }, []);
 

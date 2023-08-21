@@ -1,10 +1,11 @@
 import { FirebaseDynamicLinksTypes } from '@react-native-firebase/dynamic-links';
 
-import { TSubsctiption } from '@services/store/auth/auth.typings';
+import { IUser, TSubsctiption } from '@services/store/auth/auth.typings';
 
 export interface TUserPremiumInfo {
   subscription: TSubsctiption | undefined;
   storeSubscription: (productIdentifier: string) => Promise<void>;
+  user: IUser;
 }
 
 export interface IHandleDynamicLinks {

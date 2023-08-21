@@ -1230,7 +1230,7 @@ PODS:
     - Firebase/Storage (= 10.1.0)
     - React-Core
     - RNFBApp
-  - RNGestureHandler (2.8.0):
+  - RNGestureHandler (2.12.1):
     - React-Core
   - RNGoogleSignin (8.2.1):
     - GoogleSignIn (~> 6.2)
@@ -1615,7 +1615,7 @@ SPEC CHECKSUMS:
   RNFBFirestore: bc7e8f56bd19d661c771ba8e58e9324844c60429
   RNFBMessaging: 93ea6c6cec9833909dd67fb50860f2d053d2c5d6
   RNFBStorage: f1c877179e72a75d7cb91cef500e8030d5addbd9
-  RNGestureHandler: 62232ba8f562f7dea5ba1b3383494eb5bf97a4d3
+  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
   RNGoogleSignin: 3db2d849581299f425f5b61b90cb482a9e68c7af
   RNPurchases: ae83ef055ecf7bdcf89c48658b3f148d321c4a43
   RNReanimated: c1b56d030d1616239861534d9adb531f8cffab68
@@ -1630,4 +1630,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d47d4638c8ec223b2dbc83bafcfdd4a9c16faf2a
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
