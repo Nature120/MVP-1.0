@@ -38,7 +38,7 @@ export const Immersions: React.FC = () => {
 
             <Line marginTop={24} marginBottom={28} />
 
-            <TogglerDoNotDisturb marginBottom={48} />
+            <TogglerDoNotDisturb marginBottom={24} />
           </Styled.Immersions>
 
           {whatBrings && (

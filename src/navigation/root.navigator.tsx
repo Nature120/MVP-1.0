@@ -11,6 +11,7 @@ import { SignUpScreen } from '@screens/sign-up-screen/sign-up-screen';
 import { Splash } from '@screens/splash';
 import { SubscribeScreen } from '@screens/subscribe/subscribe';
 import { TeacherProfileScreen } from '@screens/teacher-profile/teacher-profile';
+import { ResetPasswordScreen } from '../components/reset-password/reset-password';
 import { DrawerNavigator } from './molecules/drawer/drawer.navigator';
 import { disabledGestures, noHeaderOptions, screenOptions } from './navigation.options';
 import { useNavigationSate } from './navigation.state';
@@ -56,6 +57,7 @@ export const RootNavigator = () => {
       <>
         <StartStack.Screen name={APP_ROUTES.start.signIn} component={SignInScreen} />
         <StartStack.Screen name={APP_ROUTES.start.signUp} component={SignUpScreen} />
+        <StartStack.Screen name={APP_ROUTES.start.resetPassword} component={ResetPasswordScreen} />
       </>
     );
 

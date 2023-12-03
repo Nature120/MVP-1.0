@@ -15,6 +15,7 @@ export const FONTS = {
     xMedium: 17,
     xLmedium: 20,
     large: 24,
+    largeM: 28,
     xLarge: 30,
     xlLarge: 34,
     superLarge: 64,

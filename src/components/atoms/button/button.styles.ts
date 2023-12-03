@@ -13,6 +13,7 @@ export const StyledButton = {
     height: ${props => props.height}px;
     width: 100%;
     border-radius: 50px;
+
     background-color: ${props => props.buttonColor && COLOR.primary[props.buttonColor]};
 
     ${props =>

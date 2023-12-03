@@ -3,18 +3,21 @@ import styled from 'styled-components/native';
 
 import { isIOS } from '@services/helpers/device-utils';
 
+import { RINGS_SIZE } from '../rings.constants';
+
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
 export const StyledGoalText = {
-  AnimatedTextInput: styled(AnimatedTextInput)<{ textColor: string }>`
+  AnimatedTextInput: styled(AnimatedTextInput)<{ textColor: string; minutesLength: number }>`
     color: ${props => props.textColor};
     padding-top: ${isIOS ? 70 : 100}px;
     text-align: center;
     font-family: ${FONTS.family.boldAcumin};
     font-weight: ${FONTS.weight.bold};
-    font-size: 64px;
+    font-size: ${({ minutesLength }) =>
+      RINGS_SIZE / (minutesLength * 1.5) > 64 ? 64 : RINGS_SIZE / (minutesLength * 1.5)}px;
   `,
 
   Min: styled.Text<{ textColor: string }>`

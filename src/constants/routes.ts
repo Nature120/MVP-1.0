@@ -6,6 +6,7 @@ export const APP_ROUTES = {
     signUp: 'Sign Up',
     signIn: 'Sign In',
     onBoard: 'start',
+    resetPassword: 'resetPassword',
   },
   dashboard: 'Dashboard',
   drawer: 'Drawer',

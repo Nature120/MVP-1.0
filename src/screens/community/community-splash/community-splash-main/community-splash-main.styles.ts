@@ -16,7 +16,7 @@ export const CommunitySplashMainStyled = {
   Title: styled.Text`
     margin-bottom: 16px;
     font-family: ${FONTS.family.boldAcumin};
-    font-size: ${FONTS.size.xLarge}px;
+    font-size: ${FONTS.size.largeM}px;
     font-weight: ${FONTS.weight.semiBold};
     line-height: 36px;
     color: ${COLOR.font.darkBlue};

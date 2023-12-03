@@ -14,6 +14,7 @@ export const GoalText: React.FC<IGoalTextProps> = props => {
 
   return (
     <Styled.AnimatedTextInput
+      minutesLength={minutes.toString().length}
       textColor={inferredTextColor}
       ref={inputRef}
       underlineColorAndroid="transparent"

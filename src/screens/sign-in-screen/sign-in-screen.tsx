@@ -10,8 +10,15 @@ import { useSignInState } from './sign-in-screen.state';
 import { SignInScreenStyles as Styled } from './sign-in-screen.styles';
 
 export const SignInScreen = () => {
-  const { onPressSignUp, onGoogleButtonPress, onFacebookButtonPress, isLoading, onAppleButtonPress, isFirstLaunchApp } =
-    useSignInState();
+  const {
+    onPressReset,
+    onPressSignUp,
+    onGoogleButtonPress,
+    onFacebookButtonPress,
+    isLoading,
+    onAppleButtonPress,
+    isFirstLaunchApp,
+  } = useSignInState();
 
   return (
     <>
@@ -34,6 +41,12 @@ export const SignInScreen = () => {
               <Styled.LoginText>Have no account yet?</Styled.LoginText>
               <Styled.LogInBtn onPress={onPressSignUp}>
                 <Styled.LoginLabelText>Register</Styled.LoginLabelText>
+              </Styled.LogInBtn>
+            </Styled.LogInWrapper>
+            <Styled.LogInWrapper style={{ marginLeft: -65 }}>
+              <Styled.LoginText>Forgot your password ?</Styled.LoginText>
+              <Styled.LogInBtn onPress={onPressReset}>
+                <Styled.LoginLabelText style={{ width: 200 }}>Recover password</Styled.LoginLabelText>
               </Styled.LogInBtn>
             </Styled.LogInWrapper>
           </Styled.InnerWrapper>

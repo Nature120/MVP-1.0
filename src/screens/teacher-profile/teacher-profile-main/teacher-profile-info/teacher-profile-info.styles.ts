@@ -25,7 +25,7 @@ export const TeacherProfileInfoStyled = {
   TitleText: styled.Text<{ marginTop: number }>`
     margin-top: ${({ marginTop }) => marginTop}px;
     font-family: ${FONTS.family.semiBoldAcumin};
-    font-size: ${FONTS.size.xlLarge}px;
+    font-size: ${FONTS.size.largeM}px;
     font-weight: ${FONTS.weight.semiBold};
     line-height: 40.8px;
     color: ${COLOR.font.darkBlue};

@@ -1,3 +1,4 @@
+import { moderateScale, scale } from 'react-native-size-matters';
 import styled, { css } from 'styled-components/native';
 
 import { FONTS } from '../../theme/fonts';
@@ -6,10 +7,13 @@ import { isIOS } from '@services/helpers/device-utils';
 
 import { COLOR } from '@theme/colors';
 
-export const SettingsStyled = {
+export const ResetPasswordStyled = {
   Container: css`
     flex: 1;
     background-color: ${COLOR.background.beigeLight};
+  `,
+  BackButtonWrapper: styled.View`
+    width: ${scale(32)}px;
   `,
   Title: styled.Text`
     margin-top: 24px;
@@ -21,7 +25,6 @@ export const SettingsStyled = {
     color: ${COLOR.font.darkBlue};
   `,
   Wrapper: styled.View`
-    margin-top: ${isIOS ? '50' : '24'}px;
     margin-bottom: 35px;
   `,
   Header: styled.View`

@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components/native';
 
+import { DEVICE_WIDTH } from '../../../services/helpers/device-utils';
+
 import { COLOR } from '@theme/colors';
 import { FONTS } from '@theme/fonts';
 
@@ -44,7 +46,7 @@ export const CommunityMainStyled = {
     color: ${COLOR.title};
   `,
   Text: styled.Text`
-    width: 180px;
+    width: ${DEVICE_WIDTH - 140}px;
     margin-right: 10px;
     font-family: ${FONTS.family.lightBoreal};
     font-weight: ${FONTS.weight.regular};

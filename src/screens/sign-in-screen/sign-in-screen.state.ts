@@ -31,6 +31,17 @@ export const useSignInState = () => {
   const onPressSignUp = () => {
     navigate(APP_ROUTES.start.signUp, {});
   };
+  const onPressReset = () => {
+    navigate(APP_ROUTES.start.resetPassword, {});
+  };
 
-  return { onPressSignUp, onGoogleButtonPress, onFacebookButtonPress, onAppleButtonPress, isLoading, isFirstLaunchApp };
+  return {
+    onPressReset,
+    onPressSignUp,
+    onGoogleButtonPress,
+    onFacebookButtonPress,
+    onAppleButtonPress,
+    isLoading,
+    isFirstLaunchApp,
+  };
 };

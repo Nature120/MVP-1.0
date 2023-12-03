@@ -4,7 +4,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-
+#import <AVFoundation/AVFoundation.h>
 #import <React/RCTAppSetupUtils.h>
 #import "RNSplashScreen.h"
 #import <RNGoogleSignin/RNGoogleSignin.h>
@@ -68,6 +68,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];  // allow
   [[FBSDKApplicationDelegate sharedInstance] application:application
                          didFinishLaunchingWithOptions:launchOptions];
   

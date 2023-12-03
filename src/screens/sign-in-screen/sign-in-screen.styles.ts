@@ -23,7 +23,7 @@ export const SignInScreenStyles = {
   LogInWrapper: styled.View`
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   `,
   LogInBtn: styled.TouchableOpacity`
     width: ${scale(60)}px;
