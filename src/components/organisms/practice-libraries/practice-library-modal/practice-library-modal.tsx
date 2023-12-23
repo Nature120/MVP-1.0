@@ -101,13 +101,13 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
         />
       )}
       <Styled.PracticeLibraryModal contentContainerStyle={contentContainerStyle} showsVerticalScrollIndicator={false}>
-        <Styled.Header style={[!isLockPractice && isSound && { height: DEVICE_HEIGHT / 2 }]}>
+        <Styled.Header style={[!isLockPractice && isSound && { height: DEVICE_HEIGHT / 1.6 }]}>
           <Image
             source={{ uri: image }}
             width={DEVICE_WIDTH}
             height={
               !isLockPractice && isSound
-                ? verticalScale(DEVICE_HEIGHT / 2)
+                ? verticalScale(DEVICE_HEIGHT / 1.6)
                 : isIOS
                   ? verticalScale(235)
                   : verticalScale(260)
@@ -147,7 +147,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
             <SubscribeSection closeModal={closeModal} />
           </Styled.ContentWrapper>
         ) : (
-          <Styled.ContentWrapper style={[isSound && { height: DEVICE_HEIGHT / 2 }]}>
+          <Styled.ContentWrapper style={[isSound && { height: DEVICE_HEIGHT / 3 }]}>
             <Styled.Content>
               {!isSound ? (
                 <View>
