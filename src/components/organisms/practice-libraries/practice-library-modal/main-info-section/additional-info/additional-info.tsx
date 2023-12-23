@@ -8,14 +8,14 @@ import { AdditionalInfoStyled as Styled } from './additional-info.styles';
 
 export const AdditionalInfo: React.FC<IProp> = ({ practice, isAudioFile }) => {
   const { season, indoorOutdoor } = practice;
-  const isAllSeason = season.length > 1;
+  const isAllSeason = season?.length > 1;
 
   const handleSeasonIcon = () => {
     if (isAllSeason) {
       return 'cloud_sun';
     }
 
-    switch (season[0]) {
+    switch (season?.[0]) {
       case 'Winter':
         return 'snow_flake';
 
@@ -53,7 +53,7 @@ export const AdditionalInfo: React.FC<IProp> = ({ practice, isAudioFile }) => {
     <Styled.Container isAudioFile={isAudioFile}>
       <Styled.SeasonCardWrapper isAudioFile={isAudioFile}>
         <Icon type={iconSeasonType} size={24} />
-        <Styled.Text numberOfLines={1}>{(isAllSeason ? 'All seasons' : season[0]) || 'All seasons'}</Styled.Text>
+        <Styled.Text numberOfLines={1}>{(isAllSeason ? 'All seasons' : season?.[0]) || 'All seasons'}</Styled.Text>
       </Styled.SeasonCardWrapper>
       <Styled.InfoCardWrapper>
         <Icon type={iconIndoorOutDoorType} size={24} />

@@ -1,4 +1,4 @@
-import { verticalScale } from 'react-native-size-matters';
+import { moderateScale, verticalScale } from 'react-native-size-matters';
 import styled, { css } from 'styled-components/native';
 
 import { TextComponent } from '@components/atoms/text-component';
@@ -23,6 +23,37 @@ export const StyledPracticeLibraryModal = {
     top: ${({ top }) => top + 8}px;
     left: 24px;
     flex-direction: row;
+  `,
+  SoundWrapper: styled.View`
+    flex: 1;
+  `,
+  ControlsWrapper: styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: ${DEVICE_WIDTH - 100}px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: 80px;
+  `,
+  LockSvg: css`
+    margin-right: 16px;
+  `,
+  TitleWrapper: styled.View`
+    flex-direction: row;
+    padding-top: 24px;
+  `,
+  SoundTitle: styled(Title)`
+    width: ${moderateScale(280)}px;
+    margin-bottom: 20px;
+  `,
+  SoundDescription: styled(TextComponent)`
+    font-size: ${FONTS.size.xlSmall}px;
+    line-height: 26px;
+    color: ${COLOR.subheading};
   `,
   ContentWrapper: styled.View`
     flex: 1;

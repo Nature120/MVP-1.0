@@ -37,7 +37,6 @@ export const Home: React.FC = () => {
 
   const goal = user.goal || 0;
   const weekDateRange = getFormattedDateRange(new Date());
-
   return (
     <>
       <AskModal

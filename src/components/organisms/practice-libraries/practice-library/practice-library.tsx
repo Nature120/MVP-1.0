@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
+import Video from 'react-native-video';
 
 import { Icon } from '@components/atoms/icon';
 import { Image } from '@components/atoms/image';
@@ -36,7 +37,7 @@ export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
         <View>
           <Image source={{ uri: image }} width={WIDTH} height={moderateScale(103)} styles={StyledImage} />
 
-          {userGoals[0] && (
+          {userGoals?.[0] && (
             <Styled.TypeContainer>
               <Styled.Type numberOfLines={1}>{userGoals[0]}</Styled.Type>
             </Styled.TypeContainer>
@@ -49,7 +50,7 @@ export const PracticeLibrary: React.FC<IPracticeLibraryProps> = props => {
           </Styled.Title>
         </Styled.TitleWrapper>
 
-        <Styled.Description numberOfLines={2}>{description}</Styled.Description>
+        {description && <Styled.Description numberOfLines={2}>{description}</Styled.Description>}
       </Styled.PracticeLibrary>
     </>
   );

@@ -33,7 +33,7 @@ export const PracticeLibraryCollapsed: React.FC<IPracticeLibraryCollapsedProps> 
         </Styled.Left>
         <Styled.Right>
           <Image source={{ uri: library.image }} width={IMAGE_WIDTH} height={COLLAPSED_HEIGHT} styles={StyledImage} />
-          {library.userGoals[0] && (
+          {library?.userGoals?.[0] && (
             <Styled.TypeContainer>
               <Styled.Type numberOfLines={1}>{library.userGoals[0]}</Styled.Type>
             </Styled.TypeContainer>

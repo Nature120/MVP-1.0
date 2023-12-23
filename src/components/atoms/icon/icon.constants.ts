@@ -12,6 +12,7 @@ import community from '@assets/icons/community.svg';
 import cross from '@assets/icons/cross.svg';
 import facebook from '@assets/icons/facebook.svg';
 import flower_light from '@assets/icons/flower-light.svg';
+import full_screen from '@assets/icons/full-screen.svg';
 import globe from '@assets/icons/globe.svg';
 import google from '@assets/icons/google.svg';
 import home from '@assets/icons/home.svg';
@@ -40,7 +41,9 @@ import pause from '@assets/icons/pause.svg';
 import pencil from '@assets/icons/pencil.svg';
 import play from '@assets/icons/play.svg';
 import player_expanded_pause from '@assets/icons/player-expanded-pause.svg';
+import player_expanded_pause_dark from '@assets/icons/player-expanded-pause_dark.svg';
 import player_expanded_play from '@assets/icons/player-expanded-play.svg';
+import player_expanded_play_dark from '@assets/icons/player-expanded-play_dark.svg';
 import player_pause from '@assets/icons/player-pause.svg';
 import player_play from '@assets/icons/player-play.svg';
 import player_repeat from '@assets/icons/player-repeat.svg';
@@ -93,6 +96,8 @@ export const ICONS = {
   waningGibbosMoon,
   lock,
   check_mark,
+  player_expanded_pause_dark,
+  player_expanded_play_dark,
   checked,
   unchecked,
   checked_leaf,
@@ -108,6 +113,7 @@ export const ICONS = {
   player_repeat_once,
   player_expanded_play,
   player_expanded_pause,
+  full_screen,
   mountains,
   house,
   cloud_sun,

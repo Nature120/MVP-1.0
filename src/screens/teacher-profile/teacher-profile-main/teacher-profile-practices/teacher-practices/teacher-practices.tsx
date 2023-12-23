@@ -59,7 +59,9 @@ export const TeacherPractices: React.FC<IProp> = ({ teacherPractices, audioPract
               <Styled.CardWrapperButton onPress={() => onOpenModal(practice, isLockPractice)}>
                 <Image source={{ uri: practice.image }} width={scale(140)} height={103} styles={Styled.Image} />
                 <Styled.CategoryWrapper>
-                  <Styled.CategoryText numberOfLines={1}>{practice.userGoals[0]}</Styled.CategoryText>
+                  <Styled.CategoryText numberOfLines={1}>
+                    {practice?.userGoals?.[0] || 'No Category'}
+                  </Styled.CategoryText>
                 </Styled.CategoryWrapper>
                 <Styled.WrapperTitle>
                   {isLockPractice && <Icon type="lock" size={18} styles={Styled.LockSvg} />}
