@@ -43,6 +43,7 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
   const { isLockPractice, library } = props;
 
   const { image, userGoals } = library;
+
   const insets = useSafeAreaInsets();
   const videoRef = useRef<Video>(null);
   const [currentTime, setCurrentTime] = useState(0);
@@ -70,21 +71,24 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
         <Styled.ImageHeader top={insets.top + 40} style={{ zIndex: 10 }}>
           <ButtonIcon isWithBg type="arrowLeft" iconIndent={7} size={36} colorIcon="cloudyGreen" onPress={closeModal} />
         </Styled.ImageHeader>
-        <Video
-          ref={videoRef}
-          paused={isPlaying}
-          onLoad={() => setPlaying(false)}
-          source={{ uri: library.videoFilename }}
-          muted={false}
-          style={{ height: DEVICE_HEIGHT, width: DEVICE_WIDTH }}
-          ignoreSilentSwitch={'ignore'}
-          onProgress={onProgress}
-          playInBackground={true}
-          controls={true}
-          repeat={true}
-          fullscreenAutorotate={true}
-          resizeMode="contain"
-        />
+        {library.videoFilename && (
+          <Video
+            ref={videoRef}
+            paused={isPlaying}
+            onLoad={() => setPlaying(false)}
+            source={{ uri: library.videoFilename }}
+            muted={false}
+            style={{ height: DEVICE_HEIGHT, width: DEVICE_WIDTH }}
+            ignoreSilentSwitch={'ignore'}
+            onProgress={onProgress}
+            playInBackground={true}
+            controls={true}
+            repeat={true}
+            fullscreen={true}
+            fullscreenAutorotate={true}
+            resizeMode="contain"
+          />
+        )}
       </Modal>
     );
   }
@@ -175,20 +179,21 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
                   <Styled.SoundDescription numberOfLines={2}>
                     Practice slow and deep breathing while listening to this soundscape.
                   </Styled.SoundDescription>
-
-                  <Video
-                    ref={videoRef}
-                    paused={!isPlaying}
-                    source={{ uri: library.audioFile }}
-                    muted={false}
-                    ignoreSilentSwitch={'ignore'}
-                    audioOnly
-                    playInBackground={true}
-                    controls={false}
-                    repeat
-                    resizeMode={'contain'}
-                    onProgress={onProgress}
-                  />
+                  {Boolean(library.audioFilename) && (
+                    <Video
+                      ref={videoRef}
+                      paused={!isPlaying}
+                      source={{ uri: library.audioFilename }}
+                      muted={false}
+                      ignoreSilentSwitch={'ignore'}
+                      audioOnly
+                      playInBackground={true}
+                      controls={false}
+                      repeat
+                      resizeMode={'contain'}
+                      onProgress={onProgress}
+                    />
+                  )}
                   <Styled.ControlsWrapper>
                     <TouchableOpacity
                       onPress={onSkipBackward}
