@@ -73,7 +73,7 @@ export const useReminder = ({ isOnboarding }: IUseReminderProps) => {
 
     !isChannelCreated && createNotificationsChannel();
     notificationsAPI.applyNotifications(timeForImmersion!, notificationsList);
-    navigate(isOnboarding ? (APP_ROUTES.drawer as never) : (APP_ROUTES.dashboard as never));
+    navigate(isOnboarding ? (APP_ROUTES.welcome as never) : (APP_ROUTES.dashboard as never));
     !isOnboarding && clearState();
   };
 

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Orientation from 'react-native-orientation-locker';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { ImmersionChange } from '@screens/immersion-change';
@@ -12,6 +13,7 @@ import { Splash } from '@screens/splash';
 import { SubscribeScreen } from '@screens/subscribe/subscribe';
 import { TeacherProfileScreen } from '@screens/teacher-profile/teacher-profile';
 import { ResetPasswordScreen } from '../components/reset-password/reset-password';
+import { WelcomeVideo } from '../screens/welcome-video';
 import { DrawerNavigator } from './molecules/drawer/drawer.navigator';
 import { disabledGestures, noHeaderOptions, screenOptions } from './navigation.options';
 import { useNavigationSate } from './navigation.state';
@@ -26,6 +28,10 @@ const StartStack = createStackNavigator();
 export const RootNavigator = () => {
   const { isFirstLaunchApp, isAuth, isInitializing } = useNavigationSate();
 
+  useEffect(() => {
+    Orientation.lockToPortrait();
+  }, []);
+
   const mainRoutes = () => (
     <>
       {ON_BOARD_ROUTES.map(({ component, name }) => (
@@ -36,6 +42,7 @@ export const RootNavigator = () => {
         component={DrawerNavigator}
         options={{ ...noHeaderOptions, ...disabledGestures } as TScreenOptions}
       />
+      <StartStack.Screen name={APP_ROUTES.welcome} component={WelcomeVideo} />
       <StartStack.Screen name={APP_ROUTES.immersionTimer} component={ImmersionTimer} options={disabledGestures} />
       <StartStack.Screen name={APP_ROUTES.immersions} component={Immersions} />
       <StartStack.Screen name={APP_ROUTES.immersionComplete} component={ImmersionComplete} />

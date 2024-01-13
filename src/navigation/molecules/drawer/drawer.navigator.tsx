@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Orientation from 'react-native-orientation-locker';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { customDrawer } from './molecules/custom-drawer';
@@ -13,6 +14,10 @@ const Drawer = createDrawerNavigator();
 
 export const DrawerNavigator = () => {
   const { onSignOut } = useSignOut();
+
+  useEffect(() => {
+    Orientation.lockToPortrait();
+  }, []);
 
   return (
     <Drawer.Navigator

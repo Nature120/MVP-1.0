@@ -19,7 +19,7 @@ export const QuestionsStart: React.FC = () => {
         routeText="Skip Onboarding"
         routePayload={whatBringsVariants}
         isButtonDisabled={!whatBringsVariants.length}
-        onRoutePressNavigateTo={APP_ROUTES.drawer}>
+        onRoutePressNavigateTo={APP_ROUTES.welcome}>
         <OnboardingTitle allowFontScaling={false}>Get Out and Come Home</OnboardingTitle>
         <OnboardingText allowFontScaling={false}>
           Just a few quick questions so that we can best customize your experience

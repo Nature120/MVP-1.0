@@ -1110,6 +1110,8 @@ PODS:
     - FBSDKGamingServicesKit (~> 14.1.0)
     - FBSDKShareKit (~> 14.1.0)
     - React-Core
+  - react-native-orientation-locker (1.6.0):
+    - React-Core
   - react-native-safe-area-context (4.4.1):
     - RCT-Folly
     - RCTRequired
@@ -1303,6 +1305,7 @@ DEPENDENCIES:
   - react-native-config (from `../node_modules/react-native-config`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-fbsdk-next (from `../node_modules/react-native-fbsdk-next`)
+  - react-native-orientation-locker (from `../node_modules/react-native-orientation-locker`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
@@ -1449,6 +1452,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-date-picker"
   react-native-fbsdk-next:
     :path: "../node_modules/react-native-fbsdk-next"
+  react-native-orientation-locker:
+    :path: "../node_modules/react-native-orientation-locker"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-slider:
@@ -1596,6 +1601,7 @@ SPEC CHECKSUMS:
   react-native-config: bcafda5b4c51491ee1b0e1d0c4e3905bc7b56c1b
   react-native-date-picker: 04e866ba4e7857f83abd504ad42e787f0f02ae00
   react-native-fbsdk-next: d6e1c6ad1693c891add104ab529d96906784ba9c
+  react-native-orientation-locker: 4409c5b12b65f942e75449872b4f078b6f27af81
   react-native-safe-area-context: 99b24a0c5acd0d5dcac2b1a7f18c49ea317be99a
   react-native-slider: d2938a12c4e439a227c70eec65d119136eb4aeb5
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
@@ -1642,4 +1648,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d47d4638c8ec223b2dbc83bafcfdd4a9c16faf2a
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.13.0

@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Modal, TouchableOpacity, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Orientation from 'react-native-orientation-locker';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { verticalScale } from 'react-native-size-matters';
 import Video from 'react-native-video';
 
@@ -62,33 +63,41 @@ export const PracticeLibraryModal: React.FC<IPracticeLibraryModalProps> = props 
   const onSkipForward = () => {
     videoRef.current?.seek(currentTime + 10);
   };
+
   const isSound = library.topCategory === 'Soundscapes';
   const isVideo = library.topCategory === 'Microbreaks';
 
   if (isVideo && !isLockPractice) {
     return (
       <Modal transparent={false} visible={isOpen} animationType="slide">
-        <Styled.ImageHeader top={insets.top + 40} style={{ zIndex: 10 }}>
-          <ButtonIcon isWithBg type="arrowLeft" iconIndent={7} size={36} colorIcon="cloudyGreen" onPress={closeModal} />
-        </Styled.ImageHeader>
-        {library.videoFilename && (
-          <Video
-            ref={videoRef}
-            paused={isPlaying}
-            onLoad={() => setPlaying(false)}
-            source={{ uri: library.videoFilename }}
-            muted={false}
-            style={{ height: DEVICE_HEIGHT, width: DEVICE_WIDTH }}
-            ignoreSilentSwitch={'ignore'}
-            onProgress={onProgress}
-            playInBackground={true}
-            controls={true}
-            repeat={true}
-            fullscreen={true}
-            fullscreenAutorotate={true}
-            resizeMode="contain"
-          />
-        )}
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#000', alignItems: 'center', justifyContent: 'center' }}>
+          <Styled.ImageHeader top={insets.top + 20} style={{ zIndex: 10 }}>
+            <ButtonIcon
+              isWithBg
+              type="arrowLeft"
+              iconIndent={7}
+              size={36}
+              colorIcon="cloudyGreen"
+              onPress={closeModal}
+            />
+          </Styled.ImageHeader>
+          {library.videoFilename && (
+            <Video
+              ref={videoRef}
+              paused={isPlaying}
+              onLoad={() => setPlaying(false)}
+              source={{ uri: library.videoFilename }}
+              muted={false}
+              style={{ height: (DEVICE_WIDTH / 16) * 9, width: DEVICE_WIDTH }}
+              ignoreSilentSwitch={'ignore'}
+              onProgress={onProgress}
+              playInBackground={true}
+              controls={true}
+              repeat={true}
+              resizeMode="contain"
+            />
+          )}
+        </SafeAreaView>
       </Modal>
     );
   }

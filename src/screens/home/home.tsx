@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
+import Orientation from 'react-native-orientation-locker';
 
 import { DynamicHeader } from '@screens/home/atoms/dynamic-header';
 import { Button } from '@components/atoms/button';
@@ -34,7 +35,9 @@ export const Home: React.FC = () => {
     navigateToImmersions,
     onConfirmPress,
   } = useHome();
-
+  useEffect(() => {
+    Orientation.lockToPortrait();
+  }, []);
   const goal = user.goal || 0;
   const weekDateRange = getFormattedDateRange(new Date());
   return (

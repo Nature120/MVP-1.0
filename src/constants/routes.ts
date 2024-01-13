@@ -1,5 +1,6 @@
 export const APP_ROUTES = {
   agreeTermsOfServices: 'agreeTermsOfServices',
+  welcome: 'welcome',
   TermsOfServices: 'TermsOfServices',
   start: {
     splash: 'Splash',

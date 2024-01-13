@@ -29,6 +29,7 @@ export const useLayoutOnboarding = <T extends object>(
   const navigateToNextRoute = () => {
     !isWithoutRedirect && navigate(nextRoute as never, routePayload as never);
   };
+  console.log('🟥  routePayload:', routePayload);
 
   const onButtonPressAsync = async () => {
     onPress && (await onPress());

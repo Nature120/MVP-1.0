@@ -45,7 +45,8 @@ export const useQuestionsStart = () => {
     const res = await databaseRef('Other text').doc('Top Categories').get();
     const uIds: ITextCheckBox[] = res
       .data()!
-      .topCategories.map((category: string) => ({ text: category.toUpperCase(), value: category }));
+      .topCategories.map((category: string) => ({ text: category.toUpperCase(), value: category }))
+      .filter(item => item.text !== 'MICROBREAKS' && item.text !== 'SOUNDSCAPES');
 
     setWhatBringsVariants(uIds);
   };
