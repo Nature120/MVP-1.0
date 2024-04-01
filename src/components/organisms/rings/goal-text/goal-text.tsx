@@ -26,7 +26,7 @@ export const GoalText: React.FC<IGoalTextProps> = props => {
       {isAddedTime ? (
         <Styled.WeeklyGoal isAddedTime>
           {'\n'}
-          {minutes + (addedTime || 0)} / {maxMinutes} min
+          {minutes} / {maxMinutes} min
         </Styled.WeeklyGoal>
       ) : (
         <Styled.WeeklyGoal>

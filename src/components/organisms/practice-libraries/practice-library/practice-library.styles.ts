@@ -22,6 +22,7 @@ export const StyledPracticeLibrary = {
     border-radius: 11px;
     position: absolute;
     left: 7px;
+    margin-right: 10px;
     bottom: 6px;
     background: ${COLOR.background.dark};
     align-items: center;

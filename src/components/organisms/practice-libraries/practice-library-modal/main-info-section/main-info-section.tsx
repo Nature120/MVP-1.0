@@ -24,7 +24,7 @@ export const MainInfoSection: React.FC<IProp> = ({ isLockPractice, library, isAu
       <LeafButton library={library} width={35} height={35} cssButton={Styled.BookmarkBtn} />
       <Styled.TitleWrapper>
         {isLockPractice && <Icon type="lock" size={35} styles={Styled.LockSvg} />}
-        <Styled.Title numberOfLines={2}>{title}</Styled.Title>
+        <Styled.Title>{title}</Styled.Title>
       </Styled.TitleWrapper>
       <AdditionalInfo practice={library} isAudioFile={isAudioFile} />
       {!isLockPractice && <Styled.Description>{description?.replace(/\\n/g, '\n')}</Styled.Description>}

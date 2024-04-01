@@ -22,6 +22,7 @@ export const TeacherPracticesStyled = {
     border-radius: 100px;
     left: 5px;
     top: 65px;
+    margin-right: 10px;
     background: ${COLOR.background.dark};
     align-items: center;
     justify-content: center;

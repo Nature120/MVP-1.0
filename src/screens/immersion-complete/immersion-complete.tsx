@@ -34,7 +34,7 @@ export const ImmersionComplete: React.FC = () => {
               <Styled.Subtitile>This Week at a Glance</Styled.Subtitile>
 
               <Styled.ProgressBar>
-                {<Rings maxMinutes={weeklyGoal} minutes={goal || 0} addedTime={addedTime} />}
+                {<Rings maxMinutes={weeklyGoal} minutes={goal || addedTime} addedTime={addedTime} />}
               </Styled.ProgressBar>
 
               <Styled.Image source={IMAGES.wave} resizeMode={'cover'} />
